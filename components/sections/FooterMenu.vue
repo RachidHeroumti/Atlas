@@ -1,0 +1,119 @@
+<template>
+  <div class="bg-gray-900 text-gray-200  py-16 p-10">
+
+      <div class=" sm:flex  justify-start sm:space-x-5 " v-if="menu">
+
+        <div class=" w-full space-y-3 ">
+            <p class=" ">About us</p>
+            <p class=" text-gray-500">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                 tempor incididunt ut labore et dolore magna aliqua.
+               Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+            </p>
+        </div>
+
+        <div class="w-full space-y-3">
+            <p>Useful links</p>
+             <div v-for="(item,i) in menu.items" :key="i" class="w-full text-gray-400">
+            <div class="">
+                <h4 class=" font-poppins font-base text-12p  ">
+                    <router-link :to="item.url">{{item.text}}</router-link>
+                </h4>
+<!--
+                <ul class="p-2" v-if="item.childrens && item.childrens.length > 0">
+                    <li v-for="(child,ii) in item.childrens" :key="ii">
+                        <nuxt-link :to="child.url" class="submenu-title">
+                            {{ child.text }}
+                        </nuxt-link>
+                        <ul class="p-2 rounded-md bg-gray-100" v-if="child.childrens && child.childrens.length > 0">
+                            <li v-for="(child2,iii) in child.childrens" :key="iii">
+                                <nuxt-link :to="child2.url" class="subsubmenu-title">
+                                    {{ child2.text }}
+                                </nuxt-link>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+-->
+            </div>
+              </div>
+       </div>
+    
+        <div class=" w-full space-y-3 ">
+            <p>Download </p>
+            <!--<h3 class=" text-lg">{{ $settings.sections.footer.social_media.title }}</h3> -->
+     <div class=" text-12p font-poppins font-base text-gray-400">
+        <div v-for="item in socialMedia.filter(s => $settings.sections.footer.social_media[s.name])" 
+           :key="item.name" 
+             class=" flex items-center justify-between">
+          <a class="h-full flex items-center" 
+             :href="$settings.sections.footer.social_media[item.name]" 
+             target="_blank" 
+             rel="noopener noreferrer">
+             <span class=" hover:underline">{{ item.name }}</span>
+         </a> 
+    </div>
+</div>
+
+        </div>
+
+
+
+        <div class=" w-full space-y-3 ">
+            <p>Call center</p>
+             <p class="text-12p font-poppins font-normal  text-gray-400">Monday to Friday: 9-20</p>
+             <p class="text-12p font-poppins font-normal text-gray-400">Saturday to Sunday: closed</p>
+             <p class="text-12p font-poppins font-normal text-gray-400">arredo@example.com</p>
+        </div>
+      </div>
+
+  </div>
+</template>
+<script>
+export default {
+  data() {
+    return {
+      menu: this.$settings.sections.footer.menu ,
+       socialMedia: [
+                {
+                    name: 'facebook',
+                    image: 'https://storeno.b-cdn.net/themes/palest/facebook.png'
+                },
+                {
+                    name: 'twitter',
+                    image: 'https://storeno.b-cdn.net/themes/palest/twitter.png'
+                },
+                {
+                    name: 'instagram',
+                    image: 'https://storeno.b-cdn.net/themes/palest/instagram.png'
+                },
+                {
+                    name: 'youtube',
+                    image: 'https://storeno.b-cdn.net/themes/palest/youtube.png'
+                },
+                {
+                    name: 'whatsapp',
+                    image: 'https://storeno.b-cdn.net/themes/palest/whatsapp.png'
+                },
+                {
+                    name: 'linkedin',
+                    image: 'https://storeno.b-cdn.net/themes/palest/linkedin.png'
+                },
+                {
+                    name: 'snapchat',
+                    image: 'https://storeno.b-cdn.net/themes/palest/snapchat.png'
+                },
+                {
+                    name: 'tiktok',
+                    image: 'https://storeno.b-cdn.net/themes/palest/tiktok.png'
+                }
+            ]
+    };
+  },
+};
+</script>
+<style>
+    .menu-title{
+        border-left: 4px solid var(--primary-color);
+    }
+</style>

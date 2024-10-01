@@ -1,0 +1,86 @@
+[
+  {
+    "name": "cart",
+    "path": "/cart",
+    "component": "C:\\\\Users\\\\admin\\\\Desktop\\\\StoreIno\\\\ThemeIno\\\\themeino\\\\pages\\\\cart\\\\index.vue",
+    "chunkName": "pages/cart/index",
+    "_name": "_5392a539"
+  },
+  {
+    "name": "error",
+    "path": "/error",
+    "component": "C:\\\\Users\\\\admin\\\\Desktop\\\\StoreIno\\\\ThemeIno\\\\themeino\\\\pages\\\\error.vue",
+    "chunkName": "pages/error",
+    "_name": "_baa1e562"
+  },
+  {
+    "name": "thanks",
+    "path": "/thanks",
+    "component": "C:\\\\Users\\\\admin\\\\Desktop\\\\StoreIno\\\\ThemeIno\\\\themeino\\\\pages\\\\thanks\\\\index.vue",
+    "chunkName": "pages/thanks/index",
+    "_name": "_9a1553a0"
+  },
+  {
+    "name": "wishlist",
+    "path": "/wishlist",
+    "component": "C:\\\\Users\\\\admin\\\\Desktop\\\\StoreIno\\\\ThemeIno\\\\themeino\\\\pages\\\\wishlist\\\\index.vue",
+    "chunkName": "pages/wishlist/index",
+    "_name": "_140271f4"
+  },
+  {
+    "name": "index",
+    "path": "/",
+    "component": "C:\\\\Users\\\\admin\\\\Desktop\\\\StoreIno\\\\ThemeIno\\\\themeino\\\\pages\\\\index.vue",
+    "chunkName": "pages/index",
+    "_name": "_5ee8ef19"
+  },
+  {
+    "name": "account-route",
+    "path": "/account/:route?",
+    "component": "C:\\\\Users\\\\admin\\\\Desktop\\\\StoreIno\\\\ThemeIno\\\\themeino\\\\pages\\\\account\\\\_route.vue",
+    "chunkName": "pages/account/_route",
+    "_name": "_69952a04"
+  },
+  {
+    "name": "blog-slug",
+    "path": "/blog/:slug?",
+    "component": "C:\\\\Users\\\\admin\\\\Desktop\\\\StoreIno\\\\ThemeIno\\\\themeino\\\\pages\\\\blog\\\\_slug.vue",
+    "chunkName": "pages/blog/_slug",
+    "_name": "_7cf9ca2f"
+  },
+  {
+    "name": "collections-slug",
+    "path": "/collections/:slug?",
+    "component": "C:\\\\Users\\\\admin\\\\Desktop\\\\StoreIno\\\\ThemeIno\\\\themeino\\\\pages\\\\collections\\\\_slug.vue",
+    "chunkName": "pages/collections/_slug",
+    "_name": "_08f82ec4"
+  },
+  {
+    "name": "pages-slug",
+    "path": "/pages/:slug?",
+    "component": "C:\\\\Users\\\\admin\\\\Desktop\\\\StoreIno\\\\ThemeIno\\\\themeino\\\\pages\\\\pages\\\\_slug.vue",
+    "chunkName": "pages/pages/_slug",
+    "_name": "_048f13cf"
+  },
+  {
+    "name": "posts-slug",
+    "path": "/posts/:slug?",
+    "component": "C:\\\\Users\\\\admin\\\\Desktop\\\\StoreIno\\\\ThemeIno\\\\themeino\\\\pages\\\\posts\\\\_slug.vue",
+    "chunkName": "pages/posts/_slug",
+    "_name": "_7ea1b860"
+  },
+  {
+    "name": "products-slug",
+    "path": "/products/:slug?",
+    "component": "C:\\\\Users\\\\admin\\\\Desktop\\\\StoreIno\\\\ThemeIno\\\\themeino\\\\pages\\\\products\\\\_slug.vue",
+    "chunkName": "pages/products/_slug",
+    "_name": "_572a8bad"
+  },
+  {
+    "name": "shop-slug",
+    "path": "/shop/:slug?",
+    "component": "C:\\\\Users\\\\admin\\\\Desktop\\\\StoreIno\\\\ThemeIno\\\\themeino\\\\pages\\\\shop\\\\_slug.vue",
+    "chunkName": "pages/shop/_slug",
+    "_name": "_3253825b"
+  }
+]

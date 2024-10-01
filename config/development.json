@@ -1,0 +1,7 @@
+{
+    "env": "development",
+    "token": {
+        "clientId": "66f535ea7989939dc33576bd-rachid-dev.storeino.world",
+        "clientSecret": "QQPoiLc41hLj8xTAqJXQn7rY"
+    }
+}
