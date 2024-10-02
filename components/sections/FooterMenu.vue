@@ -5,10 +5,7 @@
 
         <div class=" w-full space-y-3 ">
             <p class=" ">About us</p>
-            <p class=" text-gray-500">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                 tempor incididunt ut labore et dolore magna aliqua.
-               Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+            <p class=" text-gray-500 text-center " v-html="$settings.sections.footer.about"> 
             </p>
         </div>
 
@@ -35,6 +32,7 @@
                     </li>
                 </ul>
 -->
+           
             </div>
               </div>
        </div>
@@ -42,13 +40,13 @@
         <div class=" w-full space-y-3 ">
             <p>Download </p>
             <!--<h3 class=" text-lg">{{ $settings.sections.footer.social_media.title }}</h3> -->
-     <div class=" text-12p font-poppins font-base text-gray-400">
-        <div v-for="item in socialMedia.filter(s => $settings.sections.footer.social_media[s.name])" 
+         <div class=" text-12p font-poppins font-base text-gray-400">
+            <div v-for="item in socialMedia.filter(s => $settings.sections.footer.social_media[s.name])" 
            :key="item.name" 
              class=" flex items-center justify-between">
-          <a class="h-full flex items-center" 
+           <a class="h-full flex items-center space-y-2" 
              :href="$settings.sections.footer.social_media[item.name]" 
-             target="_blank" 
+             target="_blank"
              rel="noopener noreferrer">
              <span class=" hover:underline">{{ item.name }}</span>
          </a> 
@@ -57,16 +55,16 @@
 
         </div>
 
-
-
         <div class=" w-full space-y-3 ">
             <p>Call center</p>
              <p class="text-12p font-poppins font-normal  text-gray-400">Monday to Friday: 9-20</p>
              <p class="text-12p font-poppins font-normal text-gray-400">Saturday to Sunday: closed</p>
              <p class="text-12p font-poppins font-normal text-gray-400">arredo@example.com</p>
         </div>
-      </div>
 
+      </div>
+     <div class="">
+     </div>
   </div>
 </template>
 <script>

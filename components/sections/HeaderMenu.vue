@@ -1,6 +1,6 @@
 <template>
 
-<div class="flex  inset-0  max-h-full max-w-1/4"  >
+<div class="sm:flex  inset-0  max-h-full max-w-1/4 hidden"  >
    <!-- 
     <div v-if="$store.state.showHeaderMenu" :class="$store.state.showHeaderMenu? 'opacity-50' : 'opacity-0'"
      class="flex transition-all delay-500 fixed inset-0 bg-black" @click="$store.state.showHeaderMenu=false">
@@ -10,7 +10,6 @@
     <transition name="slideleft">
         <div 
          class="transition-all delay-500 max-w-full relative flex flex-col bg-white w-80">
-
             <!--
                <div class="w-full flex justify-end ">
                 --button cancel 
@@ -21,9 +20,12 @@
                  -->
 
               <div class=" flex  justify-center items-center w-full  h-56">
-                <button class=" ">
-                   <span class=" font-bold  text-3xl text-gray-800 italic ">Store Ino</span> 
-                </button>
+             
+                <router-link to="/">
+
+              <nuxt-img width="70" height="50" property="height" class="object-contain w-full h-12"
+                      :src="section.logo ? section.logo.src : $store.state.defaults.logo" alt="Store logo"/>      
+                </router-link>
             </div>
 
             <!--Home/blog ... -->
@@ -115,6 +117,7 @@ export default {
             show: false,
             activeId: null,
             menu: this.$settings.sections.header.menu,
+            section: this.$settings.sections.header,
             otherMenu: [
                 {
                     _id: "lang",

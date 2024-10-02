@@ -13,22 +13,23 @@
         <div class="flex flex-wrap" v-if="item">
             <meta itemprop="productID" :content="item._id" />
 
-            <div class="w-full md:w-1/2 bg-white">
-                <div class="relative flex  p-2 w-full space-x-2">
-                     <div class="">
+            <div class="w-full md:w-1/2 bg-white ">
+                <div class="relative md:flex  w-full space-x-2 ">
+                     <div class=" w-[100px]">
                         <div class="flex flex-col bg-gray-100 ">
                             <si-image width="100" height="100" class=" w-24 h-24 m-1  bg-white rounded-md shadow cursor-pointer"
                              v-for="(image, index) in item.images" @click="setImage(index)" :key="index" :src="image.src" :alt="`${item.name} - ${image.title}`"/>
                         </div>
                     </div>
-
-                    <si-image  class="w-full bg-white rounded-md shadow cursor-pointer"  @click="$store.state.fullImage=image ? image.src : null" :src="image ? image.src : null " :alt="item.name"/>
+                    <si-image  class="w-full   bg-white rounded-md shadow cursor-pointer" 
+                     @click="$store.state.fullImage=image ? image.src : null" :src="image ? image.src : null " :alt="item.name"/>
                    
                 </div>
+
             </div>
 
-            <div class="w-full md:w-1/2 items-center bg-white">
-                <div class="p-2 flex items-center h-full">
+            <div class="w-full md:w-1/2  bg-white">
+                <div class="p-2 flex  h-full">
                     <div class="  space-y-3">
                         <h1 class="mb-2 text-36p font-medium font-poppins  ">{{ item.name }}</h1>
                         <meta itemprop="name" :content="item.name" />

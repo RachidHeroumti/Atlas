@@ -19,6 +19,7 @@ const createStore = () => {
             metaTags: [],
             scripts: [],
           },
+          
           settings: null,
           domain: 'www.storeino.com',
           apps: [],

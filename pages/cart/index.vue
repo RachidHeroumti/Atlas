@@ -1,42 +1,54 @@
 <template>
-    <div class="container">
-        <div class="p-3 my-2 bg-white ">
+    <div class="">
+        <div class=" image-background ">
+            <!--
             <h2 class="mb-2 text-2xl">{{$settings.sections.cart.title}}</h2>
-            <hr>
+            <hr> -->
+            <div class=" flex">
+                 <h1 class="h-80">
+                     
+                 </h1>
+                </div>
+           
             <div v-if="loading.cart" class="flex items-center justify-center my-5">
                 <si-loader></si-loader>
             </div>
-            <div class="flex flex-col cart-items">
+        
+            <div class="flex flex-col cart-items bg-white ">
                 <si-cart-item v-for="(item,i) in items" @remove="remove" :item="item" :key="i" />
             </div>
-            <div v-if="!loading.cart && items.length > 0" class="flex flex-col mb-2 shadow">
-                <div class="flex justify-between p-2 bg-white">
-                    <h2>{{ $settings.sections.cart.total_text }}</h2>
-                    <h2 class="text-2xl text-red-700">{{ total }} {{ $store.state.currency.symbol }}</h2>
+            
+            <div v-if="!loading.cart && items.length > 0" class="flex flex-col mb-2 shadow p-5 bg-white  ">
+                <div class=" py-3 p-1 bg-white flex items-center border border-gray-200  ">
+                    <h2 class="font-poppins font-bold text-base text-gray-600 w-full">{{ $settings.sections.cart.total_text }}</h2>
+                    <h2 class=" font-poppins font-bold text-base  text-black w-full ">{{ total }} {{ $store.state.currency.symbol }}</h2>
                 </div>
                 <div class="flex justify-between w-full p-2">
-                    <nuxt-link to="/shop" class="flex items-center justify-center w-1/2 p-2 text-2xl text-gray-900 bg-gray-200 md:w-auto">
+                    <!-- back to shop-->
+                   <!-- <nuxt-link to="/shop" class="flex items-center justify-center w-1/2 p-2 text-2xl bg-gray-200 md:w-auto">
                         <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="shopping-cart" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="w-5 h-5 translate"><path fill="currentColor" d="M551.991 64H144.28l-8.726-44.608C133.35 8.128 123.478 0 112 0H12C5.373 0 0 5.373 0 12v24c0 6.627 5.373 12 12 12h80.24l69.594 355.701C150.796 415.201 144 430.802 144 448c0 35.346 28.654 64 64 64s64-28.654 64-64a63.681 63.681 0 0 0-8.583-32h145.167a63.681 63.681 0 0 0-8.583 32c0 35.346 28.654 64 64 64 35.346 0 64-28.654 64-64 0-18.136-7.556-34.496-19.676-46.142l1.035-4.757c3.254-14.96-8.142-29.101-23.452-29.101H203.76l-9.39-48h312.405c11.29 0 21.054-7.869 23.452-18.902l45.216-208C578.695 78.139 567.299 64 551.991 64zM208 472c-13.234 0-24-10.766-24-24s10.766-24 24-24 24 10.766 24 24-10.766 24-24 24zm256 0c-13.234 0-24-10.766-24-24s10.766-24 24-24 24 10.766 24 24-10.766 24-24 24zm23.438-200H184.98l-31.31-160h368.548l-34.78 160z"></path></svg>
                         <span>&ensp;</span>
                         <span class="w-full overflow-hidden whitespace-nowrap overflow-ellipsis">{{ $settings.sections.cart.buttons.back_to_shop_text }}</span>
-                    </nuxt-link>
-                    <a href="/checkout2" class="flex items-center justify-center w-1/2 p-2 text-2xl text-white whitespace-nowrap md:w-auto bg-primary">
+                    </nuxt-link> -->
+                    <a href="/checkout2" class="flex items-center justify-center w-1/2 p-2  font-base  text-white whitespace-nowrap md:w-auto bg-gray-900">
                         <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="shopping-cart" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="w-5 h-5 translate"><path fill="currentColor" d="M551.991 64H144.28l-8.726-44.608C133.35 8.128 123.478 0 112 0H12C5.373 0 0 5.373 0 12v24c0 6.627 5.373 12 12 12h80.24l69.594 355.701C150.796 415.201 144 430.802 144 448c0 35.346 28.654 64 64 64s64-28.654 64-64a63.681 63.681 0 0 0-8.583-32h145.167a63.681 63.681 0 0 0-8.583 32c0 35.346 28.654 64 64 64 35.346 0 64-28.654 64-64 0-18.136-7.556-34.496-19.676-46.142l1.035-4.757c3.254-14.96-8.142-29.101-23.452-29.101H203.76l-9.39-48h312.405c11.29 0 21.054-7.869 23.452-18.902l45.216-208C578.695 78.139 567.299 64 551.991 64zM208 472c-13.234 0-24-10.766-24-24s10.766-24 24-24 24 10.766 24 24-10.766 24-24 24zm256 0c-13.234 0-24-10.766-24-24s10.766-24 24-24 24 10.766 24 24-10.766 24-24 24zm23.438-200H184.98l-31.31-160h368.548l-34.78 160z"></path></svg>
                         <span>&ensp;</span>
                         <span class="w-full overflow-hidden whitespace-nowrap overflow-ellipsis">{{ $settings.sections.cart.buttons.checkout_text }}</span>
                     </a>
                 </div>
             </div>
-            <div v-if="!loading.cart && items.length == 0" class="flex flex-col items-center py-4">
-                <h2 class="w-full py-3 text-center">{{ $settings.sections.cart.empty_text }}</h2>
-                <nuxt-link to="/shop" class="flex items-center justify-center p-2 text-white bg-primary">
+
+            <div v-if="!loading.cart && items.length == 0" class="flex flex-col items-center py-4 space-y-2 bg-white">
+                <p class="w-full py-5 text-center font-base text-13p border border-gray-300 font-poppins text-gray-500 ">{{ $settings.sections.cart.empty_text }}</p>
+                <nuxt-link to="/shop" class="flex items-center justify-center px-4  p-3 text-white bg-gray-900 ">
                     <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="shopping-cart" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="w-5 h-5 translate"><path fill="currentColor" d="M551.991 64H144.28l-8.726-44.608C133.35 8.128 123.478 0 112 0H12C5.373 0 0 5.373 0 12v24c0 6.627 5.373 12 12 12h80.24l69.594 355.701C150.796 415.201 144 430.802 144 448c0 35.346 28.654 64 64 64s64-28.654 64-64a63.681 63.681 0 0 0-8.583-32h145.167a63.681 63.681 0 0 0-8.583 32c0 35.346 28.654 64 64 64 35.346 0 64-28.654 64-64 0-18.136-7.556-34.496-19.676-46.142l1.035-4.757c3.254-14.96-8.142-29.101-23.452-29.101H203.76l-9.39-48h312.405c11.29 0 21.054-7.869 23.452-18.902l45.216-208C578.695 78.139 567.299 64 551.991 64zM208 472c-13.234 0-24-10.766-24-24s10.766-24 24-24 24 10.766 24 24-10.766 24-24 24zm256 0c-13.234 0-24-10.766-24-24s10.766-24 24-24 24 10.766 24 24-10.766 24-24 24zm23.438-200H184.98l-31.31-160h368.548l-34.78 160z"></path></svg>
                 <span>&ensp;</span>
-                    <span class="w-full">{{ $settings.sections.cart.buttons.back_to_shop_text }}</span>
+                    <span class="w-full  font-normal text-base font-poppins ">{{ $settings.sections.cart.buttons.back_to_shop_text }}</span>
                 </nuxt-link>
             </div>
         </div>
-        <div class="flex flex-col mb-2 bg-white" v-if="!loading.cart && items.length > 0">
+
+        <div class="flex flex-col mb-2 bg-white " v-if="!loading.cart && items.length > 0">
             <div class="m-2" v-if="upsells.length > 0">
                 <h2 class="text-2xl">{{ $settings.sections.cart.upsell.title }}</h2>
             </div>
@@ -51,6 +63,8 @@
                 </template>
             </div>
         </div>
+
+
     </div>
 </template>
 <script>
@@ -146,3 +160,14 @@ export default {
     },
 }
 </script>
+
+<style scoped>
+.image-background {
+    height: 100%; /* Height of your div */
+    
+    background-image: url('https://arredo.qodeinteractive.com/wp-content/uploads/2018/05/cart-title-img.jpg'); /* Image URL */
+    background-size: cover; /* Ensures the image covers the entire div */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+}
+</style>

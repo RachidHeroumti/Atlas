@@ -1,14 +1,14 @@
 <template>
-<div class=" bg-white ">
+<div class=" bg-white w-full"> <!--fixed top-0 left-0  z-50  -->
     <si-app-loader placement="BEFORE_HEADER"/>
     <div class="relative mb-2 ">
         <div class=" flex items-center justify-between p-2 ">
             <div class="flex items-center px-4  logo ">
                 <router-link to="/">
 
-<!--    <nuxt-img width="70" height="50" property="height" class="object-contain w-full h-12"
-         :src="section.logo ? section.logo.src : $store.state.defaults.logo" alt="Store logo"/> -->
-                     <span class=" font-bold text-4xl font-poppins text-gray-700 italic">Atlas</span>
+   <nuxt-img width="70" height="50" property="height" class="object-contain w-full h-12"
+         :src="section.logo ? section.logo.src : $store.state.defaults.logo" alt="Store logo"/>
+                    
                 </router-link>
             </div>
 
