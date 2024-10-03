@@ -5,7 +5,7 @@
 
         <div class=" w-full space-y-3 ">
             <p class=" ">About us</p>
-            <p class=" text-gray-500 text-center " v-html="$settings.sections.footer.about"> 
+            <p class=" text-gray-500 " v-html="$settings.sections.footer.about"> 
             </p>
         </div>
 
@@ -57,9 +57,13 @@
 
         <div class=" w-full space-y-3 ">
             <p>Call center</p>
-             <p class="text-12p font-poppins font-normal  text-gray-400">Monday to Friday: 9-20</p>
-             <p class="text-12p font-poppins font-normal text-gray-400">Saturday to Sunday: closed</p>
-             <p class="text-12p font-poppins font-normal text-gray-400">arredo@example.com</p>
+            <div>
+             <p class="text-12p font-poppins font-normal text-gray-400" v-html="$settings.sections.footer.worktime"></p>
+             <p class="text-12p font-poppins font-normal text-gray-400" v-html="$settings.sections.footer.closetime"></p>
+              <p class="p-1"></p>
+              <p class="text-12p font-poppins font-normal  text-gray-400" v-html="$settings.sections.footer.email"></p>
+              <p class="text-12p font-poppins font-normal  text-gray-400" v-html="$settings.sections.footer.phon"></p>
+              </div>
         </div>
 
       </div>

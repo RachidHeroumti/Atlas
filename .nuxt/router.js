@@ -9,6 +9,7 @@ const _baa1e562 = () => interopDefault(import('..\\pages\\error.vue' /* webpackC
 const _9a1553a0 = () => interopDefault(import('..\\pages\\thanks\\index.vue' /* webpackChunkName: "pages/thanks/index" */))
 const _140271f4 = () => interopDefault(import('..\\pages\\wishlist\\index.vue' /* webpackChunkName: "pages/wishlist/index" */))
 const _5ee8ef19 = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages/index" */))
+const _25aed866 = () => interopDefault(import('..\\pages\\about\\_slug.vue' /* webpackChunkName: "pages/about/_slug" */))
 const _69952a04 = () => interopDefault(import('..\\pages\\account\\_route.vue' /* webpackChunkName: "pages/account/_route" */))
 const _7cf9ca2f = () => interopDefault(import('..\\pages\\blog\\_slug.vue' /* webpackChunkName: "pages/blog/_slug" */))
 const _08f82ec4 = () => interopDefault(import('..\\pages\\collections\\_slug.vue' /* webpackChunkName: "pages/collections/_slug" */))
@@ -48,6 +49,10 @@ export const routerOptions = {
     path: "/",
     component: _5ee8ef19,
     name: "index"
+  }, {
+    path: "/about/:slug?",
+    component: _25aed866,
+    name: "about-slug"
   }, {
     path: "/account/:route?",
     component: _69952a04,

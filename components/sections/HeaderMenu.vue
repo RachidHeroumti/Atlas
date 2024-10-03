@@ -10,6 +10,7 @@
     <transition name="slideleft">
         <div 
          class="transition-all delay-500 max-w-full relative flex flex-col bg-white w-80">
+
             <!--
                <div class="w-full flex justify-end ">
                 --button cancel 
@@ -19,10 +20,8 @@
                  </div>
                  -->
 
-              <div class=" flex  justify-center items-center w-full  h-56">
-             
+              <div class=" flex  justify-center items-center w-full h-36">
                 <router-link to="/">
-
               <nuxt-img width="70" height="50" property="height" class="object-contain w-full h-12"
                       :src="section.logo ? section.logo.src : $store.state.defaults.logo" alt="Store logo"/>      
                 </router-link>
@@ -32,7 +31,7 @@
             <div v-if="menu" class="px-10">
                 <ul v-for="(item, i) in menu.items" :key="i" class="flex flex-col">
                     <li class="flex items-center mb-1 justify-between w-full rounded-md bg-white hover:underline hover:underline-offset-4">
-                        <router-link class="p-2 m-1 w-full flex text-xl text-gray-700 font-medium" :to="item.url">{{ item.text }}</router-link>
+                        <router-link class="m-1 w-full flex font-poppins text-base text-gray-700 font-medium" :to="item.url">{{ item.text }}</router-link>
                         <button class="bg-white p-2 mx-1" @click="activeId = activeId != item._id ? item._id : null">
                             <si-svg>
                                 <svg v-if="item.childrens && item.childrens.length > 0" class="w-3 transform" :class="activeId==item._id ? 'rotate-180': ''" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 330 330" style="enable-background:new 0 0 330 330;" xml:space="preserve">
@@ -45,10 +44,10 @@
                     <transition name="slide">
                     <div v-if="item._id == activeId">
                         <div v-for="(item,i) in item.childrens" :key="i" class="bg-gray-100">
-                            <router-link class="p-2 m-1 rounded-md bg-gray-50 hover:bg-white hover:text-green-700 flex" :to="item.url">{{item.text}}</router-link>
-                            <ul class="p-2" v-if="item.childrens && item.childrens.length > 0">
+                            <router-link class="m-1 rounded-md bg-gray-50 hover:bg-white hover:text-gray-300 flex" :to="item.url">{{item.text}}</router-link>
+                            <ul class=" " v-if="item.childrens && item.childrens.length > 0">
                                 <li v-for="(child,ii) in item.childrens" :key="ii">
-                                    <nuxt-link  class="p-2 m-1 rounded-md bg-gray-50 hover:bg-white hover:text-green-700 flex" :to="child.url">
+                                    <nuxt-link  class=" m-1 rounded-md bg-gray-50 hover:bg-white hover:text-gray-300 flex" :to="child.url">
                                         {{ child.text }}
                                     </nuxt-link>
                                 </li>

@@ -1,163 +1,37 @@
 <template>
-    <div class="container">
-        <div class="relative flex mb-2 ">
+    <div class="sm:p-10 bg-white">
+        <div class="relative flex mb-2 space-x-2 ">
 
 
-            <transition name="slideleft">
-                <div :class="showSideBar ? 'show':'hide'" class="fixed top-0 bottom-0 z-20 hidden h-full bg-white w-80 md:w-1/4 md:block md:top-0 md:relative">
-                    <div class="fixed inset-0 block bg-black bg-opacity-50 md:hidden" @click="showSideBar=false"></div>
-                    <div class="relative flex flex-col h-full bg-white border-r">
-                        <div class="flex justify-end w-full md:hidden">
-                            <button @click="showSideBar=false" aria-label="Search button" class="p-1 m-1 bg-gray-100 rounded-md item hover:bg-gray-200">
-                                <svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="times" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="w-5 h-5 translate"><path fill="currentColor" d="M193.94 256L296.5 153.44l21.15-21.15c3.12-3.12 3.12-8.19 0-11.31l-22.63-22.63c-3.12-3.12-8.19-3.12-11.31 0L160 222.06 36.29 98.34c-3.12-3.12-8.19-3.12-11.31 0L2.34 120.97c-3.12 3.12-3.12 8.19 0 11.31L126.06 256 2.34 379.71c-3.12 3.12-3.12 8.19 0 11.31l22.63 22.63c3.12 3.12 8.19 3.12 11.31 0L160 289.94 262.56 392.5l21.15 21.15c3.12 3.12 8.19 3.12 11.31 0l22.63-22.63c3.12-3.12 3.12-8.19 0-11.31L193.94 256z" class=""></path></svg>
-                            </button>
-                        </div>
-                        <h2 v-if="$settings.sections.shop.sidebar.collections.active" class="px-2  mt-2 font-poppins text-18p font-medium p-2">{{ $settings.sections.shop.sidebar.collections.title }}</h2>
-                        <div v-if="$settings.sections.shop.sidebar.collections.active" class="flex flex-col mb-2">
-                            <div v-if="loading.collections" class="flex items-center justify-center my-5">
-                                <si-loader></si-loader>
-                            </div>
-                            <div v-for="(item, i) in collections" :key="i" class="px-2">
-                                <div class="flex items-center p-2 space-x-1">
-                                    <input v-if="item.childrens && item.childrens.length == 0 " class="w-4 h-4 mx-1" :checked="params['collections.slug-in'] && params['collections.slug-in'].indexOf(item.slug) >= 0" :id="item.slug" @change="setParams($event, 'collections.slug-in', item.slug)" type="checkbox"/>
-                                    <label @click="setActive(i+'fit',i+'ret')" v-if="item.childrens && item.childrens.length > 0 " class="capitalize cursor-pointer collec-name" :for="item.slug">{{ item.name }}</label>
-                                    <label v-if="item.childrens && item.childrens.length == 0 " class="capitalize cursor-pointer collec-name" :for="item.slug">{{ item.name }}</label>
-                                    <svg @click="setActive(i+'fit',i+'ret')" :id="i+'ret'"  v-if="item.childrens && item.childrens.length > 0 " xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" version="1.1" width="15" height="15" x="0" y="0" viewBox="0 0 451.847 451.847" style="enable-background:new 0 0 512 512 ; cursor:pointer;" xml:space="preserve" class="rotated"><g>
-                                        <g xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M225.923,354.706c-8.098,0-16.195-3.092-22.369-9.263L9.27,151.157c-12.359-12.359-12.359-32.397,0-44.751   c12.354-12.354,32.388-12.354,44.748,0l171.905,171.915l171.906-171.909c12.359-12.354,32.391-12.354,44.744,0   c12.365,12.354,12.365,32.392,0,44.751L248.292,345.449C242.115,351.621,234.018,354.706,225.923,354.706z" fill="#7a7575" data-original="#000000" style="" class=""/>
-                                        </g>
-                                        <g xmlns="http://www.w3.org/2000/svg">
-                                        </g>
-                                        <g xmlns="http://www.w3.org/2000/svg">
-                                        </g>
-                                        <g xmlns="http://www.w3.org/2000/svg">
-                                        </g>
-                                        <g xmlns="http://www.w3.org/2000/svg">
-                                        </g>
-                                        <g xmlns="http://www.w3.org/2000/svg">
-                                        </g>
-                                        <g xmlns="http://www.w3.org/2000/svg">
-                                        </g>
-                                        <g xmlns="http://www.w3.org/2000/svg">
-                                        </g>
-                                        <g xmlns="http://www.w3.org/2000/svg">
-                                        </g>
-                                        <g xmlns="http://www.w3.org/2000/svg">
-                                        </g>
-                                        <g xmlns="http://www.w3.org/2000/svg">
-                                        </g>
-                                        <g xmlns="http://www.w3.org/2000/svg">
-                                        </g>
-                                        <g xmlns="http://www.w3.org/2000/svg">
-                                        </g>
-                                        <g xmlns="http://www.w3.org/2000/svg">
-                                        </g>
-                                        <g xmlns="http://www.w3.org/2000/svg">
-                                        </g>
-                                        <g xmlns="http://www.w3.org/2000/svg">
-                                        </g>
-                                        </g>
-                                    </svg>
-                                </div>
-                                <div :id="i+'fit'" class="fit-collapsible" :class="item.childrens.length > 0 ? 'sub-collections' : ''">
-                                    <ul class="list-sub-collections fit-collapsible-content" v-if="item.childrens && item.childrens.length > 0" >
-                                        <li v-for="(child, i) in item.childrens" :key="i">
-                                            <input class="w-4 h-4 mx-1" :checked="params['collections.slug-in'] && params['collections.slug-in'].indexOf(child.slug) >= 0" :id="child.slug" @change="setParams($event, 'collections.slug-in', child.slug)" type="checkbox"/>
-                                            <label  :for="child.slug" class="cursor-pointer c-p c-grey">{{ child.name }}</label>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        
-                        <hr v-if="$settings.sections.shop.sidebar.collections.active">
-
-                        <h2 v-if="$settings.sections.shop.sidebar.prices.active" class="px-2 mt-2 font-poppins text-18p font-medium p-2">{{ $settings.sections.shop.sidebar.prices.title }}</h2>
-                        <div v-if="loading.filters" class="flex items-center justify-center my-5">
-                            <si-loader></si-loader> 
-                        </div>
-                        <div v-if="$settings.sections.shop.sidebar.prices.active && filters" class="flex flex-col mb-2" dir="ltr">
-                            <si-price-range @change="setParams" :min="filters.prices.min" :max="filters.prices.max" />
-                        </div>
-
-                        <hr v-if="$settings.sections.shop.sidebar.prices.active">
-                        <h2 class="px-2  mt-2 font-poppins text-18p font-medium p-2" v-if="$settings.sections.shop.sidebar.sizes.active">{{ $settings.sections.shop.sidebar.sizes.title }}</h2>
-                        <div v-if="$settings.sections.shop.sidebar.sizes.active && loading.filters" class="flex items-center justify-center my-5">
-                            <si-loader></si-loader>
-
-                        </div>
-                        <div v-if="$settings.sections.shop.sidebar.sizes.active && filters" class="flex flex-wrap mx-2 mb-2">
-                            <div v-for="(item, i) in filters.sizes" :key="i" class="flex items-center m-0.5 rounded-md" :class="params['options.values.value1'] && params['options.values.value1'].indexOf(item.value1) >= 0 ? 'bg-primary text-white' : 'bg-gray-200' ">
-                                <input hidden :id="item.value1" :checked="params['options.values.value1'] && params['options.values.value1'].indexOf(item.value1) >= 0" @change="setParams($event, 'options.values.value1', item.value1)" type="checkbox"/>
-                                <label class="px-2 cursor-pointer" :for="item.value1">{{ item.value1 }}</label>
-                            </div>
-                        </div>
-
-
-                        <hr v-if="$settings.sections.shop.sidebar.sizes.active">
-                        <h2 class="px-2  mt-2 font-poppins text-18p font-medium p-2" v-if="$settings.sections.shop.sidebar.colors.active">{{ $settings.sections.shop.sidebar.colors.title }}</h2>
-                        <div v-if="$settings.sections.shop.sidebar.colors.active && loading.filters" class="flex items-center justify-center my-5">
-                            <si-loader></si-loader>
-                        </div>
-                        <div v-if="$settings.sections.shop.sidebar.colors.active && filters" class="flex flex-wrap mx-2 mb-2">
-                            <div v-for="(item, i) in filters.colors" :key="i" class="flex items-center my-0.5 color-option" :class="params['options.values.value1'] && params['options.values.value1'].indexOf(item.value1) >= 0 ? 'active' : '' ">
-                                <input hidden :id="item.value1" :checked="params['options.values.value1'] && params['options.values.value1'].indexOf(item.value1) >= 0" @change="setParams($event, 'options.values.value1', item.value1)" type="checkbox"/>
-                                <label class="rounded-full cursor-pointer" :style="`background-color:${item.value2}`" :for="item.value1" :aria-label="item.value1"></label>
-                            </div>
-                        </div>
-
-
-                        <hr v-if="$settings.sections.shop.sidebar.colors.active">
-                        <h2 class="px-2  mt-2 font-poppins text-18p font-medium p-2" v-if="$settings.sections.shop.sidebar.tags.active">{{ $settings.sections.shop.sidebar.tags.title }}</h2>
-                        <div v-if="$settings.sections.shop.sidebar.tags.active && loading.filters" class="flex items-center justify-center my-5">
-                            <si-loader></si-loader>
-                        </div>
-                        <div v-if="$settings.sections.shop.sidebar.tags.active && filters" class="flex flex-col mb-2 space-y-1">
-                            <div v-for="(tag, i) in filters.tags" :key="i" class="flex items-center px-2 space-x-2 ">
-                                <input class="w-4 h-4 mx-1" :checked="params['tags-in'] && params['tags-in'].indexOf(tag) >= 0" :id="`tag_${tag}`" @change="setParams($event, 'tags-in', tag)" type="checkbox"/>
-                                <label class="capitalize cursor-pointer" :for="`tag_${tag}`">{{ tag }}</label>
-                            </div>
-                        </div>
-
-
-                        <hr v-if="$settings.sections.shop.sidebar.tags.active">
-                        <h2 class="px-2 mt-2 font-poppins text-18p font-medium p-2" v-if="$settings.sections.shop.sidebar.brands.active">{{ $settings.sections.shop.sidebar.brands.title }}</h2>
-                        <div class="flex flex-col mb-2">
-                            <div v-if="$settings.sections.shop.sidebar.brands.active && loading.brands" class="flex items-center justify-center my-5">
-                                <si-loader></si-loader>
-                            </div>
-                            <div v-if="$settings.sections.shop.sidebar.brands.active">
-                                <div v-for="(item, i) in brands" :key="i" class="flex items-center px-2">
-                                    <input class="w-4 h-4 mx-1" :id="item.slug" :checked="params['brand.slug-in'] && params['brand.slug-in'].indexOf(item.slug) >= 0" @change="setParams($event, 'brand.slug-in', item.slug)" type="checkbox"/>
-                                    <label class="capitalize cursor-pointer" :for="item.slug">{{ item.name }}</label>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </transition>
-            
+  
             <div class="w-full md:w-3/4">
-                <div class="bg-white">
+                <div class="">
                     <div class="border-b">
-                        <div class="flex items-center justify-between p-2">
-                            <button @click="showSideBar = true" aria-label="Search button" class="flex flex-col items-center block p-2 mx-1 bg-gray-100 rounded-md md:hidden hover:bg-gray-200">
+                        <div class="flex items-center justify-between  p-2">
+                            <button @click="showSideBar = true" aria-label="Search button"
+                             class="flex flex-col items-center  p-2 mx-1 bg-gray-100 rounded-md md:hidden hover:bg-gray-200">
                                 <span class="w-6 my-0.5 h-0.5 bg-gray-800"></span>
                                 <span class="w-4 my-0.5 h-0.5 bg-gray-800"></span>
                                 <span class="w-2 my-0.5 h-0.5 bg-gray-800"></span>
                                 <span class="w-1 my-0.5 h-0.5 bg-gray-800"></span>
                             </button>
-                            <select class="p-2 bg-white rounded shadow outline-none" v-model="params.sort">
-                                <option v-for="(sort,i) in sorts" :key="i" :value="sort.field">{{ sort.name }}</option>
-                            </select>
+                            <!-- type of showing products
                             <div class="flex">
                                 <button v-for="(grid,i) in girds" :key="i" @click="gridClass=grid.class" class="flex flex-wrap mx-0.5" :style="`width:${grid.width}px`">
                                     <span v-for="i in grid.number" :key="i" class="flex" :class="grid.class == gridClass ? 'bg-primary':'bg-gray-300'" style="margin:1px;width:4px;height:4px" ></span>
                                 </button>
+                            </div>-->
+                            <div> 
+                                <span class=" font-poppins font-base text-base text-gray-400 hidden md:flex">Showing 1–9 of {{items.length}} results</span>
                             </div>
+                            <select class="p-2 sm:px-4 text-gray-400 font-poppins font-base text-base  focus:outline-none  outline-white"
+                               v-model="params.sort">
+                                <option v-for="(sort,i) in sorts" :key="i" :value="sort.field"
+                                 class=" font-poppins text-12p font-base foucus:outline-white  px-2">{{ sort.name }}</option>
+                            </select>
                         </div>
+
+
                     </div>
                     <div v-if="loading.products" class="flex items-center justify-center my-5">
                         <si-loader></si-loader>
@@ -170,7 +44,20 @@
                             <si-product :item="item"></si-product>
                         </div>
                     </div>
-                    <div v-if="items.length>0" class="flex items-center justify-end w-full p-2 bg-white border-t">
+                    <div v-if="items.length>0" class="flex items-center justify-center w-full p-2  ">
+
+                        <ul class=" flex space-x-2 font-poppins font-base text-13p text-gray-500 ">
+                            <li class=" h-6 w-6 cursor-pointer    hover:text-black " @click="getItems(1)">1</li>
+                             <li class=" h-6 w-6 cursor-pointer     hover:text-black " @click="getItems(2)">2</li>
+                              <li class=" h-6 w-6  cursor-pointer    hover:text-black " @click="getItems(3)">3</li>
+                               <li class=" h-6 w-6 cursor-pointer    hover:text-black " @click="getItems(4)">4</li>
+                                <li class=" h-6 w-6 cursor-pointer    hover:text-black " @click="getItems(5)">5</li>
+                                 <li class=" h-6 w-6 cursor-pointer    hover:text-black " @click="getItems(6)">6</li>
+                                  <li class=" h-6 w-6 cursor-pointer    hover:text-black " @click="getItems(7)">7</li>
+                                   <li class=" h-8 w-6 cursor-pointer text-base    hover:text-black " @click="getItems(paginate.current_page+1)">&gt;</li>
+                            
+                        </ul>
+   <!--
                         <button class="flex items-center p-2 text-white bg-primary" @click="getItems(paginate.current_page-1)">
                             <svg class="h-4 translate" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-left" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M34.52 239.03L228.87 44.69c9.37-9.37 24.57-9.37 33.94 0l22.67 22.67c9.36 9.36 9.37 24.52.04 33.9L131.49 256l154.02 154.75c9.34 9.38 9.32 24.54-.04 33.9l-22.67 22.67c-9.37 9.37-24.57 9.37-33.94 0L34.52 272.97c-9.37-9.37-9.37-24.57 0-33.94z"></path></svg>
                             <span>&ensp;</span>
@@ -184,9 +71,173 @@
                             <span>&ensp;</span>
                             <svg class="h-4 translate" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"></path></svg>
                         </button>
+                        -->
                     </div>
                 </div>
+
             </div>
+
+
+            <transition name="slideleft">
+                <div :class="showSideBar ? 'show':'hide'" class="fixed top-0 bottom-0 z-20 hidden h-full bg-white w-80 md:w-1/4 md:block md:top-0 md:relative">
+                    <div class="fixed inset-0 block bg-black bg-opacity-50 md:hidden" @click="showSideBar=false"></div>
+                    <div class="relative flex flex-col h-full bg-white border-r space-y-2">
+                        <div class="flex justify-end w-full md:hidden">
+                            <button @click="showSideBar=false" aria-label="Search button" class="p-1 m-1 bg-gray-100 rounded-md item hover:bg-gray-200">
+                                <svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="times" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="w-5 h-5 translate"><path fill="currentColor" d="M193.94 256L296.5 153.44l21.15-21.15c3.12-3.12 3.12-8.19 0-11.31l-22.63-22.63c-3.12-3.12-8.19-3.12-11.31 0L160 222.06 36.29 98.34c-3.12-3.12-8.19-3.12-11.31 0L2.34 120.97c-3.12 3.12-3.12 8.19 0 11.31L126.06 256 2.34 379.71c-3.12 3.12-3.12 8.19 0 11.31l22.63 22.63c3.12 3.12 8.19 3.12 11.31 0L160 289.94 262.56 392.5l21.15 21.15c3.12 3.12 8.19 3.12 11.31 0l22.63-22.63c3.12-3.12 3.12-8.19 0-11.31L193.94 256z" class=""></path></svg>
+                            </button>
+                        </div>
+
+                          <!--Search -->
+                         <div class="w-full border border-gray-200 p-2 items-center justify-between flex"> 
+                     <input class=" outline-none " type="text" placeholder="search ..." />
+                      <si-svg><svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="search" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-5 h-5 translate"><path fill="currentColor" d="M508.5 468.9L387.1 347.5c-2.3-2.3-5.3-3.5-8.5-3.5h-13.2c31.5-36.5 50.6-84 50.6-136C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c52 0 99.5-19.1 136-50.6v13.2c0 3.2 1.3 6.2 3.5 8.5l121.4 121.4c4.7 4.7 12.3 4.7 17 0l22.6-22.6c4.7-4.7 4.7-12.3 0-17zM208 368c-88.4 0-160-71.6-160-160S119.6 48 208 48s160 71.6 160 160-71.6 160-160 160z" class=""></path></svg></si-svg>
+                     <small v-if="$route.query.search" class="absolute flex items-center justify-center w-1 h-1 p-1 text-white bg-green-700 rounded-full -top-1 -right-1"></small>
+                          </div>
+                          <div class=" h-10">
+
+                          </div>
+                        <!--collections-->
+                        <h2 v-if="$settings.sections.shop.sidebar.collections.active" class="px-2  mt-2 font-poppins text-base font-normal ">{{ $settings.sections.shop.sidebar.collections.title }}</h2>
+                        <div v-if="$settings.sections.shop.sidebar.collections.active" class="flex flex-col mb-2">
+                            <div v-if="loading.collections" class="flex items-center justify-center my-5">
+                                <si-loader></si-loader>
+                            </div>
+                            <div v-for="(item, i) in collections" :key="i" class="px-2">
+                               
+                               <!---- -->
+                               <div class="flex items-center p-2  ">
+  <span
+    v-if="item.childrens && item.childrens.length === 0"
+    @click="toggleSelection(item.slug)"
+    class="capitalize cursor-pointer collec-name text-12p font-poppins font-normal hover:text-gray-600 hover:underline "
+  >
+    {{ item.name }}({{item.length?item.length:0}})
+  </span>
+
+  <span
+    @click="setActive(i + 'fit', i + 'ret')"
+    v-if="item.childrens && item.childrens.length > 0"
+    class="capitalize cursor-pointer collec-name"
+  >
+    {{ item.name }}
+  </span>
+
+  <svg
+    @click="setActive(i + 'fit', i + 'ret')"
+    :id="i + 'ret'"
+    v-if="item.childrens && item.childrens.length > 0"
+    xmlns="http://www.w3.org/2000/svg"
+    version="1.1"
+    width="15"
+    height="15"
+    x="0"
+    y="0"
+    viewBox="0 0 451.847 451.847"
+    style="enable-background:new 0 0 512 512; cursor:pointer;"
+    xml:space="preserve"
+    class="rotated"
+  >
+    <g>
+      <path
+        d="M225.923,354.706c-8.098,0-16.195-3.092-22.369-9.263L9.27,151.157c-12.359-12.359-12.359-32.397,0-44.751 c12.354-12.354,32.388-12.354,44.748,0l171.905,171.915l171.906-171.909c12.359-12.354,32.391-12.354,44.744,0 c12.365,12.354,12.365,32.392,0,44.751L248.292,345.449C242.115,351.621,234.018,354.706,225.923,354.706z"
+        fill="#7a7575"
+      />
+    </g>
+  </svg>
+                             </div>
+                          <!-------- ------------------>
+                                <div :id="i+'fit'" class="fit-collapsible" :class="item.childrens.length > 0 ? 'sub-collections' : ''">
+                                    <ul class="list-sub-collections fit-collapsible-content" v-if="item.childrens && item.childrens.length > 0" >
+                                        <li v-for="(child, i) in item.childrens" :key="i">
+                                            <input class="w-4 h-4 mx-1" :checked="params['collections.slug-in'] && params['collections.slug-in'].indexOf(child.slug) >= 0" :id="child.slug" @change="setParams($event, 'collections.slug-in', child.slug)" type="checkbox"/>
+                                            <label  :for="child.slug" class="cursor-pointer c-p c-grey">{{ child.name }}</label>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                         <hr v-if="$settings.sections.shop.sidebar.collections.active">
+                        <div class=" w-full relative py-5">
+                            <div class=" absolute z-20 top-0  left-0  w-3/4 h-full flex justify-center items-center">
+                                <h1 class="text-center text-white font-poppins font-bold  left-0 right-0 w-3/4">Shop</h1>
+                            </div>
+                            
+                            <nuxt-img class=" w-3/4 h-48 rounded-sm object-cover  opacity-75 "
+                             src="https://images.pexels.com/photos/9603486/pexels-photo-9603486.jpeg?auto=compress&cs=tinysrgb&w=600" alt="coolections Pic" />
+                        </div>
+
+                        <!-- colors -->
+                        <h2 class="px-2  mt-2 font-poppins text-base font-medium p-2" v-if="$settings.sections.shop.sidebar.colors.active">{{ $settings.sections.shop.sidebar.colors.title }}</h2>
+                        <div v-if="$settings.sections.shop.sidebar.colors.active && loading.filters" class="flex items-center justify-center my-5">
+                            <si-loader></si-loader>
+                        </div>
+                        <div v-if="$settings.sections.shop.sidebar.colors.active && filters" class="flex flex-wrap mx-2 mb-2">
+                            <div v-for="(item, i) in filters.colors" :key="i" class="flex items-center my-0.5 color-option" :class="params['options.values.value1'] && params['options.values.value1'].indexOf(item.value1) >= 0 ? 'active' : '' ">
+                                <input hidden :id="item.value1" :checked="params['options.values.value1'] && params['options.values.value1'].indexOf(item.value1) >= 0" @change="setParams($event, 'options.values.value1', item.value1)" type="checkbox"/>
+                                <label class="rounded-full cursor-pointer" :style="`background-color:${item.value2}`" :for="item.value1" :aria-label="item.value1"></label>
+                            </div>
+                        </div>
+                        <hr v-if="$settings.sections.shop.sidebar.colors.active">
+
+                        <!-- sizes -->
+                        <h2 class="px-2  mt-2 font-poppins text-base font-medium p-2" v-if="$settings.sections.shop.sidebar.sizes.active">{{ $settings.sections.shop.sidebar.sizes.title }}</h2>
+                        <div v-if="$settings.sections.shop.sidebar.sizes.active && loading.filters" class="flex items-center justify-center my-5">
+                            <si-loader></si-loader>
+
+                        </div>
+                        <div v-if="$settings.sections.shop.sidebar.sizes.active && filters" class="flex flex-wrap mx-2 mb-2">
+                            <div v-for="(item, i) in filters.sizes" :key="i" class="flex items-center m-0.5 rounded-md" :class="params['options.values.value1'] && params['options.values.value1'].indexOf(item.value1) >= 0 ? 'bg-primary text-white' : 'bg-gray-200' ">
+                                <input hidden :id="item.value1" :checked="params['options.values.value1'] && params['options.values.value1'].indexOf(item.value1) >= 0" @change="setParams($event, 'options.values.value1', item.value1)" type="checkbox"/>
+                                <label class="px-2 cursor-pointer" :for="item.value1">{{ item.value1 }}</label>
+                            </div>
+                        </div>
+                        <hr v-if="$settings.sections.shop.sidebar.sizes.active">
+
+                       
+                        
+
+                        <!-- prices -->
+                         <h2 v-if="$settings.sections.shop.sidebar.prices.active" class="px-2 mt-2 font-poppins text-base font-medium p-2">{{ $settings.sections.shop.sidebar.prices.title }}</h2>
+                        <div v-if="loading.filters" class="flex items-center justify-center my-5">
+                            <si-loader></si-loader> 
+                        </div>
+                        <div v-if="$settings.sections.shop.sidebar.prices.active && filters" class="flex flex-col mb-2" dir="ltr">
+                            <si-price-range @change="setParams" :min="filters.prices.min" :max="filters.prices.max" />
+                        </div>
+                         <hr v-if="$settings.sections.shop.sidebar.prices.active">
+
+                         <!-- taggs -->
+                        <h2 class="px-2  mt-2 font-poppins text-base font-medium p-2" v-if="$settings.sections.shop.sidebar.tags.active">{{ $settings.sections.shop.sidebar.tags.title }}</h2>
+                        <div v-if="$settings.sections.shop.sidebar.tags.active && loading.filters" class="flex items-center justify-center my-5">
+                            <si-loader></si-loader>
+                        </div>
+                        <div v-if="$settings.sections.shop.sidebar.tags.active && filters" class="flex flex-col mb-2 space-y-1">
+                            <div v-for="(tag, i) in filters.tags" :key="i" class="flex items-center px-2 space-x-2 ">
+                                <input class="w-4 h-4 mx-1" :checked="params['tags-in'] && params['tags-in'].indexOf(tag) >= 0" :id="`tag_${tag}`" @change="setParams($event, 'tags-in', tag)" type="checkbox"/>
+                                <label class="capitalize cursor-pointer" :for="`tag_${tag}`">{{ tag }}</label>
+                            </div>
+                        </div>
+
+                        <!-- taggs -->
+                        <hr v-if="$settings.sections.shop.sidebar.tags.active">
+                        <h2 class="px-2 mt-2 font-poppins text-base font-medium p-2" v-if="$settings.sections.shop.sidebar.brands.active">{{ $settings.sections.shop.sidebar.brands.title }}</h2>
+                        <div class="flex flex-col mb-2">
+                            <div v-if="$settings.sections.shop.sidebar.brands.active && loading.brands" class="flex items-center justify-center my-5">
+                                <si-loader></si-loader>
+                            </div>
+                            <div v-if="$settings.sections.shop.sidebar.brands.active">
+                                <div v-for="(item, i) in brands" :key="i" class="flex items-center px-2">
+                                    <input class="w-4 h-4 mx-1" :id="item.slug" :checked="params['brand.slug-in'] && params['brand.slug-in'].indexOf(item.slug) >= 0" @change="setParams($event, 'brand.slug-in', item.slug)" type="checkbox"/>
+                                    <label class="capitalize cursor-pointer" :for="item.slug">{{ item.name }}</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </transition>
+          
             
         </div>
     </div>
@@ -382,6 +433,20 @@ export default {
             }
             this.loading.products = false;
         },
+         toggleSelection(slug) {
+      const index = this.params['collections.slug-in']
+        ? this.params['collections.slug-in'].indexOf(slug)
+        : -1;
+
+      if (index >= 0) {
+        this.params['collections.slug-in'].splice(index, 1);
+      } else {
+        if (!this.params['collections.slug-in']) {
+          this.$set(this.params, 'collections.slug-in', []);
+        }
+        this.params['collections.slug-in'].push(slug);
+      }
+    },
     },
 }
 </script>

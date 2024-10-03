@@ -13,10 +13,10 @@
         <div class="flex flex-wrap" v-if="item">
             <meta itemprop="productID" :content="item._id" />
 
-            <div class="w-full md:w-1/2 bg-white ">
-                <div class="relative md:flex  w-full space-x-2 ">
+            <div class="w-full sm:w-1/2 bg-white ">
+                <div class="relative sm:flex  w-full space-x-2 ">
                      <div class=" w-[100px]">
-                        <div class="flex flex-col bg-gray-100 ">
+                        <div class="flex md:flex-col bg-gray-100 ">
                             <si-image width="100" height="100" class=" w-24 h-24 m-1  bg-white rounded-md shadow cursor-pointer"
                              v-for="(image, index) in item.images" @click="setImage(index)" :key="index" :src="image.src" :alt="`${item.name} - ${image.title}`"/>
                         </div>

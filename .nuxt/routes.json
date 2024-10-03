@@ -35,6 +35,13 @@
     "_name": "_5ee8ef19"
   },
   {
+    "name": "about-slug",
+    "path": "/about/:slug?",
+    "component": "C:\\\\Users\\\\admin\\\\Desktop\\\\StoreIno\\\\ThemeIno\\\\themeino\\\\pages\\\\about\\\\_slug.vue",
+    "chunkName": "pages/about/_slug",
+    "_name": "_25aed866"
+  },
+  {
     "name": "account-route",
     "path": "/account/:route?",
     "component": "C:\\\\Users\\\\admin\\\\Desktop\\\\StoreIno\\\\ThemeIno\\\\themeino\\\\pages\\\\account\\\\_route.vue",
