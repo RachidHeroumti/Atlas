@@ -12,7 +12,14 @@
       <sections-header-top></sections-header-top>
       <sections-header></sections-header>
     </template>
-    
+
+    <template v-if="$route.name ==='index'">
+      <div class="flex sm:hidden">
+        <sections-header-top></sections-header-top>
+        <sections-header></sections-header>
+      </div>
+    </template>
+
             <Nuxt />
 
   <template v-if="$route.name !== 'index'">

@@ -1,27 +1,27 @@
 <template>
  
-    <div class="p-3">
+    <div class="p-3 mt-20">
         <!-- header for product details page -->
        <!-- <sections-header></sections-header>-->
          <!--<sections-header-top></sections-header-top> -->
 
-        <div v-if="loading" class="flex items-center justify-cente">
+        <div v-if="loading" class="flex items-center justify-cente ">
             <si-loader></si-loader>
         </div>
 
 
-        <div class="flex flex-wrap" v-if="item">
+        <div class="flex flex-wrap justify-between " v-if="item">
             <meta itemprop="productID" :content="item._id" />
 
-            <div class="w-full sm:w-1/2 bg-white ">
-                <div class="relative sm:flex  w-full space-x-2 ">
-                     <div class=" w-[100px]">
-                        <div class="flex md:flex-col bg-gray-100 ">
-                            <si-image width="100" height="100" class=" w-24 h-24 m-1  bg-white rounded-md shadow cursor-pointer"
+            <div class="w-full sm:w-1/2 ">
+                <div class="relative lg:flex  w-full sm:space-x-1 justify-center">
+                     <div class=" w-full sm:w-[100px] ">
+                        <div class="flex lg:flex-col  justify-center">
+                            <si-image width="100" height="100" class=" w-20 h-20 sm:w-24 sm:h-24 m-1  bg-white rounded-md shadow cursor-pointer"
                              v-for="(image, index) in item.images" @click="setImage(index)" :key="index" :src="image.src" :alt="`${item.name} - ${image.title}`"/>
                         </div>
                     </div>
-                    <si-image  class="w-full   bg-white rounded-md shadow cursor-pointer" 
+                    <si-image  class="w-full  cursor-pointer" 
                      @click="$store.state.fullImage=image ? image.src : null" :src="image ? image.src : null " :alt="item.name"/>
                    
                 </div>
@@ -35,13 +35,13 @@
                         <meta itemprop="name" :content="item.name" />
                         <div class="flex items-center justify-start mb-2" v-if="$settings.sections.product.reviews.active">
                             <div class="flex mb-1">
-                                <span v-for="(star,i) in 5" :class="star <= item.review.rating ? 'text-yellow-500 ': 'text-gray-900'" :key="i">
+                                <span v-for="(star,i) in 5" :class="star <= item.review.rating ? 'text-yellow-500 ': 'text-titles-color'" :key="i">
                                     <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="star" role="img" xmlns="http://www.w3.org/2000/svg"
                                      viewBox="0 0 576 512" class="w-3 h-3 translate"><path fill="currentColor"
                                       d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z" class=""></path></svg>
                                 </span>
                             </div>
-                            <span class="text-sm text-gray-900" key="count">({{ item.review.reviews.length }} customer review)</span>
+                            <span class="text-sm text-titles-color" key="count">({{ item.review.reviews.length }} customer review)</span>
                         </div>
 
                         <p class=" font-poppins text-base font-base text-gray-600 ">{{ item.description }}</p>
@@ -60,7 +60,7 @@
                               </div>
 
                             <button v-if="$settings.sections.product.add_to_cart.active" @click="addToCart"
-                             class="flex justify-center p-2 text-white ai-c click-effect bg-gray-900 rounded">
+                             class="flex justify-center p-2 text-white ai-c click-effect text-titles-color rounded">
                                 <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="shopping-cart" role="img"
                                  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="w-6 h-6 translate"><path fill="currentColor" d="M551.991 64H144.28l-8.726-44.608C133.35 8.128 123.478 0 112 0H12C5.373 0 0 5.373 0 12v24c0 6.627 5.373 12 12 12h80.24l69.594 355.701C150.796 415.201 144 430.802 144 448c0 35.346 28.654 64 64 64s64-28.654 64-64a63.681 63.681 0 0 0-8.583-32h145.167a63.681 63.681 0 0 0-8.583 32c0 35.346 28.654 64 64 64 35.346 0 64-28.654 64-64 0-18.136-7.556-34.496-19.676-46.142l1.035-4.757c3.254-14.96-8.142-29.101-23.452-29.101H203.76l-9.39-48h312.405c11.29 0 21.054-7.869 23.452-18.902l45.216-208C578.695 78.139 567.299 64 551.991 64zM208 472c-13.234 0-24-10.766-24-24s10.766-24 24-24 24 10.766 24 24-10.766 24-24 24zm256 0c-13.234 0-24-10.766-24-24s10.766-24 24-24 24 10.766 24 24-10.766 24-24 24zm23.438-200H184.98l-31.31-160h368.548l-34.78 160z"></path></svg>
                                 <span>&ensp;</span>

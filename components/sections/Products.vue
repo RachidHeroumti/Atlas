@@ -1,5 +1,5 @@
 <template >
-  <div class=" bg-gradient-to-r  from-gray-50 via-white  to-gray-white overflow-y-scroll">
+  <div class=" bg-white  shadow  overflow-y-scroll">
    <!-- <div class=""> fea
       <h2 class="text-2xl">{{ title }}</h2>
     </div> -->

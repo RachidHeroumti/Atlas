@@ -1,17 +1,64 @@
 <template>
 
-    <div>
+    <div class="">
         
-        <div class="flex flex-col relative bg-white ">
+        <div class="flex flex-col relative bg-white py-10">
             
-         <div class=" grid  grid-cols-5 w-full border-t-2 border-b-2 border-gray-200 py-5 p-3 font-poppins text-base font-base text-gray-500"> 
-               <div class=" flex items-center p-5 ">
+            <table>
+                <tr>
+                    <td class="flex">
+                         <div class=" flex items-center ">
                 <button class="w-8 h-8 justify-center items-center  rounded-md " @click="remove">&times;</button>
-            </div>
-
-            <div class=" items-center">
+                     </div>
+                        <div class=" flex md:flex-row flex-col items-center justify-center ">
                 <div class="flex flex-col sm:flex-row items-center w-full">
-                    <nuxt-link class="w-1/2 md:1/4 flex" :to="`/products/${item.slug}`">
+                    <nuxt-link class="max-w-[100px]   hidden lg:flex" :to="`/products/${item.slug}`">
+                        <si-image class="border-2 border-gray-300 rounded-md object-contain w-full" :src="item.image" :alt="item.name"/>
+                    </nuxt-link>
+                    <div class=" w-1/2 md:w-3/4">
+                        <div class="flex flex-col p-2">
+                            <nuxt-link class="" :to="`/products/${item.slug}`">{{ item.name }}</nuxt-link>
+                            <nuxt-link class="text-gray-600" :to="`/products/${item.slug}`"><b v-if="item.variant">{{ item.variant.name }}</b></nuxt-link>
+                            <div v-if="item.upsell">
+                                <b class="bg-red-700 text-white inline-block p-1 rounded-lg">-{{ item.upsell.value }} {{ item.upsell.type == 'percentage' ? '%' : $store.state.currency.symbol }}</b>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+                       </div>
+                    </td>
+
+                    <td>
+                        <div class="  md:p-2 md:flex items-center justify-center ">
+                <span class="">{{ item.price }} </span> 
+                <span>{{ $store.state.currency.symbol }}</span>
+            </div>
+                    </td>
+
+                    <td>
+                        <div class="  flex items-center sm:p-2 justify-center">
+                <si-product-quantity @selected="quantitySelected" :quantity="item.quantity"/>
+            </div>
+                    </td>
+
+                    <td>
+                          <div class=" md:p-2 md:flex items-center justify-center">
+                <span class=" ">{{ item.total }} </span>
+                <span>{{ $store.state.currency.symbol }}</span>
+                   </div>
+                    </td>
+                </tr>
+
+            </table>
+            <!--
+         <div class=" grid  grid-cols-5 w-full border-t-2 border-b-2 border-gray-200 py-5  font-poppins text-base font-base text-gray-500"> 
+               <div class=" flex items-center  ">
+                <button class="w-8 h-8 justify-center items-center  rounded-md " @click="remove">&times;</button>
+              </div>
+
+            <div class=" items-center justify-center">
+                <div class="flex flex-col sm:flex-row items-center w-full">
+                    <nuxt-link class="w-1/2 md:1/4  hidden lg:flex" :to="`/products/${item.slug}`">
                         <si-image class="border-2 border-gray-300 rounded-md object-contain w-full" :src="item.image" :alt="item.name"/>
                     </nuxt-link>
                     <div class=" w-1/2 md:w-3/4">
@@ -26,23 +73,21 @@
                 </div> 
             </div>
 
-             <div class="  p-2 sm:flex items-center ">
-                <b class="">{{ item.price }} </b> 
+             <div class="  md:p-2 md:flex items-center justify-center ">
+                <span class="">{{ item.price }} </span> 
                 <span>{{ $store.state.currency.symbol }}</span>
             </div>
 
-            <div class="  flex items-center p-2">
+            <div class="  flex items-center sm:p-2 justify-center">
                 <si-product-quantity @selected="quantitySelected" :quantity="item.quantity"/>
             </div>
 
-            <div class=" p-2 sm:flex items-center ">
-                <b class=" ">{{ item.total }} </b>
+            <div class=" md:p-2 md:flex items-center justify-center">
+                <span class=" ">{{ item.total }} </span>
                 <span>{{ $store.state.currency.symbol }}</span>
             </div>
  
-             </div>
-          
-           
+             </div>  -->  
         </div>
     </div>
 
@@ -72,3 +117,4 @@ export default {
     },
 }
 </script>
+<style>

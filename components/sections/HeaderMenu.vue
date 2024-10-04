@@ -1,6 +1,6 @@
 <template>
 
-<div class="sm:flex  inset-0  max-h-full max-w-1/4 hidden"  >
+<div class="md:flex  inset-0 z-20 max-h-full max-w-1/4 hidden  shadow-container"  >
    <!-- 
     <div v-if="$store.state.showHeaderMenu" :class="$store.state.showHeaderMenu? 'opacity-50' : 'opacity-0'"
      class="flex transition-all delay-500 fixed inset-0 bg-black" @click="$store.state.showHeaderMenu=false">
@@ -9,7 +9,7 @@
    <!--SideBar -->
     <transition name="slideleft">
         <div 
-         class="transition-all delay-500 max-w-full relative flex flex-col bg-white w-80">
+         class="transition-all delay-500 max-w-full relative flex flex-col bg-white  w-80">
 
             <!--
                <div class="w-full flex justify-end ">
@@ -29,9 +29,9 @@
 
             <!--Home/blog ... -->
             <div v-if="menu" class="px-10">
-                <ul v-for="(item, i) in menu.items" :key="i" class="flex flex-col">
+                <ul v-for="(item, i) in menu.items" :key="i" class="flex flex-col cursor-pointer ">
                     <li class="flex items-center mb-1 justify-between w-full rounded-md bg-white hover:underline hover:underline-offset-4">
-                        <router-link class="m-1 w-full flex font-poppins text-base text-gray-700 font-medium" :to="item.url">{{ item.text }}</router-link>
+                        <span class="m-1 w-full flex  menuTextStyle tracking-normal">{{ item.text }} </span>
                         <button class="bg-white p-2 mx-1" @click="activeId = activeId != item._id ? item._id : null">
                             <si-svg>
                                 <svg v-if="item.childrens && item.childrens.length > 0" class="w-3 transform" :class="activeId==item._id ? 'rotate-180': ''" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 330 330" style="enable-background:new 0 0 330 330;" xml:space="preserve">
@@ -104,8 +104,6 @@
         </div>
      </transition>
 
-    
-
  </div> 
  
 </template>
@@ -172,4 +170,29 @@ export default {
 [dir="rtl"] .move-out{ transform: translateX(40em); }
 [dir="rtl"] .move-in{ transform: translateX(20em); }
 */
+
+.shadow-container {
+   
+    background-color: #f0f0f0;
+    box-shadow: var(--wp--preset--shadow--natural),
+                var(--wp--preset--shadow--deep);
+}
+:root {
+    --wp--preset--shadow--natural: 6px 6px 9px rgba(129, 127, 127, 0.2);
+    --wp--preset--shadow--deep: 12px 12px 50px rgba(114, 113, 113, 0.4);
+   
+}
+
+.menuTextStyle{
+    font-family: Poppins, sans-serif;
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 500;
+    text-align: -webkit-match-parent;
+     
+}
+.menuTextColor:hover{
+    
+}
+
 </style>

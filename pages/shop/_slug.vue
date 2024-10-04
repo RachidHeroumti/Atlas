@@ -1,5 +1,5 @@
 <template>
-    <div class="sm:p-10 bg-white">
+    <div class="sm:p-10 bg-white mt-20">
         <div class="relative flex mb-2 space-x-2 ">
 
 
@@ -22,7 +22,7 @@
                                 </button>
                             </div>-->
                             <div> 
-                                <span class=" font-poppins font-base text-base text-gray-400 hidden md:flex">Showing 1–9 of {{items.length}} results</span>
+                                <span class=" font-poppins font-base text-base text-gray-400 hidden md:flex"> Showing 1–{{items.length<9?items.length:9}} of {{items.length}} results</span>
                             </div>
                             <select class="p-2 sm:px-4 text-gray-400 font-poppins font-base text-base  focus:outline-none  outline-white"
                                v-model="params.sort">

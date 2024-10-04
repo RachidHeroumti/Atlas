@@ -6,8 +6,9 @@
         <input class="max w-full h-1 absolute top-0 left-0 appearance-none bg-transparent" type="range" v-model="maxVal" :min="min" :max="max" @change="setParams($event, 'price.salePrice-to')">
     </div>
     <div class="flex justify-between m-1">
-        <b>{{ min }}</b>
-        <b>{{ max }}</b>
+        <b>{{ min }}{{ $store.state.currency.symbol }}</b>
+        <b>{{ maxVal }}</b>
+        <b>{{ max }}{{ $store.state.currency.symbol }}</b>
     </div>
 </div>
 </template>

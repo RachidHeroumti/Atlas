@@ -1,16 +1,16 @@
 <template>
     <div class="flex items-center font-poppins font-base justify-center  text-gray-400 border border-gray-300 rounded text-sm ">
-        <button @click="inc(-1)" class="  py-2 px-2 sm:px-4" :class="value > quantity.min ? ' ' : ''">&lt;</button>
+        <button @click="inc(-1)" class="  py-2 sm:px-2 md:px-4" :class="value > quantity.min ? ' ' : ''">&lt;</button>
 
-        <div class="flex">
-            <label class="relative  py-2 h-full">
-                <span class="p-1 sm:px-2 py-4 text-center ">{{ value }}</span>
-                <input :min="quantity.min" :max="quantity.max" class="px-2 text-center absolute outline-none inset-0 bg-opacity-0 w-full h-full" v-model="value" type="number">
+        <div class="flex font-poppins font-base ">
+            <label class="relative  py-2 h-full ">
+                <span class="p-1 md:px-2 py-4 text-center ">{{ value }}</span>
+                <input :min="quantity.min" :max="quantity.max" class=" text-center absolute outline-none inset-0 bg-opacity-0 w-full h-full" v-model="value" type="number">
             </label>
-            <span class="flex items-center bg-white  px-2" v-if="quantity.unit">{{ quantity.unit }}</span>
+            <span class="flex items-center bg-white  md:px-2" v-if="quantity.unit">{{ quantity.unit }}</span>
         </div>
 
-        <button @click="inc(1)" class=" py-2 px-2 sm:px-4" :class="value < quantity.instock ? '' : ''">></button>
+        <button @click="inc(1)" class=" py-2 sm:px-2 md:px-4" :class="value < quantity.instock ? '' : ''">></button>
     </div>
 </template>
 

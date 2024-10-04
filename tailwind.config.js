@@ -13,10 +13,12 @@ module.exports = {
           '13p':'13px',
           '19p':'19px',
           '16p':'16px',
-          '18p':'18px'
+          '18p':'18px',
+          '55p':'55px'
 
         }, colors: {
           'dark-gray': 'rgb(40, 40, 40)', 
+          'titles-color':'#282828',
         },
         fontWeight: {
           base: 300,
