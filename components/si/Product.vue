@@ -52,7 +52,7 @@
             </div>
 
        <!-- Add to cart product-->
-         <button v-else-if="$settings.sections.products.add_to_cart.active" @click="filpped=true" 
+         <button v-else-if="$settings.sections.products.add_to_cart.active" @click="addToCart" 
           class="px-3 p-2 font-poppins text-12p font-normal text-white ai-c bg-black "
           :class="{ 'invisible': !isHovering, 'visible': isHovering }"
             >
@@ -101,6 +101,7 @@
                 <span class="w-full" v-if="added">{{ $settings.sections.products.added_text }}</span>
                 <span class="w-full" v-else>{{ $settings.sections.products.confirm_text }}</span>
             </button> 
+            
         </div>
         </transition>
         

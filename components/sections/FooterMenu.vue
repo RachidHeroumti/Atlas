@@ -1,7 +1,7 @@
 <template>
-  <div class="bg-gray-900 text-gray-200  py-16 p-10">
+  <div class="bg-gray-900 text-white  py-16 p-10">
 
-      <div class=" sm:flex  justify-start sm:space-x-5 " v-if="menu">
+      <div class=" sm:flex  justify-start sm:space-x-5 mb-3" v-if="menu">
 
         <div class=" w-full space-y-3 ">
             <p class=" ">About us</p>
@@ -13,7 +13,7 @@
             <p>Useful links</p>
              <div v-for="(item,i) in menu.items" :key="i" class="w-full text-gray-400">
             <div class="">
-                <h4 class=" font-poppins font-base text-12p  ">
+                <h4 class=" font-poppins font-base text-12p ">
                     <router-link :to="item.url">{{item.text}}</router-link>
                 </h4>
 <!--
@@ -55,6 +55,7 @@
 
         </div>
 
+
         <div class=" w-full space-y-3 ">
             <p>Call center</p>
             <div>
@@ -67,8 +68,17 @@
         </div>
 
       </div>
-     <div class="">
+      <hr>
+     <div class=" w-full flex justify-center space-x-2 sm:space-x-5 font-normal py-5 text-white "> 
+        <div v-for="(item,i) in menu_bottom.items" :key="i" class=" font-poppins text-13p  text-">
+            
+                <span class=" font-poppins  text-15p font-medium ">
+                    <router-link :to="item.url">{{item.text}}</router-link>
+                </span>        
+
+              </div>
      </div>
+
   </div>
 </template>
 <script>
@@ -76,6 +86,7 @@ export default {
   data() {
     return {
       menu: this.$settings.sections.footer.menu ,
+      menu_bottom: this.$settings.sections.footer.menu_bottom ,
        socialMedia: [
                 {
                     name: 'facebook',

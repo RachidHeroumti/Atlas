@@ -3,8 +3,8 @@
      <div v-if="loading" class="flex items-center justify-center my-5">
             <si-loader></si-loader>
         </div>
-        <div class="w-full h-64 flex items-center justify-center">
-            <h1 class="font-poppins font-bold text-5xl text-gray-900">{{item.title}}</h1> 
+        <div class="w-full h-80 flex items-center justify-center">
+            <h1 class="font-poppins font-bold text-5xl text-gray-900">{{item.title}} Pages</h1> 
         </div>
        
 <div class=" w-full bg-white">
@@ -27,6 +27,7 @@
             </div>
 
             <!--social media -->
+            
             <div class="flex justify-center ">
                 <div v-for="item in socialMedia.filter(s=>$settings.sections.post.share_buttons[s.name])" :key="item.name" class="flex items-center justify-center h-12 m-2">
                     <a class="flex h-full" :href="item.url" target="_blank" rel="noopener noreferrer">
@@ -34,7 +35,7 @@
                     </a>
                 </div>
             </div>
-
+      
         </div>
   </div>
         <hr>
@@ -73,23 +74,22 @@ export default {
     async fetch(){
         try{
             const { slug } = this.$route.params;
-            console.log('id :',slug)
+           
  
             const { data } = await this.$storeino.pages.get({ slug, type: 'PAGE' })
-            console.log('data :',data)
+           
             this.item = data;
 
             this.$store.state.seo.title = this.item.title + ' - ' + this.$settings.store_name;
             this.$store.state.seo.description = this.item.excerpt || this.$settings.store_description;
             if(this.item.image){ this.$store.state.seo.image = this.item.image.url; }
-
             let url = `https://${this.$store.state.domain}/pages/${slug}`;
             for (const button of this.socialMedia) {
                 button.url = button.url.replace(/\{title\}/gi, this.item.title).replace(/\{url\}/gi, url);
             }
             this.loading = false;
         }catch(e){
-            console.log({e});
+            console.log("error",{e});
             this.$nuxt.error({ statusCode: 404, message: 'post_not_found' })
         }
     },

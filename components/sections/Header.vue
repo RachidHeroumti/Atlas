@@ -1,5 +1,5 @@
 <template>
-<div class="  text-titles-color bg-white    w-full fixed top-0 left-0 right-0 h-20 z-30 border-b-2  "> <!--fixed top-0 left-0  z-50  -->
+<div class="  text-titles-color bg-white    w-full fixed top-0 left-0 right-0 h-20 z-30 border-b border-gray-200  "> <!--fixed top-0 left-0  z-50  -->
     <si-app-loader placement="BEFORE_HEADER"/>
     <div class="relative  h-full">
         <div class=" flex items-center justify-between p-2 h-full   ">
@@ -63,22 +63,21 @@
             <div v-if="menu" class="hidden font-poppins justify-between items-center w-full  md:flex h-full  ">
   <ul v-for="(item, i) in menu.items" :key="i" class="flex flex-col  menuTextStyle cursor-pointer">
     <li
-      class="relative flex justify-between w-full  hover:underline hover:underline-offset-4 "
+      class="relative flex justify-between w-full  hover:underline hover:underline-offset-4 overflow-visible "
       @mouseenter="hoveredItem = i"
       @mouseleave="hoveredItem = null"
       @focus="hoveredItem=i"
       @mouseover="hoveredItem=i"
     >
       <!-- Parent Item Text -->
-      <div class="p-2  w-full flex"
+      <div class="p-2 sm:px-3  w-full flex"
       @focus="hoveredItem=i">
         {{ item.text }}
       </div>
-
       <ul
         v-if="item.childrens && item.childrens.length > 0"
         :class="['submenu', { 'submenu-visible': hoveredItem === i }]"
-        class=" p-2  w-[250px] bg-white   z-30 pe-5 "
+        class=" p-2   bg-white  z-30 px-5 "
         @mouseenter="hoveredItem = i"
         @mouseleave="hoveredItem = null"
         
@@ -89,6 +88,7 @@
           </nuxt-link>
         </li>
       </ul>
+
     </li>
   </ul>
               </div>
@@ -120,7 +120,7 @@
              -->
 
 
-        <div class=" flex justify-end h-full space-x-2 w-24">
+        <div class=" flex justify-end h-full  min-w-24">
  <button v-if="$settings.sections.header.icons.search" @click="showSearch=true" aria-label="Search button" class="relative p-2 mx-1  rounded-md item ">
                     <si-svg><svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="search" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-5 h-5 translate"><path fill="currentColor" d="M508.5 468.9L387.1 347.5c-2.3-2.3-5.3-3.5-8.5-3.5h-13.2c31.5-36.5 50.6-84 50.6-136C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c52 0 99.5-19.1 136-50.6v13.2c0 3.2 1.3 6.2 3.5 8.5l121.4 121.4c4.7 4.7 12.3 4.7 17 0l22.6-22.6c4.7-4.7 4.7-12.3 0-17zM208 368c-88.4 0-160-71.6-160-160S119.6 48 208 48s160 71.6 160 160-71.6 160-160 160z" class=""></path></svg></si-svg>
                 </button>
@@ -136,9 +136,11 @@
                 <!--cart-->
                 <router-link v-if="$settings.sections.header.icons.cart" to="/cart" title="Cart" id="cart-icon" class="relative min-h-5 min-w-5 p-2 mx-1 rounded-md item ">
                     <si-svg>
-                        <svg  aria-hidden="true" focusable="false" data-prefix="far" data-icon="shopping-cart" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="w-5 h-5 translate"><path fill="currentColor" d="M551.991 64H144.28l-8.726-44.608C133.35 8.128 123.478 0 112 0H12C5.373 0 0 5.373 0 12v24c0 6.627 5.373 12 12 12h80.24l69.594 355.701C150.796 415.201 144 430.802 144 448c0 35.346 28.654 64 64 64s64-28.654 64-64a63.681 63.681 0 0 0-8.583-32h145.167a63.681 63.681 0 0 0-8.583 32c0 35.346 28.654 64 64 64 35.346 0 64-28.654 64-64 0-18.136-7.556-34.496-19.676-46.142l1.035-4.757c3.254-14.96-8.142-29.101-23.452-29.101H203.76l-9.39-48h312.405c11.29 0 21.054-7.869 23.452-18.902l45.216-208C578.695 78.139 567.299 64 551.991 64zM208 472c-13.234 0-24-10.766-24-24s10.766-24 24-24 24 10.766 24 24-10.766 24-24 24zm256 0c-13.234 0-24-10.766-24-24s10.766-24 24-24 24 10.766 24 24-10.766 24-24 24zm23.438-200H184.98l-31.31-160h368.548l-34.78 160z" class=""></path></svg>
+                        
+                       <svg  viewBox="-3.84 -3.84 31.68 31.68" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="1.488"></g><g id="SVGRepo_iconCarrier"> <path d="M17.8264 20C18.9965 20 19.9167 18.9999 19.8195 17.8339L19.1528 9.83391C19.0664 8.79732 18.1999 8 17.1597 8H16M16 8H12M16 8L16 7C16 5.93913 15.5786 4.92172 14.8284 4.17157C14.0783 3.42143 13.0609 3 12 3C10.9391 3 9.92172 3.42143 9.17157 4.17157C8.42143 4.92172 8 5.93913 8 7L8 8M16 8L16 12M8 8H6.84027C5.80009 8 4.93356 8.79732 4.84718 9.83391L4.18051 17.8339C4.08334 18.9999 5.00352 20 6.1736 20H13M8 8L8 12" stroke="#000000" stroke-width="1.44" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
                         </si-svg>
-                    <small class="absolute flex items-center justify-center w-5 h-5 p-2 text-white bg-red-700 rounded-full -top-2 -right-2">{{ $store.state.cart.length }}</small>
+
+                    <small class="absolute flex items-center justify-center w-5 h-5 p-2 text-white bg-red-700 rounded-full top-0 right-0">{{ $store.state.cart.length }}</small>
                 </router-link>
         </div>
                

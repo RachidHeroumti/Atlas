@@ -1,6 +1,6 @@
 <template>
 
-<div class="md:flex  inset-0 z-20 max-h-full max-w-1/4 hidden  shadow-container bg-bacgroundApp"  >
+<div class="md:flex  inset-0 z-20 max-h-full max-w-1/4 hidden  shadow-container bg-white"  >
    <!-- 
     <div v-if="$store.state.showHeaderMenu" :class="$store.state.showHeaderMenu? 'opacity-50' : 'opacity-0'"
      class="flex transition-all delay-500 fixed inset-0 bg-black" @click="$store.state.showHeaderMenu=false">
@@ -43,8 +43,8 @@
 
                     <transition name="slide">
                     <div v-if="item._id == activeId">
-                        <div v-for="(item,i) in item.childrens" :key="i" class="bg-gray-100">
-                            <router-link class="m-1 rounded-md bg-gray-50 hover:bg-white hover:text-gray-300 flex" :to="item.url">{{item.text}}</router-link>
+                        <div v-for="(item,i) in item.childrens" :key="i" class=" bg-white font-base text-13p">
+                            <router-link class="m-1  bg-white hover:underline flex" :to="item.url">{{item.text}}</router-link>
                             <ul class=" " v-if="item.childrens && item.childrens.length > 0">
                                 <li v-for="(child,ii) in item.childrens" :key="ii">
                                     <nuxt-link  class=" m-1 rounded-md bg-gray-50 hover:bg-white hover:text-gray-300 flex" :to="child.url">

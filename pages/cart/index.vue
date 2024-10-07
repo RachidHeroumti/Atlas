@@ -16,7 +16,7 @@
             <div class="flex flex-col cart-items bg-white py-10">
                 <table>
                     <tr>
-                       <th></th> <th>Product</th> <th>Price</th> <th>Quantty</th> <th>SubTotal</th> 
+                        <th>Product</th> <th>Price</th> <th>Quantty</th> <th>SubTotal</th> 
                     </tr>
 
                 </table>

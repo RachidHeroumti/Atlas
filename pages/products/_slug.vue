@@ -57,7 +57,7 @@
                         </div>
 
 
-                        <div v-else class="flex  flex-wrap md:flex-nowrap space-x-2">
+                        <div v-else class="flex w-full flex-wrap md:flex-nowrap space-x-2">
                             <div class="flex justify-start" v-show="!outofstock">
                             <si-product-quantity @selected="quantitySelected" :quantity="quantity"></si-product-quantity>
                               </div>
@@ -96,6 +96,7 @@
                             <button class="p-3 font-poppins  text-white-gray text-base border-gray-300 bg-gray-200 hover:bg-titles-color hover:text-white">Additional Information</button>
                             <button class="p-3 font-poppins text-white-gray text-base border-gray-300 bg-gray-200 hover:bg-titles-color hover:text-white">Reviews({{ item.review.reviews.length }})</button>
                         </div>
+                        <p class=" font-poppins text-base font-base text-white-gray  my-8 ">{{ item.description }}</p>
                         <si-app-loader v-show="!outofstock" placement="REPLACE_BUYNOW"/>
                         <si-app-loader placement="AFTER_ADD_TO_CART"/>
                     </div>

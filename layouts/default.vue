@@ -1,5 +1,5 @@
 <template>
-    <div class=" bg-bacgroundApp " >
+    <div class=" bg-white" >
         <component :is="'style'">
             :root{ --primary-rgb: {{ rgb.r }}, {{rgb.g}}, {{ rgb.b }}; --primary-color: rgb(var(--primary-rgb)); }
             .bg-primary{ background-color: var(--primary-color); }
@@ -60,6 +60,15 @@
           </div>
         </form>
        </div>
+       
+        <button
+      v-if="showScrollTopButton"
+      @click="scrollToTop"
+      class="fixed bottom-5 right-5 text-white bg-gray-400 hover:bg-titles-color w-10 h-10 font-poppins font-normal text-base flex items-center justify-center"
+    >
+      <span class="">^</span>
+    </button>
+
        <div v-if="$settings.other_scripts" class="other-scripts" v-html="$settings.other_scripts"></div>
    </template>
     </div>
@@ -70,6 +79,7 @@
 export default {
     head(){
         return {
+          
             title: this.$store.state.seo.title,
             meta: [
                 { hid: 'description', name: 'description', content: this.$store.state.seo.description },
@@ -107,6 +117,7 @@ export default {
     },
     data() {
         return {
+          showScrollTopButton: false,
             rgb: { r: 0, g: 130, b: 70 },
             otherLinks: [
                 ]
@@ -127,8 +138,28 @@ export default {
             ]
         }
     },
-    methods: {
-    }
+   mounted() {
+    window.addEventListener("scroll", this.handleScroll);
+  },
+  beforeDestroy() {
+    window.removeEventListener("scroll", this.handleScroll);
+  },
+  methods: {
+    handleScroll() {
+      
+      const scrollPosition = window.scrollY || document.documentElement.scrollTop;
+      const halfViewportHeight = window.innerHeight / 4;
+
+      this.showScrollTopButton = scrollPosition > halfViewportHeight;
+    },
+    scrollToTop() {
+      // Scroll to the top smoothly
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    },
+  }
 }
 
 </script>

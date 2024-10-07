@@ -1,5 +1,5 @@
 <template >
-  <div class=" bg-white  shadow  overflow-y-scroll">
+  <div class=" bg-white  w-full shadow  overflow-y-scroll">
    <!-- <div class=""> fea
       <h2 class="text-2xl">{{ title }}</h2>
     </div> -->

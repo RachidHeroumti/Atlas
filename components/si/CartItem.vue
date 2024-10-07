@@ -9,11 +9,11 @@
                     <td class="flex">
                          <div class=" flex items-center ">
                 <button class="w-8 h-8 justify-center items-center  rounded-md " @click="remove">&times;</button>
-                     </div>
-                        <div class=" flex md:flex-row flex-col items-center justify-center ">
+                        </div>
+                        <div class=" flex md:flex-row flex-col items-center  ">
                 <div class="flex flex-col sm:flex-row items-center w-full">
-                    <nuxt-link class="max-w-[100px]   hidden lg:flex" :to="`/products/${item.slug}`">
-                        <si-image class="border-2 border-gray-300 rounded-md object-contain w-full" :src="item.image" :alt="item.name"/>
+                    <nuxt-link class=" w-28 h-28    hidden lg:flex" :to="`/products/${item.slug}`">
+                        <si-image  class="border-2 border-gray-300 rounded-md object-contain w-full" :src="item.image" :alt="item.name"/>
                     </nuxt-link>
                     <div class=" w-1/2 md:w-3/4">
                         <div class="flex flex-col p-2">
@@ -29,8 +29,9 @@
                     </td>
 
                     <td>
-                        <div class="  md:p-2 md:flex items-center justify-center ">
-                <span class="">{{ item.price }} </span> 
+                        <div class="  md:p-2 md:flex items-center  ">
+                <span class="">{{ item.price }} </span>
+                <br> 
                 <span>{{ $store.state.currency.symbol }}</span>
             </div>
                     </td>
@@ -42,8 +43,9 @@
                     </td>
 
                     <td>
-                          <div class=" md:p-2 md:flex items-center justify-center">
+                          <div class=" md:p-2 md:flex items-center ">
                 <span class=" ">{{ item.total }} </span>
+                <br>
                 <span>{{ $store.state.currency.symbol }}</span>
                    </div>
                     </td>
