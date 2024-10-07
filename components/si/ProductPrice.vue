@@ -1,8 +1,8 @@
 <template>
     <div>
         <meta itemprop="priceCurrency" :content="$store.state.currency.code" />
-        <div class="price flex justify-center my-2  text-sm " v-if="type=='simple'">
-            <b class="text-gray-600 font-medium font-poppins text-12p ">{{ price.salePrice }}{{ $store.state.currency.symbol }}</b>
+        <div class="price flex justify-center  text-sm " v-if="type=='simple'">
+            <b class=" text-titles-color font-normal font-poppins text-base ">{{ price.salePrice }}{{ $store.state.currency.symbol }}</b>
             <span class="flex w-2"></span>
             
             <span class="relative" v-if="price.comparePrice > 0">

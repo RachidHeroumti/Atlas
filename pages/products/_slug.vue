@@ -1,6 +1,6 @@
 <template>
  
-    <div class="p-3 mt-20">
+    <div class=" p-2 sm:p-8 mt-16 bg-white  ">
         <!-- header for product details page -->
        <!-- <sections-header></sections-header>-->
          <!--<sections-header-top></sections-header-top> -->
@@ -14,26 +14,27 @@
             <meta itemprop="productID" :content="item._id" />
 
             <div class="w-full sm:w-1/2 ">
-                <div class="relative lg:flex  w-full sm:space-x-1 justify-center">
-                     <div class=" w-full sm:w-[100px] ">
-                        <div class="flex lg:flex-col  justify-center">
-                            <si-image width="100" height="100" class=" w-20 h-20 sm:w-24 sm:h-24 m-1  bg-white rounded-md shadow cursor-pointer"
+                <div class=" lg:flex  w-full  justify-center h-4/5  ">
+                     <div class=" w-full sm:w-1/4  ">
+                        <div class="flex lg:flex-col  justify-center items-center">
+                            <si-image width="100" height="100" class=" w-20 h-20 sm:w-24 sm:h-24 m-1  cursor-pointer"
                              v-for="(image, index) in item.images" @click="setImage(index)" :key="index" :src="image.src" :alt="`${item.name} - ${image.title}`"/>
                         </div>
                     </div>
-                    <si-image  class="w-full  cursor-pointer" 
+                    <si-image width="500" height="580"  class="w-3/4  cursor-pointer  " 
                      @click="$store.state.fullImage=image ? image.src : null" :src="image ? image.src : null " :alt="item.name"/>
                    
                 </div>
 
             </div>
 
-            <div class="w-full md:w-1/2  bg-white">
+            <div class="w-full md:w-1/2 ">
                 <div class="p-2 flex  h-full">
-                    <div class="  space-y-3">
-                        <h1 class="mb-2 text-36p font-medium font-poppins  ">{{ item.name }}</h1>
+                    <div class="">
+                        <h2 class="mb-2 leading-custom-1.3 text-36p font-semibold  font-poppins  text-titles-color ">{{ item.name }}</h2>
                         <meta itemprop="name" :content="item.name" />
-                        <div class="flex items-center justify-start mb-2" v-if="$settings.sections.product.reviews.active">
+
+                        <div class="flex items-center justify-start" v-if="$settings.sections.product.reviews.active">
                             <div class="flex mb-1">
                                 <span v-for="(star,i) in 5" :class="star <= item.review.rating ? 'text-yellow-500 ': 'text-titles-color'" :key="i">
                                     <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="star" role="img" xmlns="http://www.w3.org/2000/svg"
@@ -41,12 +42,14 @@
                                       d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z" class=""></path></svg>
                                 </span>
                             </div>
-                            <span class="text-sm text-titles-color" key="count">({{ item.review.reviews.length }} customer review)</span>
+                            <span class="text-sm text-white-gray" key="count">({{ item.review.reviews.length }} customer review)</span>
                         </div>
 
-                        <p class=" font-poppins text-base font-base text-gray-600 ">{{ item.description }}</p>
                         <si-product-variants class="flex" v-if="item.type=='variable'" :options="item.options" :images="item.images" :variants="item.variants" @selected="variantSelected"></si-product-variants>
                         <si-product-price class="flex text-3xl" :type="'simple'" :price="price" :variants="[]"></si-product-price>
+
+                        <p class=" font-poppins text-base font-base text-white-gray  my-8 ">{{ item.description }}</p>
+                        
                      
                         <si-app-loader placement="BEFORE_ADD_TO_CART"/>
                         <div v-if="outofstock" class="flex justify-center p-2 text-white bg-red-700 ai-c">
@@ -58,17 +61,13 @@
                             <div class="flex justify-start" v-show="!outofstock">
                             <si-product-quantity @selected="quantitySelected" :quantity="quantity"></si-product-quantity>
                               </div>
-
                             <button v-if="$settings.sections.product.add_to_cart.active" @click="addToCart"
-                             class="flex justify-center p-2 text-white ai-c click-effect text-titles-color rounded">
-                                <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="shopping-cart" role="img"
-                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="w-6 h-6 translate"><path fill="currentColor" d="M551.991 64H144.28l-8.726-44.608C133.35 8.128 123.478 0 112 0H12C5.373 0 0 5.373 0 12v24c0 6.627 5.373 12 12 12h80.24l69.594 355.701C150.796 415.201 144 430.802 144 448c0 35.346 28.654 64 64 64s64-28.654 64-64a63.681 63.681 0 0 0-8.583-32h145.167a63.681 63.681 0 0 0-8.583 32c0 35.346 28.654 64 64 64 35.346 0 64-28.654 64-64 0-18.136-7.556-34.496-19.676-46.142l1.035-4.757c3.254-14.96-8.142-29.101-23.452-29.101H203.76l-9.39-48h312.405c11.29 0 21.054-7.869 23.452-18.902l45.216-208C578.695 78.139 567.299 64 551.991 64zM208 472c-13.234 0-24-10.766-24-24s10.766-24 24-24 24 10.766 24 24-10.766 24-24 24zm256 0c-13.234 0-24-10.766-24-24s10.766-24 24-24 24 10.766 24 24-10.766 24-24 24zm23.438-200H184.98l-31.31-160h368.548l-34.78 160z"></path></svg>
-                                <span>&ensp;</span>
+                             class="flex justify-center p-2 px-6 hover:text-titles-color hover:bg-white border border-dark-gray  text-white ai-c click-effect bg-titles-color ">
                                 <span class="w-full">{{ $settings.sections.product.add_to_cart.text }}</span>
                             </button>
                         
                         </div>
-                        <div class=" flex  text-sm bg-white ">
+                        <div class=" flex  text-sm  ">
                                 <button v-if="$store.state.wishlist.find(i=>i._id==item._id)" @click="removeFromWishlist"
                          title="Wishlist" class=" justify-center  p-2 m-2 mx-1  rounded-md item top-1 right-2">
                         <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="heart" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
@@ -93,9 +92,9 @@
                             <span class=" font-poppins text-sm font-base ">Tag: Decorative</span>
                         </div>         
                         <div class=" flex w-full space-x-2">
-                            <button class="p-3 font-poppins text-base border border-gray-300 bg-gray-200 hover:bg-gray-900 hover:text-white">Description</button>
-                            <button class="p-3 font-poppins text-base border-gray-300 bg-gray-200 hover:bg-gray-900 hover:text-white">Additional Information</button>
-                            <button class="p-3 font-poppins text-base border-gray-300 bg-gray-200 hover:bg-gray-900 hover:text-white">Reviews({{ item.review.reviews.length }})</button>
+                            <button class="p-3 font-poppins text-white-gray text-base border border-gray-300 bg-gray-200 hover:bg-titles-color hover:text-white">Description</button>
+                            <button class="p-3 font-poppins  text-white-gray text-base border-gray-300 bg-gray-200 hover:bg-titles-color hover:text-white">Additional Information</button>
+                            <button class="p-3 font-poppins text-white-gray text-base border-gray-300 bg-gray-200 hover:bg-titles-color hover:text-white">Reviews({{ item.review.reviews.length }})</button>
                         </div>
                         <si-app-loader v-show="!outofstock" placement="REPLACE_BUYNOW"/>
                         <si-app-loader placement="AFTER_ADD_TO_CART"/>
@@ -186,6 +185,7 @@
                 <sections-reviews v-show="!$store.state.apps.find(a=>a.placement.indexOf('REPLACE_REVIEWS') >= 0)" :item="item"></sections-reviews>
             </div>
             <si-app-loader  placement="REPLACE_REVIEWS"/>
+             
             <div v-if="item && $settings.sections.product.related.active" class="related">
                 <sections-related-products :item="item"/>
             </div>

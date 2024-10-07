@@ -6,7 +6,7 @@
     ></sections-collections> -->
 
     
-   <div class="flex w-full h-screen">
+   <div class="flex w-full sm:h-screen mt-20 sm:mt-0">
      <sections-header-menu></sections-header-menu>
    <template v-for="i in 5">
       <sections-products

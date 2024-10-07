@@ -1,9 +1,14 @@
 <template>
-    <div class="container my-2 bg-white">
-        <div v-if="loading" class="flex items-center justify-center my-5">
+ <div :style="backgroundStyle" class="image-background">
+     <div v-if="loading" class="flex items-center justify-center my-5">
             <si-loader></si-loader>
         </div>
-        <div v-if="item" class="">
+        <div class="w-full h-64 flex items-center justify-center">
+            <h1 class="font-poppins font-bold text-5xl text-gray-900">{{item.title}}</h1> 
+        </div>
+       
+<div class=" w-full bg-white">
+        <div v-if="item" class="container bg-white h-full p-5 space-y-3">
             <h1 class="m-2">{{ item.title }}</h1>
             <hr class="m-0">
             <p class="m-2"><small>{{ item.excerpt }}</small></p>
@@ -14,11 +19,14 @@
                 <si-app-loader :placement="'AFTER_CONTACT_PAGE'"/>
             </div>
 
+       <!--social media -->
             <div class="flex items-center">
                 <div class="flex w-full border-b border-gray-200 "></div>
                 <h3 class="p-2  whitespace-nowrap">{{ $settings.sections.post.share_buttons.title }}</h3>
                 <div class="flex w-full border-b border-gray-200 "></div>
             </div>
+
+            <!--social media -->
             <div class="flex justify-center ">
                 <div v-for="item in socialMedia.filter(s=>$settings.sections.post.share_buttons[s.name])" :key="item.name" class="flex items-center justify-center h-12 m-2">
                     <a class="flex h-full" :href="item.url" target="_blank" rel="noopener noreferrer">
@@ -26,7 +34,9 @@
                     </a>
                 </div>
             </div>
+
         </div>
+  </div>
         <hr>
     </div>
 </template>
@@ -63,7 +73,10 @@ export default {
     async fetch(){
         try{
             const { slug } = this.$route.params;
+            console.log('id :',slug)
+ 
             const { data } = await this.$storeino.pages.get({ slug, type: 'PAGE' })
+            console.log('data :',data)
             this.item = data;
 
             this.$store.state.seo.title = this.item.title + ' - ' + this.$settings.store_name;
@@ -82,6 +95,17 @@ export default {
     },
     mounted(){
       this.$storeino.fbpx('PageView')
+    },
+    computed: {
+        backgroundStyle() {
+            return {
+                backgroundImage: `url(${this.$store.state.seo.image})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+                height: '100%'
+            };
+        }
     }
 }
 </script>

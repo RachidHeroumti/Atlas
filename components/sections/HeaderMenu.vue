@@ -1,6 +1,6 @@
 <template>
 
-<div class="md:flex  inset-0 z-20 max-h-full max-w-1/4 hidden  shadow-container"  >
+<div class="md:flex  inset-0 z-20 max-h-full max-w-1/4 hidden  shadow-container bg-bacgroundApp"  >
    <!-- 
     <div v-if="$store.state.showHeaderMenu" :class="$store.state.showHeaderMenu? 'opacity-50' : 'opacity-0'"
      class="flex transition-all delay-500 fixed inset-0 bg-black" @click="$store.state.showHeaderMenu=false">

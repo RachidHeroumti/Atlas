@@ -1,4 +1,5 @@
 <template>
+
   <div class="container" v-if="items.length > 0">
     <div class="m-2">
       <h2 class=" font-poppins font-medium text-19p ">Related Product{{ $settings.sections.product.title }}</h2>

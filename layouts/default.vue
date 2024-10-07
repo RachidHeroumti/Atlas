@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-gray-50 " >
+    <div class=" bg-bacgroundApp " >
         <component :is="'style'">
             :root{ --primary-rgb: {{ rgb.r }}, {{rgb.g}}, {{ rgb.b }}; --primary-color: rgb(var(--primary-rgb)); }
             .bg-primary{ background-color: var(--primary-color); }
@@ -96,6 +96,7 @@ export default {
                 { rel: "dns-prefetch", href: 'https://storeno.b-cdn.net/stores/' },
                 { rel: 'preconnect', href: 'https://connect.facebook.net', crossorigin: "anonymous" },
                 { rel: 'preload', href: 'https://connect.facebook.net/en_US/fbevents.js', as: 'script' },
+               { rel:"stylesheet", href:"https://fonts.googleapis.com/css?family=Poppins%3A300%2C400%2C500%2C600%2C700&#038;subset=latin-ext&#038;ver=1.0.0" },
                 ...this.otherLinks
             ],
             htmlAttrs: {
@@ -129,6 +130,7 @@ export default {
     methods: {
     }
 }
+
 </script>
 <style>
 /*

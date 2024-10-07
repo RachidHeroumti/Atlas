@@ -19,6 +19,8 @@ module.exports = {
         }, colors: {
           'dark-gray': 'rgb(40, 40, 40)', 
           'titles-color':'#282828',
+          'bacgroundApp':'#b4b4b4',
+          'white-gray':'#939393'
         },
         fontWeight: {
           base: 300,
@@ -26,6 +28,12 @@ module.exports = {
           medium: 500,
           semibold: 600,
           bold: 700,
+        },
+        lineHeight: {
+          'custom-1.3': '1.3',
+          'custom-26':'26px',
+
+          
         },
       },
     },

@@ -1,5 +1,5 @@
 <template>
-    <div class="sm:p-10 bg-white mt-20">
+    <div class="sm:p-10 bg-white mt-16 p-8">
         <div class="relative flex mb-2 space-x-2 ">
 
 
@@ -81,7 +81,7 @@
             <transition name="slideleft">
                 <div :class="showSideBar ? 'show':'hide'" class="fixed top-0 bottom-0 z-20 hidden h-full bg-white w-80 md:w-1/4 md:block md:top-0 md:relative">
                     <div class="fixed inset-0 block bg-black bg-opacity-50 md:hidden" @click="showSideBar=false"></div>
-                    <div class="relative flex flex-col h-full bg-white border-r space-y-2">
+                    <div class="relative flex flex-col h-full bg-white  space-y-2">
                         <div class="flex justify-end w-full md:hidden">
                             <button @click="showSideBar=false" aria-label="Search button" class="p-1 m-1 bg-gray-100 rounded-md item hover:bg-gray-200">
                                 <svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="times" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="w-5 h-5 translate"><path fill="currentColor" d="M193.94 256L296.5 153.44l21.15-21.15c3.12-3.12 3.12-8.19 0-11.31l-22.63-22.63c-3.12-3.12-8.19-3.12-11.31 0L160 222.06 36.29 98.34c-3.12-3.12-8.19-3.12-11.31 0L2.34 120.97c-3.12 3.12-3.12 8.19 0 11.31L126.06 256 2.34 379.71c-3.12 3.12-3.12 8.19 0 11.31l22.63 22.63c3.12 3.12 8.19 3.12 11.31 0L160 289.94 262.56 392.5l21.15 21.15c3.12 3.12 8.19 3.12 11.31 0l22.63-22.63c3.12-3.12 3.12-8.19 0-11.31L193.94 256z" class=""></path></svg>
@@ -89,11 +89,40 @@
                         </div>
 
                           <!--Search -->
-                         <div class="w-full border border-gray-200 p-2 items-center justify-between flex"> 
-                     <input class=" outline-none " type="text" placeholder="search ..." />
-                      <si-svg><svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="search" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-5 h-5 translate"><path fill="currentColor" d="M508.5 468.9L387.1 347.5c-2.3-2.3-5.3-3.5-8.5-3.5h-13.2c31.5-36.5 50.6-84 50.6-136C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c52 0 99.5-19.1 136-50.6v13.2c0 3.2 1.3 6.2 3.5 8.5l121.4 121.4c4.7 4.7 12.3 4.7 17 0l22.6-22.6c4.7-4.7 4.7-12.3 0-17zM208 368c-88.4 0-160-71.6-160-160S119.6 48 208 48s160 71.6 160 160-71.6 160-160 160z" class=""></path></svg></si-svg>
-                     <small v-if="$route.query.search" class="absolute flex items-center justify-center w-1 h-1 p-1 text-white bg-green-700 rounded-full -top-1 -right-1"></small>
-                          </div>
+                         
+
+                          <div class="relative border border-gray-200 p-3 px-5 items-center justify-between flex">
+    <!-- Search Input always visible -->
+    <input
+      class="outline-none"
+      type="text"
+      placeholder="search..."
+      v-model="q"
+      @keydown.enter="search" 
+    />
+    
+    <!-- Search Icon Button -->
+    <button type="button" @click="search">
+      <si-svg>
+        <svg
+          aria-hidden="true"
+          focusable="false"
+          data-prefix="far"
+          data-icon="search"
+          role="img"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 512 512"
+          class="w-5 h-5 translate"
+        >
+          <path
+            fill="currentColor"
+            d="M508.5 468.9L387.1 347.5c-2.3-2.3-5.3-3.5-8.5-3.5h-13.2c31.5-36.5 50.6-84 50.6-136C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c52 0 99.5-19.1 136-50.6v13.2c0 3.2 1.3 6.2 3.5 8.5l121.4 121.4c4.7 4.7 12.3 4.7 17 0l22.6-22.6c4.7-4.7 4.7-12.3 0-17zM208 368c-88.4 0-160-71.6-160-160S119.6 48 208 48s160 71.6 160 160-71.6 160-160 160z"
+            class=""
+          ></path>
+        </svg>
+      </si-svg>
+    </button>
+  </div>
                           <div class=" h-10">
 
                           </div>
@@ -106,22 +135,22 @@
                             <div v-for="(item, i) in collections" :key="i" class="px-2">
                                
                                <!---- -->
-                               <div class="flex items-center p-2  ">
+                               <div class="flex items-center p-1">
   <span
     v-if="item.childrens && item.childrens.length === 0"
     @click="toggleSelection(item.slug)"
     class="capitalize cursor-pointer collec-name text-12p font-poppins font-normal hover:text-gray-600 hover:underline "
   >
-    {{ item.name }}({{item.length?item.length:0}})
+    {{ item.name }}({{item.slug.length?item.slug.length:0}})
   </span>
-
+ <!--
   <span
     @click="setActive(i + 'fit', i + 'ret')"
     v-if="item.childrens && item.childrens.length > 0"
     class="capitalize cursor-pointer collec-name"
   >
     {{ item.name }}
-  </span>
+  </span> -->
 
   <svg
     @click="setActive(i + 'fit', i + 'ret')"
@@ -145,7 +174,7 @@
       />
     </g>
   </svg>
-                             </div>
+                              </div>
                           <!-------- ------------------>
                                 <div :id="i+'fit'" class="fit-collapsible" :class="item.childrens.length > 0 ? 'sub-collections' : ''">
                                     <ul class="list-sub-collections fit-collapsible-content" v-if="item.childrens && item.childrens.length > 0" >
@@ -277,7 +306,9 @@ export default {
                 { number: 6, width: 16, class: 'w-full md:w-1/2' },
                 { number: 9, width: 21, class: 'w-full md:w-1/2 lg:w-1/3' },
                 { number: 12, width: 26, class: 'w-1/2 md:w-1/3 lg:w-1/4' }
-            ]
+            ],
+             q: '', // Model for the search query
+      showSearch: false, // Toggling the search
         }
     },
     watch: {
@@ -291,7 +322,8 @@ export default {
         },
         "$route.query.search"(val){
             this.$set(this.params, 'search', val);
-        }
+        },
+        
     },
     async fetch(){
         this.$store.state.seo.title = this.$settings.sections.shop.title + ' - ' + this.$settings.store_name;
@@ -433,20 +465,14 @@ export default {
             }
             this.loading.products = false;
         },
-         toggleSelection(slug) {
-      const index = this.params['collections.slug-in']
-        ? this.params['collections.slug-in'].indexOf(slug)
-        : -1;
+       toggleSelection(slug) {
+     this.$set(this.params, 'collections.slug-in', [slug]);
+      } ,
+        search() {
+      this.$store.state.search = this.q; 
+      this.$router.push({ path: '/shop', query: { search: this.q } }); 
+    }
 
-      if (index >= 0) {
-        this.params['collections.slug-in'].splice(index, 1);
-      } else {
-        if (!this.params['collections.slug-in']) {
-          this.$set(this.params, 'collections.slug-in', []);
-        }
-        this.params['collections.slug-in'].push(slug);
-      }
-    },
     },
 }
 </script>
