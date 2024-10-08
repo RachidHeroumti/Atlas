@@ -2,8 +2,8 @@
 
     <div class="">
         
-        <div class="flex flex-col relative bg-white py-10">
-            
+        <div class="flex   bg-white py-2">
+         <!--   
             <table>
                 <tr>
                     <td class="flex">
@@ -52,16 +52,19 @@
                 </tr>
 
             </table>
-            <!--
-         <div class=" grid  grid-cols-5 w-full border-t-2 border-b-2 border-gray-200 py-5  font-poppins text-base font-base text-gray-500"> 
-               <div class=" flex items-center  ">
-                <button class="w-8 h-8 justify-center items-center  rounded-md " @click="remove">&times;</button>
+         -->   
+        <div class="  flex items-center justify-center w-5 sm:w-12  md:w-16 xl:w-40 ">
+                <button class="w-5 h-full justify-center items-center  rounded-md " @click="remove">&times;</button>
               </div>
+         <div class=" grid  grid-cols-4 w-full gap-1 border-t-2 border-b-2 border-gray-200 py-5  font-poppins text-sm sm:text-base font-base text-gray-500"> 
 
-            <div class=" items-center justify-center">
+
+             
+
+            <div class=" flex items-center justify-center  w-full">
                 <div class="flex flex-col sm:flex-row items-center w-full">
                     <nuxt-link class="w-1/2 md:1/4  hidden lg:flex" :to="`/products/${item.slug}`">
-                        <si-image class="border-2 border-gray-300 rounded-md object-contain w-full" :src="item.image" :alt="item.name"/>
+                        <si-image class="border-2 border-gray-300 rounded-md object-contain w-full h-28" :src="item.image" :alt="item.name"/>
                     </nuxt-link>
                     <div class=" w-1/2 md:w-3/4">
                         <div class="flex flex-col p-2">
@@ -75,21 +78,21 @@
                 </div> 
             </div>
 
-             <div class="  md:p-2 md:flex items-center justify-center ">
-                <span class="">{{ item.price }} </span> 
+            <div class=" flex flex-col md:flex-row  items-center  justify-center  w-full">
+                <span class="">{{ item.price }} </span>
                 <span>{{ $store.state.currency.symbol }}</span>
             </div>
 
-            <div class="  flex items-center sm:p-2 justify-center">
+            <div class="  flex items-center w-full justify-center ">
                 <si-product-quantity @selected="quantitySelected" :quantity="item.quantity"/>
             </div>
 
-            <div class=" md:p-2 md:flex items-center justify-center">
-                <span class=" ">{{ item.total }} </span>
+            <div class=" flex flex-col md:flex-row  items-center justify-center   w-full ">
+                <span class="">{{ item.total }} </span>
                 <span>{{ $store.state.currency.symbol }}</span>
-            </div>
+                   </div>
  
-             </div>  -->  
+             </div>  
         </div>
     </div>
 

@@ -1,10 +1,10 @@
 <template>
-    <div class=" mt-20">
+    <div class=" mt-16">
         <div class=" image-background ">
             <!--
             <h2 class="mb-2 text-2xl">{{$settings.sections.cart.title}}</h2>
             <hr> -->
-            <div class=" flex">
+            <div class=" flex ">
                  <h1 class="h-80">     
                  </h1>
                 </div>
@@ -14,22 +14,14 @@
             </div>
         
             <div class="flex flex-col cart-items bg-white py-10">
-                <table>
-                    <tr>
-                        <th>Product</th> <th>Price</th> <th>Quantty</th> <th>SubTotal</th> 
-                    </tr>
-
-                </table>
-                 <si-cart-item v-for="(item,i) in items" @remove="remove" :item="item" :key="i" />
-                <!--
-                <div class=" con grid grid-cols-5 w-full  text-gray-900 ">
-                <h1></h1>
-                 <h1 class=" font-poppins font-bold text-base">Product</h1>
-                  <h1 class=" font-poppins font-bold text-base">Price</h1>
-                   <h1 class=" font-poppins font-bold text-base">Quantty</h1>
-                    <h1 class=" font-poppins font-bold text-base">SubTotal</h1>
-                 </div>-->
-               
+        
+                <div class=" grid grid-cols-4 w-full  text-gray-900 ">
+                 <h1 class=" font-poppins font-bold text-base text-center">Product</h1>
+                  <h1 class=" font-poppins font-bold text-base text-center">Price</h1>
+                   <h1 class=" font-poppins font-bold text-base text-center">Quantty</h1>
+                    <h1 class=" font-poppins font-bold text-base text-center">SubTotal</h1>
+                 </div>
+               <si-cart-item v-for="(item,i) in items" @remove="remove" :item="item" :key="i" />
             </div> 
             
             <div v-if="!loading.cart && items.length > 0" class="flex flex-col mb-2 shadow sm:p-5 p-2 bg-white  ">

@@ -36,7 +36,7 @@
                   v-for="(sort, i) in sorts"
                   :key="i"
                   :value="sort.field"
-                  class="m-2 font-poppins text-12p font-base outline-none appearance:none px-2"
+                  class="m-2 font-poppins text-12p font-base outline-none appearance:none px-2 hover:text-underline"
                 >
                   {{ sort.name }}
                 </option>
@@ -231,8 +231,9 @@
               <div v-for="(item, i) in collections" :key="i" class="px-2">
                 <!---- -->
                 <div class="flex items-center p-1">
+                     <!---- remove item.childrens===0 -->
                   <span
-                    v-if="item.childrens && item.childrens.length === 0"
+                    v-if="item.childrens "
                     @click="toggleSelection(item.slug)"
                     class="capitalize cursor-pointer collec-name text-12p font-poppins font-normal hover:text-gray-600 hover:underline"
                   >
@@ -306,7 +307,7 @@
               </div>
             </div>
             <hr v-if="$settings.sections.shop.sidebar.collections.active" />
-            <div class="w-full relative py-5">
+            <div class="w-full relative py-5 hidden lg:flex ">
               <div
                 class="absolute z-20 top-0 left-0 w-3/4 h-full flex justify-center items-center"
               >
@@ -316,7 +317,6 @@
                   Shop
                 </h1>
               </div>
-
               <nuxt-img
                 class="w-3/4 h-48 rounded-sm object-cover opacity-75"
                 src="https://images.pexels.com/photos/9603486/pexels-photo-9603486.jpeg?auto=compress&cs=tinysrgb&w=600"
@@ -815,8 +815,8 @@ export default {
       this.loading.products = false;
     },
     toggleSelection(slug) {
+
       this.$set(this.params, "collections.slug-in", [slug]);
-      ;
     },
     search() {
       this.$store.state.search = this.q;
@@ -929,13 +929,20 @@ export default {
 [dir="rtl"] .rotated.active {
   transform: rotate(0deg);
 }
-select option {
-  background-color: rgb(255, 255, 255);
-  text-decoration: none;
+select {
+
 }
 
-select option:hover {
-  background-color: rgb(255, 255, 255);
+option {
+  /* Initial styling of options */
+  color: black;
+
+}
+
+option:hover {
+  background: white;
+  background-color: white;
   text-decoration: underline;
 }
 </style>
+http://172.19.96.1:62493/shop

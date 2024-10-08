@@ -42,6 +42,7 @@
 
         <div
           v-if="$store.state.showHeaderMenu"
+          
           class="px-10 bg-white text-titles-color sm:hidden fixed top-16 left-0 right-0 flex z-20 justify-between w-screen"
         >
           <div class="w-full">
