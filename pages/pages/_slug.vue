@@ -1,13 +1,12 @@
 <template>
- <div :style="backgroundStyle" class="image-background">
+ <div  :style="backgroundStyle" class="image-background">
      <div v-if="loading" class="flex items-center justify-center my-5">
             <si-loader></si-loader>
         </div>
-        <div class="w-full h-80 flex items-center justify-center">
+        <div class="w-full h-80 flex items-center justify-center" v-if="item">
             <h1 class="font-poppins font-bold text-5xl text-gray-900">{{item.title}} Pages</h1> 
         </div>
-       
-<div class=" w-full bg-white">
+       <div class=" w-full bg-white" v-if="item">
         <div v-if="item" class="container bg-white h-full p-5 space-y-3">
             <h1 class="m-2">{{ item.title }}</h1>
             <hr class="m-0">
@@ -19,14 +18,14 @@
                 <si-app-loader :placement="'AFTER_CONTACT_PAGE'"/>
             </div>
 
-       <!--social media -->
+      
             <div class="flex items-center">
                 <div class="flex w-full border-b border-gray-200 "></div>
                 <h3 class="p-2  whitespace-nowrap">{{ $settings.sections.post.share_buttons.title }}</h3>
                 <div class="flex w-full border-b border-gray-200 "></div>
             </div>
 
-            <!--social media -->
+            
             
             <div class="flex justify-center ">
                 <div v-for="item in socialMedia.filter(s=>$settings.sections.post.share_buttons[s.name])" :key="item.name" class="flex items-center justify-center h-12 m-2">
@@ -37,7 +36,7 @@
             </div>
       
         </div>
-  </div>
+    </div>
         <hr>
     </div>
 </template>
@@ -74,12 +73,9 @@ export default {
     async fetch(){
         try{
             const { slug } = this.$route.params;
-           
- 
             const { data } = await this.$storeino.pages.get({ slug, type: 'PAGE' })
            
             this.item = data;
-
             this.$store.state.seo.title = this.item.title + ' - ' + this.$settings.store_name;
             this.$store.state.seo.description = this.item.excerpt || this.$settings.store_description;
             if(this.item.image){ this.$store.state.seo.image = this.item.image.url; }
@@ -109,3 +105,8 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+.image-background { 
+}
+</style>

@@ -13,10 +13,10 @@
         <div class="flex flex-wrap justify-between " v-if="item">
             <meta itemprop="productID" :content="item._id" />
 
-            <div class="w-full sm:w-1/2 ">
-                <div class=" lg:flex  w-full  justify-center h-4/5  ">
-                     <div class=" w-full sm:w-1/4  ">
-                        <div class="flex lg:flex-col  justify-center items-center">
+            <div class="w-full lg:w-1/2 ">
+                <div class=" lg:flex  w-full   justify-center h-4/5  ">
+                     <div class=" w-full lg:w-1/4  0 p-2">
+                        <div class="flex lg:flex-col w-full lg:w-auto  justify-center items-center">
                             <si-image width="100" height="100" class=" w-20 h-20 sm:w-24 sm:h-24 m-1  cursor-pointer"
                              v-for="(image, index) in item.images" @click="setImage(index)" :key="index" :src="image.src" :alt="`${item.name} - ${image.title}`"/>
                         </div>
@@ -57,12 +57,12 @@
                         </div>
 
 
-                        <div v-else class="flex w-full flex-wrap md:flex-nowrap space-x-2">
-                            <div class="flex justify-start" v-show="!outofstock">
+                        <div v-else class="flex w-full sm:flex-wrap md:flex-nowrap space-x-2 z-50 sm:z-auto fixed bottom-0 left-0  bg-white sm:static">
+                            <div class="flex justify-center  sm:justify-start w-full sm:w-auto" v-show="!outofstock">
                             <si-product-quantity @selected="quantitySelected" :quantity="quantity"></si-product-quantity>
                               </div>
                             <button v-if="$settings.sections.product.add_to_cart.active" @click="addToCart"
-                             class="flex justify-center p-2 px-6 hover:text-titles-color hover:bg-white border border-dark-gray  text-white ai-c click-effect bg-titles-color ">
+                             class="flex justify-center w-full sm:w-auto p-2 px-6 hover:text-titles-color hover:bg-white border border-dark-gray  text-white ai-c click-effect bg-titles-color ">
                                 <span class="w-full">{{ $settings.sections.product.add_to_cart.text }}</span>
                             </button>
                         

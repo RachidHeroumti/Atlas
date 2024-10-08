@@ -43,11 +43,11 @@
 
                     <transition name="slide">
                     <div v-if="item._id == activeId">
-                        <div v-for="(item,i) in item.childrens" :key="i" class=" bg-white font-base text-13p">
+                        <div v-for="(item,i) in item.childrens" :key="i" class=" bg-white text-titles-color font-poppins  font-base text-13p">
                             <router-link class="m-1  bg-white hover:underline flex" :to="item.url">{{item.text}}</router-link>
                             <ul class=" " v-if="item.childrens && item.childrens.length > 0">
                                 <li v-for="(child,ii) in item.childrens" :key="ii">
-                                    <nuxt-link  class=" m-1 rounded-md bg-gray-50 hover:bg-white hover:text-gray-300 flex" :to="child.url">
+                                    <nuxt-link  class=" m-1 flex" :to="child.url">
                                         {{ child.text }}
                                     </nuxt-link>
                                 </li>

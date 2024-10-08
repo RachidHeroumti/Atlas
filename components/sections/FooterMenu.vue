@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-gray-900 text-white  py-16 p-10">
+  <div class="bg-gray-900 text-white w-full  py-16 p-10">
 
       <div class=" sm:flex  justify-start sm:space-x-5 mb-3" v-if="menu">
 

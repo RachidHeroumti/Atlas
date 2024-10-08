@@ -1,5 +1,6 @@
 <template>
     <div class=" bg-white" >
+      
         <component :is="'style'">
             :root{ --primary-rgb: {{ rgb.r }}, {{rgb.g}}, {{ rgb.b }}; --primary-color: rgb(var(--primary-rgb)); }
             .bg-primary{ background-color: var(--primary-color); }
@@ -19,9 +20,7 @@
         <sections-header></sections-header>
       </div>
     </template>
-
-            <Nuxt />
-
+     <Nuxt />
   <template v-if="$route.name !== 'index'">
       <!-- <sections-footer></sections-footer> -->
         <div class="">
@@ -64,7 +63,7 @@
         <button
       v-if="showScrollTopButton"
       @click="scrollToTop"
-      class="fixed bottom-5 right-5 text-white bg-gray-400 hover:bg-titles-color w-10 h-10 font-poppins font-normal text-base flex items-center justify-center"
+      class="fixed bottom-5 z-50 right-5 text-white bg-gray-400 hover:bg-titles-color w-10 h-10 font-poppins font-normal text-base flex items-center justify-center"
     >
       <span class="">^</span>
     </button>
@@ -164,7 +163,7 @@ export default {
 
 </script>
 <style>
-/*
+
     [dir='ltr'] .to-right{
         transform: translateX(20rem);
     }
@@ -172,7 +171,7 @@ export default {
         transform: translateX(-20rem) !important; 
        
     }
-     */
+     
     .currency-switcher {display: flex; position: fixed; z-index: 9999; top: 0; left: 0; width: 100%; height: 100%; align-items: center; justify-content: center; background: #00000078;}
     .currency-switcher-overlay {position: fixed; top: 0; left: 0; width: 100%; height: 100%;}
     .currency-switcher-modal {background: white;border-radius: 10px;min-width: 320px; position: relative;}
