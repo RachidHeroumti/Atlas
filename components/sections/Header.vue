@@ -8,10 +8,11 @@
     <div class="relative h-full">
       <div class="flex items-center justify-between p-2 h-full">
         <!-- to controll menus -->
-        <button
+        <div class=" min-w-20 w-20  ">
+  <button
           @click="$store.state.showHeaderMenu = !$store.state.showHeaderMenu"
           aria-label="Search button"
-          class="sm:hidden w-28 h-full"
+          class="md:hidden  h-full "
         >
           <si-svg>
             <svg
@@ -39,10 +40,12 @@
             </svg>
           </si-svg>
         </button>
+        </div>
+      
 
         <div
           v-if="$store.state.showHeaderMenu"
-          class="px-10 bg-white text-titles-color sm:hidden fixed top-16 left-0 right-0 flex z-20 justify-between w-screen"
+          class="px-10 bg-white text-titles-color md:hidden fixed top-16 left-0 right-0 flex z-20 justify-between w-screen"
         >
           <div class="w-full">
             <ul
@@ -96,16 +99,18 @@
                       :to="item.url"
                       >{{ item.text }}</router-link
                     >
+                    
                     <ul
                       class=" "
                       v-if="item.childrens && item.childrens.length > 0"
                     >
                       <li v-for="(child, ii) in item.childrens" :key="ii">
-                        <nuxt-link class="m-1 flex" :to="child.url">
+                        <nuxt-link class="m-1 flex px-5" :to="child.url">
                           {{ child.text }}
                         </nuxt-link>
                       </li>
                     </ul>
+
                   </div>
                 </div>
               </transition>
@@ -129,7 +134,7 @@
         </div>
 
         <div class="flex w-full text-dark-gray">
-          <div class="flex items-center justify-between w-full icons px-3">
+          <div class="flex justify-end  items-center md:justify-between w-full icons px-3">
             <!--Nav Bar-Menu start ------------------------------------------------>
             <div
               v-if="menu"
@@ -211,12 +216,12 @@
 
             <!-------------------------------------------------------------------------- navbar end-->
            
-            <div class="flex justify-end h-full w-40 bg-red-500">
+            <div class="flex justify-end h-full w-40 ">
               <button
                 v-if="$settings.sections.header.icons.search"
                 @click="showSearch = true"
                 aria-label="Search button"
-                class="relative p-2 mx-1 flex justify-center rounded-md item items-center w-12"
+                class="relative p-2 mx-1 flex justify-center rounded-md item items-center w-12 "
               >
                 <si-svg>
                   <svg
@@ -326,12 +331,11 @@
                 to="/cart"
                 title="Cart"
                 id="cart-icon"
-                class="relative mx-1 rounded-md item"
+                class="relative mx-1 rounded-md item w-12"
               >
                 <si-svg>
                   <svg
-                    width="40"
-                    height="40"
+                    
                     viewBox="-3.84 -3.84 31.68 31.68"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -362,6 +366,7 @@
                 >
               </router-link>
             </div>
+            
           </div>
 
           <div

@@ -63,7 +63,7 @@
         <button
       v-if="showScrollTopButton"
       @click="scrollToTop"
-      class="fixed bottom-10 sm:bottom-5 z-50 right-5 text-white bg-gray-400 hover:bg-titles-color w-12 h-10 font-poppins font-normal text-base flex items-center justify-center"
+      class="fixed hidden  z-50 right-5 text-white bg-gray-400 hover:bg-titles-color w-12 h-10 font-poppins font-normal text-base md:flex items-center justify-center"
     >
       <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="m256-424-56-56 280-280 280 280-56 56-224-223-224 223Z"/></svg>
     </button>
