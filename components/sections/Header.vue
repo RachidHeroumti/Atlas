@@ -1,6 +1,6 @@
 <template>
   <div
-  :class="{ hidden: isHidden }"
+    :class="{ hidden: isHidden }"
     class="text-titles-color bg-white w-full fixed top-0 left-0 right-0 h-20 z-30 border-b border-gray-200"
   >
     <!--fixed top-0 left-0  z-50  -->
@@ -42,7 +42,6 @@
 
         <div
           v-if="$store.state.showHeaderMenu"
-          
           class="px-10 bg-white text-titles-color sm:hidden fixed top-16 left-0 right-0 flex z-20 justify-between w-screen"
         >
           <div class="w-full">
@@ -90,7 +89,7 @@
                   <div
                     v-for="(item, i) in item.childrens"
                     :key="i"
-                    class="bg-white text-titles-color font-poppins  font-base text-13p"
+                    class="bg-white text-titles-color font-poppins font-base text-13p"
                   >
                     <router-link
                       class="m-1 bg-white hover:underline flex"
@@ -149,23 +148,28 @@
                   @mouseover="hoveredItem = i"
                 >
                   <!-- Parent Item Text -->
-                  <div class="p-2 sm:px-3 w-full flex" @focus="hoveredItem = i">
+                  <div class="p-4 w-full flex" @focus="hoveredItem = i">
                     {{ item.text }}
                   </div>
+
+                  <!-- First Level Submenu -->
                   <ul
                     v-if="item.childrens && item.childrens.length > 0"
                     :class="[
                       'submenu',
                       { 'submenu-visible': hoveredItem === i },
                     ]"
-                    class="p-2 bg-white z-30 px-5"
+                    class="p-4 py-2 sm:py-5 md:py-10 z-30 w-40 bg-white shadow-sm"
                     @mouseenter="hoveredItem = i"
                     @mouseleave="hoveredItem = null"
                   >
                     <li
                       v-for="(child, ii) in item.childrens"
                       :key="ii"
-                      class="py-1 hover:underline"
+                      class="py-1 hover:underline relative"
+                      @mouseenter="hoveredChild = ii"
+                      @mouseleave="hoveredChild = null"
+                      @mouseover="hoveredChild = ii"
                     >
                       <nuxt-link
                         class="flex whitespace-nowrap font-base text-12p"
@@ -173,6 +177,32 @@
                       >
                         {{ child.text }}
                       </nuxt-link>
+
+                      <ul
+                        v-if="child.childrens && child.childrens.length > 0"
+                        :class="[
+                          'second-level-submenu',
+                          {
+                            'second-level-submenu-visible': hoveredChild === ii,
+                          },
+                        ]"
+                        class="w-40 bg-white z-30 p shadow-sm sm:px-3 md:px-5 py-1 sm:py-3 md:py-5"
+                        @mouseenter="hoveredChild = ii"
+                        @mouseleave="hoveredChild = null"
+                      >
+                        <li
+                          v-for="(grandchild, iii) in child.childrens"
+                          :key="iii"
+                          class="py-1 hover:underline"
+                        >
+                          <nuxt-link
+                            class="flex whitespace-nowrap font-base text-12p"
+                            :to="grandchild.url"
+                          >
+                            {{ grandchild.text }}
+                          </nuxt-link>
+                        </li>
+                      </ul>
                     </li>
                   </ul>
                 </li>
@@ -180,37 +210,13 @@
             </div>
 
             <!-------------------------------------------------------------------------- navbar end-->
-            <!--
-            <div class=" flex space-x-5 px-3 font-medium">
-             <router-link v-if="$settings.sections.header.icons.cart" to="/" title="home" id="home" 
-                 class="relative p-2 mx-1 ">
-                 <span class=" font-poppins  hover:underline ">Home</span>
-              </router-link>
-             <router-link v-if="$settings.sections.header.icons.cart" to="/pages" title="Pages" id="Pages" 
-                 class="relative p-2 mx-1 ">
-                 <span class="  font-poppins hover:underline  ">Pages</span>
-               </router-link>
-             <router-link v-if="$settings.sections.header.icons.cart" to="/shop" title="shop" id="shop" 
-                 class="relative p-2 mx-1 ">
-                 <span class="  font-poppins   hover:underline ">Shop</span>
-               </router-link>
-              <router-link v-if="$settings.sections.header.icons.cart" to="/portfolio" title="portfolio" id="portfolio" 
-                 class="relative p-2 mx-1 ">
-                 <span class=" font-poppins   hover:underline ">Portfolio</span>
-               </router-link>
-             <router-link v-if="$settings.sections.header.icons.cart" to="/Blog" title="Blog" id="Blog" 
-                 class="relative p-2 mx-1 ">
-                 <span class="  font-poppins   hover:underline ">Blog</span>
-               </router-link>
-             </div>
-             -->
-
-            <div class="flex justify-end h-full w-40">
+           
+            <div class="flex justify-end h-full w-40 bg-red-500">
               <button
                 v-if="$settings.sections.header.icons.search"
                 @click="showSearch = true"
                 aria-label="Search button"
-                class="relative p-2 mx-1 flex justify-center rounded-md item items-center w-12 "
+                class="relative p-2 mx-1 flex justify-center rounded-md item items-center w-12"
               >
                 <si-svg>
                   <svg
@@ -497,6 +503,7 @@ export default {
   data() {
     return {
       showSearch: false,
+      hoveredChild: null,
       activeId: null,
       menu: this.$settings.sections.header.navbarmenu,
       iconMenu: null,
@@ -504,8 +511,8 @@ export default {
       section: this.$settings.sections.header,
       hoveredItem: null,
       showMenuList: false,
-        lastScrollTop: 0,
-      isHidden: false
+      lastScrollTop: 0,
+      isHidden: false,
     };
   },
   watch: {
@@ -516,7 +523,6 @@ export default {
         });
       }
     },
-    
   },
   mounted() {
     window.addEventListener("scroll", this.handleScroll);
@@ -530,7 +536,7 @@ export default {
       this.$router.push({ path: "/shop", query: { search: this.q } });
       this.showSearch = false;
     },
-     handleScroll() {
+    handleScroll() {
       const currentScroll = window.pageYOffset;
 
       if (currentScroll > this.lastScrollTop && currentScroll > 50) {
@@ -540,7 +546,7 @@ export default {
       }
 
       this.lastScrollTop = currentScroll;
-    }
+    },
   },
 };
 </script>
@@ -567,13 +573,26 @@ export default {
   opacity: 0;
   visibility: hidden;
   transform: translateY(-20px); /* Initially slide up */
-  transition: all 0.5s ease-in-out;
+  transition: all 0.8s ease-in-out;
 }
 
 .submenu-visible {
   opacity: 1;
   visibility: visible;
-  transform: translateY(0); /* Slide down into view */
+  transform: translateY(0);
 }
 
+.second-level-submenu {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.second-level-submenu-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+}
 </style>

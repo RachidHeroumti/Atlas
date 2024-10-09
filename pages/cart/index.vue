@@ -1,12 +1,10 @@
 <template>
     <div class=" mt-16">
         <div class=" image-background ">
-            <!--
-            <h2 class="mb-2 text-2xl">{{$settings.sections.cart.title}}</h2>
-            <hr> -->
-            <div class=" flex ">
-                 <h1 class="h-80">     
-                 </h1>
+            
+            <div class=" flex w-full  h-80  justify-center items-center">
+                    <span class=" text-white font-poppins font-bold  text-3xl">{{$settings.sections.cart.title}}</span>     
+                 
                 </div>
            
             <div v-if="loading.cart" class="flex items-center justify-center my-5">
@@ -15,7 +13,7 @@
         
             <div class="flex flex-col cart-items bg-white py-10">
         
-                <div class=" grid grid-cols-4 w-full  text-gray-900 ">
+                <div class=" grid grid-cols-4 w-full  text-gray-900 mx-2 md:mx-5 xl:mx-10 ">
                  <h1 class=" font-poppins font-bold text-base text-center">Product</h1>
                   <h1 class=" font-poppins font-bold text-base text-center">Price</h1>
                    <h1 class=" font-poppins font-bold text-base text-center">Quantty</h1>

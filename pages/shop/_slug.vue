@@ -28,20 +28,34 @@
                 >
               </div>
 
-              <select
-                class="p-2 sm:px-4 font-poppins font-base text-base outline-none appearance:none"
-                v-model="params.sort"
-              >
-                <option
-                  v-for="(sort, i) in sorts"
-                  :key="i"
-                  :value="sort.field"
-                  class="m-2 font-poppins text-12p font-base outline-none appearance:none px-2 hover:text-underline"
-                >
-                  {{ sort.name }}
-                </option>
-              </select>
-              
+                <!-- Sort -->
+                    <div class="relative" @mouseover="windowWidth >= 1024 ? isSortVisible = true : null"
+                        @mouseleave="windowWidth >= 1024 ? isSortVisible = false : null">
+                        <div class="flex items-center py-3 cursor-pointer font-poppins font-base text-base" @click="showSort">
+                            <span class=" ">{{ $settings.sections.shop.sorts.sort_by_text }} defult sorting </span>
+                            <svg class="w-5 h-4" aria-label="chivron icon"
+                                :class="isSortVisible == true ? 'rotate-180 transition-all delay-150 ease-linear' : ''"
+                                width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z"
+                                    fill="currentColor"></path>
+                            </svg>
+                        </div>
+                        <transition name="fade">
+                            <div v-show="isSortVisible"
+                                class="absolute right-0 z-20 w-56 bg-white rounded-b-lg shadow-lg sort-direction top-full">
+                                <div class="flex flex-col gap-3 py-5 px-5 ">
+                                    <div class="flex items-center" v-for="(sort, i) in sorts" :key="i">
+                                        <input hidden type="radio" v-model="params.sort" :value="sort.field"
+                                            :id="sort.name">
+                                        <label class="cursor-pointer text-13p text-secondary-hover hover:underline hover:text-titles-color" :for="sort.name">{{
+                                            sort.name }}</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </transition>
+                    </div>
+                    <!-- Sort -->
             </div>
           </div>
           <div
@@ -231,15 +245,13 @@
               <div v-for="(item, i) in collections" :key="i" class="px-2">
                 <!---- -->
                 <div class="flex items-center p-1">
-                     <!---- remove item.childrens===0 -->
+                  <!---- remove item.childrens===0 -->
                   <span
-                    v-if="item.childrens "
+                    v-if="item.childrens"
                     @click="toggleSelection(item.slug)"
                     class="capitalize cursor-pointer collec-name text-12p font-poppins font-normal hover:text-gray-600 hover:underline"
                   >
-                    {{ item.name }}({{
-                      items.length ? items.length : 0
-                    }})
+                    {{ item.name }}  ({{ productCounts[item.slug] || 0 }})
                   </span>
                   <!--
   <span
@@ -307,7 +319,7 @@
               </div>
             </div>
             <hr v-if="$settings.sections.shop.sidebar.collections.active" />
-            <div class="w-full relative py-5 hidden lg:flex ">
+            <div class="w-full relative py-5 hidden lg:flex">
               <div
                 class="absolute z-20 top-0 left-0 w-3/4 h-full flex justify-center items-center"
               >
@@ -490,7 +502,7 @@
               </div>
             </div>
 
-            <!-- taggs -->
+            <!-- brands -->
             <hr v-if="$settings.sections.shop.sidebar.tags.active" />
             <h2
               class="px-2 mt-2 font-poppins text-base font-medium p-2"
@@ -540,6 +552,9 @@
 export default {
   data() {
     return {
+      productCounts: {}, 
+      windowWidth: 0,
+      isSortVisible: false,
       loading: {
         products: true,
         filters: true,
@@ -685,7 +700,27 @@ export default {
     await this.getBrands();
     this.subCollections();
   },
+  mounted() {
+    // All Pixel
+    this.$tools.call("PAGE_VIEW");
+    // Fb Pixel
+    this.$storeino.fbpx("PageView");
+    // Get Window Width
+    this.getWindowWidth();
+    window.addEventListener("resize", this.getWindowWidth);
+  },
+  beforeUnmount() {
+    window.removeEventListener("resize", this.getWindowWidth);
+  },
   methods: {
+    getWindowWidth() {
+      this.windowWidth = window.innerWidth;
+    },
+    showSort() {
+      if (window.innerWidth < 1024) {
+        this.isSortVisible = !this.isSortVisible;
+      }
+    },
     subCollections() {
       for (let itm of this.collections) {
         if (itm.childrens && itm.childrens.length > 0) itm.childrens = [];
@@ -815,14 +850,47 @@ export default {
       this.loading.products = false;
     },
     toggleSelection(slug) {
-
       this.$set(this.params, "collections.slug-in", [slug]);
     },
+async fetchProductCounts() {
+    const counts = {};
+    for (const collection of this.collections) {
+      counts[collection.slug] = await this.getProductsLength(collection.slug);
+    }
+    this.productCounts = counts; // Update the reactive property
+  },
+  
+  async getProductsLength(slug) {
+    try {
+      const { data } = await this.$storeino.products.search({
+        "collections.slug-in": slug,
+      });
+      return data && data.results ? data.results.length : 0;
+    } catch (err) {
+      this.$sentry.captureException(err);
+      return 0; // Return 0 on error
+    }
+  },
+  async getCollections() {
+  this.collections = [];
+  this.loading.collections = true;
+  try {
+    const { data } = await this.$storeino.collections.search({});
+    this.collections = data.results;
+    await this.fetchProductCounts(); // Fetch product counts after collections are set
+  } catch (e) {
+    console.log({ e });
+  }
+  this.loading.collections = false;
+},
+
+
     search() {
       this.$store.state.search = this.q;
       this.$router.push({ path: "/shop", query: { search: this.q } });
     },
   },
+
 };
 </script>
 <style>
@@ -930,13 +998,11 @@ export default {
   transform: rotate(0deg);
 }
 select {
-
 }
 
 option {
   /* Initial styling of options */
   color: black;
-
 }
 
 option:hover {

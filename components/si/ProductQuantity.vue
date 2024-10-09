@@ -1,5 +1,5 @@
 <template>
-    <div class="flex items-center font-poppins font-base justify-center  text-gray-400 border border-gray-300  text-sm ">
+    <div class="flex items-center font-poppins font-base justify-center  text-gray-400 sm:border border-gray-300  text-sm ">
         <button @click="inc(-1)" class="  py-2 px-2 md:px-4" :class="value > quantity.min ? ' ' : ''">&lt;</button>
 
         <div class="flex font-poppins font-base ">
