@@ -99,7 +99,7 @@
                       :to="item.url"
                       >{{ item.text }}</router-link
                     >
-                    
+
                     <ul
                       class=" "
                       v-if="item.childrens && item.childrens.length > 0"
@@ -546,10 +546,12 @@ export default {
 
       if (currentScroll > this.lastScrollTop && currentScroll > 50) {
         this.isHidden = true;
+        $store.state.showHeaderMenu=false ;
+        console.log('meun controller :',$store.state.showHeaderMenu);
+
       } else {
         this.isHidden = false;
       }
-
       this.lastScrollTop = currentScroll;
     },
   },

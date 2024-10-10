@@ -15,7 +15,7 @@
 
             <div class="w-full lg:w-1/2 ">
                 <div class=" lg:flex  w-full   justify-center h-4/5  ">
-                     <div class=" w-full lg:w-1/4  0 p-2">
+                     <div class=" w-full lg:w-1/4  hidden md:block p-2">
                         <div class="flex lg:flex-col w-full lg:w-auto  justify-center items-center">
                             <si-image width="100" height="100" class=" w-20 h-20 sm:w-24 sm:h-24 m-1  cursor-pointer"
                              v-for="(image, index) in item.images" @click="setImage(index)" :key="index" :src="image.src" :alt="`${item.name} - ${image.title}`"/>
@@ -24,6 +24,13 @@
                     <si-image width="500" height="580"  class="w-3/4  cursor-pointer  " 
                      @click="$store.state.fullImage=image ? image.src : null" :src="image ? image.src : null " :alt="item.name"/>
                    
+                   <div class=" w-full lg:w-1/4   p-2 md:hidden">
+                        <div class="flex lg:flex-col w-full lg:w-auto  justify-center items-center">
+                            <si-image width="100" height="100" class=" w-20 h-20 sm:w-24 sm:h-24 m-1  cursor-pointer"
+                             v-for="(image, index) in item.images" @click="setImage(index)" :key="index" :src="image.src" :alt="`${item.name} - ${image.title}`"/>
+                        </div>
+                    </div>
+
                 </div>
 
             </div>

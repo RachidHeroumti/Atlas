@@ -4,7 +4,7 @@
             <si-loader></si-loader>
         </div>
         <div class="w-full h-80 flex items-center justify-center" v-if="item">
-            <h1 class="font-poppins font-bold text-5xl text-gray-900">{{item.title}} Pages</h1> 
+            <h1 class="font-poppins font-bold text-5xl text-gray-900">{{item.title}}</h1> 
         </div>
        <div class=" w-full bg-white" v-if="item">
         <div v-if="item" class="container bg-white h-full p-5 space-y-3">
