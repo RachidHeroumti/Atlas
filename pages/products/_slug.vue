@@ -1,6 +1,6 @@
 <template>
  
-    <div class=" p-2 sm:p-8 mt-16 bg-white  ">
+    <div class=" p-2 sm:p-8 pt-16 bg-white  ">
         <!-- header for product details page -->
        <!-- <sections-header></sections-header>-->
          <!--<sections-header-top></sections-header-top> -->
@@ -99,11 +99,25 @@
                             <span class=" font-poppins text-sm font-base ">Tag: Decorative</span>
                         </div>         
                         <div class=" flex w-full space-x-2">
-                            <button class="p-3 font-poppins text-white-gray text-base border border-gray-300 bg-gray-200 hover:bg-titles-color hover:text-white">Description</button>
-                            <button class="p-3 font-poppins  text-white-gray text-base border-gray-300 bg-gray-200 hover:bg-titles-color hover:text-white">Additional Information</button>
-                            <button class="p-3 font-poppins text-white-gray text-base border-gray-300 bg-gray-200 hover:bg-titles-color hover:text-white">Reviews({{ item.review.reviews.length }})</button>
+                            <button class="p-3 font-poppins text-white-gray text-base border border-gray-300 bg-gray-200 hover:bg-titles-color hover:text-white"
+                            @click="showmoredescription=true ; showaAdditionalInfo=false">Description</button>
+                            <button class="p-3 font-poppins  text-white-gray text-base border-gray-300 bg-gray-200 hover:bg-titles-color hover:text-white"
+                             @click="showmoredescription=false ; showaAdditionalInfo=true">Additional Information</button>
+                            <button class="p-3 font-poppins text-white-gray text-base border-gray-300 bg-gray-200 hover:bg-titles-color hover:text-white"
+                             @click="showmoredescription=false ; showaAdditionalInfo=false">Reviews({{ item.review.reviews.length }})</button>
                         </div>
-                        <p class=" font-poppins text-base font-base text-white-gray  my-8 ">{{ item.description }}</p>
+                        <div class="font-poppins text-base font-base text-white-gray  py-8 ">
+                               <p v-if="showmoredescription"
+                                class=" ">{{ item.description }}</p>
+                               <div v-if="showaAdditionalInfo"
+                               >
+                               <p>collection : {{item.collections[0].name}}</p>
+                               <p>productType: {{item.productType}}</p>
+                                <p>tags : {{item.tags[0]}}</p>
+                               </div>
+                               
+                        </div>
+                     
                         <si-app-loader v-show="!outofstock" placement="REPLACE_BUYNOW"/>
                         <si-app-loader placement="AFTER_ADD_TO_CART"/>
                     </div>
@@ -209,6 +223,8 @@ export default {
             loading: true,
             item: null,
             image: null,
+            showaAdditionalInfo:false,
+            showmoredescription: true,
             tab: 'description',
             outofstock: false,
             quantity: {},
@@ -288,7 +304,6 @@ export default {
                 });
                 this.$tools.call('PAGE_VIEW', this.item);
             }
-
         }catch(e){
             console.log(e);
             this.$nuxt.error({ statusCode: 404, message: 'product_not_found' })

@@ -7,9 +7,12 @@
     <div v-if="loading" class="flex justify-center items-center my-5">
       <si-loader></si-loader>
     </div>
-    <div class="flex flex-wrap">
-      <div v-for="(item, i) in items" :key="i" class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-2">
+    <div class="flex w-full">
+      <div class="flex  overflow-x-scroll w-screen">
+        
+      <div v-for="(item, i) in items" :key="i" class=" bg-red-500 p-1 w-1/2 sm:w-1/3 md:w-1/4 xl:w-1/5  mx-1" >
         <si-product :item="item"></si-product>
+      </div>
       </div>
     </div>
     <div class="flex justify-center" v-if="$settings.sections.products_1.show_more_text">

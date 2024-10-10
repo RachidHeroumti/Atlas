@@ -1,6 +1,6 @@
 <template>
 <div class="bg-white px-4">
-    <si-app-loader placement="BEFORE_FOOTER"/>
+    
     <div class="container py-2">
         <div class="flex flex-wrap sm:space-y-2">
             <div class="w-full flex flex-col justify-center px-3  p-2 font-poppins font-base text-12p space-y-2  text-gray-600">
@@ -35,7 +35,7 @@
             
         </div>
     </div>
-    <si-app-loader placement="AFTER_FOOTER"/>
+   
 </div>
 </template>
 

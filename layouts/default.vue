@@ -12,10 +12,11 @@
     <template v-if="$route.name !== 'index'">
       <sections-header-top></sections-header-top>
       <sections-header></sections-header>
+      <si-app-loader placement="AFTER_HEADER" />
     </template>
 
     <template v-if="$route.name ==='index'">
-      <div class="flex sm:hidden">
+      <div class="flex flex-col sm:hidden">
         <sections-header-top></sections-header-top>
         <sections-header></sections-header>
       </div>

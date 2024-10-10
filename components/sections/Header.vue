@@ -1,7 +1,9 @@
 <template>
-  <div
-    :class="{ hidden: isHidden }"
-    class="text-titles-color bg-white w-full fixed top-0 left-0 right-0 h-20 z-30 border-b border-gray-200"
+ <div
+    :class="[
+      { hidden: isHidden,fixed:isFixed ,block:!isFixed},
+      'text-titles-color bg-white w-full top-0  left-0 right-0 min-h-20 z-30 border-b border-gray-200'
+    ]"
   >
     <!--fixed top-0 left-0  z-50  -->
     <si-app-loader placement="BEFORE_HEADER" />
@@ -9,7 +11,7 @@
       <div class="flex items-center justify-between p-2 h-full">
         <!-- to controll menus -->
         <div class=" min-w-20 w-20  ">
-  <button
+          <button
           @click="$store.state.showHeaderMenu = !$store.state.showHeaderMenu"
           aria-label="Search button"
           class="md:hidden  h-full "
@@ -42,81 +44,59 @@
         </button>
         </div>
       
+      <!-- menu mobile -->
+       <div v-if="$store.state.showHeaderMenu" class="px-10 bg-white text-titles-color md:hidden fixed top-16 left-0 right-0 flex z-20 justify-between w-screen">
+  <div class="w-full">
+    <ul v-for="(item, i) in menu.items" :key="i" class="flex flex-col w-full">
+      <li class="flex items-center mb-1 justify-between w-full border-b-2 hover:underline hover:underline-offset-4">
+        <router-link class="m-1 w-full flex font-poppins text-13p text-titles-color font-medium" :to="item.url">
+          {{ item.text }}
+        </router-link>
+        <button class="p-2 " @click="activeId = activeId !== item._id ? item._id : null">
+          <si-svg>
+            <svg v-if="item.childrens && item.childrens.length > 0" class="w-2 transform" :class="activeId === item._id ? 'rotate-180' : ''" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 330 330" style="enable-background: new 0 0 330 330" xml:space="preserve">
+              <path d="M325.607,79.393c-5.857-5.857-15.355-5.858-21.213,0.001l-139.39,139.393L25.607,79.393c-5.857-5.857-15.355-5.858-21.213,0.001c-5.858,5.858-5.858,15.355,0,21.213l150.004,150c2.813,2.813,6.628,4.393,10.606,4.393s7.794-1.581,10.606-4.394l149.996-150C331.465,94.749,331.465,85.251,325.607,79.393z" />
+            </svg>
+          </si-svg>
+        </button>
+      </li>
 
-        <div
-          v-if="$store.state.showHeaderMenu"
-          class="px-10 bg-white text-titles-color md:hidden fixed top-16 left-0 right-0 flex z-20 justify-between w-screen"
-        >
-          <div class="w-full">
-            <ul
-              v-for="(item, i) in menu.items"
-              :key="i"
-              class="flex flex-col w-full"
-            >
-              <li
-                class="flex items-center mb-1 justify-between w-full border-b-2 hover:underline hover:underline-offset-4"
-              >
-                <router-link
-                  class="m-1 w-full flex font-poppins text-13p text-titles-color font-medium"
-                  :to="item.url"
-                  >{{ item.text }}</router-link
-                >
-                <button
-                  class="p-2 mx-1"
-                  @click="activeId = activeId != item._id ? item._id : null"
-                >
-                  <si-svg>
-                    <svg
-                      v-if="item.childrens && item.childrens.length > 0"
-                      class="w-3 transform"
-                      :class="activeId == item._id ? 'rotate-180' : ''"
-                      xmlns="http://www.w3.org/2000/svg"
-                      xmlns:xlink="http://www.w3.org/1999/xlink"
-                      version="1.1"
-                      x="0px"
-                      y="0px"
-                      viewBox="0 0 330 330"
-                      style="enable-background: new 0 0 330 330"
-                      xml:space="preserve"
-                    >
-                      <path
-                        d="M325.607,79.393c-5.857-5.857-15.355-5.858-21.213,0.001l-139.39,139.393L25.607,79.393  c-5.857-5.857-15.355-5.858-21.213,0.001c-5.858,5.858-5.858,15.355,0,21.213l150.004,150c2.813,2.813,6.628,4.393,10.606,4.393  s7.794-1.581,10.606-4.394l149.996-150C331.465,94.749,331.465,85.251,325.607,79.393z"
-                      />
-                    </svg>
-                  </si-svg>
-                </button>
-              </li>
+      <transition name="slide">
+        <div v-if="item._id === activeId">
+          <div v-for="(child, i) in item.childrens" :key="i" class="bg-white text-titles-color font-poppins text-13p  justify-between"
+          >
+          <div class=" flex justify-between">
+            <router-link class="m-1 bg-white hover:underline flex text-white-gray" :to="child.url">
+              {{ child.text }}
+            </router-link>
+            <!-- Child Toggle Button -->
+            <button class="p-2" @click="activeChildid = activeChildid !== child._id ? child._id : null">
+              <si-svg>
+                <svg v-if="child.childrens && child.childrens.length > 0" class="w-2 transform" :class="activeChildid === child._id ? 'rotate-180' : ''" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 330 330" style="enable-background: new 0 0 330 330" xml:space="preserve">
+                  <path d="M325.607,79.393c-5.857-5.857-15.355-5.858-21.213,0.001l-139.39,139.393L25.607,79.393c-5.857-5.857-15.355-5.858-21.213,0.001c-5.858,5.858-5.858,15.355,0,21.213l150.004,150c2.813,2.813,6.628,4.393,10.606,4.393s7.794-1.581,10.606-4.394l149.996-150C331.465,94.749,331.465,85.251,325.607,79.393z" />
+                </svg>
+              </si-svg>
+            </button>
+          </div>
 
-              <transition name="slide">
-                <div v-if="item._id == activeId">
-                  <div
-                    v-for="(item, i) in item.childrens"
-                    :key="i"
-                    class="bg-white text-titles-color font-poppins font-base text-13p"
-                  >
-                    <router-link
-                      class="m-1 bg-white hover:underline flex"
-                      :to="item.url"
-                      >{{ item.text }}</router-link
-                    >
-
-                    <ul
-                      class=" "
-                      v-if="item.childrens && item.childrens.length > 0"
-                    >
-                      <li v-for="(child, ii) in item.childrens" :key="ii">
-                        <nuxt-link class="m-1 flex px-5" :to="child.url">
-                          {{ child.text }}
-                        </nuxt-link>
-                      </li>
-                    </ul>
-
-                  </div>
-                </div>
-              </transition>
-            </ul>
+            <transition name="slide">
+              <div v-if="child._id === activeChildid">
+                <ul v-for="(subChild, ii) in child.childrens" :key="ii" class="px-5">
+                  <li>
+                    <router-link class="m-1 flex px-5 text-white-gray" :to="subChild.url">
+                      {{ subChild.text }}
+                    </router-link>
+                  </li>
+                </ul>
+              </div>
+            </transition>
           </div>
         </div>
+      </transition>
+    </ul>
+  </div>
+</div>
+
 
         <div class="flex items-center px-4 logo w-full">
           <router-link to="/">
@@ -177,12 +157,18 @@
                       @mouseover="hoveredChild = ii"
                     >
                       <nuxt-link
-                        class="flex whitespace-nowrap font-base text-12p"
+                        class="flex whitespace-nowrap font-base justify-between items-center text-12p"
                         :to="child.url"
                       >
-                        {{ child.text }}
+                       <span> {{ child.text }}</span>
+                         
+                          <si-svg>
+                                <svg v-if="child.childrens&& child.childrens.length>0" class="w-2 transform" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 330 330" style="enable-background:new 0 0 330 330;" xml:space="preserve">
+                                    <path d="M325.607,79.393c-5.857-5.857-15.355-5.858-21.213,0.001l-139.39,139.393L25.607,79.393  c-5.857-5.857-15.355-5.858-21.213,0.001c-5.858,5.858-5.858,15.355,0,21.213l150.004,150c2.813,2.813,6.628,4.393,10.606,4.393  s7.794-1.581,10.606-4.394l149.996-150C331.465,94.749,331.465,85.251,325.607,79.393z"/>
+                                </svg>
+                            </si-svg>
                       </nuxt-link>
-
+                      
                       <ul
                         v-if="child.childrens && child.childrens.length > 0"
                         :class="[
@@ -500,7 +486,7 @@
         </div>
       </div>
     </div>
-    <si-app-loader placement="AFTER_HEADER" />
+
   </div>
 </template>
 <script>
@@ -510,6 +496,7 @@ export default {
       showSearch: false,
       hoveredChild: null,
       activeId: null,
+      activeChildid:null,
       menu: this.$settings.sections.header.navbarmenu,
       iconMenu: null,
       q: this.$route.query.search,
@@ -518,6 +505,8 @@ export default {
       showMenuList: false,
       lastScrollTop: 0,
       isHidden: false,
+      isFixed: false,
+      listApps:this.$store.state.apps,
     };
   },
   watch: {
@@ -544,11 +533,16 @@ export default {
     handleScroll() {
       const currentScroll = window.pageYOffset;
 
+      //to controller when appLoader(befor header is active);
+      if(currentScroll>100){
+        this.isFixed=true;
+        }else if(currentScroll<100){
+          this.isFixed=false
+        }
+
+
       if (currentScroll > this.lastScrollTop && currentScroll > 50) {
         this.isHidden = true;
-        $store.state.showHeaderMenu=false ;
-        console.log('meun controller :',$store.state.showHeaderMenu);
-
       } else {
         this.isHidden = false;
       }

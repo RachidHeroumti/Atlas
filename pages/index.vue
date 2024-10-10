@@ -1,5 +1,5 @@
 <template>
-  <div class=" bg-gry-50 ">
+  <div class=" bg-white ">
    <!-- <sections-banner v-if="$settings.sections.banner.active"></sections-banner> 
     <sections-collections
       v-if="$settings.sections.collections.active"

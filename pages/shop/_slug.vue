@@ -1,5 +1,5 @@
 <template>
-  <div class="sm:p-10 bg-white mt-16 p-8">
+  <div class="sm:p-10 bg-white pt-16 p-8">
     <div class="relative flex mb-2 space-x-2">
       <div class="w-full md:w-3/4">
         <div class="">
@@ -152,6 +152,7 @@
                         </button>
                         -->
           </div>
+          
         </div>
       </div>
 
