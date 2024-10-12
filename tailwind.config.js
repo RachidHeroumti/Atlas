@@ -16,7 +16,8 @@ module.exports = {
           '18p':'18px',
           '55p':'55px'
 
-        }, colors: {
+        },
+        colors: {
           'dark-gray': 'rgb(40, 40, 40)', 
           'titles-color':'#282828',
           'bacgroundApp':'#b4b4b4',
@@ -35,6 +36,24 @@ module.exports = {
 
           
         },
+        padding: {
+          '94p': '94px',
+          '40p': '40px',
+          '120p': '120px',
+          '110p': '110px',
+          
+
+        },
+        width: {
+          '110p': '110px',
+          '500p': '500px',
+          '588p':'580px',
+        },
+        height:{
+          '588p':'580px',
+           '150':'150px',
+           '500p': '500px',
+        }
       },
     },
     variants: {},

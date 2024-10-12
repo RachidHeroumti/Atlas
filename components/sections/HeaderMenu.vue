@@ -1,6 +1,6 @@
 <template>
 
-<div class="md:flex  inset-0 z-20 max-h-full max-w-1/4 hidden  shadow-container bg-white"  >
+<div class="md:flex  inset-0 z-20 max-h-full  hidden  shadow-container General-Compoanent "  >
    <!-- 
     <div v-if="$store.state.showHeaderMenu" :class="$store.state.showHeaderMenu? 'opacity-50' : 'opacity-0'"
      class="flex transition-all delay-500 fixed inset-0 bg-black" @click="$store.state.showHeaderMenu=false">
@@ -9,7 +9,7 @@
    <!--SideBar -->
     <transition name="slideleft">
         <div 
-         class="transition-all delay-500 max-w-full relative flex flex-col bg-white  w-80">
+         class="transition-all delay-500 General-Compoanent flex flex-col   sideBarStyle bg-white  ">
 
             <!--
                <div class="w-full flex justify-end ">
@@ -20,21 +20,28 @@
                  </div>
                  -->
 
-              <div class=" flex  justify-center items-center w-full h-36">
+              <div class=" flex  justify-center items-center  ">
                 <router-link to="/">
-              <nuxt-img width="70" height="50" property="height" class="object-contain w-full h-12"
+                
+                <!--
+              <nuxt-img width="70" height="50" property="height" class="object-contain w-full h-7"
                       :src="section.logo ? section.logo.src : $store.state.defaults.logo" alt="Store logo"/>      
+                </router-link>
+                -->
+                <h1 class=" font-poppins font-medium  text-2xl">Atlas</h1>
                 </router-link>
             </div>
 
             <!--Home/blog ... -->
-            <div v-if="menu" class="px-10">
+            <div v-if="menu" class=" mt-14 mb-8 ">
                 <ul v-for="(item, i) in menu.items" :key="i" class="flex flex-col cursor-pointer ">
-                    <li class="flex items-center mb-1 justify-between w-full rounded-md bg-white hover:underline hover:underline-offset-4">
-                        <span class="m-1 w-full flex  menuTextStyle tracking-normal">{{ item.text }} </span>
-                        <button class="bg-white p-2 mx-1" @click="activeId = activeId != item._id ? item._id : null">
+                    <li class="flex items-center justify-between w-full rounded-md bg-white bold-underline ">
+                        <span class=" w-full flex text-titles-color menuTextStyle tracking-normal menu-text-pad"
+                         :class="i==0?'underline-first-item':''"
+                        >{{ item.text }} </span>
+                        <button class="bg-white " @click="activeId = activeId != item._id ? item._id : null">
                             <si-svg>
-                                <svg v-if="item.childrens && item.childrens.length > 0" class="w-3 transform" :class="activeId==item._id ? 'rotate-180': ''" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 330 330" style="enable-background:new 0 0 330 330;" xml:space="preserve">
+                                <svg v-if="item.childrens && item.childrens.length > 0" class="w-2 transform" :class="activeId==item._id ? 'rotate-180': ''" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 330 330" style="enable-background:new 0 0 330 330;" xml:space="preserve">
                                     <path d="M325.607,79.393c-5.857-5.857-15.355-5.858-21.213,0.001l-139.39,139.393L25.607,79.393  c-5.857-5.857-15.355-5.858-21.213,0.001c-5.858,5.858-5.858,15.355,0,21.213l150.004,150c2.813,2.813,6.628,4.393,10.606,4.393  s7.794-1.581,10.606-4.394l149.996-150C331.465,94.749,331.465,85.251,325.607,79.393z"/>
                                 </svg>
                             </si-svg>
@@ -178,21 +185,45 @@ export default {
                 var(--wp--preset--shadow--deep);
 }
 :root {
-    --wp--preset--shadow--natural: 6px 6px 9px rgba(129, 127, 127, 0.2);
-    --wp--preset--shadow--deep: 12px 12px 50px rgba(114, 113, 113, 0.4);
+    --wp--preset--shadow--natural: 6px 6px 9px rgba(172, 170, 170, 0.2);
+    --wp--preset--shadow--deep: 12px 12px 50px rgba(193, 189, 189, 0.4);
    
 }
 
 .menuTextStyle{
     font-family: Poppins, sans-serif;
-    font-size: 16px;
-    line-height: 22px;
+    font-size: 15px;
     font-weight: 500;
+    line-height: 26px;
     text-align: -webkit-match-parent;
      
 }
 .menuTextColor:hover{
     
+}
+.sideBarStyle{
+    padding-top: 94px;
+    padding-right: 60px;
+    padding-left: 60px;
+    padding-bottom: 10px;
+}
+.menu-text-pad{
+    padding: 7px 0;
+}
+.underline-first-item{
+  text-decoration: underline;
+  text-underline-offset: 3px; 
+  text-decoration-thickness: 1px; 
+}
+.bold-underline:hover{
+  text-decoration: underline;
+  text-underline-offset: 4px; 
+  text-decoration-thickness: 2px; 
+}
+
+.General-Compoanent{
+    width: 310px;
+
 }
 
 </style>

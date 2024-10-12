@@ -1,29 +1,29 @@
 <template>
  
-    <div class=" p-2 sm:p-8 pt-16 bg-white  ">
+    <div class=" pt-16 bg-white container  ">
         <!-- header for product details page -->
        <!-- <sections-header></sections-header>-->
-         <!--<sections-header-top></sections-header-top> -->
+         <sections-header-top></sections-header-top> 
 
         <div v-if="loading" class="flex items-center justify-cente ">
             <si-loader></si-loader>
         </div>
 
-
         <div class="flex flex-wrap justify-between " v-if="item">
             <meta itemprop="productID" :content="item._id" />
 
-            <div class="w-full lg:w-1/2 ">
+            <div class="w-full lg:w-1/2 pr-8 ">
                 <div class=" lg:flex  w-full   justify-center h-4/5  ">
                      <div class=" w-full lg:w-1/4  hidden md:block p-2">
                         <div class="flex lg:flex-col w-full lg:w-auto  justify-center items-center">
-                            <si-image width="100" height="100" class=" w-20 h-20 sm:w-24 sm:h-24 m-1  cursor-pointer"
+                            <si-image  class="  w-20 h-24 sm:w-24 sm:h-28 m-1  cursor-pointer"
                              v-for="(image, index) in item.images" @click="setImage(index)" :key="index" :src="image.src" :alt="`${item.name} - ${image.title}`"/>
                         </div>
                     </div>
-                    <si-image width="500" height="580"  class="w-3/4  cursor-pointer  " 
+                    <div  class="  w-3/4 h-500p  ">
+                    <si-image width="500" height="588"  class=" w-full h-full  cursor-pointer  " 
                      @click="$store.state.fullImage=image ? image.src : null" :src="image ? image.src : null " :alt="item.name"/>
-                   
+                    </div>
                    <div class=" w-full lg:w-1/4   p-2 md:hidden">
                         <div class="flex lg:flex-col w-full lg:w-auto  justify-center items-center">
                             <si-image width="100" height="100" class=" w-20 h-20 sm:w-24 sm:h-24 m-1  cursor-pointer"
@@ -55,7 +55,7 @@
                         <si-product-variants class="flex" v-if="item.type=='variable'" :options="item.options" :images="item.images" :variants="item.variants" @selected="variantSelected"></si-product-variants>
                         <si-product-price class="flex text-3xl" :type="'simple'" :price="price" :variants="[]"></si-product-price>
 
-                        <p class=" font-poppins text-base font-base text-white-gray  my-8 ">{{ item.description }}</p>
+                        <p class=" font-poppins text-base font-base text-white-gray my-2 sm:my-5  md:my-8 ">{{ item.description }}</p>
                         
                      
                         <si-app-loader placement="BEFORE_ADD_TO_CART"/>
@@ -93,7 +93,7 @@
                                     </button>
   
                              </div>
-                        <div class=" flex flex-col py-10 space-y-2">
+                        <div class=" flex flex-col py-3 sm:py-5 md:py-10 space-y-2">
                             <span class=" font-poppins text-sm font-base ">SKU:016</span>
                             <span class=" font-poppins text-sm font-base ">Category: Lights</span>
                             <span class=" font-poppins text-sm font-base ">Tag: Decorative</span>
@@ -106,7 +106,7 @@
                             <button class="p-3 font-poppins text-white-gray text-base border-gray-300 bg-gray-200 hover:bg-titles-color hover:text-white"
                              @click="showmoredescription=false ; showaAdditionalInfo=false">Reviews({{ item.review.reviews.length }})</button>
                         </div>
-                        <div class="font-poppins text-base font-base text-white-gray  py-8 ">
+                        <div class="font-poppins text-base font-base text-white-gray py-5  md:py-8 ">
                                <p v-if="showmoredescription"
                                 class=" ">{{ item.description }}</p>
                                <div v-if="showaAdditionalInfo"

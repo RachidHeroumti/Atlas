@@ -1,8 +1,10 @@
 <template>
-  <div class="sm:p-10 bg-white pt-16 p-8">
+  <div class=" bg-white pt-16  container">
     <div class="relative flex mb-2 space-x-2">
-      <div class="w-full md:w-3/4">
+
+      <div class="w-full md:w-3/4 ">
         <div class="">
+         <div class=" mb-5 ">
           <div class="border-b font-poppins font-base text-base">
             <div class="flex items-center justify-between text-white-gray p-2">
               <button
@@ -28,34 +30,69 @@
                 >
               </div>
 
-                <!-- Sort -->
-                    <div class="relative" @mouseover="windowWidth >= 1024 ? isSortVisible = true : null"
-                        @mouseleave="windowWidth >= 1024 ? isSortVisible = false : null">
-                        <div class="flex items-center py-3 cursor-pointer font-poppins font-base text-base" @click="showSort">
-                            <span class=" ">{{ $settings.sections.shop.sorts.sort_by_text }} defult sorting </span>
-                            <svg class="w-5 h-4" aria-label="chivron icon"
-                                :class="isSortVisible == true ? 'rotate-180 transition-all delay-150 ease-linear' : ''"
-                                width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z"
-                                    fill="currentColor"></path>
-                            </svg>
-                        </div>
-                        <transition name="fade">
-                            <div v-show="isSortVisible"
-                                class="absolute right-0 z-20 w-56 bg-white rounded-b-lg shadow-lg sort-direction top-full">
-                                <div class="flex flex-col gap-3 py-5 px-5 ">
-                                    <div class="flex items-center" v-for="(sort, i) in sorts" :key="i">
-                                        <input hidden type="radio" v-model="params.sort" :value="sort.field"
-                                            :id="sort.name">
-                                        <label class="cursor-pointer text-13p text-secondary-hover hover:underline hover:text-titles-color" :for="sort.name">{{
-                                            sort.name }}</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </transition>
+              <!-- Sort -->
+              <div
+                class="relative"
+                @mouseover="windowWidth >= 1024 ? (isSortVisible = true) : null"
+                @mouseleave="
+                  windowWidth >= 1024 ? (isSortVisible = false) : null
+                "
+              >
+                <div
+                  class="flex items-center py-3 cursor-pointer font-poppins font-base text-base"
+                  @click="showSort"
+                >
+                  <span class=" ">{{ sortText }}</span>
+                  <svg
+                    class="w-5 h-4"
+                    aria-label="chivron icon"
+                    :class="
+                      isSortVisible == true
+                        ? 'rotate-180 transition-all delay-150 ease-linear'
+                        : ''
+                    "
+                    width="20"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z"
+                      fill="currentColor"
+                    ></path>
+                  </svg>
+                </div>
+                <transition name="fade">
+                  <div
+                    v-show="isSortVisible"
+                    class="absolute right-0 z-20 w-56 bg-white rounded-b-lg shadow-lg sort-direction top-full"
+                  >
+                    <div class="flex flex-col gap-3 py-5 px-5">
+                      <div
+                        class="flex items-center"
+                        v-for="(sort, i) in sorts"
+                        :key="i"
+                      >
+                        <input
+                          hidden
+                          type="radio"
+                          v-model="params.sort"
+                          :value="sort.field"
+                          :id="sort.name"
+                        />
+                        <label
+                          @click="getSortByText(sort.name)"
+                          class="cursor-pointer text-13p text-secondary-hover hover:underline hover:text-titles-color"
+                          :for="sort.name"
+                          >{{ sort.name }}</label
+                        >
+                      </div>
                     </div>
-                    <!-- Sort -->
+                  </div>
+                </transition>
+              </div>
+              <!-- Sort -->
             </div>
           </div>
           <div
@@ -80,6 +117,7 @@
               <si-product :item="item"></si-product>
             </div>
           </div>
+        </div>
           <div
             v-if="items.length > 0"
             class="flex items-center justify-center w-full p-2"
@@ -152,14 +190,15 @@
                         </button>
                         -->
           </div>
-          
+
         </div>
+
       </div>
 
       <transition name="slideleft">
         <div
-          :class="showSideBar ? 'show' : 'hide'"
-          class="fixed top-20 bottom-0 z-20 hidden h-full bg-white w-80 md:w-1/4 md:block md:top-0 md:relative overflow-x-scroll"
+          :class="showSideBar ? 'show ' : 'hide'"
+          class=" fixed top-20 bottom-0 z-20 hidden h-screen  sm:h-full bg-white w-80 md:w-1/4 md:block md:top-0 md:relative overflow-y-scroll sm:overflow-auto "
         >
           <div
             class="fixed inset-0 block bg-black/40 bg-opacity-50 md:hidden"
@@ -252,7 +291,7 @@
                     @click="toggleSelection(item.slug)"
                     class="capitalize cursor-pointer collec-name text-12p font-poppins font-normal hover:text-gray-600 hover:underline"
                   >
-                    {{ item.name }}  ({{ productCounts[item.slug] || 0 }})
+                    {{ item.name }} ({{ productCounts[item.slug] || 0 }})
                   </span>
                   <!--
   <span
@@ -553,7 +592,7 @@
 export default {
   data() {
     return {
-      productCounts: {}, 
+      productCounts: {},
       windowWidth: 0,
       isSortVisible: false,
       loading: {
@@ -632,6 +671,7 @@ export default {
       ],
       q: "",
       showSearch: false,
+      sortText: "Sort By default",
     };
   },
   watch: {
@@ -853,45 +893,46 @@ export default {
     toggleSelection(slug) {
       this.$set(this.params, "collections.slug-in", [slug]);
     },
-async fetchProductCounts() {
-    const counts = {};
-    for (const collection of this.collections) {
-      counts[collection.slug] = await this.getProductsLength(collection.slug);
-    }
-    this.productCounts = counts; // Update the reactive property
-  },
-  
-  async getProductsLength(slug) {
-    try {
-      const { data } = await this.$storeino.products.search({
-        "collections.slug-in": slug,
-      });
-      return data && data.results ? data.results.length : 0;
-    } catch (err) {
-      this.$sentry.captureException(err);
-      return 0; // Return 0 on error
-    }
-  },
-  async getCollections() {
-  this.collections = [];
-  this.loading.collections = true;
-  try {
-    const { data } = await this.$storeino.collections.search({});
-    this.collections = data.results;
-    await this.fetchProductCounts(); // Fetch product counts after collections are set
-  } catch (e) {
-    console.log({ e });
-  }
-  this.loading.collections = false;
-},
+    async fetchProductCounts() {
+      const counts = {};
+      for (const collection of this.collections) {
+        counts[collection.slug] = await this.getProductsLength(collection.slug);
+      }
+      this.productCounts = counts; // Update the reactive property
+    },
 
+    async getProductsLength(slug) {
+      try {
+        const { data } = await this.$storeino.products.search({
+          "collections.slug-in": slug,
+        });
+        return data && data.results ? data.results.length : 0;
+      } catch (err) {
+        this.$sentry.captureException(err);
+        return 0; // Return 0 on error
+      }
+    },
+    async getCollections() {
+      this.collections = [];
+      this.loading.collections = true;
+      try {
+        const { data } = await this.$storeino.collections.search({});
+        this.collections = data.results;
+        await this.fetchProductCounts(); // Fetch product counts after collections are set
+      } catch (e) {
+        console.log({ e });
+      }
+      this.loading.collections = false;
+    },
+    getSortByText(textSort) {
+      this.sortText = textSort;
+    },
 
     search() {
       this.$store.state.search = this.q;
       this.$router.push({ path: "/shop", query: { search: this.q } });
     },
   },
-
 };
 </script>
 <style>

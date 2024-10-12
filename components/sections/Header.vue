@@ -1,11 +1,11 @@
 <template>
+<div class=" bg-white w-screen">
  <div
     :class="[
-      { hidden: isHidden,fixed:isFixed ,block:!isFixed},
-      'text-titles-color bg-white w-full top-0  left-0 right-0 min-h-20 z-30 border-b border-gray-200'
+      { hidden: isHidden, fixed:isFixed, block:!isFixed},
+      'text-titles-color bg-white w-full  top-0  left-0 right-0 min-h-20 z-30 border-b border-gray-200 '
     ]"
   >
-    <!--fixed top-0 left-0  z-50  -->
     <si-app-loader placement="BEFORE_HEADER" />
     <div class="relative h-full">
       <div class="flex items-center justify-between p-2 h-full">
@@ -43,7 +43,6 @@
           </si-svg>
         </button>
         </div>
-      
       <!-- menu mobile -->
        <div v-if="$store.state.showHeaderMenu" class="px-10 bg-white text-titles-color md:hidden fixed top-16 left-0 right-0 flex z-20 justify-between w-screen">
   <div class="w-full">
@@ -97,7 +96,6 @@
   </div>
 </div>
 
-
         <div class="flex items-center px-4 logo w-full">
           <router-link to="/">
             <nuxt-img
@@ -144,7 +142,7 @@
                       'submenu',
                       { 'submenu-visible': hoveredItem === i },
                     ]"
-                    class="p-4 py-2 sm:py-5 md:py-10 z-30 w-40 bg-white shadow-sm"
+                    class="p-4 py-2 sm:py-5 z-30 w-40 bg-white shadow-sm"
                     @mouseenter="hoveredItem = i"
                     @mouseleave="hoveredItem = null"
                   >
@@ -488,6 +486,7 @@
     </div>
 
   </div>
+</div>
 </template>
 <script>
 export default {
@@ -533,21 +532,15 @@ export default {
     handleScroll() {
       const currentScroll = window.pageYOffset;
 
-      //to controller when appLoader(befor header is active);
+      // Control appLoader (before header is active)
+      // Toggle header visibility based on scroll direction
       if(currentScroll>100){
-        this.isFixed=true;
-        }else if(currentScroll<100){
-          this.isFixed=false
-        }
-
-
-      if (currentScroll > this.lastScrollTop && currentScroll > 50) {
-        this.isHidden = true;
-      } else {
-        this.isHidden = false;
-      }
+          this.isFixed = true;
+      this.isHidden = currentScroll > this.lastScrollTop && currentScroll > 50;
       this.lastScrollTop = currentScroll;
-    },
+      }
+
+    }
   },
 };
 </script>

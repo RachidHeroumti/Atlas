@@ -1,5 +1,6 @@
 <template>
-  <div class="bg-gray-900 text-white w-full py-16 p-10">
+  <div class="bg-gray-900 text-white w-full py-16 p-10 ">
+    <div class="container">
     <si-app-loader placement="BEFORE_FOOTER" />
     <div class="sm:flex justify-start sm:space-x-5 mb-3" v-if="menu">
       <div class="w-full space-y-3">
@@ -99,6 +100,7 @@
       </div>
     </div>
     <si-app-loader placement="AFTER_FOOTER" />
+  </div>
   </div>
 </template>
 <script>
