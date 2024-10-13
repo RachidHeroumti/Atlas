@@ -1,17 +1,17 @@
 <template>
 
-  <div class="container" v-if="items.length > 0">
+  <div class="container h-full" v-if="items.length > 0">
     <div class="m-2">
       <h2 class=" font-poppins font-medium text-19p ">Related Product{{ $settings.sections.product.title }}</h2>
     </div>
     <div v-if="loading" class="flex justify-center items-center my-5">
       <si-loader></si-loader>
     </div>
-    <div class="flex w-full">
-      <div class="flex  overflow-x-scroll w-screen">
+    <div class="flex w-full ">
+      <div class="flex   overflow-x-scroll w-screen">
         
       <div v-for="(item, i) in items" :key="i" class=" flex p-1 w-1/2 sm:w-1/3 md:w-1/4 xl:w-1/5  mx-1 " >
-        <si-product :item="item"></si-product>
+        <si-product :item="item" place="product-page"></si-product>
       </div>
       </div>
     </div>

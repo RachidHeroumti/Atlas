@@ -3,7 +3,7 @@
  <div
     :class="[
       { hidden: isHidden, fixed:isFixed, block:!isFixed},
-      'text-titles-color bg-white w-full  top-0  left-0 right-0 min-h-20 z-30 border-b border-gray-200 '
+      'text-titles-color bg-white w-full  top-0  left-0 right-0 min-h-20 z-50 border-b border-gray-200 '
     ]"
   >
     <si-app-loader placement="BEFORE_HEADER" />
@@ -287,7 +287,8 @@
                 class="relative hidden p-2 mx-1 rounded-md item md:block"
               >
                 <si-svg
-                  ><svg
+                  >
+                  <svg
                     aria-hidden="true"
                     focusable="false"
                     data-prefix="far"
@@ -504,7 +505,7 @@ export default {
       showMenuList: false,
       lastScrollTop: 0,
       isHidden: false,
-      isFixed: false,
+      isFixed: true,
       listApps:this.$store.state.apps,
     };
   },
@@ -535,7 +536,7 @@ export default {
       // Control appLoader (before header is active)
       // Toggle header visibility based on scroll direction
       if(currentScroll>100){
-          this.isFixed = true;
+      this.isFixed = true;
       this.isHidden = currentScroll > this.lastScrollTop && currentScroll > 50;
       this.lastScrollTop = currentScroll;
       }

@@ -1,11 +1,12 @@
 <template>
-  <div class=" bg-white pt-16  container">
-    <div class="relative flex mb-2 space-x-2">
+  <div class=" bg-white pt-120p  container"
+  >
+    <div class="relative h-full flex mb-2 space-x-2 ">
 
-      <div class="w-full md:w-3/4 ">
+      <div class="w-full md:w-3/4 px-4 ">
         <div class="">
          <div class=" mb-5 ">
-          <div class="border-b font-poppins font-base text-base">
+          <div class=" font-poppins font-base text-base">
             <div class="flex items-center justify-between text-white-gray p-2">
               <button
                 @click="showSideBar = true"
@@ -32,7 +33,7 @@
 
               <!-- Sort -->
               <div
-                class="relative"
+                class="relative pl-5 pr-7"
                 @mouseover="windowWidth >= 1024 ? (isSortVisible = true) : null"
                 @mouseleave="
                   windowWidth >= 1024 ? (isSortVisible = false) : null
@@ -114,8 +115,9 @@
               class="p-2 home-products"
               :class="gridClass"
             >
-              <si-product :item="item"></si-product>
+              <si-product :item="item" place="shop" ></si-product>
             </div>
+            
           </div>
         </div>
           <div
@@ -197,14 +199,15 @@
 
       <transition name="slideleft">
         <div
-          :class="showSideBar ? 'show ' : 'hide'"
-          class=" fixed top-20 bottom-0 z-20 hidden h-screen  sm:h-full bg-white w-80 md:w-1/4 md:block md:top-0 md:relative overflow-y-scroll sm:overflow-auto "
+          :class="showSideBar ? 'show overflow-y-scroll' : 'hide'"
+          class=" fixed top-20 bottom-0 z-30 hidden h-full bg-white w-80 md:w-1/4 md:block px-4 
+           md:top-0 md:relative "
         >
           <div
             class="fixed inset-0 block bg-black/40 bg-opacity-50 md:hidden"
             @click="showSideBar = false"
           ></div>
-          <div class="relative flex flex-col h-full bg-white space-y-2">
+          <div class="relative flex flex-col h-full bg-white ">
             <div class="flex justify-end w-full md:hidden">
               <button
                 @click="showSideBar = false"
@@ -233,7 +236,7 @@
             <!--Search -->
 
             <div
-              class="relative border border-gray-200 p-3 px-5 items-center justify-between flex"
+              class="relative border border-gray-200 p-3 px-5 items-center justify-between flex mb-8"
             >
               <input
                 class="outline-none"
@@ -264,11 +267,11 @@
                 </si-svg>
               </button>
             </div>
-            <div class="h-10"></div>
+
             <!--collections-->
             <h2
               v-if="$settings.sections.shop.sidebar.collections.active"
-              class="px-2 mt-2 font-poppins text-base font-normal"
+              class=" mb-5 font-poppins text-base font-normal text-titles-color leading-custom-1.3"
             >
               {{ $settings.sections.shop.sidebar.collections.title }}
             </h2>
@@ -282,14 +285,12 @@
               >
                 <si-loader></si-loader>
               </div>
-              <div v-for="(item, i) in collections" :key="i" class="px-2">
-                <!---- -->
-                <div class="flex items-center p-1">
-                  <!---- remove item.childrens===0 -->
+              <div v-for="(item, i) in collections" :key="i" class="">
+                <div class="flex items-center py-1">
                   <span
                     v-if="item.childrens"
                     @click="toggleSelection(item.slug)"
-                    class="capitalize cursor-pointer collec-name text-12p font-poppins font-normal hover:text-gray-600 hover:underline"
+                    class="capitalize cursor-pointer collec-name text-titles-color text-12p font-poppins font-normal hover:text-gray-600 hover:underline"
                   >
                     {{ item.name }} ({{ productCounts[item.slug] || 0 }})
                   </span>
@@ -585,6 +586,7 @@
           </div>
         </div>
       </transition>
+
     </div>
   </div>
 </template>
@@ -1053,4 +1055,3 @@ option:hover {
   text-decoration: underline;
 }
 </style>
-http://172.19.96.1:62493/shop

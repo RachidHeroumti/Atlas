@@ -41,19 +41,19 @@ export default {
             methods: [
                 {
                     name: 'visa',
-                    image: 'https://storeno.b-cdn.net/themes/palest/visa.png'
+                    image: 'https://www.svgrepo.com/show/333620/visa.svg'
                 },
                 {
                     name: 'mastercard',
-                    image: 'https://storeno.b-cdn.net/themes/palest/mastercard.png'
+                    image: 'https://www.svgrepo.com/show/394275/mastercard.svg'
                 },
                 {
                     name: 'transfer',
-                    image: 'https://storeno.b-cdn.net/themes/palest/transfer.png'
+                    image: 'https://www.svgrepo.com/show/217948/money-flow-bank.svg'
                 },
                 {
                     name: 'cash',
-                    image: 'https://storeno.b-cdn.net/themes/palest/cod.png'
+                    image: 'https://www.svgrepo.com/show/308983/cash-payment-pay-money-cash.svg'
                 }
             ],
             socialMedia: [

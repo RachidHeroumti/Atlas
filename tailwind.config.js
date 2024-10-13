@@ -44,6 +44,10 @@ module.exports = {
           
 
         },
+        margin:{
+          '29p':'29px',
+          '17p':'17px'
+        },
         width: {
           '110p': '110px',
           '500p': '500px',
