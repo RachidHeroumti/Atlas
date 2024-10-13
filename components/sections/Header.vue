@@ -1,4 +1,5 @@
 <template>
+  
 <div class=" bg-white w-screen">
  <div
     :class="[
@@ -350,18 +351,18 @@
                   >{{ $store.state.cart.length }}</small
                 >
               </router-link>
-            </div>
-            
+
+            </div>  
           </div>
 
           <div
             v-if="showSearch"
             class="absolute inset-0 z-20 flex items-center justify-center"
           >
-            <div class="absolute w-full p-2">
+            <div class="absolute w-full p-2 bg-white">
               <form
                 @submit.prevent="search"
-                class="container flex p-2 border border-gray-200 rounded-md search bg-gray-50"
+                class="container flex p-2 border border-gray-200  search bg-white"
                 action="/shop?"
               >
                 <button
@@ -488,6 +489,7 @@
 
   </div>
 </div>
+
 </template>
 <script>
 export default {
@@ -536,7 +538,7 @@ export default {
       // Control appLoader (before header is active)
       // Toggle header visibility based on scroll direction
       if(currentScroll>100){
-      this.isFixed = true;
+      //this.isFixed = true;
       this.isHidden = currentScroll > this.lastScrollTop && currentScroll > 50;
       this.lastScrollTop = currentScroll;
       }
