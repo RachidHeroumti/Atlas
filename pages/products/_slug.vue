@@ -27,7 +27,7 @@
               />
             </div>
           </div>
-          <div class="w-3/4 h-500p flex justify-center">
+          <div class=" md:w-3/4 h-500p flex justify-center">
             <si-image
               width="500"
               height="588"

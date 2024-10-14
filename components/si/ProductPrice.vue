@@ -12,24 +12,24 @@
             <meta itemprop="price" :content="price.salePrice" />
         </div>
 
-<!--
+
         <div class="price flex justify-center my-2" v-else-if="minPrice != maxPrice">
             <meta itemprop="price" :content="minPrice" />
-            <b class=" text-primary">{{ minPrice }}{{ $store.state.currency.symbol }}</b>
+            <span class=" text-titles-color font-poppins text-12p font-normal">{{ minPrice }}{{ $store.state.currency.symbol }}</span>
             <span class="flex">~</span>
-            <b class=" text-primary">{{ maxPrice }}{{ $store.state.currency.symbol }}</b>
+            <span class=" text-titles-color">{{ maxPrice }}{{ $store.state.currency.symbol }}</span>
         </div>
 
-        <div class="price flex justify-center my-2" v-else-if="variants.length > 0">
+        <div class="price flex justify-center my-2 font-poppins text-12p font-normal" v-else-if="variants.length > 0">
             <meta itemprop="price" :content="variants[0].price.salePrice" />
-            <b class=" text-primary">{{ variants[0].price.salePrice }}{{ $store.state.currency.symbol }}</b>
+            <span class=" text-titles-color">{{ variants[0].price.salePrice }}{{ $store.state.currency.symbol }}</span>
             <span class="flex w-2"></span>
             <span class="relative" v-if="variants[0].price.comparePrice > 0">
-                <b class="text-gray-600">{{ variants[0].price.comparePrice }}{{ $store.state.currency.symbol }}</b>
+                <span class="text-titles-color">{{ variants[0].price.comparePrice }}{{ $store.state.currency.symbol }}</span>
                 <span class="compare-price absolute top-3 block w-full bg-red-600"></span>
             </span>
         </div>
--->
+
 
     </div>
 </template>

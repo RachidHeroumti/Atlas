@@ -1,5 +1,5 @@
 <template>
-  <div class=" bg-white pt-120p  container"
+  <div class=" bg-white sm:pt-120p pt-20  container"
   >
     <div class="relative h-full flex mb-2 space-x-2 ">
 
