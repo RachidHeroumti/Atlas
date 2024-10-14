@@ -1,12 +1,12 @@
 <template>
     <div>
         <meta itemprop="priceCurrency" :content="$store.state.currency.code" />
-        <div class="price flex justify-center  text-sm " v-if="type=='simple'">
-            <b class=" text-titles-color font-normal font-poppins text-base ">{{ price.salePrice }}{{ $store.state.currency.symbol }}</b>
+        <div class="price flex justify-center text-titles-color font-normal font-poppins text-12p  " v-if="type=='simple'">
+            <span class="  ">{{ price.salePrice?price.salePrice:0 }}{{ $store.state.currency.symbol }}</span>
             <span class="flex w-2"></span>
             
             <span class="relative" v-if="price.comparePrice > 0">
-                <b class="text-gray-600">{{ price.comparePrice }}{{ $store.state.currency.symbol }}</b>
+                <b class=" text-titles-color">{{ price.comparePrice }}{{ $store.state.currency.symbol }}</b>
                 <span class="compare-price absolute top-3 block w-full bg-red-600"></span>
             </span>
             <meta itemprop="price" :content="price.salePrice" />

@@ -1,6 +1,6 @@
 <template>
-    <div class="options">
-        <div v-for="(option, i) in options" :key="i" :class="option.key" class="p-1 mb-1 border bg-gray-50">
+    <div class="options ">
+        <div v-for="(option, i) in options" :key="i" :class="option.key" class="p-1 mb-1   bg-white text-base font-poppins font-medium text-titles-color py-2">
             <b class="flex mb-1 capitalize option-name">{{ option.name }}</b>
             <div v-if="!option.hasOwnProperty('style') || option.style == '' || option.style == null  || (option.style !== 'LIST' && option.style !== 'CHECK' && option.style !== 'RADIO') && (option.key !== 'color' && option.style == 'SIZE') || (option.key == 'color' && option.style == 'COLOR') " class="options-list">
                 <div v-for="(val, ii) in option.values" :key="ii" class="mx-1 option">
@@ -138,7 +138,7 @@
 
         </div>
 
-        <si-product-price v-if="showPrice" class="flex px-1 text-2xl" :type="'simple'" :price="selected.price" :variants="[]"></si-product-price>
+        <si-product-price v-if="showPrice" class=" text-12p font-poppins font-norma text-titles-colorl" :type="'simple'" :price="selected.price" :variants="[]"></si-product-price>
     </div>
 </template>
 <script>
@@ -276,7 +276,6 @@ export default {
     margin-bottom: 5px;
 }
 .options .option button {
-    border-radius: 3px;
     background: #fff;
     padding: 5px 10px;
     cursor: pointer;
@@ -286,16 +285,16 @@ export default {
 
 
 .options .color .option button {
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
+    border-radius: 0%;
+    width: 20px;
+    height: 20px;
     color: transparent;
     overflow: hidden;
     position: relative;
 }
 .options .color .option button.active{
     color: transparent;
-    box-shadow: 0 0 0px 2px white, 0 0 0px 4px var(--primary-color)
+    box-shadow: 0 0 0px 2px white, 0 0 0px 3px #282828
 }
 
 .options .option button.size-style {
@@ -311,12 +310,12 @@ export default {
 
 .options .option button.active {
     color: white;
-    background-color: var(--primary-color);
+    background-color: #282828;
 }
 
 .options .option button.size-style.active{
     color: white;
-    background-color: var(--primary-color);
+    background-color: #282828;
 }
 
 .options-list .select-list-option .select-list{

@@ -1,5 +1,5 @@
 <template>
-  
+
 <div class=" bg-white w-screen">
  <div
     :class="[
@@ -489,7 +489,6 @@
 
   </div>
 </div>
-
 </template>
 <script>
 export default {
@@ -538,7 +537,7 @@ export default {
       // Control appLoader (before header is active)
       // Toggle header visibility based on scroll direction
       if(currentScroll>100){
-      //this.isFixed = true;
+      this.isFixed = true;
       this.isHidden = currentScroll > this.lastScrollTop && currentScroll > 50;
       this.lastScrollTop = currentScroll;
       }

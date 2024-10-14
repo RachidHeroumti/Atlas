@@ -1,5 +1,5 @@
 <template>
-  <div class="pt-16 bg-white container">
+  <div class="pt-120p bg-white container">
     <!-- header for product details page -->
     <!-- <sections-header></sections-header>-->
     <sections-header-top></sections-header-top>
@@ -15,7 +15,7 @@
         <div class="lg:flex w-full justify-center h-4/5">
           <div class="w-full lg:w-1/4 hidden md:block p-2">
             <div
-              class="flex lg:flex-col w-full lg:w-auto justify-center items-center"
+              class="flex lg:flex-col w-full lg:w-auto justify-center items-center  "
             >
               <si-image
                 class="w-20 h-24 sm:w-24 sm:h-28 m-1 cursor-pointer"
@@ -27,7 +27,7 @@
               />
             </div>
           </div>
-          <div class="w-3/4 h-500p">
+          <div class="w-3/4 h-500p flex justify-center">
             <si-image
               width="500"
               height="588"
@@ -444,6 +444,7 @@
     </div>
   </div>
 </template>
+
 <script>
 import "leaflet/dist/leaflet.css";
 export default {
@@ -726,6 +727,7 @@ export default {
   },
 };
 </script>
+
 <style>
 .video-wrapper {
   position: relative;

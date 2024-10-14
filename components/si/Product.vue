@@ -35,9 +35,11 @@
             />
           </nuxt-link>
         </div>
-        <div class="h-full w-full text-center">
+
+        <div class="mb-17p mt-29p space-y-2 ">
+        <div class=" w-full text-center">
           <nuxt-link :to="`/products/${item.slug}`">
-            <h3 class="m-2 font-poppins font-normal text-base two-lines">
+            <h3 class=" font-poppins font-normal text-base ">
               {{ item.name }}
             </h3>
           </nuxt-link>
@@ -46,7 +48,7 @@
           class="flex items-center justify-center"
           v-if="$settings.sections.products.show_reviews"
         >
-          <div class="flex mb-1">
+          <div class="flex ">
             <span
               v-for="(star, i) in 5"
               :class="
@@ -76,7 +78,6 @@
           </div>
           <!-- <span class="text-sm text-gray-600" key="count">({{ item.review.reviews.length }})</span> -->
         </div>
-
         <si-product-price
           :type="item.type"
           :price="item.price"
@@ -101,6 +102,9 @@
             >{{ $settings.sections.products.add_to_cart.text }} +</span
           >
         </button>
+         </div>
+
+
       </div>
 
       <transition name="flip">
@@ -261,12 +265,12 @@
           </nuxt-link>
         </div>
 
-        <div class="mb-17p mt-29p">
+        <div class="mb-17p mt-29p space-y-2">
           <div class="w-full text-center">
             <nuxt-link :to="`/products/${item.slug}`">
-              <h3 class="font-poppins font-normal text-base two-lines">
+              <h4 class="font-poppins font-normal text-base ">
                 {{ item.name }}
-              </h3>
+              </h4>
             </nuxt-link>
           </div>
 
@@ -350,6 +354,7 @@
             <span class="inline-block">+</span>
           </button>
         </div>
+
       </div>
 
       <transition name="flip">
