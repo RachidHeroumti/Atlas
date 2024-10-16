@@ -1,4 +1,13 @@
 {
+   
+   
+    "sections.alerts.product":"Product",
+    "sections.alerts.price":"Price",
+    "sections.alerts.quantity":"Quantity",
+    "sections.alerts.subTotal":"subTotal",
+    "sections.alerts.total":"Total",
+
+
     "sections.products.add_to_cart.text":"Add to cart",
     "sections.products.added_text":"Added",
     "sections.products.confirm_text":"Confirm",

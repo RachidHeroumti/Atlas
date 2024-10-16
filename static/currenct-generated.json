@@ -1,6 +1,6 @@
 {
     "style": {
-        "primary_color": "#282828"
+        "primary_color": "#1c1c1c"
     },
     "sections": {
         "products": {
@@ -8,7 +8,11 @@
                 "active": true,
                 "text": "Add to cart"
             },
+            "show_reviews": true,
             "add_to_cart_to_checkout": false,
+            "add_to_wishlist": {
+                "active": true
+            },
             "added_text": "Added",
             "confirm_text": "Confirm"
         },
@@ -22,22 +26,28 @@
             "logo": null,
             "icons": {
                 "cart": true,
-                "wishlist": true,
+                "wishlist": false,
                 "account": false,
                 "search": true,
-                "language": true,
-                "currency": true
+                "language": false,
+                "currency": false
             },
-            "menu": null
+            "menu": null,
+            "navbarmenu": null
         },
         "footer": {
-            "about": "<h3>Experience Palest </h3> <p> Whether you are a livestock farmer or a farmer, a contractor or a forester: In the BayWa portal you will find a wide range of animal feed, seeds and crop protection - conventional or ecological  In addition, you will receive detailed information about our diverse advisory services, services, events and topics as well as about us, your BayWa. <br>Discover our diversity - digitally and on site </p>",
+            "about": "<h3>Experience Atlas </h3> <p> Whether you are a livestock farmer or a farmer, a contractor or a forester: In the BayWa portal you will find a wide range of animal feed, seeds and crop protection - conventional or ecological  In addition, you will receive detailed information about our diverse advisory services, services, events and topics as well as about us, your BayWa. <br>Discover our diversity - digitally and on site </p>",
+            "bref_about": "bref description ",
+            "email": "storeino@gmail.com",
+            "phon": "+212689855934",
+            "worktime": "Monday to Friday: 9-20",
+            "closetime": "Saturday to Sunday: closed",
             "methods": {
                 "title": "Our payment methods",
-                "visa": true,
-                "mastercard": true,
-                "transfer": true,
-                "cash": true
+                "visa": false,
+                "mastercard": false,
+                "transfer": false,
+                "cash": false
             },
             "social_media": {
                 "title": "Follow us",
@@ -54,23 +64,18 @@
             "copyright": {
                 "store_name": "Online store",
                 "text": "Copyright © __YEAR__. All rights reserved. <a href='//storeino.com'>storeino.com</a>"
-            }
-        },
-        "banner": {
-            "active": false,
-            "right": {
-                "active": true,
-                "image": null,
-                "url": "/shop"
-            }
+            },
+            "menu_bottom": null
         },
         "collections": {
-            "active": true,
-            "title": "Top Collections",
-            "items": []
+            "active": false,
+            "title": "Top collections",
+            "items": [
+                "66f68062724a9305a00e6254"
+            ]
         },
         "products_1": {
-            "active": true,
+            "active": false,
             "title": "Featured Products",
             "collections": [],
             "tags": "",
@@ -103,66 +108,40 @@
         },
         "products_5": {
             "active": false,
-            "title": "Featured Products",
+            "title": "Clothes only",
             "collections": [],
             "tags": "",
-            "show_more_text": "Last products",
+            "show_more_text": "Show more clothes",
             "show_more_url": "/shop"
-        },
-        "posts": {
-            "active": true,
-            "title": "Latest News",
-            "posts": [],
-            "buttons": {
-                "show_more_text": "Show more blog posts"
-            }
-        },
-        "services": {
-            "active": true,
-            "title": "Our services",
-            "items": {
-                "delivery": {
-                    "text": "Fast delivery",
-                    "url": "#"
-                },
-                "satisfaction": {
-                    "text": "Satisfaction",
-                    "url": "#"
-                },
-                "quality": {
-                    "text": "Quality",
-                    "url": "#"
-                }
-            }
         },
         "product": {
             "add_to_cart": {
-                "active": true,
+                "active": false,
                 "text": "Add to cart"
             },
             "buy_now": {
-                "active": true,
+                "active": false,
                 "text": "Buy now"
             },
             "related": {
-                "active": true,
+                "active": false,
                 "title": "Related products"
             },
             "upsell": {
-                "active": true,
+                "active": false,
                 "title": "Special offer for you"
             },
             "reviews": {
-                "active": true,
+                "active": false,
                 "title": "Our customers reviews"
             },
             "share_buttons": {
                 "active": true,
-                "title": "Share",
-                "whatsapp": true,
-                "facebook": true,
-                "twitter": true,
-                "linkedin": true
+                "title": "Share this product",
+                "whatsapp": false,
+                "facebook": false,
+                "twitter": false,
+                "linkedin": false
             }
         },
         "post": {
@@ -205,14 +184,6 @@
                 "brands": {
                     "active": true,
                     "title": "Brands"
-                },
-                "categories": {
-                    "active": true,
-                    "title": "Categories"
-                },
-                "products": {
-                    "active": true,
-                    "title": "From shop"
                 }
             },
             "title": "Shop",
@@ -222,32 +193,37 @@
                 "oldest": "Oldest",
                 "name_asc": "Name (A-Z)",
                 "name_desc": "Name (Z-A)",
-                "price_asc": "Price (low to high)",
-                "price_desc": "Price (high to low)",
-                "rating_asc": "Rating (low to high)",
-                "rating_desc": "Rating (high to low)"
+                "price_asc": "Low Price ",
+                "price_desc": "Hight Price ",
+                "rating_asc": "Low Rating ",
+                "rating_desc": "Hight Rating"
             },
             "pagination": {
                 "limit": 12,
                 "next_text": "Next",
                 "prev_text": "Prev"
-            }
+            },
+            "empty_text": "No products found"
         },
         "blog": {
             "sidebar": {
-                "active": true
+                "active": true,
+                "categories": {
+                    "active": true,
+                    "title": "Categories"
+                },
+                "products": {
+                    "active": true,
+                    "title": "From shop"
+                }
             },
             "title": "Blog",
-            "description": "Our latest ",
+            "description": "Our latest posts",
             "sorts": {
                 "newest": "Newest",
                 "oldest": "Oldest",
                 "name_asc": "Name (A-Z)",
-                "name_desc": "Name (Z-A)",
-                "price_asc": "Price (low to high)",
-                "price_desc": "Price (high to low)",
-                "rating_asc": "Rating (low to high)",
-                "rating_desc": "Rating (high to low)"
+                "name_desc": "Name (Z-A)"
             },
             "pagination": {
                 "limit": 12,
@@ -260,21 +236,21 @@
             "empty_text": "Your cart is empty",
             "total_text": "Total",
             "upsell": {
-                "active": true,
+                "active": false,
                 "title": "Special offer for you"
             },
             "buttons": {
-                "checkout_text": "Place Order",
+                "checkout_text": "Proceed to checkout",
                 "back_to_shop_text": "Back to shop",
-                "show_back_to_shop": true
-            },
-            "wishlist": {
-                "back_to_shop_text": "Back to shop"
+                "show_back_to_shop": false
             }
         },
         "wishlist": {
             "title": "Your wishlist",
-            "empty_text": "Your wishlist is empty"
+            "empty_text": "Your wishlist is empty",
+            "buttons": {
+                "back_to_shop_text": "Back to shop"
+            }
         },
         "thanks": {
             "title": "Thanks",
@@ -284,10 +260,22 @@
             }
         },
         "_404": {
-            "title": "Thanks",
-            "description": "Thank you for your order",
+            "title": "Page not found",
+            "description": "We are sorry, but the page you requested was not found",
             "buttons": {
                 "back_to_shop_text": "Back to shop"
+            }
+        },
+        "about": {
+            "photo": null,
+            "title": "About Page",
+            "body": {
+                "title1": "1. What are the best ways to sell your brand to customers?",
+                "description1": "Lorem ipsum dolor sit amet, consectetur a elit. In ut ullamcorper leo, eget euismod orci. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus musbulum ultricies aliquam convallis. Maecenas ut tellus mi. Proin tincidunt, lectus eu volutpat mattis, ante metus lacinia tellus, vitae condimentum nulla enim bibendum nibh. Praesent turpis risus, interdum nec venenatis id, pretium sit amet purus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam eu lorem nibh. Mauris ex dolor, rutrum in odio vel, suscipit ultrices nunc. Cras ipsum dolor, eleifend et nisl vel, tempor molestie nibh. In hac habitasse platea dictumst. Proin nec blandit ligula.",
+                "title2": "2. What are the best ways to sell your brand to customers?",
+                "description2": "Lorem ipsum dolor sit amet, consectetur a elit. In ut ullamcorper leo, eget euismod orci. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus musbulum ultricies aliquam convallis. Maecenas ut tellus mi. Proin tincidunt, lectus eu volutpat mattis, ante metus lacinia tellus, vitae condimentum nulla enim bibendum nibh. Praesent turpis risus, interdum nec venenatis id, pretium sit amet purus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam eu lorem nibh. Mauris ex dolor, rutrum in odio vel, suscipit ultrices nunc. Cras ipsum dolor, eleifend et nisl vel, tempor molestie nibh. In hac habitasse platea dictumst. Proin nec blandit ligula.",
+                "title3": "3. What are the best ways to sell your brand to customers?",
+                "description3": "Lorem ipsum dolor sit amet, consectetur a elit. In ut ullamcorper leo, eget euismod orci. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus musbulum ultricies aliquam convallis. Maecenas ut tellus mi. Proin tincidunt, lectus eu volutpat mattis, ante metus lacinia tellus, vitae condimentum nulla enim bibendum nibh. Praesent turpis risus, interdum nec venenatis id, pretium sit amet purus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam eu lorem nibh. Mauris ex dolor, rutrum in odio vel, suscipit ultrices nunc. Cras ipsum dolor, eleifend et nisl vel, tempor molestie nibh. In hac habitasse platea dictumst. Proin nec blandit ligula."
             }
         }
     }

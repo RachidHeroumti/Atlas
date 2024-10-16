@@ -56,7 +56,8 @@
                     v-show="isSortVisible"
                     class="absolute right-0 z-20 w-56 bg-white rounded-b-lg shadow-lg sort-direction top-full"
                   >
-                    <div class="flex flex-col gap-3 py-5 px-5">
+                    <div class="flex flex-col gap-3 py-5 px-5"
+                     v-if="sorts&&sorts.length>0">
                       <div
                         class="flex items-center"
                         v-for="(sort, i) in sorts"
@@ -103,17 +104,20 @@
             <h1 class="py-3">{{ $settings.sections.blog.empty_text }}</h1>
           </div>
           <!--posts-->
-          <div class="w-full">
+          <div class="w-full" 
+          v-if="items && items.length>0">
             <div v-for="(item, i) in items" :key="i" class="w-full">
               <si-post :item="item"></si-post>
             </div>
           </div>
           <div>
-            <!-- Pagination -->
+            
           </div>
         </div>
       </div>
 
+
+      
       <transition
         name="slideleft"
         v-if="$settings.sections.blog.sidebar.active"
@@ -227,7 +231,10 @@
               >
                 <si-loader></si-loader>
               </div>
-              <div v-for="(item, i) in categories" :key="i" class="">
+              
+
+              <div
+               v-for="(item, i) in categories" :key="i" class="">
                 <div class="py-1">
                   <span
                     @click="setParams(item.slug)"
@@ -240,6 +247,7 @@
                   </span>
                 </div>
               </div>
+
             </div>
             <hr />
             <div class="w-full relative py-5 hidden lg:flex">
@@ -279,6 +287,7 @@
           </div>
         </div>
       </transition>
+
     </div>
   </div>
 </template>
