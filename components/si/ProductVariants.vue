@@ -1,7 +1,7 @@
 <template>
     <div class="options ">
-        <div v-for="(option, i) in options" :key="i" :class="option.key" class="p-1 mb-1   bg-white text-base font-poppins font-medium text-titles-color py-2">
-            <b class="flex mb-1 capitalize option-name">{{ option.name }}</b>
+        <div v-for="(option, i) in options" :key="i" :class="option.key" class="p-1 mb-1   bg-white text-13p font-poppins font-medium  text-titles-color py-2">
+            <span class="flex mb-1 capitalize option-name">{{ option.name }}</span>
             <div v-if="!option.hasOwnProperty('style') || option.style == '' || option.style == null  || (option.style !== 'LIST' && option.style !== 'CHECK' && option.style !== 'RADIO') && (option.key !== 'color' && option.style == 'SIZE') || (option.key == 'color' && option.style == 'COLOR') " class="options-list">
                 <div v-for="(val, ii) in option.values" :key="ii" class="mx-1 option">
                     <button :class="selected[`option${i+1}`] && selected[`option${i+1}`].value == val._id ? 'active': ''" @click="setVariant(i+1, val._id)" :id="val._id" :style="`${option.key == 'color' ? `background-color:${val.value2}` : ''}`"><small>{{ val.value1 }}</small></button>
@@ -327,7 +327,7 @@ export default {
   /* Personalize */
   flex: 1;
   padding: 0 1em;
-  color: #1e1e1e;
+  color: #282828;
   background-color: #f0f0f0;
   background-image: none;
   cursor: pointer;

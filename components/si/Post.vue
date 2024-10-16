@@ -2,20 +2,17 @@
 <div class="w-full ">
     <div class="w-full flex flex-col bg-white ">
 
+
         <div class=" mb-10 w-full ">
             <nuxt-link :to="`/posts/${item.slug}`" :title="item.title" :aria-label="item.title">
-                <si-image  class=" w-full h-80  inset-0  object-cover" :src="item.image ? item.image.url : null" :alt="item.title"/>
+                <si-image  class=" w-full h-96  inset-0  object-cover" :src="item.image ? item.image.url : null" :alt="item.title"/>
             </nuxt-link>
         </div>
 
         <div class="flex font-poppins text-13p font-normal leading-3 text-titles-color space-x-2 ">
-            <span class=" pe-4">{{ item.createdAt }}</span>
+            <span class="pe-4">{{ formatDate(item.createdAt) }}</span>
             <span class="">|</span>
-            <span class=" pe-4">{{ item.content }}</span>
-            <span class="">|</span>
-            <span class=" pe-4">{{ item.publisher.firstname }}</span>
-            <span class="">|</span>
-            <span class=" pe-4">{{ item.description }}</span>
+            <span class=" pe-4">{{ item.publisher.firstname }}</span> 
         </div>
 
         <div class=" h-full ">
@@ -25,8 +22,7 @@
             <nuxt-link :to="`/posts/${item.slug}`" :title="item.title" :aria-label="item.title">
                 <p class=" py-3 text-white-gray text-base font-base font-poppins ">{{ item.excerpt }}</p>
             </nuxt-link>
-        </div>
-
+        </div> 
 
          <!-- button in post bottom-->
          <!--  
@@ -37,6 +33,7 @@
         </nuxt-link>
     -->
     </div>
+
 </div>
 </template>
 <script>
@@ -44,5 +41,16 @@ export default {
     props: {
         item: Object
     },
+    methods :{
+        formatDate(dateString) {
+      const date = new Date(dateString);
+      return date.toLocaleDateString('en-US', { 
+        weekday: 'long', 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric' 
+      });
+    }
+    }
 }
 </script>

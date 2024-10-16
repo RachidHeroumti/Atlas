@@ -11,7 +11,8 @@
            </div>
 
             <div class="w-full my-3 space-y-2 ">
-                    <div class="flex flex-wrap ">
+                    <div  v-if="socialMedia"
+                    class="flex flex-wrap ">
                         <div v-for="item in socialMedia.filter(s=>$settings.sections.footer.social_media[s.name])" :key="item.name" class=" ml-3 flex items-center justify-between">
                             <a class="h-full flex" :href="$settings.sections.footer.social_media[item.name]" target="_blank" rel="noopener noreferrer">
                                 <si-image class="h-4 w-4" width="16" height="16" :src="item.image" :alt="item.name"/>

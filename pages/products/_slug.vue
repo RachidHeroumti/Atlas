@@ -1,10 +1,9 @@
 <template>
-  <div class="pt-120p bg-white container">
-    <!-- header for product details page -->
-    <!-- <sections-header></sections-header>-->
+  <div class="md:pt-20 pt-16 bg-white w-full container">
+
     <sections-header-top></sections-header-top>
 
-    <div v-if="loading" class="flex items-center justify-cente">
+    <div v-if="loading" class="flex w-full items-center justify-center  ">
       <si-loader></si-loader>
     </div>
 
@@ -58,6 +57,8 @@
 
       <div class="w-full md:w-1/2">
         <div class="p-2 flex h-full">
+
+
           <div class="">
             <h2
               class="mb-2 leading-custom-1.3 text-36p font-medium font-poppins text-titles-color"
@@ -75,9 +76,8 @@
                   v-for="(star, i) in 5"
                   :class="
                     star <= item.review.rating
-                      ? 'text-yellow-500 '
-                      : 'text-titles-color'
-                  "
+                      ? ' text-titles-color'
+                      : ' text-white-gray '"
                   :key="i"
                 >
                   <svg
@@ -260,6 +260,22 @@
                 <p>productType: {{ item.productType }}</p>
                 <p>tags : {{ item.tags[0] }}</p>
               </div>
+              <div v-if="!showaAdditionalInfo&&!showmoredescription" >
+                <div
+        v-if="item && $settings.sections.product.reviews.active"
+        class="reviews border border-gray-200 "
+      >
+        <sections-reviews
+          v-show="
+            !$store.state.apps.find(
+              (a) => a.placement.indexOf('REPLACE_REVIEWS') >= 0
+            )
+          "
+          :item="item"
+        ></sections-reviews>
+      </div>
+              </div>
+
             </div>
 
             <si-app-loader v-show="!outofstock" placement="REPLACE_BUYNOW" />
@@ -284,6 +300,8 @@
     -->
         </div>
       </div>
+
+
     </div>
 
     <div v-if="showVarianteModal" class="d-f modal_variante">
@@ -420,19 +438,7 @@
         v-html="item.html"
       ></div>
       <si-app-loader placement="AFTER_DESCRIPTION" />
-      <div
-        v-if="item && $settings.sections.product.reviews.active"
-        class="reviews p-10"
-      >
-        <sections-reviews
-          v-show="
-            !$store.state.apps.find(
-              (a) => a.placement.indexOf('REPLACE_REVIEWS') >= 0
-            )
-          "
-          :item="item"
-        ></sections-reviews>
-      </div>
+      
       <si-app-loader placement="REPLACE_REVIEWS" />
       <!--related product-->
       <div
@@ -442,6 +448,7 @@
         <sections-related-products :item="item" />
       </div>
     </div>
+
   </div>
 </template>
 

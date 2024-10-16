@@ -1,12 +1,13 @@
 <template>
   <div class=" bg-white ">
+
    <!-- <sections-banner v-if="$settings.sections.banner.active"></sections-banner> 
     <sections-collections
       v-if="$settings.sections.collections.active"
     ></sections-collections> -->
 
     
-   <div class="flex w-full sm:h-screen mt-20 sm:mt-0">
+   <div class="flex w-full sm:h-screen ">
      <sections-header-menu></sections-header-menu>
    <template v-for="i in 5">
       <sections-products
@@ -14,8 +15,10 @@
         :data-key="i"
         v-if="$settings.sections[`products_${i}`].active"
         :section="$settings.sections[`products_${i}`]"
+        
       ></sections-products>
     </template>
+    
 
     </div>
       

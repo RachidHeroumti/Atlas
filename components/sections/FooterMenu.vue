@@ -8,9 +8,9 @@
         <p class="text-gray-500" v-html="$settings.sections.footer.about"></p>
       </div>
 
-      <div class="w-full space-y-3">
+      <div v-if=" menu&&menu.items" class="w-full space-y-3">
         <p>Useful links</p>
-        <div
+        <div 
           v-for="(item, i) in menu.items"
           :key="i"
           class="w-full text-gray-400"
@@ -87,6 +87,7 @@
     </div>
     <hr />
     <div
+     v-if=" menu_bottom&&menu_bottom.items"
       class="w-full flex justify-center space-x-2 sm:space-x-5 font-normal py-5 text-white"
     >
       <div

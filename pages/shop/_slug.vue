@@ -1,5 +1,5 @@
 <template>
-  <div class=" bg-white sm:pt-120p pt-20  container"
+  <div class=" bg-white md:pt-20 pt-5  container"
   >
     <div class="relative h-full flex mb-2 space-x-2 ">
 
@@ -200,7 +200,7 @@
       <transition name="slideleft">
         <div
           :class="showSideBar ? 'show overflow-y-scroll' : 'hide'"
-          class=" fixed top-20 bottom-0 z-30 hidden h-full bg-white w-80 md:w-1/4 md:block px-4 
+          class=" fixed top-0 bottom-0 z-50 sm:z-20 hidden h-screen sm:h-full mb-4 pb-4 bg-white w-80 md:w-1/4 md:block px-4 
            md:top-0 md:relative "
         >
           <div
@@ -420,7 +420,7 @@
                   type="checkbox"
                 />
                 <label
-                  class="rounded-full cursor-pointer"
+                  class=" cursor-pointer"
                   :style="`background-color:${item.value2}`"
                   :for="item.value1"
                   :aria-label="item.value1"
@@ -451,12 +451,12 @@
               <div
                 v-for="(item, i) in filters.sizes"
                 :key="i"
-                class="flex items-center m-0.5 rounded-md"
+                class="flex items-center m-0.5 "
                 :class="
                   params['options.values.value1'] &&
                   params['options.values.value1'].indexOf(item.value1) >= 0
-                    ? 'bg-primary text-white'
-                    : 'bg-gray-200'
+                    ? ' bg-titles-color text-white'
+                    : ' border '
                 "
               >
                 <input
@@ -939,19 +939,19 @@ export default {
 </script>
 <style>
 .color-option label {
-  width: 24px;
-  height: 24px;
+  width: 16px;
+  height: 16px;
   margin-left: 4px;
   margin-right: 4px;
   box-shadow: 0 0 0px 2px rgb(230, 230, 230);
 }
 .color-option.active label {
   color: transparent;
-  box-shadow: 0 0 0px 2px white, 0 0 0px 4px var(--primary-color);
+  box-shadow: 0 0 0px 2px white, 0 0 0px 3px #282828;
   margin-left: 6px;
   margin-right: 6px;
-  width: 20px;
-  height: 20px;
+  width: 16px;
+  height: 16px;
 }
 
 .slideleft-enter-active {
@@ -1041,12 +1041,10 @@ export default {
 [dir="rtl"] .rotated.active {
   transform: rotate(0deg);
 }
-select {
-}
 
 option {
   /* Initial styling of options */
-  color: black;
+  color: #282828;
 }
 
 option:hover {

@@ -1,11 +1,12 @@
 <template>
-  <div class="container bg-white pt-120p h-full">
-    <div class="flex mb-2 relative space-x-2">
+  <div class="container bg-white md:pt-20 pt-16 h-full">
+    <div class="flex mb-2 relative space-x-2 bg-white h-full">
+      
+      <div class="w-full md:w-3/4 px-6">
+        <div class="bg-white ">
+          <div class="py-2">
+            <div class="flex justify-between items-center">
 
-      <div class="w-full md:w-3/4 px-4 ">
-        <div class="bg-white">
-          <div class="border-b">
-            <div class="flex justify-end items-center p-2">
               <button
                 @click="showSideBar = true"
                 aria-label="Search button"
@@ -16,9 +17,10 @@
                 <span class="w-2 my-0.5 h-0.5 bg-gray-800"></span>
                 <span class="w-1 my-0.5 h-0.5 bg-gray-800"></span>
               </button>
+
               <!--sort by-->
               <div
-                class="relative px-2"
+                class="relative"
                 @mouseover="windowWidth >= 1024 ? (isSortVisible = true) : null"
                 @mouseleave="
                   windowWidth >= 1024 ? (isSortVisible = false) : null
@@ -101,12 +103,8 @@
             <h1 class="py-3">{{ $settings.sections.blog.empty_text }}</h1>
           </div>
           <!--posts-->
-          <div class=" w-full ">
-            <div
-              v-for="(item, i) in items"
-              :key="i"
-              class="p-2 w-full"
-            >
+          <div class="w-full">
+            <div v-for="(item, i) in items" :key="i" class="w-full">
               <si-post :item="item"></si-post>
             </div>
           </div>
@@ -121,14 +119,16 @@
         v-if="$settings.sections.blog.sidebar.active"
       >
         <div
-          :class="showSideBar ? 'show' : 'hide'"
-          class="w-80 md:w-1/4 fixed hidden md:block md:top-0 h-full top-0 bottom-0 bg-white md:relative z-10"
+        :class="showSideBar ? 'show overflow-y-scroll' : 'hide'"
+          class=" fixed top-0 bottom-0 z-50 sm:z-20 hidden h-screen sm:h-full mb-4 pb-4 bg-white w-80 md:w-1/4 md:block px-4 
+           md:top-0 md:relative "
         >
           <div
             class="bg-black bg-opacity-50 fixed block md:hidden inset-0"
             @click="showSideBar = false"
           ></div>
-          <div class="border-r bg-white h-full flex flex-col relative">
+
+          <div class="px-6 bg-white h-full flex flex-col relative">
             <div class="w-full flex justify-end md:hidden">
               <button
                 @click="showSideBar = false"
@@ -153,9 +153,67 @@
                 </svg>
               </button>
             </div>
+
+            <!--Search-->
+            <div
+              class="relative border border-gray-200 p-2 sm:p-3 sm:px-5 items-center justify-between flex mb-5 sm:mb-8"
+            >
+              <input
+                class="outline-none"
+                type="text"
+                placeholder="search..."
+                v-model="q"
+                @keydown.enter="search"
+              />
+
+              <button type="button" @click="search">
+                <si-svg>
+                  <svg
+                    aria-hidden="true"
+                    focusable="false"
+                    data-prefix="far"
+                    data-icon="search"
+                    role="img"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 512 512"
+                    class="w-5 h-5 translate"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="M508.5 468.9L387.1 347.5c-2.3-2.3-5.3-3.5-8.5-3.5h-13.2c31.5-36.5 50.6-84 50.6-136C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c52 0 99.5-19.1 136-50.6v13.2c0 3.2 1.3 6.2 3.5 8.5l121.4 121.4c4.7 4.7 12.3 4.7 17 0l22.6-22.6c4.7-4.7 4.7-12.3 0-17zM208 368c-88.4 0-160-71.6-160-160S119.6 48 208 48s160 71.6 160 160-71.6 160-160 160z"
+                      class=""
+                    ></path>
+                  </svg>
+                </si-svg>
+              </button>
+            </div>
+
+            <!-- Author-->
+            <div>
+              <h2
+                class="mb-2 text-base font-poppins font-medium text-titles-color"
+              >
+                Author
+              </h2>
+              <div class="py-5">
+                <nuxt-img
+                  class="w-full h-48 rounded-sm object-cover opacity-75"
+                  src="https://images.pexels.com/photos/3772623/pexels-photo-3772623.jpeg?auto=compress&cs=tinysrgb&w=600"
+                  alt="coolections Pic"
+                />
+                <p
+                  class="py-3 text-white-gray text-base font-base font-poppins"
+                >
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  minima animi assumenda nam dignissimos non. Quae, cum?
+                </p>
+              </div>
+            </div>
+
+            <!--Categories-->
             <h2
               v-if="$settings.sections.blog.sidebar.categories.active"
-              class="px-2 text-base font-poppins font-medium text-titles-color"
+              class="text-base font-poppins font-medium text-titles-color"
             >
               {{ $settings.sections.blog.sidebar.categories.title }}
             </h2>
@@ -169,23 +227,39 @@
               >
                 <si-loader></si-loader>
               </div>
-              <div
-                v-for="(item, i) in categories"
-                :key="i"
-                class="flex items-center px-2"
-              >
-                <input
-                  class="w-4 h-4 mx-1"
-                  :id="item.slug"
-                  @change="setParams($event, 'categories.slug-in', item.slug)"
-                  type="checkbox"
-                />
-                <label class="cursor-pointer capitalize" :for="item.slug">{{
-                  item.name
-                }}</label>
+              <div v-for="(item, i) in categories" :key="i" class="">
+                <div class="py-1">
+                  <span
+                    @click="setParams(item.slug)"
+                    class="capitalize cursor-pointer collec-name text-titles-color text-12p font-poppins font-normal hover:text-gray-600 hover:underline"
+                    :class="{
+                      'text-gray-600 underline': selectedCategory === item.slug,
+                    }"
+                  >
+                    {{ item.name }}
+                  </span>
+                </div>
               </div>
             </div>
             <hr />
+            <div class="w-full relative py-5 hidden lg:flex">
+              <div
+                class="absolute z-20 top-0 left-0 w-3/4 h-full flex justify-center items-center"
+              >
+                <h1
+                  class="text-center text-white font-poppins font-bold left-0 right-0 w-3/4"
+                >
+                  Shop
+                </h1>
+              </div>
+              <nuxt-img
+                class="w-full h-48 rounded-sm object-cover opacity-75"
+                src="https://images.pexels.com/photos/9603486/pexels-photo-9603486.jpeg?auto=compress&cs=tinysrgb&w=600"
+                alt="coolections Pic"
+              />
+            </div>
+            <!--products from shop -->
+            <!--
             <div
               v-if="
                 products.length > 0 &&
@@ -201,6 +275,7 @@
                 itemClass="w-full"
               ></si-carousel>
             </div>
+           -->
           </div>
         </div>
       </transition>
@@ -214,6 +289,7 @@ export default {
       windowWidth: 0,
       sortText: "Sort By default",
       isSortVisible: false,
+      selectedCategory: null,
       loading: {
         pages: true,
         products: true,
@@ -230,6 +306,7 @@ export default {
         "categories.slug-in": [],
         sort: { createdAt: -1 },
         type: "POST",
+        search: this.$route.query.search,
       },
       lastParams: {
         "categories.slug-in": [],
@@ -259,6 +336,8 @@ export default {
         { number: 9, width: 21, class: "w-full md:w-1/2 lg:w-1/3" },
         { number: 12, width: 26, class: "w-1/2 md:w-1/3 lg:w-1/4" },
       ],
+      q: "",
+      showSearch: false,
     };
   },
   watch: {
@@ -269,6 +348,9 @@ export default {
         }
       },
       deep: true,
+    },
+    "$route.query.search"(val) {
+      this.$set(this.params, "search", val);
     },
   },
   async fetch() {
@@ -291,30 +373,14 @@ export default {
     getWindowWidth() {
       this.windowWidth = window.innerWidth;
     },
-    setParams(e, key, value) {
-      if (key.indexOf("price") >= 0) {
-        this.$set(this.params, key, e.target.value);
-      } else {
-        if (e.target.checked) {
-          if (!this.params[key])
-            this.params[key] = this.$set(this.params, key, []);
-          this.params[key].push(value);
-        } else {
-          this.params[key] = this.params[key].filter((item) => item !== value);
-        }
-      }
+    setParams(value) {
+      const key = "categories.slug-in";
+      this.selectedCategory = value;
+      this.$set(this.params, key, value);
+
       switch (key) {
         case "categories.slug-in":
-          this.param = [...new Set(...this.param, value)];
-          break;
-        case "price.salePrice-from":
-          this.query["price-from"] = value;
-          break;
-        case "price.salePrice-to":
-          this.query["price-to"] = value;
-          break;
-        case "options.values.value1":
-          this.query["colors"] = value;
+          this.param = [value];
           break;
       }
     },
@@ -359,6 +425,10 @@ export default {
       if (window.innerWidth < 1024) {
         this.isSortVisible = !this.isSortVisible;
       }
+    },
+    search() {
+      this.$store.state.search = this.q;
+      this.$router.push({ path: "/blog", query: { search: this.q } });
     },
   },
 };
