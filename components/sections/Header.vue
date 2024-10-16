@@ -181,7 +181,7 @@
 
           <div class="flex w-full text-dark-gray">
             <div
-              class="flex justify-end items-center md:justify-between w-full icons px-3"
+              class="flex justify-end items-center  w-full icons px-3   "
             >
               <!--Nav Bar-Menu start ------------------------------------------------>
               <div
@@ -286,7 +286,8 @@
 
               <!-------------------------------------------------------------------------- navbar end-->
 
-              <div class="flex justify-end h-full w-40">
+              <div class="flex justify-end h-full w-full  ">
+
                 <button
                   v-if="$settings.sections.header.icons.search"
                   @click="showSearch = true"

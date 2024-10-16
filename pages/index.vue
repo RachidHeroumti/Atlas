@@ -21,8 +21,7 @@
     
 
     </div>
-      
-   
+     
 
 <!--
     <sections-posts v-if="$settings.sections.posts.active"></sections-posts>
@@ -30,11 +29,7 @@
       v-if="$settings.sections.services.active"
     ></sections-services>
     -->
-    <!--
-    <div class="container">
-      <si-app-loader placement="BEFORE_HOME_FOOTER" />
-    </div>
- -->
+ 
   </div>
 </template>
 <script>

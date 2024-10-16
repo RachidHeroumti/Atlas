@@ -22,7 +22,7 @@
     </template>
 
     <Nuxt />
-
+    
     <template v-if="$route.name !== 'index'">
       <!-- <sections-footer></sections-footer> -->
       <div class="">
