@@ -1,5 +1,6 @@
 <template>
   <div class="bg-white">
+    
     <component :is="'style'">
       :root{ --primary-rgb: {{ rgb.r }}, {{ rgb.g }}, {{ rgb.b }};
       --primary-color: rgb(var(--primary-rgb)); } .bg-primary{ background-color:
@@ -24,82 +25,86 @@
     <Nuxt />
 
     <template v-if="$route.name !== 'index'">
-      <!-- <sections-footer></sections-footer> -->
-      <div class="">
-        <hr class="my-2 w-full" />
-      </div>
+  <!-- <sections-footer></sections-footer> -->
+  <div class="">
+    <hr class="my-2 w-full" />
+  </div>
 
-      <sections-footer-menu></sections-footer-menu>
-      <sections-copyright></sections-copyright>
+  <sections-footer-menu></sections-footer-menu>
+  
+  <sections-copyright></sections-copyright>
 
-      <si-full-image></si-full-image>
-      <div
-        dir="ltr"
-        class="currency-switcher"
-        v-if="$store.state.showCurrencyModal"
-      >
-        <div
-          class="currency-switcher-overlay"
-          @click="$store.state.showCurrencyModal = false"
-        ></div>
-        <form class="currency-switcher-modal">
-          <div class="currency-switcher-header">Switch Language/Currency</div>
-          <div class="currency-switcher-body">
-            <div class="currency-switcher-inputs">
-              <div class="currency-switcher-input">
-                <label for="currency-switcher-currency">Currency</label>
-                <select
-                  id="currency-switcher-currency"
-                  class="bg-gray-100"
-                  name="currency"
-                  v-model="$store.state.currency.code"
-                >
-                  <option
-                    v-for="currency in $settings.store_currencies"
-                    :key="currency.code"
-                    :value="currency.code"
-                  >
-                    {{ currency.name }} ({{ currency.symbol }})
-                  </option>
-                </select>
-              </div>
-              <div class="currency-switcher-input">
-                <label for="currency-switcher-currency">Language</label>
-                <select
-                  id="currency-switcher-language"
-                  class="bg-gray-100"
-                  name="lang"
-                  v-model="$store.state.language.code"
-                >
-                  <option
-                    v-for="language in $settings.store_languages"
-                    :key="language.code"
-                    :value="language.code"
-                  >
-                    {{ language.name }} ({{ language.code }})
-                  </option>
-                </select>
-              </div>
-            </div>
-          </div>
-          <div class="currency-switcher-actions">
-            <button
-              type="button"
-              @click="$store.state.showCurrencyModal = false"
+
+  <si-full-image v-if="$route.path.startsWith('/products/')"></si-full-image>
+
+  <div
+    dir="ltr"
+    class="currency-switcher"
+    v-if="$store.state.showCurrencyModal"
+  >
+    <div
+      class="currency-switcher-overlay"
+      @click="$store.state.showCurrencyModal = false"
+    ></div>
+    <form class="currency-switcher-modal">
+      <div class="currency-switcher-header">Switch Language/Currency</div>
+      <div class="currency-switcher-body">
+        <div class="currency-switcher-inputs">
+          <div class="currency-switcher-input">
+            <label for="currency-switcher-currency">Currency</label>
+            <select
+              id="currency-switcher-currency"
+              class="bg-gray-100"
+              name="currency"
+              v-model="$store.state.currency.code"
             >
-              Cancel
-            </button>
-            <button type="submit">Switch</button>
+              <option
+                v-for="currency in $settings.store_currencies"
+                :key="currency.code"
+                :value="currency.code"
+              >
+                {{ currency.name }} ({{ currency.symbol }})
+              </option>
+            </select>
           </div>
-        </form>
+          <div class="currency-switcher-input">
+            <label for="currency-switcher-currency">Language</label>
+            <select
+              id="currency-switcher-language"
+              class="bg-gray-100"
+              name="lang"
+              v-model="$store.state.language.code"
+            >
+              <option
+                v-for="language in $settings.store_languages"
+                :key="language.code"
+                :value="language.code"
+              >
+                {{ language.name }} ({{ language.code }})
+              </option>
+            </select>
+          </div>
+        </div>
       </div>
+      <div class="currency-switcher-actions">
+        <button
+          type="button"
+          @click="$store.state.showCurrencyModal = false"
+        >
+          Cancel
+        </button>
+        <button type="submit">Switch</button>
+      </div>
+    </form>
+  </div>
 
-      <div
-        v-if="$settings.other_scripts"
-        class="other-scripts"
-        v-html="$settings.other_scripts"
-      ></div>
-    </template>
+  <div
+    v-if="$settings.other_scripts"
+    class="other-scripts"
+    v-html="$settings.other_scripts"
+  ></div>
+</template>
+
 
     <!--button up-->
     <div
@@ -117,6 +122,7 @@
         <path d="m291-453-51-51 240-240 240 240-51 51-189-189-189 189Z" />
       </svg>
     </div>
+    
   </div>
 </template>
 <script>

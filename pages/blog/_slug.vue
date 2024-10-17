@@ -1,12 +1,10 @@
 <template>
   <div class="container bg-white md:pt-20 pt-16 h-full">
     <div class="flex mb-2 relative space-x-2 bg-white h-full">
-      
       <div class="w-full md:w-3/4 px-6">
-        <div class="bg-white ">
+        <div class="bg-white">
           <div class="py-2">
             <div class="flex justify-between items-center">
-
               <button
                 @click="showSideBar = true"
                 aria-label="Search button"
@@ -56,8 +54,10 @@
                     v-show="isSortVisible"
                     class="absolute right-0 z-20 w-56 bg-white rounded-b-lg shadow-lg sort-direction top-full"
                   >
-                    <div class="flex flex-col gap-3 py-5 px-5"
-                     v-if="sorts&&sorts.length>0">
+                    <div
+                      class="flex flex-col gap-3 py-5 px-5"
+                      v-if="sorts && sorts.length > 0"
+                    >
                       <div
                         class="flex items-center"
                         v-for="(sort, i) in sorts"
@@ -103,31 +103,25 @@
           >
             <h1 class="py-3">{{ $settings.sections.blog.empty_text }}</h1>
           </div>
-          
+
           <!--posts-->
-          <div class="w-full" 
-          v-if="items && items.length>0">
+          <div class="w-full" v-if="items && items.length > 0">
             <div v-for="(item, i) in items" :key="i" class="w-full">
               <si-post :item="item"></si-post>
             </div>
           </div>
 
-          <div>
-            
-          </div>
+          <div></div>
         </div>
       </div>
 
-
-      
       <transition
         name="slideleft"
         v-if="$settings.sections.blog.sidebar.active"
       >
         <div
-        :class="showSideBar ? 'show overflow-y-scroll' : 'hide'"
-          class=" fixed top-0 bottom-0 z-50 sm:z-20 hidden h-screen sm:h-full mb-4 pb-4 bg-white w-80 md:w-1/4 md:block px-4 
-           md:top-0 md:relative "
+          :class="showSideBar ? 'show overflow-y-scroll' : 'hide'"
+          class="fixed top-0 bottom-0 z-50 sm:z-20 hidden h-screen sm:h-full mb-4 pb-4 bg-white w-80 md:w-1/4 md:block px-4 md:top-0 md:relative"
         >
           <div
             class="bg-black bg-opacity-50 fixed block md:hidden inset-0"
@@ -233,23 +227,22 @@
               >
                 <si-loader></si-loader>
               </div>
-              
-
-              <div
-               v-for="(item, i) in categories" :key="i" class="">
-                <div class="py-1">
-                  <span
-                    @click="setParams(item.slug)"
-                    class="capitalize cursor-pointer collec-name text-titles-color text-12p font-poppins font-normal hover:text-gray-600 hover:underline"
-                    :class="{
-                      'text-gray-600 underline': selectedCategory === item.slug,
-                    }"
-                  >
-                    {{ item.name }}
-                  </span>
+              <div v-if="categories && categories.length > 0">
+                <div v-for="(item, i) in categories" :key="i" class="">
+                  <div class="py-1">
+                    <span
+                      @click="setParams(item.slug)"
+                      class="capitalize cursor-pointer collec-name text-titles-color text-12p font-poppins font-normal hover:text-gray-600 hover:underline"
+                      :class="{
+                        'text-gray-600 underline':
+                          selectedCategory === item.slug,
+                      }"
+                    >
+                      {{ item.name }}
+                    </span>
+                  </div>
                 </div>
               </div>
-
             </div>
             <hr />
             <div class="w-full relative py-5 hidden lg:flex">
@@ -268,13 +261,9 @@
                 alt="coolections Pic"
               />
             </div>
-           
-             </div>
+          </div>
         </div>
       </transition>
-
-      
-
     </div>
   </div>
 </template>
@@ -288,12 +277,11 @@ export default {
       selectedCategory: null,
       loading: {
         pages: true,
-        products: true,
         categories: true,
       },
       query: {},
       param: [],
-      products: [],
+     
       showSideBar: false,
       items: [],
       categories: [],
@@ -352,7 +340,7 @@ export default {
   async fetch() {
     await this.getItems();
     await this.getCategories();
-    await this.getProducts();
+   
     this.$store.state.seo.title =
       this.$settings.sections.blog.title + " - " + this.$settings.store_name;
     this.$store.state.seo.description =
@@ -380,25 +368,12 @@ export default {
           break;
       }
     },
-    async getProducts() {
-      this.products = [];
-      this.loading.products = true;
-      try {
-        const { data } = await this.$storeino.products.search({ limit: 5 });
-         if(data&&data.results)
-           this.products = data.results;
-      } catch (e) {
-        console.log({ e });
-      }
-      this.loading.products = false;
-    },
     async getCategories() {
       this.categories = [];
       this.loading.categories = true;
       try {
         const { data } = await this.$storeino.categories.search({});
-        if(data&&data.results)
-        this.categories = data.results;
+        if (data && data.results) this.categories = data.results;
       } catch (e) {
         console.log({ e });
       }
@@ -410,8 +385,7 @@ export default {
       try {
         this.lastParams = this.$tools.copy(this.params);
         const { data } = await this.$storeino.pages.search(this.params);
-        if(data&&data.results)
-          this.items = data.results;
+        if (data && data.results) this.items = data.results;
       } catch (e) {
         console.log({ e });
       }

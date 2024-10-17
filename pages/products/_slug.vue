@@ -1,5 +1,5 @@
 <template>
-  <div class="md:pt-20 pt-16 bg-white w-full container">
+  <div class="pt-4 bg-white w-full container">
 
     <sections-header-top></sections-header-top>
 

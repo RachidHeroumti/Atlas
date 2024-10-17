@@ -2,7 +2,7 @@
   <div class="bg-white  h-16 ">
     <div
       :class="[
-        { hidden: isHidden, fixed: isFixed, block: !isFixed },
+        { hidden: isHidden, fixed: isFixed},
         'text-titles-color bg-white w-full  top-0  left-0 right-0 min-h-20 z-50 border-b border-gray-200 ',
       ]"
     >

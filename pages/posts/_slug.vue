@@ -63,6 +63,7 @@ export default {
         try{
             const { slug } = this.$route.params;
             const { data } = await this.$storeino.pages.get({ slug, type: 'POST' })
+            if(data)
             this.item = data;
 
             this.$store.state.seo.title = this.item.title + ' - ' + this.$settings.store_name;

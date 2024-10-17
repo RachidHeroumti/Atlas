@@ -1,11 +1,10 @@
 <template>
   <div class=" bg-white ">
-
-
     
    <div class="flex  w-full sm:h-screen ">
      <sections-header-menu></sections-header-menu>
    <template v-for="i in 2">
+    
       <sections-products
         :key="i"
         :data-key="i"
