@@ -1,128 +1,127 @@
 <template>
-  <div class=" bg-white md:pt-20 pt-5  container"
-  >
-    <div class="relative h-full flex mb-2 space-x-2 ">
-
-      <div class="w-full md:w-3/4 px-4 ">
+  <div class="bg-white md:pt-20 pt-5 container">
+    <div class="relative h-full flex mb-2 space-x-2">
+      <div class="w-full md:w-3/4 px-4">
         <div class="">
-         <div class=" mb-5 ">
-          <div class=" font-poppins font-base text-base">
-            <div class="flex items-center justify-between text-white-gray p-2">
-              <button
-                @click="showSideBar = true"
-                aria-label="Search button"
-                class="flex flex-col items-center p-2 mx-1 rounded-md md:hidden hover:bg-gray-200"
+          <div class="mb-5">
+            <div class="font-poppins font-base text-base">
+              <div
+                class="flex items-center justify-between text-white-gray p-2"
               >
-                <span class="w-6 my-0.5 h-0.5 bg-gray-800"></span>
-                <span class="w-4 my-0.5 h-0.5 bg-gray-800"></span>
-                <span class="w-2 my-0.5 h-0.5 bg-gray-800"></span>
-                <span class="w-1 my-0.5 h-0.5 bg-gray-800"></span>
-              </button>
-              <!-- type of showing products
+                <button
+                  @click="showSideBar = true"
+                  aria-label="Search button"
+                  class="flex flex-col items-center p-2 mx-1 rounded-md md:hidden hover:bg-gray-200"
+                >
+                  <span class="w-6 my-0.5 h-0.5 bg-gray-800"></span>
+                  <span class="w-4 my-0.5 h-0.5 bg-gray-800"></span>
+                  <span class="w-2 my-0.5 h-0.5 bg-gray-800"></span>
+                  <span class="w-1 my-0.5 h-0.5 bg-gray-800"></span>
+                </button>
+                <!-- type of showing products
                             <div class="flex">
                                 <button v-for="(grid,i) in girds" :key="i" @click="gridClass=grid.class" class="flex flex-wrap mx-0.5" :style="`width:${grid.width}px`">
                                     <span v-for="i in grid.number" :key="i" class="flex" :class="grid.class == gridClass ? 'bg-primary':'bg-gray-300'" style="margin:1px;width:4px;height:4px" ></span>
                                 </button>
                             </div>-->
-             
-                            
-               <div>
-                <span class="hidden md:flex">
-                  Showing 1–{{ items.length < 9 ? items.length : 9 }} of
-                  {{ items.length }} results</span
-                >
-              </div>
 
-              <!-- Sort -->
-              <div
-                class="relative pl-5 pr-7"
-                @mouseover="windowWidth >= 1024 ? (isSortVisible = true) : null"
-                @mouseleave="
-                  windowWidth >= 1024 ? (isSortVisible = false) : null
-                "
-              >
-                <div
-                  class="flex items-center py-3 cursor-pointer font-poppins font-base text-base"
-                  @click="showSort"
-                >
-                  <span class=" ">{{ sortText }}</span>
-                  <svg
-                    class="w-5 h-4"
-                    aria-label="chivron icon"
-                    :class="
-                      isSortVisible == true
-                        ? 'rotate-180 transition-all delay-150 ease-linear'
-                        : ''
-                    "
-                    width="20"
-                    height="20"
-                    viewBox="0 0 20 20"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
+                <div>
+                  <span class="hidden md:flex">
+                    Showing 1–{{ items.length < 9 ? items.length : 9 }} of
+                    {{ items.length }} results</span
                   >
-                    <path
-                      d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z"
-                      fill="currentColor"
-                    ></path>
-                  </svg>
                 </div>
-                <transition name="fade">
+
+                <!-- Sort -->
+                <div
+                  class="relative pl-5 pr-7"
+                  @mouseover="
+                    windowWidth >= 1024 ? (isSortVisible = true) : null
+                  "
+                  @mouseleave="
+                    windowWidth >= 1024 ? (isSortVisible = false) : null
+                  "
+                >
                   <div
-                    v-show="isSortVisible"
-                    class="absolute right-0 z-20 w-56 bg-white rounded-b-lg shadow-lg sort-direction top-full"
+                    class="flex items-center py-3 cursor-pointer font-poppins font-base text-base"
+                    @click="showSort"
                   >
-                    <div class="flex flex-col gap-3 py-5 px-5">
-                      <div
-                        class="flex items-center"
-                        v-for="(sort, i) in sorts"
-                        :key="i"
-                      >
-                        <input
-                          hidden
-                          type="radio"
-                          v-model="params.sort"
-                          :value="sort.field"
-                          :id="sort.name"
-                        />
-                        <label
-                          @click="getSortByText(sort.name)"
-                          class="cursor-pointer text-13p text-secondary-hover hover:underline hover:text-titles-color"
-                          :for="sort.name"
-                          >{{ sort.name }}</label
+                    <span class=" ">{{ sortText }}</span>
+                    <svg
+                      class="w-5 h-4"
+                      aria-label="chivron icon"
+                      :class="
+                        isSortVisible == true
+                          ? 'rotate-180 transition-all delay-150 ease-linear'
+                          : ''
+                      "
+                      width="20"
+                      height="20"
+                      viewBox="0 0 20 20"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M15.39 7.6a.54.54 0 00-.78 0L10 12.21 5.39 7.6a.54.54 0 00-.78 0 .55.55 0 000 .77L10 13.76l5.39-5.39a.55.55 0 000-.77z"
+                        fill="currentColor"
+                      ></path>
+                    </svg>
+                  </div>
+                  <transition name="fade">
+                    <div
+                      v-show="isSortVisible"
+                      class="absolute right-0 z-20 w-56 bg-white rounded-b-lg shadow-lg sort-direction top-full"
+                    >
+                      <div class="flex flex-col gap-3 py-5 px-5">
+                        <div
+                          class="flex items-center"
+                          v-for="(sort, i) in sorts"
+                          :key="i"
                         >
+                          <input
+                            hidden
+                            type="radio"
+                            v-model="params.sort"
+                            :value="sort.field"
+                            :id="sort.name"
+                          />
+                          <label
+                            @click="getSortByText(sort.name)"
+                            class="cursor-pointer text-13p text-secondary-hover hover:underline hover:text-titles-color"
+                            :for="sort.name"
+                            >{{ sort.name }}</label
+                          >
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </transition>
+                  </transition>
+                </div>
+                <!-- Sort -->
               </div>
-              <!-- Sort -->
             </div>
-          </div>
-          <div
-            v-if="loading.products"
-            class="flex items-center justify-center my-5"
-          >
-            <si-loader></si-loader>
-          </div>
-          <div
-            v-if="!loading.products && items.length == 0"
-            class="flex items-center justify-center my-5"
-          >
-            <h1 class="py-3">{{ $settings.sections.shop.empty_text }}</h1>
-          </div>
-          <div v-if="items && items.length > 0"
-           class="flex flex-wrap">
             <div
-              v-for="(item, i) in items"
-              :key="i"
-              class="p-2 home-products"
-              :class="gridClass"
+              v-if="loading.products"
+              class="flex items-center justify-center my-5"
             >
-              <si-product :item="item" place="shop" ></si-product>
+              <si-loader></si-loader>
             </div>
-            
+            <div
+              v-if="!loading.products && items.length == 0"
+              class="flex items-center justify-center my-5"
+            >
+              <h1 class="py-3">{{ $settings.sections.shop.empty_text }}</h1>
+            </div>
+            <div v-if="items && items.length > 0" class="flex flex-wrap">
+              <div
+                v-for="(item, i) in items"
+                :key="i"
+                class="p-2 home-products"
+                :class="gridClass"
+              >
+                <si-product :item="item" place="shop"></si-product>
+              </div>
+            </div>
           </div>
-        </div>
           <div
             v-if="items.length > 0"
             class="flex items-center justify-center w-full p-2"
@@ -195,22 +194,19 @@
                         </button>
                         -->
           </div>
-
         </div>
-
       </div>
 
       <transition name="slideleft">
         <div
           :class="showSideBar ? 'show overflow-y-scroll' : 'hide'"
-          class=" fixed top-0 bottom-0 z-50 sm:z-20 hidden h-screen sm:h-full mb-4 pb-4 bg-white w-80 md:w-1/4 md:block px-4 
-           md:top-0 md:relative "
+          class="fixed top-0 bottom-0 z-50 sm:z-20 hidden h-screen sm:h-full mb-4 pb-4 bg-white w-80 md:w-1/4 md:block px-4 md:top-0 md:relative"
         >
           <div
             class="fixed inset-0 block bg-black/40 bg-opacity-50 md:hidden"
             @click="showSideBar = false"
           ></div>
-          <div class="relative flex flex-col h-full bg-white ">
+          <div class="relative flex flex-col h-full bg-white">
             <div class="flex justify-end w-full md:hidden">
               <button
                 @click="showSideBar = false"
@@ -274,7 +270,7 @@
             <!--collections-->
             <h2
               v-if="$settings.sections.shop.sidebar.collections.active"
-              class=" mb-5 font-poppins text-base font-normal text-titles-color leading-custom-1.3"
+              class="mb-5 font-poppins text-base font-normal text-titles-color leading-custom-1.3"
             >
               {{ $settings.sections.shop.sidebar.collections.title }}
             </h2>
@@ -388,7 +384,9 @@
               {{ $settings.sections.shop.sidebar.colors.title }}
             </h2>
             <div
-              v-if="$settings.sections.shop.sidebar.colors.active && loading.filters"
+              v-if="
+                $settings.sections.shop.sidebar.colors.active && loading.filters
+              "
               class="flex items-center justify-center my-5"
             >
               <si-loader></si-loader>
@@ -421,7 +419,7 @@
                   type="checkbox"
                 />
                 <label
-                  class=" cursor-pointer"
+                  class="cursor-pointer"
                   :style="`background-color:${item.value2}`"
                   :for="item.value1"
                   :aria-label="item.value1"
@@ -452,7 +450,7 @@
               <div
                 v-for="(item, i) in filters.sizes"
                 :key="i"
-                class="flex items-center m-0.5 "
+                class="flex items-center m-0.5"
                 :class="
                   params['options.values.value1'] &&
                   params['options.values.value1'].indexOf(item.value1) >= 0
@@ -521,7 +519,7 @@
               <si-loader></si-loader>
             </div>
             <div
-              v-if="$settings.sections.shop.sidebar.tags.active && filters"
+              v-if="$settings.sections.shop.sidebar.tags && filters"
               class="flex flex-col mb-2 space-y-1"
             >
               <div
@@ -587,7 +585,6 @@
           </div>
         </div>
       </transition>
-
     </div>
   </div>
 </template>
@@ -744,7 +741,7 @@ export default {
     await this.getBrands();
     this.subCollections();
   },
-  
+
   mounted() {
     // All Pixel
     this.$tools.call("PAGE_VIEW");
@@ -848,8 +845,7 @@ export default {
       this.loading.filters = true;
       try {
         const { data } = await this.$storeino.products.filters({});
-         if(data)
-           this.filters = data;
+        if (data) this.filters = data;
       } catch (e) {
         console.log({ e });
       }
@@ -860,8 +856,7 @@ export default {
       this.loading.collections = true;
       try {
         const { data } = await this.$storeino.collections.search({});
-       if(data.results)
-        this.collections = data.results;
+        if (data.results) this.collections = data.results;
       } catch (e) {
         console.log({ e });
       }
@@ -872,8 +867,7 @@ export default {
       this.loading.brands = true;
       try {
         const { data } = await this.$storeino.brands.search({});
-        if(data.results)
-        this.brands = data.results;
+        if (data.results) this.brands = data.results;
       } catch (e) {
         console.log({ e });
       }
@@ -890,12 +884,12 @@ export default {
         this.params.limit = this.$settings.sections.shop.pagination.limit;
         this.lastParams = this.$tools.copy(this.params);
         const { data } = await this.$storeino.products.search(this.params);
-        
-        if(data&&data.results){
-            this.items = data.results;
+
+        if (data && data.results) {
+          this.items = data.results;
           this.paginate = data.paginate;
-          }
-          this.loading.products=false
+        }
+        this.loading.products = false;
       } catch (e) {
         console.log({ e });
       }
@@ -928,8 +922,7 @@ export default {
       this.loading.collections = true;
       try {
         const { data } = await this.$storeino.collections.search({});
-        if(data.results)
-        this.collections = data.results;
+        if (data.results) this.collections = data.results;
         await this.fetchProductCounts(); // Fetch product counts after collections are set
       } catch (e) {
         console.log({ e });

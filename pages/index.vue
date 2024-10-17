@@ -1,15 +1,11 @@
 <template>
   <div class=" bg-white ">
 
-   <!-- <sections-banner v-if="$settings.sections.banner.active"></sections-banner> 
-    <sections-collections
-      v-if="$settings.sections.collections.active"
-    ></sections-collections> -->
 
     
    <div class="flex  w-full sm:h-screen ">
      <sections-header-menu></sections-header-menu>
-   <template v-for="i in 5">
+   <template v-for="i in 2">
       <sections-products
         :key="i"
         :data-key="i"
@@ -18,8 +14,6 @@
         
       ></sections-products>
     </template>
-    
-
     </div>
      
 

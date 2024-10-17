@@ -1,10 +1,4 @@
 {
-  "SectionsBanner": {
-    "description": "Auto imported from components/sections/Banner.vue"
-  },
-  "SectionsCollections": {
-    "description": "Auto imported from components/sections/Collections.vue"
-  },
   "SectionsCopyright": {
     "description": "Auto imported from components/sections/Copyright.vue"
   },

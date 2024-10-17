@@ -268,25 +268,8 @@
                 alt="coolections Pic"
               />
             </div>
-            <!--products from shop -->
-            <!--
-            <div
-              v-if="
-                products.length > 0 &&
-                $settings.sections.blog.sidebar.products.active
-              "
-              class="w-full"
-            >
-              <si-carousel
-                :size="100"
-                component="si-product"
-                :title="$settings.sections.blog.sidebar.products.title"
-                :list="products"
-                itemClass="w-full"
-              ></si-carousel>
-            </div>
-           -->
-          </div>
+           
+             </div>
         </div>
       </transition>
 

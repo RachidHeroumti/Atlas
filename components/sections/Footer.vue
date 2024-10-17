@@ -20,13 +20,13 @@
                         </div>
                     </div>
 
-                     <!--
+                     
                     <div class="flex flex-wrap space-x-1">
                         <div v-for="item in methods.filter(m=>$settings.sections.footer.methods[m.name])" :key="item.name"
                              class="w-10 h-8 mx-2 flex items-center justify-center border ">
                             <si-image width="30" height="30" :src="item.image" :alt="item.name" class="h-full object-contain"/>
                         </div>
-                  </div>-->
+                  </div>
 
             </div>
             

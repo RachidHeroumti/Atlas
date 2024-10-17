@@ -1,5 +1,3 @@
-export { default as SectionsBanner } from '../..\\components\\sections\\Banner.vue'
-export { default as SectionsCollections } from '../..\\components\\sections\\Collections.vue'
 export { default as SectionsCopyright } from '../..\\components\\sections\\Copyright.vue'
 export { default as SectionsFooter } from '../..\\components\\sections\\Footer.vue'
 export { default as SectionsFooterMenu } from '../..\\components\\sections\\FooterMenu.vue'

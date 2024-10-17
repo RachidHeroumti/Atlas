@@ -6,8 +6,6 @@ You can directly use them in pages and other components without the need to impo
 
 **Tip:** If a component is conditionally rendered with `v-if` and is big, it is better to use `Lazy` or `lazy-` prefix to lazy load.
 
-- `<SectionsBanner>` | `<sections-banner>` (components/sections/Banner.vue)
-- `<SectionsCollections>` | `<sections-collections>` (components/sections/Collections.vue)
 - `<SectionsCopyright>` | `<sections-copyright>` (components/sections/Copyright.vue)
 - `<SectionsFooter>` | `<sections-footer>` (components/sections/Footer.vue)
 - `<SectionsFooterMenu>` | `<sections-footer-menu>` (components/sections/FooterMenu.vue)
