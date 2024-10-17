@@ -2470,7 +2470,7 @@
     "images": [
         "https://storeno.b-cdn.net/stores/10-2024/1728987582794.png"
     ],
-    "isActive": true,
+    "isActive": false,
     "autoRenew": false,
     "expiryDate": "2050-12-12T00:00:00.000Z",
     "name": "atlas",

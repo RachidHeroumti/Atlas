@@ -24,7 +24,9 @@
                                     <span v-for="i in grid.number" :key="i" class="flex" :class="grid.class == gridClass ? 'bg-primary':'bg-gray-300'" style="margin:1px;width:4px;height:4px" ></span>
                                 </button>
                             </div>-->
-              <div>
+             
+                            
+               <div>
                 <span class="hidden md:flex">
                   Showing 1–{{ items.length < 9 ? items.length : 9 }} of
                   {{ items.length }} results</span
@@ -108,7 +110,8 @@
           >
             <h1 class="py-3">{{ $settings.sections.shop.empty_text }}</h1>
           </div>
-          <div class="flex flex-wrap">
+          <div v-if="items && items.length > 0"
+           class="flex flex-wrap">
             <div
               v-for="(item, i) in items"
               :key="i"
@@ -385,9 +388,7 @@
               {{ $settings.sections.shop.sidebar.colors.title }}
             </h2>
             <div
-              v-if="
-                $settings.sections.shop.sidebar.colors.active && loading.filters
-              "
+              v-if="$settings.sections.shop.sidebar.colors.active && loading.filters"
               class="flex items-center justify-center my-5"
             >
               <si-loader></si-loader>
@@ -743,6 +744,7 @@ export default {
     await this.getBrands();
     this.subCollections();
   },
+  
   mounted() {
     // All Pixel
     this.$tools.call("PAGE_VIEW");
@@ -846,7 +848,8 @@ export default {
       this.loading.filters = true;
       try {
         const { data } = await this.$storeino.products.filters({});
-        this.filters = data;
+         if(data)
+           this.filters = data;
       } catch (e) {
         console.log({ e });
       }
@@ -857,6 +860,7 @@ export default {
       this.loading.collections = true;
       try {
         const { data } = await this.$storeino.collections.search({});
+       if(data.results)
         this.collections = data.results;
       } catch (e) {
         console.log({ e });
@@ -868,6 +872,7 @@ export default {
       this.loading.brands = true;
       try {
         const { data } = await this.$storeino.brands.search({});
+        if(data.results)
         this.brands = data.results;
       } catch (e) {
         console.log({ e });
@@ -885,8 +890,12 @@ export default {
         this.params.limit = this.$settings.sections.shop.pagination.limit;
         this.lastParams = this.$tools.copy(this.params);
         const { data } = await this.$storeino.products.search(this.params);
-        this.items = data.results;
-        this.paginate = data.paginate;
+        
+        if(data&&data.results){
+            this.items = data.results;
+          this.paginate = data.paginate;
+          }
+          this.loading.products=false
       } catch (e) {
         console.log({ e });
       }
@@ -919,6 +928,7 @@ export default {
       this.loading.collections = true;
       try {
         const { data } = await this.$storeino.collections.search({});
+        if(data.results)
         this.collections = data.results;
         await this.fetchProductCounts(); // Fetch product counts after collections are set
       } catch (e) {

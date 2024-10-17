@@ -22,7 +22,7 @@
     </template>
 
     <Nuxt />
-    
+
     <template v-if="$route.name !== 'index'">
       <!-- <sections-footer></sections-footer> -->
       <div class="">
@@ -101,7 +101,7 @@
       ></div>
     </template>
 
-     <!--button up-->
+    <!--button up-->
     <div
       v-if="showScrollTopButton"
       @click="scrollToTop"
@@ -117,7 +117,6 @@
         <path d="m291-453-51-51 240-240 240 240-51 51-189-189-189 189Z" />
       </svg>
     </div>
-
   </div>
 </template>
 <script>

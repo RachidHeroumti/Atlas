@@ -103,6 +103,7 @@
           >
             <h1 class="py-3">{{ $settings.sections.blog.empty_text }}</h1>
           </div>
+          
           <!--posts-->
           <div class="w-full" 
           v-if="items && items.length>0">
@@ -110,6 +111,7 @@
               <si-post :item="item"></si-post>
             </div>
           </div>
+
           <div>
             
           </div>
@@ -288,6 +290,8 @@
         </div>
       </transition>
 
+      
+
     </div>
   </div>
 </template>
@@ -398,7 +402,8 @@ export default {
       this.loading.products = true;
       try {
         const { data } = await this.$storeino.products.search({ limit: 5 });
-        this.products = data.results;
+         if(data&&data.results)
+           this.products = data.results;
       } catch (e) {
         console.log({ e });
       }
@@ -409,6 +414,7 @@ export default {
       this.loading.categories = true;
       try {
         const { data } = await this.$storeino.categories.search({});
+        if(data&&data.results)
         this.categories = data.results;
       } catch (e) {
         console.log({ e });
@@ -421,7 +427,8 @@ export default {
       try {
         this.lastParams = this.$tools.copy(this.params);
         const { data } = await this.$storeino.pages.search(this.params);
-        this.items = data.results;
+        if(data&&data.results)
+          this.items = data.results;
       } catch (e) {
         console.log({ e });
       }
