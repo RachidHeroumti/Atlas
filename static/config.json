@@ -9,10 +9,7 @@
             "fields": {
                 "products": [],
                 "collections": [],
-                "images": [
-                    "src",
-                    "title"
-                ],
+                "images": [],
                 "menus": [],
                 "pages": [],
                 "brands": []
@@ -20,9 +17,7 @@
             "ids": {
                 "collections": [],
                 "products": [],
-                "images": [
-                    "670e41be724a9305a00ec5be"
-                ],
+                "images": [],
                 "menus": [],
                 "pages": [],
                 "brands": []
@@ -153,13 +148,13 @@
                                             "note": "your_website_header_logo",
                                             "path": "sections.header.logo",
                                             "type": "tc_image",
-                                            "value": "670e41be724a9305a00ec5be"
+                                            "value": null
                                         },
                                         {
                                             "name": "show_cart_icon",
                                             "path": "sections.header.icons.cart",
                                             "type": "tc_checkbox",
-                                            "value": false
+                                            "value": true
                                         },
                                         {
                                             "name": "show_account_icon",
@@ -171,7 +166,7 @@
                                             "name": "show_search_icon",
                                             "path": "sections.header.icons.search",
                                             "type": "tc_checkbox",
-                                            "value": false
+                                            "value": true
                                         },
                                         {
                                             "name": "show_language",
@@ -1197,6 +1192,25 @@
                                     ]
                                 }
                             ]
+                        },
+                        {
+                            "name": "image_background",
+                            "icon": "select_all",
+                            "blocks": [
+                                {
+                                    "name": "image",
+                                    "values": [
+                                        {
+                                            "name": "imgbackgound",
+                                            "note": "",
+                                            "path": "sections.cart.image_background",
+                                            "type": "tc_image",
+                                            "translatable": false,
+                                            "value": null
+                                        }
+                                    ]
+                                }
+                            ]
                         }
                     ]
                 },
@@ -1311,37 +1325,37 @@
                                             "name": "title1",
                                             "path": "sections.about.body.title1",
                                             "type": "tc_input",
-                                            "value": "1. What are the best ways to sell your brand to customers?"
+                                            "value": ""
                                         },
                                         {
                                             "name": "description1",
                                             "path": "sections.about.body.description1",
                                             "type": "tc_input",
-                                            "value": "Lorem ipsum dolor sit amet, consectetur a elit. In ut ullamcorper leo, eget euismod orci. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus musbulum ultricies aliquam convallis. Maecenas ut tellus mi. Proin tincidunt, lectus eu volutpat mattis, ante metus lacinia tellus, vitae condimentum nulla enim bibendum nibh. Praesent turpis risus, interdum nec venenatis id, pretium sit amet purus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam eu lorem nibh. Mauris ex dolor, rutrum in odio vel, suscipit ultrices nunc. Cras ipsum dolor, eleifend et nisl vel, tempor molestie nibh. In hac habitasse platea dictumst. Proin nec blandit ligula."
+                                            "value": ""
                                         },
                                         {
                                             "name": "title2",
                                             "path": "sections.about.body.title2",
                                             "type": "tc_input",
-                                            "value": "2. What are the best ways to sell your brand to customers?"
+                                            "value": ""
                                         },
                                         {
                                             "name": "description2",
                                             "path": "sections.about.body.description2",
                                             "type": "tc_input",
-                                            "value": "Lorem ipsum dolor sit amet, consectetur a elit. In ut ullamcorper leo, eget euismod orci. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus musbulum ultricies aliquam convallis. Maecenas ut tellus mi. Proin tincidunt, lectus eu volutpat mattis, ante metus lacinia tellus, vitae condimentum nulla enim bibendum nibh. Praesent turpis risus, interdum nec venenatis id, pretium sit amet purus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam eu lorem nibh. Mauris ex dolor, rutrum in odio vel, suscipit ultrices nunc. Cras ipsum dolor, eleifend et nisl vel, tempor molestie nibh. In hac habitasse platea dictumst. Proin nec blandit ligula."
+                                            "value": ""
                                         },
                                         {
                                             "name": "title3",
                                             "path": "sections.about.body.title3",
                                             "type": "tc_input",
-                                            "value": "3. What are the best ways to sell your brand to customers?"
+                                            "value": ""
                                         },
                                         {
                                             "name": "description3",
                                             "path": "sections.about.body.description3",
                                             "type": "tc_input",
-                                            "value": "Lorem ipsum dolor sit amet, consectetur a elit. In ut ullamcorper leo, eget euismod orci. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus musbulum ultricies aliquam convallis. Maecenas ut tellus mi. Proin tincidunt, lectus eu volutpat mattis, ante metus lacinia tellus, vitae condimentum nulla enim bibendum nibh. Praesent turpis risus, interdum nec venenatis id, pretium sit amet purus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam eu lorem nibh. Mauris ex dolor, rutrum in odio vel, suscipit ultrices nunc. Cras ipsum dolor, eleifend et nisl vel, tempor molestie nibh. In hac habitasse platea dictumst. Proin nec blandit ligula."
+                                            "value": ""
                                         }
                                     ]
                                 }
@@ -1853,11 +1867,11 @@
                     "removed_from_wishlist": "Removed from wishlist"
                 },
                 "header": {
-                    "logo": "670e41be724a9305a00ec5be",
+                    "logo": null,
                     "icons": {
-                        "cart": false,
+                        "cart": true,
                         "account": false,
-                        "search": false,
+                        "search": true,
                         "language": false,
                         "currency": false
                     },
@@ -2033,7 +2047,8 @@
                         "checkout_text": "Proceed to checkout",
                         "back_to_shop_text": "Back to shop",
                         "show_back_to_shop": false
-                    }
+                    },
+                    "image_background": null
                 },
                 "thanks": {
                     "title": "Thanks",
@@ -2053,12 +2068,12 @@
                     "photo": null,
                     "title": "About Page",
                     "body": {
-                        "title1": "1. What are the best ways to sell your brand to customers?",
-                        "description1": "Lorem ipsum dolor sit amet, consectetur a elit. In ut ullamcorper leo, eget euismod orci. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus musbulum ultricies aliquam convallis. Maecenas ut tellus mi. Proin tincidunt, lectus eu volutpat mattis, ante metus lacinia tellus, vitae condimentum nulla enim bibendum nibh. Praesent turpis risus, interdum nec venenatis id, pretium sit amet purus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam eu lorem nibh. Mauris ex dolor, rutrum in odio vel, suscipit ultrices nunc. Cras ipsum dolor, eleifend et nisl vel, tempor molestie nibh. In hac habitasse platea dictumst. Proin nec blandit ligula.",
-                        "title2": "2. What are the best ways to sell your brand to customers?",
-                        "description2": "Lorem ipsum dolor sit amet, consectetur a elit. In ut ullamcorper leo, eget euismod orci. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus musbulum ultricies aliquam convallis. Maecenas ut tellus mi. Proin tincidunt, lectus eu volutpat mattis, ante metus lacinia tellus, vitae condimentum nulla enim bibendum nibh. Praesent turpis risus, interdum nec venenatis id, pretium sit amet purus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam eu lorem nibh. Mauris ex dolor, rutrum in odio vel, suscipit ultrices nunc. Cras ipsum dolor, eleifend et nisl vel, tempor molestie nibh. In hac habitasse platea dictumst. Proin nec blandit ligula.",
-                        "title3": "3. What are the best ways to sell your brand to customers?",
-                        "description3": "Lorem ipsum dolor sit amet, consectetur a elit. In ut ullamcorper leo, eget euismod orci. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus musbulum ultricies aliquam convallis. Maecenas ut tellus mi. Proin tincidunt, lectus eu volutpat mattis, ante metus lacinia tellus, vitae condimentum nulla enim bibendum nibh. Praesent turpis risus, interdum nec venenatis id, pretium sit amet purus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam eu lorem nibh. Mauris ex dolor, rutrum in odio vel, suscipit ultrices nunc. Cras ipsum dolor, eleifend et nisl vel, tempor molestie nibh. In hac habitasse platea dictumst. Proin nec blandit ligula."
+                        "title1": "",
+                        "description1": "",
+                        "title2": "",
+                        "description2": "",
+                        "title3": "",
+                        "description3": ""
                     }
                 }
             }
@@ -2067,9 +2082,9 @@
     "images": [
         "https://storeno.b-cdn.net/stores/10-2024/1728987582794.png"
     ],
-    "isActive": true,
+    "isActive": false,
     "autoRenew": false,
-    "_id": "6710c84b724a9305a00ed91c",
+    "_id": "6710c84b724a9305a00ed98c",
     "expiryDate": "2050-12-12T00:00:00.000Z",
     "name": "atlas",
     "url": "/themes/atlas",
@@ -2080,5 +2095,4 @@
     "price": 22,
     "description": "✔ Simple and easy theme to use ✔ Well presented and convertible store and product page ✔ SEO optimized ✔ Responsive to all devices",
     "publicName": "Atlas - Multipurpose Responsive E-commerce Template"
-
 }
