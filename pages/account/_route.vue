@@ -1,5 +1,5 @@
 <template>
-    <div v-if="routes.includes(this.$route.params.route)" class="container relative items-center w-full px-10 py-5 overflow-hidden padding-0 margin-0">
+    <div v-if="routes.includes(this.$route.params.route)" class="container relative items-center w-full px-10 py-5 overflow-hidden padding-0 margin-0 ">
       <div class="absolute top-0 bottom-0 left-0 right-0 flex items-center justify-center bg-white  zi-9999"  v-if="$store.state.loading"  >
         <si-loaderGlobal class="container" />
       </div>

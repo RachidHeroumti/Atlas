@@ -41,14 +41,8 @@
   "SiAvatar": {
     "description": "Auto imported from components/si/Avatar.vue"
   },
-  "SiCarousel": {
-    "description": "Auto imported from components/si/Carousel.vue"
-  },
   "SiCartItem": {
     "description": "Auto imported from components/si/CartItem.vue"
-  },
-  "SiCollection": {
-    "description": "Auto imported from components/si/Collection.vue"
   },
   "SiFullImage": {
     "description": "Auto imported from components/si/FullImage.vue"

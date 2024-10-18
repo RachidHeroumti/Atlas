@@ -1,4 +1,15 @@
 {
+  "image_background": "Background Images",
+  "bottom_menu": "Bottom Menu",
+  "Email": "Email",
+  "title1": "Title 1",
+  "description1": "Description 1",
+  "title2": "Title 2",
+  "description2": "Descritpion 2",
+  "title3": "Title ",
+  "description3": "Description 3",
+ 
+
   "global_options": "Global Options",
   "options": "Options",
   "primary_color": "Primary Color",
