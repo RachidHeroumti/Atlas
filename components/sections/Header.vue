@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white  h-16 ">
+  <div class="bg-white  h-20 ">
     <div
       :class="[
         { hidden: isHidden, fixed: isFixed},
@@ -285,16 +285,15 @@
               </div>
 
               <!----------------- navbar end-------------->
-
               <div class="flex justify-end h-full items-center  ">
-
+                
                 <button
                   v-if="$settings.sections.header.icons.search"
                   @click="showSearch = true"
                   aria-label="Search button"
                   class="relative p-2 mx-1 flex justify-center rounded-md item items-center w-12"
                 >
-                  <si-svg>
+
                     <svg
                       width="40"
                       height="40"
@@ -339,7 +338,7 @@
                         </g>
                       </g>
                     </svg>
-                  </si-svg>
+                 
                 </button>
 
                 <router-link
@@ -348,7 +347,7 @@
                   title="Account"
                   class="hidden  mx-1 w-12 rounded-md item md:block"
                 >
-                  <si-svg>
+                  
                     <svg
                       aria-hidden="true"
                       focusable="false"
@@ -357,7 +356,7 @@
                       role="img"
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 448 512"
-                      class="w-5 h-5 translate"
+                      class="w-6 h-6 translate"
                     >
                       <path
                         fill="currentColor"
@@ -365,35 +364,7 @@
                         class=""
                       ></path>
                     </svg>
-                  </si-svg>
-                </router-link>
-
-                <router-link
-                  v-if="$settings.sections.header.icons.wishlist"
-                  to="/wishlist"
-                  title="Wishlist"
-                  class="relative hidden  mx-1 w-12 rounded-md item md:block"
-                >
-                  <si-svg>
-                    <svg
-                      aria-hidden="true"
-                      focusable="false"
-                      data-prefix="far"
-                      data-icon="heart"
-                      role="img"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 512 512"
-                      class="w-5 h-5 translate"
-                    >
-                      <path
-                        fill="currentColor"
-                        d="M458.4 64.3C400.6 15.7 311.3 23 256 79.3 200.7 23 111.4 15.6 53.6 64.3-21.6 127.6-10.6 230.8 43 285.5l175.4 178.7c10 10.2 23.4 15.9 37.6 15.9 14.3 0 27.6-5.6 37.6-15.8L469 285.6c53.5-54.7 64.7-157.9-10.6-221.3zm-23.6 187.5L259.4 430.5c-2.4 2.4-4.4 2.4-6.8 0L77.2 251.8c-36.5-37.2-43.9-107.6 7.3-150.7 38.9-32.7 98.9-27.8 136.5 10.5l35 35.7 35-35.7c37.8-38.5 97.8-43.2 136.5-10.6 51.1 43.1 43.5 113.9 7.3 150.8z"
-                        class=""
-                      ></path></svg></si-svg>
-                  <small
-                    class="absolute   font-poppins text-base flex items-center justify-center font-medium text-primary rounded-full -top-2 right-3"
-                    >{{ $store.state.wishlist.length }}</small
-                  >
+                  
                 </router-link>
 
                 <!--cart-->
@@ -402,9 +373,9 @@
                   to="/cart"
                   title="Cart"
                   id="cart-icon"
-                  class="relative mx-1 rounded-md item w-12"
+                  class="relative  rounded-md item w-12"
                 >
-                  <si-svg>
+                  
                     <svg
                       viewBox="-3.84 -3.84 31.68 31.68"
                       fill="none"
@@ -428,13 +399,14 @@
                         ></path>
                       </g>
                     </svg>
-                  </si-svg>
+                  
 
                   <small
-                    class="absolute font-poppins text-base flex items-center justify-center font-medium w-full h-full text-titles-color rounded-full top-0 right-0"
+                    class="absolute font-poppins text-base flex items-center justify-center font-medium w-full h-full text-titles-color rounded-full top-1 right-0"
                     >{{ $store.state.cart.length }}</small
                   >
                 </router-link>
+                
               </div>
             </div>
 
@@ -453,8 +425,8 @@
                     @click="showSearch = false"
                     aria-label="Search button"
                   >
-                    <si-svg
-                      ><svg
+                    
+                      <svg
                         aria-hidden="true"
                         focusable="false"
                         data-prefix="fal"
@@ -469,7 +441,7 @@
                           d="M193.94 256L296.5 153.44l21.15-21.15c3.12-3.12 3.12-8.19 0-11.31l-22.63-22.63c-3.12-3.12-8.19-3.12-11.31 0L160 222.06 36.29 98.34c-3.12-3.12-8.19-3.12-11.31 0L2.34 120.97c-3.12 3.12-3.12 8.19 0 11.31L126.06 256 2.34 379.71c-3.12 3.12-3.12 8.19 0 11.31l22.63 22.63c3.12 3.12 8.19 3.12 11.31 0L160 289.94 262.56 392.5l21.15 21.15c3.12 3.12 8.19 3.12 11.31 0l22.63-22.63c3.12-3.12 3.12-8.19 0-11.31L193.94 256z"
                           class="">
                         </path></svg>
-                        </si-svg>
+                        
                   </button>
                   <input
                     autofocus

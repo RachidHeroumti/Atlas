@@ -1,11 +1,12 @@
 <template>
-  <div class=" pt-120p w-full image-background ">
+  <div :style="backgroundStyle" class="image-background w-full">
     <div class="w-full">
       <div class="flex w-full h-80 justify-center items-center">
         <span class="text-white font-poppins font-bold text-3xl">{{
           $settings.sections.cart.title
         }}</span>
       </div>
+  
      
       <div class="bg-white">
         <div class="container">
@@ -169,15 +170,17 @@ export default {
       await this.getUpsells();
     }
   }, computed: {
-        backgroundStyle() {
-            return {
-                backgroundImage: `url(${this.$store.state.seo.image})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                backgroundRepeat: 'no-repeat',
-                height: '100%'
-            };
-        }
+    backgroundStyle() {
+      const imageSrc = this.$settings.sections.cart.image_background?.src; 
+    return {
+        backgroundImage: imageSrc ? `url(${imageSrc})` :'url(https://arredo.qodeinteractive.com/wp-content/uploads/2018/05/cart-title-img.jpg)', 
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        height: '100%',
+    };
+}
+
     },
   mounted() {
     this.$storeino.fbpx("PageView");
@@ -272,11 +275,6 @@ export default {
 </script>
 
 <style scoped>
-.image-background {
-  height: 100%;
-  background-image: url("https://arredo.qodeinteractive.com/wp-content/uploads/2018/05/cart-title-img.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
+
+
 </style>

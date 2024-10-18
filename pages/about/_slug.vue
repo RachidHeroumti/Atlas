@@ -40,8 +40,9 @@ export default {
     },
     computed: {
         backgroundStyle() {
+            const imgBacground=this.about.photo?.src;
             return {
-                backgroundImage: `url(${this.about.photo.src})`,
+                backgroundImage:imgBacground? `url(${imgBacground})`:'',
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 backgroundRepeat: 'no-repeat',
