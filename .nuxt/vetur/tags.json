@@ -32,9 +32,6 @@
   "SectionsReviews": {
     "description": "Auto imported from components/sections/Reviews.vue"
   },
-  "SectionsServices": {
-    "description": "Auto imported from components/sections/Services.vue"
-  },
   "SectionsUpsell": {
     "description": "Auto imported from components/sections/Upsell.vue"
   },

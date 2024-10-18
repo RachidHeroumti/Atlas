@@ -17,7 +17,6 @@ You can directly use them in pages and other components without the need to impo
 - `<SectionsRelatedPosts>` | `<sections-related-posts>` (components/sections/RelatedPosts.vue)
 - `<SectionsRelatedProducts>` | `<sections-related-products>` (components/sections/RelatedProducts.vue)
 - `<SectionsReviews>` | `<sections-reviews>` (components/sections/Reviews.vue)
-- `<SectionsServices>` | `<sections-services>` (components/sections/Services.vue)
 - `<SectionsUpsell>` | `<sections-upsell>` (components/sections/Upsell.vue)
 - `<SiAppLoader>` | `<si-app-loader>` (components/si/AppLoader.vue)
 - `<SiAvatar>` | `<si-avatar>` (components/si/Avatar.vue)
