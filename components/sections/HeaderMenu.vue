@@ -16,9 +16,7 @@
               height="50"
               property="height"
               class="object-contain w-full h-12"
-              :src="
-                section.logo ? section.logo.src : $store.state.defaults.logo
-              "
+              :src="section.logo ? section.logo.src : $store.state.defaults.logo"
               alt="Store logo"
             />
           </router-link>
@@ -138,6 +136,7 @@ export default {
       activeId: null,
       menu: this.$settings.sections.header.menu,
       section: this.$settings.sections.header,
+      /*
       otherMenu: [
         {
           _id: "lang",
@@ -164,6 +163,7 @@ export default {
           }),
         },
       ].filter((item) => item.active),
+      */
     };
   },
   watch: {

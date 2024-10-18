@@ -3,8 +3,8 @@ import { createImage} from '~image'
 import NuxtImg from '~image/components/nuxt-img.vue'
 import NuxtPicture from '~image/components/nuxt-picture.vue'
 
-import * as staticRuntime$49f6 from 'C:/Users/admin/Desktop/StoreIno/ThemeIno/themeino/node_modules/@nuxt/image/dist/runtime/providers/static.js'
-import * as ipxRuntime$22ce from 'C:/Users/admin/Desktop/StoreIno/ThemeIno/themeino/node_modules/@nuxt/image/dist/runtime/providers/ipx.js'
+import * as staticRuntime$702b from 'C:/Users/admin/Desktop/StoreIno/Atlas/Atlas/node_modules/@nuxt/image/dist/runtime/providers/static.js'
+import * as ipxRuntime$3d87 from 'C:/Users/admin/Desktop/StoreIno/Atlas/Atlas/node_modules/@nuxt/image/dist/runtime/providers/ipx.js'
 
 const imageOptions = {
   "screens": {
@@ -23,8 +23,8 @@ const imageOptions = {
 }
 
 imageOptions.providers = {
-  ['static']: { provider: staticRuntime$49f6, defaults: {} },
-  ['ipx']: { provider: ipxRuntime$22ce, defaults: {} }
+  ['static']: { provider: staticRuntime$702b, defaults: {} },
+  ['ipx']: { provider: ipxRuntime$3d87, defaults: {} }
 }
 
 Vue.component(NuxtImg.name, NuxtImg)

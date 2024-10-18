@@ -1,15 +1,17 @@
 <template>
-  <div class="bg-white  h-20 ">
+  <div class="bg-white h-20">
     <div
+      class=" "
       :class="[
-        { hidden: isHidden, fixed: isFixed},
+        { hidden: isHidden, fixed: isFixed },
         'text-titles-color bg-white w-full  top-0  left-0 right-0 min-h-20 z-50 border-b border-gray-200 ',
       ]"
     >
       <si-app-loader placement="BEFORE_HEADER" />
       <div class="relative h-full">
         <div class="flex items-center justify-between p-2 h-full">
-          <!-- to controll menus -->
+
+          <!--icon to controll menus -->
           <div class="min-w-20 w-20">
             <button
               @click="
@@ -45,6 +47,7 @@
               </si-svg>
             </button>
           </div>
+
           <!-- menu mobile -->
           <div
             v-if="$store.state.showHeaderMenu"
@@ -163,7 +166,7 @@
               </ul>
             </div>
           </div>
-
+   
           <div class="flex items-center px-4 logo w-full">
             <router-link to="/">
               <nuxt-img
@@ -180,12 +183,11 @@
           </div>
 
           <div class="flex w-full text-dark-gray">
-            <div
-              class="flex justify-end items-center  w-full icons    "
-            >
+            <div class="flex justify-end items-center w-full icons">
+
               <!--Nav Bar-Menu start ------------------------------------------------>
               <div
-                v-if="menu&&menu.items"
+                v-if="menu && menu.items"
                 class="hidden font-poppins justify-end px-3 items-center w-full md:flex h-full"
               >
                 <ul
@@ -285,86 +287,117 @@
               </div>
 
               <!----------------- navbar end-------------->
-              <div class="flex justify-end h-full items-center  ">
-                
+              <div class="flex justify-end h-full items-center">
+
+
+                <!--languages-->
+                <div
+                  v-if="
+                    $settings.sections.header.icons.language &&
+                    $settings.store_languages.length > 1
+                  "
+                  class="relative mx-1"
+                >
+                  <div
+                    v-if="iconMenu == 'language'"
+                    class="absolute z-50 flex flex-col bg-gray-100 rounded-md top-5"
+                  >
+                    <a
+                      class="p-2 m-1 whitespace-nowrap"
+                      v-for="lang of $settings.store_languages"
+                      :key="lang.code"
+                      :href="`?lang=${lang.code}`"
+                      >{{ lang.name }} ( {{ lang.code }} )</a
+                    >
+                  </div>
+                </div>
+
+                <button
+                  @click="iconMenu = iconMenu == 'language' ? null : 'language'"
+                  v-if="
+                    $settings.sections.header.icons.language &&
+                    $settings.store_languages.length > 1
+                  "
+                  title="Language"
+                  class="item hidden md:block p-1.5 bg-gray-100 rounded-md hover:bg-gray-200"
+                >
+                  <span class="text-sm">{{ $store.state.language.code }}</span>
+                </button>
+
                 <button
                   v-if="$settings.sections.header.icons.search"
                   @click="showSearch = true"
                   aria-label="Search button"
                   class="relative p-2 mx-1 flex justify-center rounded-md item items-center w-12"
                 >
-
-                    <svg
-                      width="40"
-                      height="40"
-                      viewBox="-5.04 -5.04 31.08 31.08"
-                      version="1.1"
-                      xmlns="http://www.w3.org/2000/svg"
-                      xmlns:xlink="http://www.w3.org/1999/xlink"
-                      fill="#000000"
-                      transform="rotate(270)"
-                    >
-                      <g id="SVGRepo_bgCarrier" stroke-width="1"></g>
+                  <svg
+                    width="40"
+                    height="40"
+                    viewBox="-5.04 -5.04 31.08 31.08"
+                    version="1.1"
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    fill="#000000"
+                    transform="rotate(270)"
+                  >
+                    <g id="SVGRepo_bgCarrier" stroke-width="1"></g>
+                    <g
+                      id="SVGRepo_tracerCarrier"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></g>
+                    <g id="SVGRepo_iconCarrier">
+                      <title>search_right [#1507]</title>
+                      <desc>Created with Sketch.</desc>
+                      <defs></defs>
                       <g
-                        id="SVGRepo_tracerCarrier"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      ></g>
-                      <g id="SVGRepo_iconCarrier">
-                        <title>search_right [#1507]</title>
-                        <desc>Created with Sketch.</desc>
-                        <defs></defs>
+                        id="Page-1"
+                        stroke-width="0.483"
+                        fill="none"
+                        fill-rule="evenodd"
+                      >
                         <g
-                          id="Page-1"
-                          stroke-width="0.483"
-                          fill="none"
-                          fill-rule="evenodd"
+                          id="Dribbble-Light-Preview"
+                          transform="translate(-179.000000, -280.000000)"
+                          fill="#000000"
                         >
                           <g
-                            id="Dribbble-Light-Preview"
-                            transform="translate(-179.000000, -280.000000)"
-                            fill="#000000"
+                            id="icons"
+                            transform="translate(56.000000, 160.000000)"
                           >
-                            <g
-                              id="icons"
-                              transform="translate(56.000000, 160.000000)"
-                            >
-                              <path
-                                d="M128.93985,132.929 L130.42455,134.343 L124.4847,140 L123,138.586 L128.93985,132.929 Z M136.65,132 C133.75515,132 131.4,129.757 131.4,127 C131.4,124.243 133.75515,122 136.65,122 C139.54485,122 141.9,124.243 141.9,127 C141.9,129.757 139.54485,132 136.65,132 L136.65,132 Z M136.65,120 C132.5907,120 129.3,123.134 129.3,127 C129.3,130.866 132.5907,134 136.65,134 C140.7093,134 144,130.866 144,127 C144,123.134 140.7093,120 136.65,120 L136.65,120 Z"
-                                id="search_right-[#1507]"
-                              ></path>
-                            </g>
+                            <path
+                              d="M128.93985,132.929 L130.42455,134.343 L124.4847,140 L123,138.586 L128.93985,132.929 Z M136.65,132 C133.75515,132 131.4,129.757 131.4,127 C131.4,124.243 133.75515,122 136.65,122 C139.54485,122 141.9,124.243 141.9,127 C141.9,129.757 139.54485,132 136.65,132 L136.65,132 Z M136.65,120 C132.5907,120 129.3,123.134 129.3,127 C129.3,130.866 132.5907,134 136.65,134 C140.7093,134 144,130.866 144,127 C144,123.134 140.7093,120 136.65,120 L136.65,120 Z"
+                              id="search_right-[#1507]"
+                            ></path>
                           </g>
                         </g>
                       </g>
-                    </svg>
-                 
+                    </g>
+                  </svg>
                 </button>
 
                 <router-link
                   v-if="$settings.sections.header.icons.account"
                   to="/account/orders"
                   title="Account"
-                  class="hidden  mx-1 w-12 rounded-md item md:block"
+                  class="hidden mx-1 w-12 rounded-md item md:block"
                 >
-                  
-                    <svg
-                      aria-hidden="true"
-                      focusable="false"
-                      data-prefix="far"
-                      data-icon="user"
-                      role="img"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 448 512"
-                      class="w-6 h-6 translate"
-                    >
-                      <path
-                        fill="currentColor"
-                        d="M313.6 304c-28.7 0-42.5 16-89.6 16-47.1 0-60.8-16-89.6-16C60.2 304 0 364.2 0 438.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-25.6c0-74.2-60.2-134.4-134.4-134.4zM400 464H48v-25.6c0-47.6 38.8-86.4 86.4-86.4 14.6 0 38.3 16 89.6 16 51.7 0 74.9-16 89.6-16 47.6 0 86.4 38.8 86.4 86.4V464zM224 288c79.5 0 144-64.5 144-144S303.5 0 224 0 80 64.5 80 144s64.5 144 144 144zm0-240c52.9 0 96 43.1 96 96s-43.1 96-96 96-96-43.1-96-96 43.1-96 96-96z"
-                        class=""
-                      ></path>
-                    </svg>
-                  
+                  <svg
+                    aria-hidden="true"
+                    focusable="false"
+                    data-prefix="far"
+                    data-icon="user"
+                    role="img"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 448 512"
+                    class="w-6 h-6 translate"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="M313.6 304c-28.7 0-42.5 16-89.6 16-47.1 0-60.8-16-89.6-16C60.2 304 0 364.2 0 438.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-25.6c0-74.2-60.2-134.4-134.4-134.4zM400 464H48v-25.6c0-47.6 38.8-86.4 86.4-86.4 14.6 0 38.3 16 89.6 16 51.7 0 74.9-16 89.6-16 47.6 0 86.4 38.8 86.4 86.4V464zM224 288c79.5 0 144-64.5 144-144S303.5 0 224 0 80 64.5 80 144s64.5 144 144 144zm0-240c52.9 0 96 43.1 96 96s-43.1 96-96 96-96-43.1-96-96 43.1-96 96-96z"
+                      class=""
+                    ></path>
+                  </svg>
                 </router-link>
 
                 <!--cart-->
@@ -373,40 +406,37 @@
                   to="/cart"
                   title="Cart"
                   id="cart-icon"
-                  class="relative  rounded-md item w-12"
+                  class="relative rounded-md item w-12"
                 >
-                  
-                    <svg
-                      viewBox="-3.84 -3.84 31.68 31.68"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                      <g
-                        id="SVGRepo_tracerCarrier"
+                  <svg
+                    viewBox="-3.84 -3.84 31.68 31.68"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g
+                      id="SVGRepo_tracerCarrier"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke="#CCCCCC"
+                      stroke-width="1.488"
+                    ></g>
+                    <g id="SVGRepo_iconCarrier">
+                      <path
+                        d="M17.8264 20C18.9965 20 19.9167 18.9999 19.8195 17.8339L19.1528 9.83391C19.0664 8.79732 18.1999 8 17.1597 8H16M16 8H12M16 8L16 7C16 5.93913 15.5786 4.92172 14.8284 4.17157C14.0783 3.42143 13.0609 3 12 3C10.9391 3 9.92172 3.42143 9.17157 4.17157C8.42143 4.92172 8 5.93913 8 7L8 8M16 8L16 12M8 8H6.84027C5.80009 8 4.93356 8.79732 4.84718 9.83391L4.18051 17.8339C4.08334 18.9999 5.00352 20 6.1736 20H13M8 8L8 12"
+                        stroke="#000000"
+                        stroke-width="1.44"
                         stroke-linecap="round"
                         stroke-linejoin="round"
-                        stroke="#CCCCCC"
-                        stroke-width="1.488"
-                      ></g>
-                      <g id="SVGRepo_iconCarrier">
-                        <path
-                          d="M17.8264 20C18.9965 20 19.9167 18.9999 19.8195 17.8339L19.1528 9.83391C19.0664 8.79732 18.1999 8 17.1597 8H16M16 8H12M16 8L16 7C16 5.93913 15.5786 4.92172 14.8284 4.17157C14.0783 3.42143 13.0609 3 12 3C10.9391 3 9.92172 3.42143 9.17157 4.17157C8.42143 4.92172 8 5.93913 8 7L8 8M16 8L16 12M8 8H6.84027C5.80009 8 4.93356 8.79732 4.84718 9.83391L4.18051 17.8339C4.08334 18.9999 5.00352 20 6.1736 20H13M8 8L8 12"
-                          stroke="#000000"
-                          stroke-width="1.44"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        ></path>
-                      </g>
-                    </svg>
-                  
+                      ></path>
+                    </g>
+                  </svg>
 
                   <small
                     class="absolute font-poppins text-base flex items-center justify-center font-medium w-full h-full text-titles-color rounded-full top-1 right-0"
                     >{{ $store.state.cart.length }}</small
                   >
                 </router-link>
-                
               </div>
             </div>
 
@@ -425,23 +455,22 @@
                     @click="showSearch = false"
                     aria-label="Search button"
                   >
-                    
-                      <svg
-                        aria-hidden="true"
-                        focusable="false"
-                        data-prefix="fal"
-                        data-icon="times"
-                        role="img"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 320 512"
-                        class="w-5 h-5 translate"
-                      >
-                        <path
-                          fill="currentColor"
-                          d="M193.94 256L296.5 153.44l21.15-21.15c3.12-3.12 3.12-8.19 0-11.31l-22.63-22.63c-3.12-3.12-8.19-3.12-11.31 0L160 222.06 36.29 98.34c-3.12-3.12-8.19-3.12-11.31 0L2.34 120.97c-3.12 3.12-3.12 8.19 0 11.31L126.06 256 2.34 379.71c-3.12 3.12-3.12 8.19 0 11.31l22.63 22.63c3.12 3.12 8.19 3.12 11.31 0L160 289.94 262.56 392.5l21.15 21.15c3.12 3.12 8.19 3.12 11.31 0l22.63-22.63c3.12-3.12 3.12-8.19 0-11.31L193.94 256z"
-                          class="">
-                        </path></svg>
-                        
+                    <svg
+                      aria-hidden="true"
+                      focusable="false"
+                      data-prefix="fal"
+                      data-icon="times"
+                      role="img"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 320 512"
+                      class="w-5 h-5 translate"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M193.94 256L296.5 153.44l21.15-21.15c3.12-3.12 3.12-8.19 0-11.31l-22.63-22.63c-3.12-3.12-8.19-3.12-11.31 0L160 222.06 36.29 98.34c-3.12-3.12-8.19-3.12-11.31 0L2.34 120.97c-3.12 3.12-3.12 8.19 0 11.31L126.06 256 2.34 379.71c-3.12 3.12-3.12 8.19 0 11.31l22.63 22.63c3.12 3.12 8.19 3.12 11.31 0L160 289.94 262.56 392.5l21.15 21.15c3.12 3.12 8.19 3.12 11.31 0l22.63-22.63c3.12-3.12 3.12-8.19 0-11.31L193.94 256z"
+                        class=""
+                      ></path>
+                    </svg>
                   </button>
                   <input
                     autofocus
@@ -505,38 +534,9 @@
               >
                 <span class="text-sm">{{ $store.state.currency.code }}</span>
               </button>
-              <div
-                v-if="
-                  $settings.sections.header.icons.language &&
-                  $settings.store_languages.length > 1
-                "
-                class="relative mx-1"
-              >
-                <div
-                  v-if="iconMenu == 'language'"
-                  class="absolute z-50 flex flex-col bg-gray-100 rounded-md top-5"
-                >
-                  <a
-                    class="p-2 m-1 whitespace-nowrap"
-                    v-for="lang of $settings.store_languages"
-                    :key="lang.code"
-                    :href="`?lang=${lang.code}`"
-                    >{{ lang.name }} ( {{ lang.code }} )</a
-                  >
-                </div>
-              </div>
-              <button
-                @click="iconMenu = iconMenu == 'language' ? null : 'language'"
-                v-if="
-                  $settings.sections.header.icons.language &&
-                  $settings.store_languages.length > 1
-                "
-                title="Language"
-                class="item hidden md:block p-1.5 bg-gray-100 rounded-md hover:bg-gray-200"
-              >
-                <span class="text-sm">{{ $store.state.language.code }}</span>
-              </button>
+              
             </div>
+            
           </div>
         </div>
       </div>
@@ -587,14 +587,12 @@ export default {
     handleScroll() {
       const currentScroll = window.pageYOffset;
 
-
-      if (window.pageYOffset>100){
+      if (window.pageYOffset > 100) {
         this.isHidden =
           currentScroll > this.lastScrollTop && currentScroll > 50;
         this.lastScrollTop = currentScroll;
-      }else{
-      
-        this.isHidden=false
+      } else {
+        this.isHidden = false;
       }
     },
   },

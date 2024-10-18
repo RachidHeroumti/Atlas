@@ -110,17 +110,9 @@
     <div
       v-if="showScrollTopButton"
       @click="scrollToTop"
-      class="fixed right-5 bottom-5 bg-gray-400 hover:bg-titles-color w-12 h-10 flex text-white text-center text-base md:flex items-center justify-center"
+      class="fixed right-5 bottom-5 bg-white-gray hover:bg-titles-color w-10 h-8 flex text-white text-center text-base md:flex items-center justify-center"
     >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        height="20px"
-        viewBox="0 -960 960 960"
-        width="20px"
-        fill="#FFFFFF"
-      >
-        <path d="m291-453-51-51 240-240 240 240-51 51-189-189-189 189Z" />
-      </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#fff"><path d="m256-424-56-56 280-280 280 280-56 56-224-223-224 223Z"/></svg>
     </div>
 
   </div>

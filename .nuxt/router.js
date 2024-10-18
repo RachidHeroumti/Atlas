@@ -4,18 +4,18 @@ import { normalizeURL, decode } from 'ufo'
 import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
-const _5392a539 = () => interopDefault(import('..\\pages\\cart\\index.vue' /* webpackChunkName: "pages/cart/index" */))
-const _baa1e562 = () => interopDefault(import('..\\pages\\error.vue' /* webpackChunkName: "pages/error" */))
-const _9a1553a0 = () => interopDefault(import('..\\pages\\thanks\\index.vue' /* webpackChunkName: "pages/thanks/index" */))
-const _140271f4 = () => interopDefault(import('..\\pages\\wishlist\\index.vue' /* webpackChunkName: "pages/wishlist/index" */))
-const _5ee8ef19 = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages/index" */))
-const _25aed866 = () => interopDefault(import('..\\pages\\about\\_slug.vue' /* webpackChunkName: "pages/about/_slug" */))
-const _69952a04 = () => interopDefault(import('..\\pages\\account\\_route.vue' /* webpackChunkName: "pages/account/_route" */))
-const _7cf9ca2f = () => interopDefault(import('..\\pages\\blog\\_slug.vue' /* webpackChunkName: "pages/blog/_slug" */))
-const _048f13cf = () => interopDefault(import('..\\pages\\pages\\_slug.vue' /* webpackChunkName: "pages/pages/_slug" */))
-const _7ea1b860 = () => interopDefault(import('..\\pages\\posts\\_slug.vue' /* webpackChunkName: "pages/posts/_slug" */))
-const _572a8bad = () => interopDefault(import('..\\pages\\products\\_slug.vue' /* webpackChunkName: "pages/products/_slug" */))
-const _3253825b = () => interopDefault(import('..\\pages\\shop\\_slug.vue' /* webpackChunkName: "pages/shop/_slug" */))
+const _6345ecd7 = () => interopDefault(import('..\\pages\\cart\\index.vue' /* webpackChunkName: "pages/cart/index" */))
+const _2ddfe36d = () => interopDefault(import('..\\pages\\error.vue' /* webpackChunkName: "pages/error" */))
+const _ba15a364 = () => interopDefault(import('..\\pages\\thanks\\index.vue' /* webpackChunkName: "pages/thanks/index" */))
+const _036cba92 = () => interopDefault(import('..\\pages\\wishlist\\index.vue' /* webpackChunkName: "pages/wishlist/index" */))
+const _2bcc7592 = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages/index" */))
+const _0c648488 = () => interopDefault(import('..\\pages\\about\\_slug.vue' /* webpackChunkName: "pages/about/_slug" */))
+const _8ac098c8 = () => interopDefault(import('..\\pages\\account\\_route.vue' /* webpackChunkName: "pages/account/_route" */))
+const _e6a5dc66 = () => interopDefault(import('..\\pages\\blog\\_slug.vue' /* webpackChunkName: "pages/blog/_slug" */))
+const _2976801e = () => interopDefault(import('..\\pages\\pages\\_slug.vue' /* webpackChunkName: "pages/pages/_slug" */))
+const _65576482 = () => interopDefault(import('..\\pages\\posts\\_slug.vue' /* webpackChunkName: "pages/posts/_slug" */))
+const _4694d44b = () => interopDefault(import('..\\pages\\products\\_slug.vue' /* webpackChunkName: "pages/products/_slug" */))
+const _4206c9f9 = () => interopDefault(import('..\\pages\\shop\\_slug.vue' /* webpackChunkName: "pages/shop/_slug" */))
 
 const emptyFn = () => {}
 
@@ -30,51 +30,51 @@ export const routerOptions = {
 
   routes: [{
     path: "/cart",
-    component: _5392a539,
+    component: _6345ecd7,
     name: "cart"
   }, {
     path: "/error",
-    component: _baa1e562,
+    component: _2ddfe36d,
     name: "error"
   }, {
     path: "/thanks",
-    component: _9a1553a0,
+    component: _ba15a364,
     name: "thanks"
   }, {
     path: "/wishlist",
-    component: _140271f4,
+    component: _036cba92,
     name: "wishlist"
   }, {
     path: "/",
-    component: _5ee8ef19,
+    component: _2bcc7592,
     name: "index"
   }, {
     path: "/about/:slug?",
-    component: _25aed866,
+    component: _0c648488,
     name: "about-slug"
   }, {
     path: "/account/:route?",
-    component: _69952a04,
+    component: _8ac098c8,
     name: "account-route"
   }, {
     path: "/blog/:slug?",
-    component: _7cf9ca2f,
+    component: _e6a5dc66,
     name: "blog-slug"
   }, {
     path: "/pages/:slug?",
-    component: _048f13cf,
+    component: _2976801e,
     name: "pages-slug"
   }, {
     path: "/posts/:slug?",
-    component: _7ea1b860,
+    component: _65576482,
     name: "posts-slug"
   }, {
     path: "/products/:slug?",
-    component: _572a8bad,
+    component: _4694d44b,
     name: "products-slug"
   }, {
     path: "/shop/:slug?",
-    component: _3253825b,
+    component: _4206c9f9,
     name: "shop-slug"
   }],
 

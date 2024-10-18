@@ -13,9 +13,9 @@ import { createStore } from './store.js'
 
 /* Plugins */
 
-import nuxt_plugin_plugin_241dcd6c from 'nuxt_plugin_plugin_241dcd6c' // Source: .\\components\\plugin.js (mode: 'all')
-import nuxt_plugin_axios_47ed038f from 'nuxt_plugin_axios_47ed038f' // Source: .\\axios.js (mode: 'all')
-import nuxt_plugin_image_32f4008a from 'nuxt_plugin_image_32f4008a' // Source: .\\image.js (mode: 'all')
+import nuxt_plugin_plugin_4434a0ae from 'nuxt_plugin_plugin_4434a0ae' // Source: .\\components\\plugin.js (mode: 'all')
+import nuxt_plugin_axios_8975ac5e from 'nuxt_plugin_axios_8975ac5e' // Source: .\\axios.js (mode: 'all')
+import nuxt_plugin_image_b367b268 from 'nuxt_plugin_image_b367b268' // Source: .\\image.js (mode: 'all')
 import nuxt_plugin_tools_2fec372e from 'nuxt_plugin_tools_2fec372e' // Source: ..\\node_modules\\@storeino\\template-core\\plugins\\tools.js (mode: 'all')
 import nuxt_plugin_http_1aad7586 from 'nuxt_plugin_http_1aad7586' // Source: ..\\node_modules\\@storeino\\template-core\\plugins\\http.js (mode: 'all')
 import nuxt_plugin_storeino_1c6e5088 from 'nuxt_plugin_storeino_1c6e5088' // Source: ..\\node_modules\\@storeino\\template-core\\plugins\\storeino.js (mode: 'all')
@@ -220,16 +220,16 @@ async function createApp(ssrContext, config = {}) {
   }
   // Plugin execution
 
-  if (typeof nuxt_plugin_plugin_241dcd6c === 'function') {
-    await nuxt_plugin_plugin_241dcd6c(app.context, inject)
+  if (typeof nuxt_plugin_plugin_4434a0ae === 'function') {
+    await nuxt_plugin_plugin_4434a0ae(app.context, inject)
   }
 
-  if (typeof nuxt_plugin_axios_47ed038f === 'function') {
-    await nuxt_plugin_axios_47ed038f(app.context, inject)
+  if (typeof nuxt_plugin_axios_8975ac5e === 'function') {
+    await nuxt_plugin_axios_8975ac5e(app.context, inject)
   }
 
-  if (typeof nuxt_plugin_image_32f4008a === 'function') {
-    await nuxt_plugin_image_32f4008a(app.context, inject)
+  if (typeof nuxt_plugin_image_b367b268 === 'function') {
+    await nuxt_plugin_image_b367b268(app.context, inject)
   }
 
   if (typeof nuxt_plugin_tools_2fec372e === 'function') {

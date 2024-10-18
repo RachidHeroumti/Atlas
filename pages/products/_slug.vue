@@ -119,7 +119,7 @@
             ></si-product-price>
 
             <p
-              class="font-poppins text-base font-base text-white-gray my-2 sm:my-5 md:my-8"
+              class="font-poppins text-base font-base text-white-gray my-2 sm:my-3 md:my-8"
             >
               {{ item.description }}
             </p>

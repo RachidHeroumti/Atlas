@@ -1,21 +1,20 @@
 <template>
-  <div class="container bg-white md:pt-20 pt-16 h-full">
+  <div class="container bg-white md:pt-20 pt-5 h-full">
     <div class="flex mb-2 relative space-x-2 bg-white h-full">
       <div class="w-full md:w-3/4 px-6">
         <div class="bg-white">
           <div class="py-2">
-            <div class="flex justify-between items-center">
+            <div class="flex justify-between md:justify-end items-center">
               <button
                 @click="showSideBar = true"
                 aria-label="Search button"
-                class="flex block md:hidden items-center flex-col p-2 bg-gray-100 rounded-md mx-1 hover:bg-gray-200"
+                class="flex  md:hidden items-center flex-col p-2 bg-gray-100 rounded-md mx-1 hover:bg-gray-200"
               >
                 <span class="w-6 my-0.5 h-0.5 bg-gray-800"></span>
                 <span class="w-4 my-0.5 h-0.5 bg-gray-800"></span>
                 <span class="w-2 my-0.5 h-0.5 bg-gray-800"></span>
                 <span class="w-1 my-0.5 h-0.5 bg-gray-800"></span>
               </button>
-
               <!--sort by-->
               <div
                 class="relative"
@@ -81,13 +80,6 @@
                   </div>
                 </transition>
               </div>
-
-              <!-- showing types-->
-              <!--<div class="flex">
-                                <button v-for="(grid,i) in girds" :key="i" @click="gridClass=grid.class" class="flex flex-wrap mx-0.5" :style="`width:${grid.width}px`">
-                                    <span v-for="i in grid.number" :key="i" class="flex" :class="grid.class == gridClass ? 'bg-primary':'bg-gray-300'" style="margin:1px;width:4px;height:4px" ></span>
-                                </button>
-                            </div> -->
             </div>
           </div>
 

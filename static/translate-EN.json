@@ -8,8 +8,6 @@
   "description2": "Descritpion 2",
   "title3": "Title ",
   "description3": "Description 3",
- 
-
   "global_options": "Global Options",
   "options": "Options",
   "primary_color": "Primary Color",
@@ -26,6 +24,7 @@
   "header_menu": "Header Menu",
   "footer": "Footer",
   "about": "About",
+  "About_page": "About Page",
   "footer_about": "Footer About",
   "payment_methods": "Payment Methods",
   "payment_methods_title": "Payment Methods Title",
