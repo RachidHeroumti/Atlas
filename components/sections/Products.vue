@@ -22,7 +22,7 @@
       <div class=" flex flex-col justify-center">
         <h2 class=" font-medium text-18p ">{{ 'You don\'t have any products' }}</h2>
         <p class=" font-normal text-13p">{{ 'Go to your store admin > products >' }} <a href="//business.storeino.com/stores/products" target="_blank" class=" text-blue-600">{{ 'Add new' }}</a></p>
-        <a href="https://palest.storeino.com" target="_blank" class="text-blue-600 border p-2 rounded-md inline-block mt-1">{{'View theme demo'}}</a>
+        <a href="https://atlas.storeino.com" target="_blank" class="text-blue-600 border p-2 rounded-md inline-block mt-1">{{'View theme demo'}}</a>
       </div>
     </div>
 <!--

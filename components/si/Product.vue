@@ -215,6 +215,7 @@
               $settings.sections.products.confirm_text
             }}</span>
           </button>
+
         </div>
       </transition>
     </div>
@@ -334,6 +335,7 @@
             </transition>
             <span class="inline-block">+</span>
           </button>
+          
         </div>
 
       </div>

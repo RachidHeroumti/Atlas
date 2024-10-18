@@ -22,7 +22,9 @@
       </div>
     </template>
 
+    
     <Nuxt />
+
 
     <template v-if="$route.name !== 'index'">
   <!-- <sections-footer></sections-footer> -->
@@ -31,9 +33,7 @@
   </div>
 
   <sections-footer-menu></sections-footer-menu>
-  
   <sections-copyright></sections-copyright>
-
 
   <si-full-image v-if="$route.path.startsWith('/products/')"></si-full-image>
 
@@ -103,7 +103,7 @@
     class="other-scripts"
     v-html="$settings.other_scripts"
   ></div>
-</template>
+   </template>
 
 
     <!--button up-->
@@ -122,7 +122,7 @@
         <path d="m291-453-51-51 240-240 240 240-51 51-189-189-189 189Z" />
       </svg>
     </div>
-    
+
   </div>
 </template>
 <script>
