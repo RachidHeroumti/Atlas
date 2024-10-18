@@ -6,6 +6,7 @@
           $settings.sections.cart.title
         }}</span>
       </div>
+     
       <div class="bg-white">
         <div class="container">
           <div
@@ -167,7 +168,17 @@ export default {
     if (this.items.length > 0) {
       await this.getUpsells();
     }
-  },
+  }, computed: {
+        backgroundStyle() {
+            return {
+                backgroundImage: `url(${this.$store.state.seo.image})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+                height: '100%'
+            };
+        }
+    },
   mounted() {
     this.$storeino.fbpx("PageView");
   },

@@ -1,5 +1,5 @@
 <template>
-  <div class="md:pt-20 pt-16 bg-white w-full container">
+  <div class="pt-4 bg-white w-full container">
 
     <sections-header-top></sections-header-top>
 
@@ -256,9 +256,10 @@
             >
               <p v-if="showmoredescription" class=" ">{{ item.description }}</p>
               <div v-if="showaAdditionalInfo">
-                <p>collection : {{ item.collections[0].name }}</p>
-                <p>productType: {{ item.productType }}</p>
-                <p>tags : {{ item.tags[0] }}</p>
+                <p v-if="item.collections && item.collections[0]">collection: {{ item.collections[0].name }}</p>
+<p v-if="item.productType">productType: {{ item.productType }}</p>
+<p v-if="item.tags && item.tags[0]">tags: {{ item.tags[0] }}</p>
+
               </div>
               <div v-if="!showaAdditionalInfo&&!showmoredescription" >
                 <div

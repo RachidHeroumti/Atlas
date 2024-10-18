@@ -2,26 +2,13 @@
   <div
     class="md:flex inset-0 z-20 max-h-full hidden shadow-container General-Compoanent"
   >
-    <!-- 
-    <div v-if="$store.state.showHeaderMenu" :class="$store.state.showHeaderMenu? 'opacity-50' : 'opacity-0'"
-     class="flex transition-all delay-500 fixed inset-0 bg-black" @click="$store.state.showHeaderMenu=false">
-     </div> -->
-
+  
     <!--SideBar -->
     <transition name="slideleft">
       <div
         class="transition-all delay-500 General-Compoanent flex flex-col sideBarStyle bg-white"
       >
-        <!--
-               <div class="w-full flex justify-end ">
-                --button cancel 
-                  <button @click="$store.state.showHeaderMenu=false" aria-label="Search button" class="item p-1 bg-gray-100 rounded-md m-1 hover:bg-gray-200">
-                     <si-svg><svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="times" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="w-5 h-5 translate"><path fill="currentColor" d="M193.94 256L296.5 153.44l21.15-21.15c3.12-3.12 3.12-8.19 0-11.31l-22.63-22.63c-3.12-3.12-8.19-3.12-11.31 0L160 222.06 36.29 98.34c-3.12-3.12-8.19-3.12-11.31 0L2.34 120.97c-3.12 3.12-3.12 8.19 0 11.31L126.06 256 2.34 379.71c-3.12 3.12-3.12 8.19 0 11.31l22.63 22.63c3.12 3.12 8.19 3.12 11.31 0L160 289.94 262.56 392.5l21.15 21.15c3.12 3.12 8.19 3.12 11.31 0l22.63-22.63c3.12-3.12 3.12-8.19 0-11.31L193.94 256z" class=""></path></svg></si-svg>
-                   </button>
-                 </div>
-                 -->
 
-    
         <div class="flex justify-center items-center  logo ">
           <router-link to="/">
             <nuxt-img

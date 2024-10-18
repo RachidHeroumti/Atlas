@@ -1,5 +1,3 @@
-export { default as SectionsBanner } from '../..\\components\\sections\\Banner.vue'
-export { default as SectionsCollections } from '../..\\components\\sections\\Collections.vue'
 export { default as SectionsCopyright } from '../..\\components\\sections\\Copyright.vue'
 export { default as SectionsFooter } from '../..\\components\\sections\\Footer.vue'
 export { default as SectionsFooterMenu } from '../..\\components\\sections\\FooterMenu.vue'
@@ -11,7 +9,6 @@ export { default as SectionsProducts } from '../..\\components\\sections\\Produc
 export { default as SectionsRelatedPosts } from '../..\\components\\sections\\RelatedPosts.vue'
 export { default as SectionsRelatedProducts } from '../..\\components\\sections\\RelatedProducts.vue'
 export { default as SectionsReviews } from '../..\\components\\sections\\Reviews.vue'
-export { default as SectionsServices } from '../..\\components\\sections\\Services.vue'
 export { default as SectionsUpsell } from '../..\\components\\sections\\Upsell.vue'
 export { default as SiAppLoader } from '../..\\components\\si\\AppLoader.vue'
 export { default as SiAvatar } from '../..\\components\\si\\Avatar.vue'

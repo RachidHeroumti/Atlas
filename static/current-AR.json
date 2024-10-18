@@ -1,11 +1,12 @@
 {
-    
+    "sections.footer.about_us":"من نحن",
+    "sections.footer.download":"تنزيل",
+    "sections.footer.call_center":"مركز الاتصال",
     "sections.alerts.product":"المنتج",
     "sections.alerts.price":"السعر",
     "sections.alerts.quantity":"الكمية",
     "sections.alerts.subTotal":"المجموع الفرعي",
     "sections.alerts.total":"الإجمالي",
-    
     "sections.products.add_to_cart.text":"أضف الى السلة",
     "sections.products.added_text":"تمت الإضافة",
     "sections.products.confirm_text":"تأكيد",

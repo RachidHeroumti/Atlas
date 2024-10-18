@@ -2,7 +2,7 @@
   <div class="bg-white  h-16 ">
     <div
       :class="[
-        { hidden: isHidden, fixed: isFixed, block: !isFixed },
+        { hidden: isHidden, fixed: isFixed},
         'text-titles-color bg-white w-full  top-0  left-0 right-0 min-h-20 z-50 border-b border-gray-200 ',
       ]"
     >
@@ -181,12 +181,12 @@
 
           <div class="flex w-full text-dark-gray">
             <div
-              class="flex justify-end items-center  w-full icons px-3   "
+              class="flex justify-end items-center  w-full icons    "
             >
               <!--Nav Bar-Menu start ------------------------------------------------>
               <div
-                v-if="menu"
-                class="hidden font-poppins justify-between items-center w-full md:flex h-full"
+                v-if="menu&&menu.items"
+                class="hidden font-poppins justify-end px-3 items-center w-full md:flex h-full"
               >
                 <ul
                   v-for="(item, i) in menu.items"
@@ -284,9 +284,9 @@
                 </ul>
               </div>
 
-              <!-------------------------------------------------------------------------- navbar end-->
+              <!----------------- navbar end-------------->
 
-              <div class="flex justify-end h-full w-full  ">
+              <div class="flex justify-end h-full items-center  ">
 
                 <button
                   v-if="$settings.sections.header.icons.search"
@@ -346,7 +346,7 @@
                   v-if="$settings.sections.header.icons.account"
                   to="/account/orders"
                   title="Account"
-                  class="hidden p-2 mx-1 rounded-md item md:block"
+                  class="hidden  mx-1 w-12 rounded-md item md:block"
                 >
                   <si-svg>
                     <svg
@@ -372,7 +372,7 @@
                   v-if="$settings.sections.header.icons.wishlist"
                   to="/wishlist"
                   title="Wishlist"
-                  class="relative hidden p-2 mx-1 rounded-md item md:block"
+                  class="relative hidden  mx-1 w-12 rounded-md item md:block"
                 >
                   <si-svg>
                     <svg
@@ -391,7 +391,7 @@
                         class=""
                       ></path></svg></si-svg>
                   <small
-                    class="absolute flex items-center justify-center w-5 h-5 p-2 text-white bg-red-700 rounded-full -top-2 -right-2"
+                    class="absolute   font-poppins text-base flex items-center justify-center font-medium text-primary rounded-full -top-2 right-3"
                     >{{ $store.state.wishlist.length }}</small
                   >
                 </router-link>
@@ -615,8 +615,6 @@ export default {
     handleScroll() {
       const currentScroll = window.pageYOffset;
 
-      // Control appLoader (before header is active)
-      // Toggle header visibility based on scroll direction
 
       if (window.pageYOffset>100){
         this.isHidden =

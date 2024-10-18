@@ -56,20 +56,6 @@
     "_name": "_7cf9ca2f"
   },
   {
-    "name": "collections-slug",
-    "path": "/collections/:slug?",
-    "component": "C:\\\\Users\\\\admin\\\\Desktop\\\\StoreIno\\\\ThemeIno\\\\themeino\\\\pages\\\\collections\\\\_slug.vue",
-    "chunkName": "pages/collections/_slug",
-    "_name": "_08f82ec4"
-  },
-  {
-    "name": "contact-me-slug",
-    "path": "/contact-me/:slug?",
-    "component": "C:\\\\Users\\\\admin\\\\Desktop\\\\StoreIno\\\\ThemeIno\\\\themeino\\\\pages\\\\contact-me\\\\_slug.vue",
-    "chunkName": "pages/contact-me/_slug",
-    "_name": "_488ef768"
-  },
-  {
     "name": "pages-slug",
     "path": "/pages/:slug?",
     "component": "C:\\\\Users\\\\admin\\\\Desktop\\\\StoreIno\\\\ThemeIno\\\\themeino\\\\pages\\\\pages\\\\_slug.vue",

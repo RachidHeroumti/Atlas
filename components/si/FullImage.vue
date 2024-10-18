@@ -113,14 +113,14 @@ export default {
     const { slug } = this.$route.params;
     try {
       const { data } = await this.$storeino.products.get({ slug });
-      this.item = data;
+      if(data)
+        this.item = data;
       this.$tools.call("PAGE_VIEW", this.item);
 
      /* this.currentIndex = this.item.images.findIndex(
         (img) => img.src === this.$store.state.fullImage
       );*/
-
-      this.image = this.item.images[this.currentIndex];
+      this.image = this.item.images[this.currentIndex]||null;
     } catch (e) {
       console.log(e);
       this.$nuxt.error({ statusCode: 404, message: "product_not_found" });
