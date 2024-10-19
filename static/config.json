@@ -2084,7 +2084,6 @@
     ],
     "isActive": false,
     "autoRenew": false,
-    "_id": "6710c84b724a9305a00ed98c",
     "expiryDate": "2050-12-12T00:00:00.000Z",
     "name": "atlas",
     "url": "/themes/atlas",

@@ -2,7 +2,7 @@
   <div class="bg-gray-900 text-white w-full py-16 p-10 ">
     <div class="container">
     <si-app-loader placement="BEFORE_FOOTER" />
-    <div class="sm:flex justify-start sm:space-x-5 mb-3" v-if="menu">
+    <div class="sm:flex justify-start sm:space-x-5 mb-3">
       <div class="w-full space-y-3">
         <p class=" ">About us</p>
         <p class="text-gray-500" v-html="$settings.sections.footer.about"></p>

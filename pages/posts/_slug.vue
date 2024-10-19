@@ -3,6 +3,9 @@
         <div v-if="loading" class="flex items-center justify-center my-5">
             <si-loader></si-loader>
         </div>
+        
+    
+    
         <div v-if="item" class="">
             <h1 class="m-2">{{ item.title }}</h1>
             <hr class="m-0">
@@ -23,10 +26,13 @@
                 </div>
             </div>
         </div>
+
         <hr>
         <div v-if="item" class="related">
             <sections-related-posts :item="item"/>
         </div>
+
+        
     </div>
 </template>
 <script>
@@ -63,8 +69,8 @@ export default {
         try{
             const { slug } = this.$route.params;
             const { data } = await this.$storeino.pages.get({ slug, type: 'POST' })
-            if(data)
-            this.item = data;
+         
+                this.item = data;
 
             this.$store.state.seo.title = this.item.title + ' - ' + this.$settings.store_name;
             this.$store.state.seo.description = this.item.excerpt || this.$settings.store_description;
