@@ -9,13 +9,14 @@
       }
     </component>
 
-    <template v-if="$route.name !== 'index'">
-      <!-- <sections-header-top></sections-header-top>
+    <!-- <template v-if="$route.name !== 'index'">
+      <sections-header-top></sections-header-top>
       <sections-header></sections-header>
-      <si-app-loader placement="AFTER_HEADER" /> -->
-      hhhhhvvfkfjkgv
-    </template>
+      <si-app-loader placement="AFTER_HEADER" />
 
+    </template> -->
+
+    hhhh
     <!-- <template v-if="$route.name === 'index'">
       <div class="flex flex-col sm:hidden">
         <sections-header-top></sections-header-top>
@@ -27,11 +28,11 @@
     <!-- <Nuxt /> -->
 
 
-    <template v-if="$route.name !== 'index'">
+    <!-- <template v-if="$route.name !== 'index'"> -->
   <!-- <sections-footer></sections-footer> -->
-  <div class="">
+  <!-- <div class="">
     <hr class="my-2 w-full" />
-  </div>
+  </div> -->
 
   <!-- <sections-footer-menu></sections-footer-menu>
   <sections-copyright></sections-copyright>
@@ -99,12 +100,12 @@
     </form>
   </div> -->
 
-  <div
+  <!-- <div
     v-if="$settings.other_scripts"
     class="other-scripts"
     v-html="$settings.other_scripts"
   ></div>
-   </template> 
+   </template>  -->
 
 
     <!--button up-->
