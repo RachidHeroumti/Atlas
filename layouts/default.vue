@@ -10,20 +10,21 @@
     </component>
 
     <template v-if="$route.name !== 'index'">
-      <sections-header-top></sections-header-top>
+      <!-- <sections-header-top></sections-header-top>
       <sections-header></sections-header>
-      <si-app-loader placement="AFTER_HEADER" />
+      <si-app-loader placement="AFTER_HEADER" /> -->
+      hhhhhvvfkfjkgv
     </template>
 
-    <template v-if="$route.name === 'index'">
+    <!-- <template v-if="$route.name === 'index'">
       <div class="flex flex-col sm:hidden">
         <sections-header-top></sections-header-top>
         <sections-header></sections-header>
       </div>
-    </template>
+    </template> -->
 
     
-    <Nuxt />
+    <!-- <Nuxt /> -->
 
 
     <template v-if="$route.name !== 'index'">
@@ -32,12 +33,12 @@
     <hr class="my-2 w-full" />
   </div>
 
-  <sections-footer-menu></sections-footer-menu>
+  <!-- <sections-footer-menu></sections-footer-menu>
   <sections-copyright></sections-copyright>
 
-  <si-full-image v-if="$route.path.startsWith('/products/')"></si-full-image>
+  <si-full-image v-if="$route.path.startsWith('/products/')"></si-full-image> -->
 
-  <div
+  <!-- <div
     dir="ltr"
     class="currency-switcher"
     v-if="$store.state.showCurrencyModal"
@@ -96,24 +97,24 @@
         <button type="submit">Switch</button>
       </div>
     </form>
-  </div>
+  </div> -->
 
   <div
     v-if="$settings.other_scripts"
     class="other-scripts"
     v-html="$settings.other_scripts"
   ></div>
-   </template>
+   </template> 
 
 
     <!--button up-->
-    <div
+    <!-- <div
       v-if="showScrollTopButton"
       @click="scrollToTop"
       class="fixed right-5 bottom-5 bg-white-gray hover:bg-titles-color w-10 h-8 flex text-white text-center text-base md:flex items-center justify-center"
     >
     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#fff"><path d="m256-424-56-56 280-280 280 280-56 56-224-223-224 223Z"/></svg>
-    </div>
+    </div> -->
 
   </div>
 </template>
