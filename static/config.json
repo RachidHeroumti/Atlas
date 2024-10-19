@@ -66,12 +66,6 @@
                                             "value": false
                                         },
                                         {
-                                            "name": "show_wishlist",
-                                            "path": "sections.products.add_to_wishlist.active",
-                                            "type": "tc_checkbox",
-                                            "value": false
-                                        },
-                                        {
                                             "name": "add_to_cart_text",
                                             "path": "sections.products.add_to_cart.text",
                                             "type": "tc_input",
