@@ -6,7 +6,7 @@
             .bg-primary:hover{ background-color: rgb(var(--primary-rgb),0.8); }
             .text-primary{ color: var(--primary-color); }
         </component>
-        <sections-header-top></sections-header-top>
+        <!-- <sections-header-top></sections-header-top>
         <sections-header></sections-header>
 
          <Nuxt />
@@ -17,7 +17,7 @@
         
         <sections-footer-menu></sections-footer-menu>
         <sections-copyright></sections-copyright>
-       
+        -->
     </div>
 </template>
 <script>
