@@ -471,6 +471,7 @@ export default {
     place: { type: String, default: "home" },
   },
   async fetch() {
+    console.log("add to cart one",this.$settings.sections.products.add_to_cart.active);
     if (this.item.type == "simple") {
       if (this.discount) {
         this.item.originalPrice = this.$tools.copy(this.item.price);

@@ -28,6 +28,7 @@
 <script>
 export default {
   async fetch() {
+   // console.log(" product 1 is active ?",this.$settings.sections[`products_${1}`].active);
     this.$store.state.seo.title = this.$settings.store_name;
     this.$store.state.seo.description = this.$settings.store_description;
   },

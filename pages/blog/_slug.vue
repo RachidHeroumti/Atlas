@@ -330,6 +330,9 @@ export default {
     },
   },
   async fetch() {
+    console.log("sidbar blog",this.$settings.sections.blog.sidebar.active);
+    console.log("active categories",this.$settings.sections.blog.sidebar.categories.active);
+    
     await this.getItems();
     await this.getCategories();
    

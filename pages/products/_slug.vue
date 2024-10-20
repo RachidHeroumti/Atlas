@@ -1,9 +1,8 @@
 <template>
   <div class="pt-4 bg-white w-full container">
-
     <sections-header-top></sections-header-top>
 
-    <div v-if="loading" class="flex w-full items-center justify-center  ">
+    <div v-if="loading" class="flex w-full items-center justify-center">
       <si-loader></si-loader>
     </div>
 
@@ -14,7 +13,7 @@
         <div class="lg:flex w-full justify-center h-4/5">
           <div class="w-full lg:w-1/4 hidden md:block p-2">
             <div
-              class="flex lg:flex-col w-full lg:w-auto justify-center items-center  "
+              class="flex lg:flex-col w-full lg:w-auto justify-center items-center"
             >
               <si-image
                 class="w-20 h-24 sm:w-24 sm:h-28 m-1 cursor-pointer"
@@ -26,7 +25,7 @@
               />
             </div>
           </div>
-          <div class=" md:w-3/4 h-500p flex justify-center">
+          <div class="md:w-3/4 h-500p flex justify-center">
             <si-image
               width="500"
               height="588"
@@ -57,8 +56,6 @@
 
       <div class="w-full md:w-1/2">
         <div class="p-2 flex h-full">
-
-
           <div class="">
             <h2
               class="mb-2 leading-custom-1.3 text-36p font-medium font-poppins text-titles-color"
@@ -77,7 +74,8 @@
                   :class="
                     star <= item.review.rating
                       ? ' text-titles-color'
-                      : ' text-white-gray '"
+                      : ' text-white-gray '
+                  "
                   :key="i"
                 >
                   <svg
@@ -213,16 +211,8 @@
                 </span>
               </button>
             </div>
-            <div class="flex flex-col py-3 sm:py-5 md:py-10 space-y-2">
-              <span class="font-poppins text-sm font-base">SKU:016</span>
-              <span class="font-poppins text-sm font-base"
-                >Category: Lights</span
-              >
-              <span class="font-poppins text-sm font-base"
-                >Tag: Decorative</span
-              >
-            </div>
-            <div class="flex w-full space-x-2">
+
+            <div class="flex w-full space-x-2 mt-3">
               <button
                 class="p-3 font-poppins text-white-gray text-base border border-gray-300 bg-gray-200 hover:bg-titles-color hover:text-white"
                 @click="
@@ -232,15 +222,7 @@
               >
                 Description
               </button>
-              <button
-                class="p-3 font-poppins text-white-gray text-base border-gray-300 bg-gray-200 hover:bg-titles-color hover:text-white"
-                @click="
-                  showmoredescription = false;
-                  showaAdditionalInfo = true;
-                "
-              >
-                Additional Information
-              </button>
+
               <button
                 class="p-3 font-poppins text-white-gray text-base border-gray-300 bg-gray-200 hover:bg-titles-color hover:text-white"
                 @click="
@@ -256,53 +238,38 @@
             >
               <p v-if="showmoredescription" class=" ">{{ item.description }}</p>
               <div v-if="showaAdditionalInfo">
-                <p v-if="item.collections && item.collections[0]">collection: {{ item.collections[0].name }}</p>
-<p v-if="item.productType">productType: {{ item.productType }}</p>
-<p v-if="item.tags && item.tags[0]">tags: {{ item.tags[0] }}</p>
-
+                <p v-if="item.collections && item.collections[0]">
+                  collection: {{ item.collections[0].name }}
+                </p>
+                <p v-if="item.productType">
+                  productType: {{ item.productType }}
+                </p>
+                <p v-if="item.tags && item.tags[0]">tags: {{ item.tags[0] }}</p>
               </div>
-              <div v-if="!showaAdditionalInfo&&!showmoredescription" >
+              <div v-if="!showaAdditionalInfo && !showmoredescription">
                 <div
-        v-if="item && $settings.sections.product.reviews.active"
-        class="reviews border border-gray-200 "
-      >
-        <sections-reviews
-          v-show="
-            !$store.state.apps.find(
-              (a) => a.placement.indexOf('REPLACE_REVIEWS') >= 0
-            )
-          "
-          :item="item"
-        ></sections-reviews>
-      </div>
+                  v-if="item && $settings.sections.product.reviews.active"
+                  class="reviews border border-gray-200"
+                >
+                  <sections-reviews
+                    v-show="
+                      !$store.state.apps.find(
+                        (a) => a.placement.indexOf('REPLACE_REVIEWS') >= 0
+                      )
+                    "
+                    :item="item"
+                  ></sections-reviews>
+                </div>
               </div>
-
             </div>
 
             <si-app-loader v-show="!outofstock" placement="REPLACE_BUYNOW" />
             <si-app-loader placement="AFTER_ADD_TO_CART" />
           </div>
 
-          <!-- Share button
-                    <div class="my-2 bg-white " v-if="$settings.sections.product.share_buttons">
-                        <div class="flex items-center">
-                            <div class="flex w-full border-b border-gray-200 "></div>
-                            <h3 class="p-2 whitespace-nowrap">{{ $settings.sections.product.share_buttons.title }}</h3>
-                            <div class="flex w-full border-b border-gray-200 "></div>
-                        </div>
-                        <div class="flex justify-center ">
-                            <div v-for="item in socialMedia.filter(s=>$settings.sections.product.share_buttons[s.name])" :key="item.name" class="flex items-center justify-center h-12 m-2">
-                                <a class="flex h-full" :href="item.url" target="_blank" rel="noopener noreferrer">
-                                    <si-image class="w-10 h-10" width="40" height="40" :src="item.image" :alt="item.name"/>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-    -->
+         
         </div>
       </div>
-
-
     </div>
 
     <div v-if="showVarianteModal" class="d-f modal_variante">
@@ -439,7 +406,7 @@
         v-html="item.html"
       ></div>
       <si-app-loader placement="AFTER_DESCRIPTION" />
-      
+
       <si-app-loader placement="REPLACE_REVIEWS" />
       <!--related product-->
       <div
@@ -449,7 +416,6 @@
         <sections-related-products :item="item" />
       </div>
     </div>
-
   </div>
 </template>
 
@@ -495,11 +461,22 @@ export default {
     };
   },
   async fetch() {
+    console.log(
+      "review active ",
+      this.$settings.sections.product.reviews.active
+    );
+    console.log(
+      "upsell active ",
+      this.$settings.sections.product.upsell.active
+    );
+    console.log(
+      "related active ",
+      this.$settings.sections.product.related.active
+    );
     const { slug } = this.$route.params;
     try {
       const { data } = await this.$storeino.products.get({ slug });
       this.item = data;
-
       this.$store.state.seo.title =
         (this.item.seo.title || this.item.name) +
         " - " +

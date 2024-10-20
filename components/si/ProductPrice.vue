@@ -13,9 +13,9 @@
         </div>
 
 
-        <div class="price flex justify-center my-2" v-else-if="minPrice != maxPrice">
+        <div class="price flex justify-center my-2 font-poppins text-12p font-normal" v-else-if="minPrice != maxPrice">
             <meta itemprop="price" :content="minPrice" />
-            <span class=" text-titles-color font-poppins text-12p font-normal">{{ minPrice }}{{ $store.state.currency.symbol }}</span>
+            <span class=" text-titles-color ">{{ minPrice }}{{ $store.state.currency.symbol }}</span>
             <span class="flex">~</span>
             <span class=" text-titles-color">{{ maxPrice }}{{ $store.state.currency.symbol }}</span>
         </div>

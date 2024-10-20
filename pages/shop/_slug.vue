@@ -384,9 +384,7 @@
               {{ $settings.sections.shop.sidebar.colors.title }}
             </h2>
             <div
-              v-if="
-                $settings.sections.shop.sidebar.colors.active && loading.filters
-              "
+              v-if="$settings.sections.shop.sidebar.colors.active && loading.filters"
               class="flex items-center justify-center my-5"
             >
               <si-loader></si-loader>
@@ -436,9 +434,7 @@
               {{ $settings.sections.shop.sidebar.sizes.title }}
             </h2>
             <div
-              v-if="
-                $settings.sections.shop.sidebar.sizes.active && loading.filters
-              "
+              v-if="$settings.sections.shop.sidebar.sizes.active && loading.filters"
               class="flex items-center justify-center my-5"
             >
               <si-loader></si-loader>
@@ -511,9 +507,7 @@
               {{ $settings.sections.shop.sidebar.tags.title }}
             </h2>
             <div
-              v-if="
-                $settings.sections.shop.sidebar.tags.active && loading.filters
-              "
+              v-if="$settings.sections.shop.sidebar.tags.active && loading.filters"
               class="flex items-center justify-center my-5"
             >
               <si-loader></si-loader>
@@ -582,6 +576,7 @@
                 </div>
               </div>
             </div>
+
           </div>
         </div>
       </transition>
@@ -688,6 +683,12 @@ export default {
     },
   },
   async fetch() {
+    console.log('sidebar.collection active',this.$settings.sections.shop.sidebar.collections.active);
+    console.log(" color shop active",this.$settings.sections.shop.sidebar.colors.active) ;
+    console.log(" sizes shop active",this.$settings.sections.shop.sidebar.sizes.active) ;
+    console.log(" prices shop active",this.$settings.sections.shop.sidebar.prices.active) ;
+    console.log(" tags shop active",this.$settings.sections.shop.sidebar.tags.active);
+    console.log(" brands shop active",this.$settings.sections.shop.sidebar.brands.active);
     this.$store.state.seo.title =
       this.$settings.sections.shop.title + " - " + this.$settings.store_name;
     this.$store.state.seo.description =
