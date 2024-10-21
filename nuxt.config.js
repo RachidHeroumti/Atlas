@@ -35,11 +35,6 @@ export default {
     '@nuxtjs/axios'
   ],
   axios: {},
-  pwa: {
-    manifest: {
-      lang: 'en'
-    }
-  },
   serverMiddleware: ['~/server/index'],
   server: {
     port: 3000,
