@@ -370,6 +370,7 @@ export function getQueryDiff (toQuery, fromQuery) {
 }
 
 export function normalizeError (err) {
+  console.log("sdg")
   let message
   if (!(err.message || typeof err === 'string')) {
     try {
@@ -381,6 +382,7 @@ export function normalizeError (err) {
     message = err.message || err
   }
   return {
+
     ...err,
     message,
     statusCode: (err.statusCode || err.status || (err.response && err.response.status) || 500)
