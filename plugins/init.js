@@ -1,6 +1,7 @@
 import StoreinoApp from 'vue/dist/vue.common.prod';
 
 export default async function ({ $axios, $http, route, $tools, $storeino, store, app, redirect }, inject) {
+  console.log("hhhhhhhhhhhhhhhhhhh")
   if (process.server) {
     // response
     let response = null;
@@ -119,6 +120,7 @@ export default async function ({ $axios, $http, route, $tools, $storeino, store,
                 result = await $http[method](`/${path}`, body, params);
             }
         } catch (error) {
+            console.log(error,"error")
             result = error.response ? error.response : { status: 500, data: error.message };
         }
 
