@@ -1,6 +1,6 @@
 $settings.sections.products.add_to_cart.active
 
-$settings.sections[`products_${i}`].active
+$settings.sections.products_1.active
 
 $settings.sections.blog.sidebar.active
 $settings.sections.blog.sidebar.categories.active

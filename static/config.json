@@ -1,7 +1,7 @@
 {
     "team": {
         "_id": "5f21374a175b5e8e309be827",
-        "name": "DEVELOPMENT",
+        "name": "Storeino Team",
         "url": "https://market.storeino.com/storeino/"
     },
     "config": {
@@ -62,12 +62,6 @@
                                         {
                                             "name": "add_to_cart_to_checkout",
                                             "path": "sections.products.add_to_cart_to_checkout",
-                                            "type": "tc_checkbox",
-                                            "value": false
-                                        },
-                                        {
-                                            "name": "show_wishlist",
-                                            "path": "sections.products.add_to_wishlist.active",
                                             "type": "tc_checkbox",
                                             "value": false
                                         },
@@ -1801,9 +1795,6 @@
                     },
                     "show_reviews": true,
                     "add_to_cart_to_checkout": false,
-                    "add_to_wishlist": {
-                        "active": false
-                    },
                     "added_text": "Added",
                     "confirm_text": "Confirm"
                 },

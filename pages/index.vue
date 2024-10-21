@@ -3,25 +3,12 @@
     
    <div class="flex  w-full sm:h-screen ">
      <sections-header-menu></sections-header-menu>
-   <template v-for="i in 1">
-      <sections-products
-        :key="i"
-        :data-key="i"
-        v-if="$settings.sections[`products_${i}`].active"
-        :section="$settings.sections[`products_${i}`]"
-        
-      ></sections-products>
+   <template>
+      <sections-products v-if="$settings.sections.products_1.active" :section="$settings.sections.products_1"></sections-products>
     </template>
     
     </div>
      
-
-<!--
-    <sections-posts v-if="$settings.sections.posts.active"></sections-posts>
-    <sections-services
-      v-if="$settings.sections.services.active"
-    ></sections-services>
-    -->
  
   </div>
 </template>

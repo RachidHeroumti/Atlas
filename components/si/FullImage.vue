@@ -57,7 +57,7 @@
         </button>
 
         <div class="flex py-4 px-6 w-full">
-          <div class="flex items-center ">
+          <div class="flex items-center">
             <button
               @click="prevImage"
               class="text-base font-medium text-titles-color bg-white flex items-center justify-center"
@@ -75,7 +75,7 @@
 
             <button
               @click="nextImage"
-              class="text-base font-medium bg-white text-titles-color  flex items-center justify-center"
+              class="text-base font-medium bg-white text-titles-color flex items-center justify-center"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -107,27 +107,41 @@ export default {
       item: null,
       image: null,
       currentIndex: 0,
-      isReviewImg : false 
+      reviews: { paginate: { page: 0 }, results: [] },
+      isReviewImg: false,
     };
   },
 
   async fetch() {
     const { slug } = this.$route.params;
+
     try {
-      const { data } = await this.$storeino.products.get({ slug });
-      if(data)
-        this.item = data;
-      this.$tools.call("PAGE_VIEW", this.item);
+      const productResponse = await this.$storeino.products.get({ slug });
 
-     /* this.currentIndex = this.item.images.findIndex(
+      if (productResponse.data) {
+        this.item = productResponse.data;
+
+        const reviewsResponse = await this.$storeino.reviews.search({
+          "product._id": this.item._id,
+          page: this.reviews.paginate.page + 1,
+        });
+
+        if (reviewsResponse.data) {
+          this.reviews = reviewsResponse.data;
+          console.log('reviews :',this.reviews) ;
+        }
+
+        this.$tools.call("PAGE_VIEW", this.item);
+
+        /* this.currentIndex = this.item.images.findIndex(
         (img) => img.src === this.$store.state.fullImage
-      );*/
+      ); */
 
-      this.image = this.item.images[this.currentIndex]||null;
-      if(this.image==null){
-        //get images from reviews
-        this.isReviewImg = true ;
-        console.log("is review",this.isReviewImg);
+        this.image = this.item.images[this.currentIndex] || null;
+        if (this.image == null) {
+          console.log("item review page ");
+        }
+
       }
     } catch (e) {
       console.log(e);
@@ -141,7 +155,6 @@ export default {
       }
     });
   },
- 
 
   methods: {
     setImage(index) {
