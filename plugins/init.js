@@ -120,6 +120,7 @@ export default async function ({ $axios, $http, route, $tools, $storeino, store,
                 result = await $http[method](`/${path}`, body, params);
             }
         } catch (error) {
+            console.log(error,"error")
             result = error.response ? error.response : { status: 500, data: error.message };
         }
 
