@@ -1,4 +1,5 @@
 export default async function ({ $http, store, app, route }, inject) {
+    console.log("hhhhh34")
     // Variables
     const storeino = {};
 
