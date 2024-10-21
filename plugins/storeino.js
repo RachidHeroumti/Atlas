@@ -17,6 +17,7 @@ export default async function ({ $http, store, app, route }, inject) {
         storeino[module].get = async function (params) {
             return $http.get(`/${module}/get`, { params });
         };
+        console.log("🚀 ~ storeino[module].get:", storeino[module].get)
     }
 
     // Search
@@ -25,6 +26,7 @@ export default async function ({ $http, store, app, route }, inject) {
         storeino[module].search = async function (params) {
             return $http.get(`/${module}/search`, { params });
         };
+        console.log("🚀 ~ storeino[module].search:", storeino[module].search)
     }
 
     // Create
@@ -33,6 +35,7 @@ export default async function ({ $http, store, app, route }, inject) {
         storeino[module].create = async function (params, query) {
             return $http.post(`/${module}/create`, params, { params: query });
         };
+        console.log("🚀 ~ storeino[module].create:", storeino[module].create)
     }
 
     // Update
@@ -41,13 +44,16 @@ export default async function ({ $http, store, app, route }, inject) {
         storeino[module].update = async function (params, query) {
             return $http.post(`/${module}/update`, params, { params: query });
         };
+        console.log("🚀 ~ storeino[module].update:", storeino[module].update)
     }
 
     // Others
     storeino.products.filters = async function (params) {
         return $http.get('/products/filters', { params });
     }
-
+    
+    console.log("🚀 ~ storeino.products.filters:", storeino.products.filters)
+    
     // Facebook Pixel
     storeino.fbpx = async function (ev, data = {}, params = {}) {
         if (!store.state.isPreview &&

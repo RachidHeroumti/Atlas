@@ -107,6 +107,7 @@ export default {
       item: null,
       image: null,
       currentIndex: 0,
+      isReviewImg : false 
     };
   },
 
@@ -121,9 +122,13 @@ export default {
      /* this.currentIndex = this.item.images.findIndex(
         (img) => img.src === this.$store.state.fullImage
       );*/
+
       this.image = this.item.images[this.currentIndex]||null;
       if(this.image==null){
         //get images from reviews
+        this.isReviewImg =
+         true ;
+        console.log("is review",this.isReviewImg);
       }
     } catch (e) {
       console.log(e);

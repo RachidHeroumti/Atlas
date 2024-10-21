@@ -9,7 +9,9 @@ export default async function ({ $axios, store, $tools, app, req, res, route }, 
     // Conig
     const config = app.context.req.config;
     if (config.env == 'production') store.state.baseURL = "https://api-stores.storeino.com/api";
-
+    
+    console.log("🚀 ~ config:", config)
+    
     // Request Query
     let { fbclid, gclid } = req.query
     app.context.store.state.fbclid = fbclid !== undefined ? fbclid : null;
@@ -89,6 +91,8 @@ export default async function ({ $axios, store, $tools, app, req, res, route }, 
       rejectUnauthorized: false
     })
   });
+
+  console.log("🚀 ~ const http:", http)
 
   // Axios Interceptors
   http.interceptors.request.use(function (config) {
