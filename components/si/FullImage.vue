@@ -109,6 +109,7 @@ export default {
       currentIndex: 0,
     };
   },
+
   async fetch() {
     const { slug } = this.$route.params;
     try {
@@ -121,6 +122,9 @@ export default {
         (img) => img.src === this.$store.state.fullImage
       );*/
       this.image = this.item.images[this.currentIndex]||null;
+      if(this.image==null){
+        //get images from reviews
+      }
     } catch (e) {
       console.log(e);
       this.$nuxt.error({ statusCode: 404, message: "product_not_found" });
@@ -133,6 +137,8 @@ export default {
       }
     });
   },
+ 
+
   methods: {
     setImage(index) {
       this.currentIndex = index;

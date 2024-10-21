@@ -1,5 +1,5 @@
 <template>
-  <div v-if="item && item.review.reviews.length > 0" class="container bg-white border-b border-gray-200 ">
+  <div v-if="item && item.review.reviews.length > 0" class=" bg-white border-b  ">
     <!--
     <div class="m-2">
       <h2 class="text-2xl">{{ $settings.sections.product.reviews.title }}</h2>
@@ -12,9 +12,9 @@
         <div
           v-for="(review, index) in reviews.results"
           :key="index"
-          class="w-full md:w-1/2"
+          class="w-full "
         >
-          <div class="bg-white flex justify-between flex-col h-full ">
+          <div class="bg-white flex justify-between flex-col h-full w-full ">
             <div class="flex flex-col">
               <div class="flex">
                 <div class="flex ">
@@ -61,8 +61,9 @@
                 </div>
               </div>
             </div>
-            <div class="overflow-auto w-full">
-              <div class="flex bg-gray-50">
+
+            <div class="overflow-auto w-full  ">
+              <div class="flex w-full">
                 <si-image
                   width="100"
                   height="100"

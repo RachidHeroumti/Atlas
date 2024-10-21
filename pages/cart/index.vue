@@ -28,7 +28,7 @@
                 Price
               </h1>
               <h1 class="font-poppins font-bold text-base text-center">
-                Quantty
+                Quantity
               </h1>
               <h1 class="font-poppins font-bold text-base text-center">
                 SubTotal

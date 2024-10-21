@@ -1,4 +1,4 @@
-import { plugins } from "@storeino/template-core";
+
 export default {
   head: {
     title: 'customize-theme',
@@ -20,7 +20,11 @@ export default {
     '~/assets/css/fontCss.css'
   ],
   plugins: [
-    ...plugins
+    '~/plugins/tools.js',
+    '~/plugins/http.js',
+    '~/plugins/storeino.js',
+    '~/plugins/init.js',
+    '~/plugins/events.js'
   ],
   components: true,
   buildModules: [

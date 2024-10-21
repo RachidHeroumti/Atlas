@@ -914,7 +914,8 @@ export default {
         });
         return data && data.results ? data.results.length : 0;
       } catch (err) {
-        this.$sentry.captureException(err);
+        //this.$sentry.captureException(err);
+        console.log("error in pages shop",err);
         return 0; // Return 0 on error
       }
     },

@@ -291,16 +291,16 @@
 
 
                 <!--languages-->
+                <!--issue there is only one language?-->
                 <div
                   v-if="
                     $settings.sections.header.icons.language &&
-                    $settings.store_languages.length > 1
-                  "
-                  class="relative mx-1"
+                    $settings.store_languages.length > 1"
+                  class="relative mx-1 "
                 >
                   <div
                     v-if="iconMenu == 'language'"
-                    class="absolute z-50 flex flex-col bg-gray-100 rounded-md top-5"
+                    class="absolute z-50 flex flex-col text-base font-poppins font-medium text-titles-color top-5"
                   >
                     <a
                       class="p-2 m-1 whitespace-nowrap"
@@ -314,16 +314,14 @@
 
                 <button
                   @click="iconMenu = iconMenu == 'language' ? null : 'language'"
-                  v-if="
-                    $settings.sections.header.icons.language &&
-                    $settings.store_languages.length > 1
-                  "
+                  v-if="$settings.sections.header.icons.language &&$settings.store_languages.length > 1"
                   title="Language"
-                  class="item hidden md:block p-1.5 bg-gray-100 rounded-md hover:bg-gray-200"
+                  class="item hidden md:block p-1.5  rounded-md hover:bg-gray-200"
                 >
-                  <span class="text-sm">{{ $store.state.language.code }}</span>
+                  <span class="text-base  font-poppins font-medium text-titles-color">{{ $store.state.language.code }}</span>
                 </button>
 
+                <!--button search-->
                 <button
                   v-if="$settings.sections.header.icons.search"
                   @click="showSearch = true"
