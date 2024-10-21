@@ -4,7 +4,6 @@ const app = express()
 app.use(express.urlencoded({ limit: '5mb' }));
 app.use(express.json({ limit: '5mb' }));
 app.use((req, res, next) => {
-    console.log("pps")
     req.config = { env: config.get('env'), token: config.get('token') };
     next();
 });

@@ -1,6 +1,6 @@
 import https from 'https';
 export default async function ({ $axios, store, $tools, app, req, res, route }, inject) {
-  console.log("hhhhhhhh2")
+  
   if (process.server) {
     // Response 
     if (app.context.req && app.context.req.headers && app.context.req.headers.ip) {
@@ -11,7 +11,7 @@ export default async function ({ $axios, store, $tools, app, req, res, route }, 
     const config = app.context.req.config;
     if (config.env == 'production') store.state.baseURL = "https://api-stores.storeino.com/api";
     
-    console.log("🚀 ~ config:", config)
+
     
     // Request Query
     let { fbclid, gclid } = req.query
@@ -70,7 +70,7 @@ export default async function ({ $axios, store, $tools, app, req, res, route }, 
       try {
         const token = config.token;
         const response = await $axios.post(store.state.baseURL + '/stores/auth', token);
-        console.log("🚀 ~ response :", response);
+        
         store.state.token = response.data.accessToken;
       } catch (err) {
         console.log(err);
@@ -94,7 +94,7 @@ export default async function ({ $axios, store, $tools, app, req, res, route }, 
     })
   });
 
-  console.log("🚀 ~ const http:", http)
+ 
 
   // Axios Interceptors
   http.interceptors.request.use(function (config) {

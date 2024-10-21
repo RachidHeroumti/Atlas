@@ -7,6 +7,7 @@ const createStore = () => {
           customer:null,
           IP: undefined,
           showCurrencyModal: false,
+          isReviewinFullimages :false,
           cart: [],
           isPreview:false,
           whishlist: [],
@@ -23,7 +24,6 @@ const createStore = () => {
           settings: null,
           domain: 'www.storeino.com',
           apps: [],
-          //token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdG9yZSI6eyJfaWQiOiI2NmY1MzVlYTc5ODk5MzlkYzMzNTc2YmQifSwic291cmNlIjoiVEhFTUVTIiwiaWF0IjoxNzI5NTAwMjc0LCJleHAiOjE3NjEwMzYyNzR9.ypDtRszZkgHCSNBYV6VrInd8158t35cXeF8gl1aTsmY',
           token: null,
           primary: {
             rgb: { r:0, g:0, b:0 },
@@ -34,7 +34,7 @@ const createStore = () => {
               image: "https://storeno.b-cdn.net/themes/palest/default-shop.jpg",
               sliderImage: "https://storeno.b-cdn.net/themes/palest/slider.jpeg",
               sideBanner: "https://storeno.b-cdn.net/themes/palest/side-banner.jpeg",
-              logo: "https://storeno.b-cdn.net/themes/palest/logo.png",
+              logo: "https://storeno.b-cdn.net/stores/10-2024/1728987582794.png",
               icon: "https://storeno.b-cdn.net/themes/palest/icon.png"
           },
           baseURL: 'https://api-stores.storeino.world/api',

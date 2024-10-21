@@ -67,11 +67,10 @@ export default {
       this.loading = true;
         try{
           if(this.section.items != null && this.section.items.length > 0){
-             console.log("products not here !") ;
+            
             this.items = this.section.items;
           }else{
             const { data } = await this.$storeino.products.search(filter)
-            console.log("🚀 ~ getProducts ~ data:", data)
             this.items = data.results
           }
         }catch(e){

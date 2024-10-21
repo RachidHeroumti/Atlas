@@ -176,7 +176,6 @@ const render404Page = () => {
       }
       if (typeof middleware[name] !== 'function') {
         app.context.error({ statusCode: 500, message: 'Unknown middleware ' + name })
-        console.log("tls")
       }
       return middleware[name]
     })
@@ -253,7 +252,6 @@ const render404Page = () => {
       }
     }
   } catch (validationError) {
-    console.log("plo")
     // ...If .validate() threw an error
     app.context.error({
       statusCode: validationError.statusCode || '500',

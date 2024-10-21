@@ -95,6 +95,7 @@
             >
           </div>
         </div>
+
       </div>
     </div>
   </transition>
@@ -106,6 +107,7 @@ export default {
     return {
       item: null,
       image: null,
+      isReviewImages: this.$store.state.isReviewinFullimages,
       currentIndex: 0,
       reviews: { paginate: { page: 0 }, results: [] },
       isReviewImg: false,
@@ -137,10 +139,12 @@ export default {
         (img) => img.src === this.$store.state.fullImage
       ); */
 
+           
+          if(this.isReviewImages){
+            console.log("review images");
+          }
         this.image = this.item.images[this.currentIndex] || null;
-        if (this.image == null) {
-          console.log("item review page ");
-        }
+        
 
       }
     } catch (e) {

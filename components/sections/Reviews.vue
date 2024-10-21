@@ -71,7 +71,7 @@
                   v-for="(image, index) in review.images"
                   :key="index"
                   :src="image"
-                  @click="$store.state.fullImage = image"
+                  @click="$store.state.fullImage = image;$store.state.isReviewinFullimages=true"
                   :alt="`${review.rating} stars - ${review.content}`"
                 />
               </div>

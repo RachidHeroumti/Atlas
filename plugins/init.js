@@ -1,7 +1,7 @@
 import StoreinoApp from 'vue/dist/vue.common.prod';
 
 export default async function ({ $axios, $http, route, $tools, $storeino, store, app, redirect }, inject) {
-  console.log("hhhhhhhhhhhhhhhhhhh")
+ 
   if (process.server) {
     // response
     let response = null;
