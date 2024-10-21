@@ -126,8 +126,7 @@ export default {
       this.image = this.item.images[this.currentIndex]||null;
       if(this.image==null){
         //get images from reviews
-        this.isReviewImg =
-         true ;
+        this.isReviewImg = true ;
         console.log("is review",this.isReviewImg);
       }
     } catch (e) {

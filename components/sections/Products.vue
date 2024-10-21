@@ -60,6 +60,7 @@ export default {
     if(this.collections.length > 0) filter['collections._id-in'] = this.collections.map(c=>c._id);
     if(this.tags.length > 0) filter['tags._id-in'] = this.tags.split(',');
     await this.getProducts(filter);
+    
   },
   methods: {
     async getProducts(filter){
@@ -70,6 +71,7 @@ export default {
             this.items = this.section.items;
           }else{
             const { data } = await this.$storeino.products.search(filter)
+            console.log("🚀 ~ getProducts ~ data:", data)
             this.items = data.results
           }
         }catch(e){

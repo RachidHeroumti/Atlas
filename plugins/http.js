@@ -69,6 +69,7 @@ export default async function ({ $axios, store, $tools, app, req, res, route }, 
       try {
         const token = config.token;
         const response = await $axios.post(store.state.baseURL + '/stores/auth', token);
+        console.log("🚀 ~ response :", response);
         store.state.token = response.data.accessToken;
       } catch (err) {
         console.log(err);
