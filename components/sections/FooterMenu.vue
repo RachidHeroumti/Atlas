@@ -4,7 +4,7 @@
     <si-app-loader placement="BEFORE_FOOTER" />
     <div class="sm:flex justify-start sm:space-x-5 mb-3">
       <div class="w-full space-y-3">
-        <p class=" ">{{$settings.sections.footer.about_us}}</p>
+        <p class=" ">{{$settings.sections.footer.about_us}} About us</p>
         <p class="text-gray-500" v-html="$settings.sections.footer.about"></p>
       </div>
 
@@ -40,7 +40,7 @@
       </div>
 
       <div class="w-full space-y-3">
-        <p>{{ $settings.sections.footer.download}}</p>
+        <p>{{ $settings.sections.footer.download}}download</p>
         <!--<h3 class=" text-lg">{{ $settings.sections.footer.social_media.title }}</h3> -->
         <div class="text-12p font-poppins font-base text-gray-400">
           <div
@@ -63,7 +63,7 @@
       </div>
 
       <div class="w-full space-y-3">
-        <p>{{ $settings.sections.footer.call_center }}</p>
+        <p>{{ $settings.sections.footer.call_center }}Call center</p>
         <div>
           <p
             class="text-12p font-poppins font-normal text-gray-400"

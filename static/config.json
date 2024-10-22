@@ -1313,6 +1313,39 @@
                     "language": "AR",
                     "properties": [
                         {
+                            "name": "sections.footer.useful_links",
+                            "value": "روابط مفيدة"
+                          },
+                        {
+                            "name": "sections.alerts.price",
+                            "value": "السعر"
+                          },
+                          {
+                            "name": "sections.alerts.quantity",
+                            "value": "الكمية"
+                          },
+                          {
+                            "name": "sections.alerts.subTotal",
+                            "value": "المجموع الفرعي"
+                          },
+                          {
+                            "name": "sections.alerts.total",
+                            "value": "الإجمالي"
+                          },
+                        {
+                            "name": "sections.footer.about_us",
+                            "value": "من نحن"
+                          },
+                          {
+                            "name": "sections.footer.download",
+                            "value": "تنزيل"
+                          },
+                          {
+                            "name": "sections.footer.call_center",
+                            "value": "مركز الاتصال"
+                          }
+                        ,
+                        {
                             "name": "sections.products.add_to_cart.text",
                             "value": "أضف الى السلة"
                         },
@@ -1553,6 +1586,42 @@
                 {
                     "language": "FR",
                     "properties": [
+                        {
+                            "name": "sections.footer.useful_links",
+                            "value": "Liens utiles"
+                          },
+                          {
+                            "name": "sections.footer.about_us",
+                            "value": "à propos de nous"
+                          },
+                          {
+                            "name": "sections.footer.download",
+                            "value": "télécharger"
+                          },
+                          {
+                            "name": "sections.footer.call_center",
+                            "value": "centre d'appel"
+                          },
+                          {
+                            "name": "sections.cart.product",
+                            "value": "Produit"
+                          },
+                          {
+                            "name": "sections.cart.price",
+                            "value": "Prix"
+                          },
+                          {
+                            "name": "sections.cart.quantity",
+                            "value": "Quantité"
+                          },
+                          {
+                            "name": "sections.cart.subTotal",
+                            "value": "Sous-total"
+                          },
+                          {
+                            "name": "sections.cart.total",
+                            "value": "Total"
+                          },
                         {
                             "name": "sections.products.add_to_cart.text",
                             "value": "Ajouter au panier"
