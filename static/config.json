@@ -202,13 +202,33 @@
                                     "name": "about",
                                     "values": [
                                         {
+                                            "name": "call_center",
+                                            "path": "sections.footer.call_center",
+                                            "type": "tc_input",
+                                            "translatable": true,
+                                            "value": "Call center"
+                                        },
+                                        {
+                                            "name": "about_us",
+                                            "path": "sections.footer.about_us",
+                                            "type": "tc_input",
+                                            "translatable": true,
+                                            "value": "About us"
+                                        },
+                                        {
+                                            "name": "download",
+                                            "path": "sections.footer.download",
+                                            "type": "tc_input",
+                                            "translatable": true,
+                                            "value": "Download"
+                                        },
+                                        {
                                             "name": "footer_about",
                                             "note": "about_your_website",
                                             "path": "sections.footer.about",
                                             "type": "tc_html",
                                             "translatable": true,
-                                            "value":null
-                                           
+                                            "value": null
                                         },
                                         {
                                             "name": "pref_about",
@@ -361,7 +381,7 @@
                                             "path": "sections.footer.copyright.store_name",
                                             "type": "tc_input",
                                             "translatable": true,
-                                            "value": "Online store"
+                                            "value": "ewrtetewt we rtwe r lsn"
                                         },
                                         {
                                             "name": "copyright_text",
@@ -664,6 +684,39 @@
                             "name": "sidebar",
                             "icon": "select_all",
                             "blocks": [
+                                {
+                                    "name": "content",
+                                    "values": [
+                                        {
+                                            "name": "search_text",
+                                            "path": "sections.shop.search_text",
+                                            "type": "tc_input",
+                                            "translatable": true,
+                                            "value": "search"
+                                        },
+                                        {
+                                            "name": "showing_text",
+                                            "path": "sections.shop.showing_text",
+                                            "type": "tc_input",
+                                            "translatable": true,
+                                            "value": "showing"
+                                        },
+                                        {
+                                            "name": "result_text",
+                                            "path": "sections.shop.result_text",
+                                            "type": "tc_input",
+                                            "translatable": true,
+                                            "value": "results"
+                                        },
+                                        {
+                                            "name": "of_text",
+                                            "path": "sections.shop.of_text",
+                                            "type": "tc_input",
+                                            "translatable": true,
+                                            "value": "of"
+                                        }
+                                    ]
+                                },
                                 {
                                     "name": "display",
                                     "values": [
@@ -1058,6 +1111,29 @@
                                 {
                                     "name": "cart_texts",
                                     "values": [
+                                        
+
+                                        {
+                                            "name": "price",
+                                            "path": "sections.cart.price",
+                                            "type": "tc_input",
+                                            "translatable": true,
+                                            "value": "Price"
+                                        },
+                                        {
+                                            "name": "quantity",
+                                            "path": "sections.cart.quantity",
+                                            "type": "tc_input",
+                                            "translatable": true,
+                                            "value": "Quantity"
+                                        },
+                                        {
+                                            "name": "subTotal",
+                                            "path": "sections.cart.subTotal",
+                                            "type": "tc_input",
+                                            "translatable": true,
+                                            "value": "subTotal"
+                                        },
                                         {
                                             "name": "title",
                                             "path": "sections.cart.title",
@@ -1114,7 +1190,6 @@
                                             "type": "tc_input",
                                             "translatable": true,
                                             "value": "Proceed to checkout"
-                                           
                                         },
                                         {
                                             "name": "back_to_shop_text",
@@ -1122,7 +1197,6 @@
                                             "type": "tc_input",
                                             "translatable": true,
                                             "value": "Back to shop"
-                                           
                                         },
                                         {
                                             "name": "show_back_to_shop",
@@ -1171,7 +1245,6 @@
                                             "type": "tc_input",
                                             "translatable": true,
                                             "value": "Thanks"
-                                         
                                         },
                                         {
                                             "name": "description",
@@ -1179,7 +1252,6 @@
                                             "type": "tc_input",
                                             "translatable": true,
                                             "value": "Thank you for your order"
-                                            
                                         },
                                         {
                                             "name": "back_to_shop_text",
@@ -1187,7 +1259,6 @@
                                             "type": "tc_input",
                                             "translatable": true,
                                             "value": "Back to shop"
-                                           
                                         }
                                     ]
                                 }
@@ -1313,38 +1384,53 @@
                     "language": "AR",
                     "properties": [
                         {
+                            "name": "sections.shop.of_text",
+                            "value": "من"
+                        },
+                        {
+                            "name": "sections.shop.search_text",
+                            "value": "بحث"
+                        },
+                        {
+                            "name": "sections.shop.showing_text",
+                            "value": "عرض"
+                        },
+                        {
+                            "name": "sections.shop.result_text",
+                            "value": "نتائج"
+                        },
+                        {
                             "name": "sections.footer.useful_links",
                             "value": "روابط مفيدة"
-                          },
+                        },
                         {
-                            "name": "sections.alerts.price",
+                            "name": "sections.cart.price",
                             "value": "السعر"
-                          },
-                          {
-                            "name": "sections.alerts.quantity",
+                        },
+                        {
+                            "name": "sections.cart.quantity",
                             "value": "الكمية"
-                          },
-                          {
-                            "name": "sections.alerts.subTotal",
+                        },
+                        {
+                            "name": "sections.cart.subTotal",
                             "value": "المجموع الفرعي"
-                          },
-                          {
-                            "name": "sections.alerts.total",
+                        },
+                        {
+                            "name": "sections.cart.total",
                             "value": "الإجمالي"
-                          },
+                        },
                         {
                             "name": "sections.footer.about_us",
                             "value": "من نحن"
-                          },
-                          {
+                        },
+                        {
                             "name": "sections.footer.download",
                             "value": "تنزيل"
-                          },
-                          {
+                        },
+                        {
                             "name": "sections.footer.call_center",
                             "value": "مركز الاتصال"
-                          }
-                        ,
+                        },
                         {
                             "name": "sections.products.add_to_cart.text",
                             "value": "أضف الى السلة"
@@ -1587,41 +1673,57 @@
                     "language": "FR",
                     "properties": [
                         {
+                            "name": "sections.shop.search_text",
+                            "value": "recherche"
+                        },
+                        {
+                            "name": "sections.shop.showing_text",
+                            "value": "affichage"
+                        },
+                        {
+                            "name": "sections.shop.result_text",
+                            "value": "résultats"
+                        },
+                        {
+                            "name": "sections.shop.of_text",
+                            "value": "de"
+                        },
+                        {
                             "name": "sections.footer.useful_links",
                             "value": "Liens utiles"
-                          },
-                          {
+                        },
+                        {
                             "name": "sections.footer.about_us",
                             "value": "à propos de nous"
-                          },
-                          {
+                        },
+                        {
                             "name": "sections.footer.download",
                             "value": "télécharger"
-                          },
-                          {
+                        },
+                        {
                             "name": "sections.footer.call_center",
                             "value": "centre d'appel"
-                          },
-                          {
+                        },
+                        {
                             "name": "sections.cart.product",
                             "value": "Produit"
-                          },
-                          {
+                        },
+                        {
                             "name": "sections.cart.price",
                             "value": "Prix"
-                          },
-                          {
+                        },
+                        {
                             "name": "sections.cart.quantity",
                             "value": "Quantité"
-                          },
-                          {
+                        },
+                        {
                             "name": "sections.cart.subTotal",
                             "value": "Sous-total"
-                          },
-                          {
+                        },
+                        {
                             "name": "sections.cart.total",
                             "value": "Total"
-                          },
+                        },
                         {
                             "name": "sections.products.add_to_cart.text",
                             "value": "Ajouter au panier"
@@ -1915,7 +2017,8 @@
                         "store_name": "Online store",
                         "text": "Copyright © __YEAR__. All rights reserved. <a href='//storeino.com'>storeino.com</a>"
                     },
-                    "menu_bottom": null
+                    "menu_bottom": null,
+                    "call_center": "Onlinsdfgdsgd sdfge store"
                 },
                 "products_1": {
                     "active": true,

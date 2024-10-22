@@ -32,11 +32,12 @@
             <li
               class="flex items-center justify-between w-full rounded-md bg-white bold-underline"
             >
-              <span
+              <router-link
                 class="w-full flex text-titles-color menuTextStyle tracking-normal menu-text-pad"
                 :class="i == 0 ? 'underline-first-item' : ''"
+                :to="item.url"
                 >{{ item.text }}
-              </span>
+              </router-link>
               <button
                 class="bg-white"
                 @click="activeId = activeId != item._id ? item._id : null"

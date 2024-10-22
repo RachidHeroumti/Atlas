@@ -27,8 +27,11 @@
 
                 <div>
                   <span class="hidden md:flex">
-                    Showing 1–{{ items.length < 9 ? items.length : 9 }} of
-                    {{ items.length }} results</span
+                    {{ $settings.sections.shop.showing_text }} 1–{{
+                      items.length < 9 ? items.length : 9
+                    }}
+                    {{ $settings.sections.shop.of_text }} {{ items.length }}
+                    {{ $settings.sections.footer.result_text }}</span
                   >
                 </div>
 
@@ -240,7 +243,7 @@
               <input
                 class="outline-none"
                 type="text"
-                placeholder="search..."
+                :placeholder="$settings.sections.shop.search_text"
                 v-model="q"
                 @keydown.enter="search"
               />
@@ -384,7 +387,9 @@
               {{ $settings.sections.shop.sidebar.colors.title }}
             </h2>
             <div
-              v-if="$settings.sections.shop.sidebar.colors.active && loading.filters"
+              v-if="
+                $settings.sections.shop.sidebar.colors.active && loading.filters
+              "
               class="flex items-center justify-center my-5"
             >
               <si-loader></si-loader>
@@ -434,7 +439,9 @@
               {{ $settings.sections.shop.sidebar.sizes.title }}
             </h2>
             <div
-              v-if="$settings.sections.shop.sidebar.sizes.active && loading.filters"
+              v-if="
+                $settings.sections.shop.sidebar.sizes.active && loading.filters
+              "
               class="flex items-center justify-center my-5"
             >
               <si-loader></si-loader>
@@ -507,7 +514,9 @@
               {{ $settings.sections.shop.sidebar.tags.title }}
             </h2>
             <div
-              v-if="$settings.sections.shop.sidebar.tags.active && loading.filters"
+              v-if="
+                $settings.sections.shop.sidebar.tags.active && loading.filters
+              "
               class="flex items-center justify-center my-5"
             >
               <si-loader></si-loader>
@@ -576,7 +585,6 @@
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </transition>
@@ -666,7 +674,7 @@ export default {
       ],
       q: "",
       showSearch: false,
-      sortText: "Sort By default",
+      sortText: this.$settings.sections.shop.sorts.newest,
     };
   },
   watch: {
@@ -683,7 +691,6 @@ export default {
     },
   },
   async fetch() {
-   
     this.$store.state.seo.title =
       this.$settings.sections.shop.title + " - " + this.$settings.store_name;
     this.$store.state.seo.description =
@@ -899,7 +906,7 @@ export default {
       for (const collection of this.collections) {
         counts[collection.slug] = await this.getProductsLength(collection.slug);
       }
-      this.productCounts = counts; 
+      this.productCounts = counts;
     },
 
     async getProductsLength(slug) {
@@ -909,8 +916,8 @@ export default {
         });
         return data && data.results ? data.results.length : 0;
       } catch (err) {
-        //this.$sentry.captureException(err); 
-        return 0; 
+        //this.$sentry.captureException(err);
+        return 0;
       }
     },
     async getCollections() {
@@ -919,7 +926,7 @@ export default {
       try {
         const { data } = await this.$storeino.collections.search({});
         if (data.results) this.collections = data.results;
-        await this.fetchProductCounts(); 
+        await this.fetchProductCounts();
       } catch (e) {
         console.log({ e });
       }

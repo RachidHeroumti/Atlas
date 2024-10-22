@@ -1,4 +1,9 @@
 {
+    "sections.shop.search_text": "بحث",
+  "sections.shop.showing_text": "عرض",
+  "sections.shop.result_text": "نتائج",
+  "sections.shop.of_text": "من",
+     "sections.product.custome_reviews": "مراجعات العملاء",
     "sections.footer.about_us":"من نحن",
     "sections.footer.usefu_links":"روابط مفيدة",
     "sections.footer.download":"تنزيل",

@@ -189,7 +189,7 @@
               </h2>
               <div class="py-5">
                 <nuxt-img
-                  class="w-full h-48 rounded-sm object-cover opacity-75"
+                  class="w-full h-48 rounded-sm object-cover "
                   src="https://images.pexels.com/photos/3772623/pexels-photo-3772623.jpeg?auto=compress&cs=tinysrgb&w=600"
                   alt="coolections Pic"
                 />

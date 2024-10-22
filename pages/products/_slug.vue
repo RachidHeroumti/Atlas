@@ -1,5 +1,5 @@
 <template>
-  <div class="pt-4 bg-white w-full container">
+  <div class=" pt-16 bg-white w-full container">
     <sections-header-top></sections-header-top>
 
     <div v-if="loading" class="flex w-full items-center justify-center">
@@ -8,10 +8,11 @@
 
     <div class="flex flex-wrap justify-between" v-if="item">
       <meta itemprop="productID" :content="item._id" />
-
+      
       <div class="w-full lg:w-1/2 px-8">
         <div class="lg:flex w-full justify-center h-4/5">
-          <div class="w-full lg:w-1/4 hidden md:block p-2">
+
+          <div class="w-full lg:w-1/4 hidden md:block  ">
             <div
               class="flex lg:flex-col w-full lg:w-auto justify-center items-center"
             >
@@ -25,7 +26,7 @@
               />
             </div>
           </div>
-          <div class="md:w-3/4 h-500p flex justify-center">
+          <div class="md:w-3/4 h-96 md:h-500p flex justify-center">
             <si-image
               width="500"
               height="588"
@@ -51,6 +52,7 @@
               />
             </div>
           </div>
+
         </div>
       </div>
 
@@ -58,7 +60,7 @@
         <div class="p-2 flex h-full">
           <div class="">
             <h2
-              class="mb-2 leading-custom-1.3 text-36p font-medium font-poppins text-titles-color"
+              class="mb-2 leading-custom-1.3 text-18p md:text-36p font-medium font-poppins text-titles-color"
             >
               {{ item.name }}
             </h2>
@@ -97,7 +99,7 @@
                 </span>
               </div>
               <span class="text-sm text-white-gray" key="count"
-                >({{ item.review.reviews.length }} customer review)</span
+                >({{ item.review.reviews.length }} {{ $settings.sections.product.reviews.title }})</span
               >
             </div>
 
@@ -153,7 +155,7 @@
                 }}</span>
               </button>
             </div>
-            <div class="flex text-sm">
+            <div class="flex text-sm ">
               <button
                 v-if="$store.state.wishlist.find((i) => i._id == item._id)"
                 @click="removeFromWishlist"
@@ -205,8 +207,8 @@
                 >
                   {{
                     $store.state.wishlist.find((i) => i._id == item._id)
-                      ? "Remove from Wishlist"
-                      : "Add to Wishlist"
+                    ? $settings.sections.alerts.removed_from_wishlist
+                    : $settings.sections.alerts.added_to_wishlist
                   }}
                 </span>
               </button>
@@ -219,7 +221,7 @@
               <button
                 class="py-3 font-poppins text-white-gray text-base "
               >
-                Reviews({{ item.review.reviews.length }})
+              {{ $settings.sections.product.reviews.title }}({{ item.review.reviews.length }})
               </button>
             </div>
             <div
@@ -249,6 +251,7 @@
          
         </div>
       </div>
+
     </div>
 
     <div v-if="showVarianteModal" class="d-f modal_variante">

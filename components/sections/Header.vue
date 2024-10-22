@@ -1,11 +1,13 @@
 <template>
-  <div class="bg-white h-20">
-    <div
-      class=""
+  <div 
+  class=""
       :class="[
         { hidden: isHidden, fixed: isFixed },
-        'text-titles-color bg-white w-full  top-0  left-0 right-0 min-h-20 z-50 border-b border-gray-200 ',
+        'text-titles-color bg-white h-20  w-full  top-0  left-0 right-0  z-50 border-b border-gray-200 ',
       ]"
+      >
+    <div
+     
     >
       <si-app-loader placement="BEFORE_HEADER" />
       <div class="relative h-full">
@@ -204,7 +206,12 @@
                   >
                     <!-- Parent Item Text -->
                     <div class="p-4 w-full flex" @focus="hoveredItem = i">
-                      {{ item.text }}
+                      <router-link
+                class=""
+                :class="i == 0 ? 'underline-first-item' : ''"
+                :to="item.url"
+                >{{ item.text }}
+              </router-link>
                     </div>
 
                     <!-- First Level Submenu -->

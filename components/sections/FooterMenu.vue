@@ -4,12 +4,12 @@
     <si-app-loader placement="BEFORE_FOOTER" />
     <div class="sm:flex justify-start sm:space-x-5 mb-3">
       <div class="w-full space-y-3">
-        <p class=" ">{{$settings.sections.footer.about_us}} About us</p>
+        <p class=" ">{{$settings.sections.footer.about_us}}</p>
         <p class="text-gray-500" v-html="$settings.sections.footer.about"></p>
       </div>
 
       <div v-if=" menu&&menu.items" class="w-full space-y-3">
-        <p>Useful links</p>
+        <p>{{ $settings.sections.footer.download}}</p>
         <div 
           v-for="(item, i) in menu.items"
           :key="i"
@@ -40,8 +40,8 @@
       </div>
 
       <div class="w-full space-y-3">
-        <p>{{ $settings.sections.footer.download}}download</p>
-        <!--<h3 class=" text-lg">{{ $settings.sections.footer.social_media.title }}</h3> -->
+        
+        <p class=" text-lg">{{ $settings.sections.footer.social_media.title }}</p> 
         <div class="text-12p font-poppins font-base text-gray-400">
           <div
             v-for="item in socialMedia.filter(
@@ -63,7 +63,7 @@
       </div>
 
       <div class="w-full space-y-3">
-        <p>{{ $settings.sections.footer.call_center }}Call center</p>
+        <p>{{ $settings.sections.footer.call_center }}</p>
         <div>
           <p
             class="text-12p font-poppins font-normal text-gray-400"
@@ -88,12 +88,12 @@
     <hr />
     <div
      v-if=" menu_bottom&&menu_bottom.items"
-      class="w-full flex justify-center space-x-2 sm:space-x-5 font-normal py-5 text-white"
+      class="w-full flex justify-center  space-x-2 sm:space-x-5 font-normal py-5 text-white"
     >
       <div
         v-for="(item, i) in menu_bottom.items"
         :key="i"
-        class="font-poppins text-13p text-"
+        class="font-poppins text-13p p-1"
       >
         <span class="font-poppins text-15p font-medium">
           <router-link :to="item.url">{{ item.text }}</router-link>

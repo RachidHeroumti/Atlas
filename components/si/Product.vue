@@ -84,15 +84,19 @@
 
         <!-- Add to cart product-->
         <button
-          v-else-if="$settings.sections.products.add_to_cart.active"
-          @click="addToCart"
-          class="px-3 p-2 font-poppins text-12p font-normal text-white ai-c bg-black"
-          :class="{ invisible: !isHovering, visible: isHovering }"
-        >
-          <span class=""
-            >{{ $settings.sections.products.add_to_cart.text }} +</span
-          >
-        </button>
+    v-else-if="$settings.sections.products.add_to_cart.active"
+    @click="addToCart"
+    class="px-3 p-2 font-poppins text-12p flex font-normal text-white ai-c bg-black"
+    :class="{
+      'block': isSmallScreen, 
+      'invisible': !isSmallScreen && !isHovering 
+    }"
+    @mouseenter="isHovering = true"
+    @mouseleave="isHovering = false"
+  >
+    <span>{{ $settings.sections.products.add_to_cart.text }} +</span>
+  </button>
+        
          </div>
 
 
@@ -222,7 +226,7 @@
   </div>
 
   <!-- other place-->
-  <div v-else class="relative flex flex-col bg-white px-4">
+  <div v-else class="relative flex flex-col bg-white p-1">
   
     <div v-if="discount" class="absolute top-0 left-0 z-10 flex items-center justify-center h-10 p-2 text-white bg-red-700 rounded-br-lg">
         <b>-{{discount.value}} {{ discount.type == 'percentage' ? '%' : this.$store.state.currency.symbol }}</b>
@@ -233,7 +237,7 @@
         @mouseleave="isHovering = false"
         class="flex flex-col w-full h-full justify-center items-center"
       >
-        <div class="flex justify-center items-center w-full px-4 mb-7">
+        <div class="flex justify-center items-center w-full p-1 mb-7">
           <nuxt-link
             :to="`/products/${item.slug}`"
             :title="item.name"
@@ -525,6 +529,7 @@ export default {
   data() {
     return {
       isHovering: false,
+      isSmallScreen: false,
       isHoveringOnAddToCart: false,
       filpped: false,
       added: false,
@@ -535,7 +540,17 @@ export default {
       outofstock: false,
     };
   },
+  mounted() {
+    this.checkScreenSize();
+    window.addEventListener('resize', this.checkScreenSize);
+  },
+  beforeDestroy() {
+    window.removeEventListener('resize', this.checkScreenSize);
+  },
   methods: {
+    checkScreenSize() {
+      this.isSmallScreen = window.innerWidth < 768; 
+    },
     addToCart() {
       let item = {
         _id: this.item._id,
@@ -603,11 +618,7 @@ export default {
 };
 </script>
 <style scoped>
-.AddCartStyle {
-  transition: width 700ms;
-}
-.AddCartStyle:hover {
-}
+
 .close-button {
   position: absolute;
   right: 1px;

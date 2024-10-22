@@ -1,4 +1,9 @@
-{ "sections.footer.usefu_links":"Liens utiles",
+{   
+    "sections.shop.search_text": "recherche",
+    "sections.shop.showing_text": "affichage",
+    "sections.shop.result_text": "résultats",
+    "sections.shop.of_text": "de",
+    "sections.product.custome_reviews": "Avis des clients",
     "sections.footer.about_us":"à propos de nous",
     "sections.footer.download":"télécharger",
     "sections.footer.call_center":"centre d'appel",
