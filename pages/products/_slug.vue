@@ -9,7 +9,7 @@
     <div class="flex flex-wrap justify-between" v-if="item">
       <meta itemprop="productID" :content="item._id" />
 
-      <div class="w-full lg:w-1/2 pr-8">
+      <div class="w-full lg:w-1/2 px-8">
         <div class="lg:flex w-full justify-center h-4/5">
           <div class="w-full lg:w-1/4 hidden md:block p-2">
             <div
@@ -54,7 +54,7 @@
         </div>
       </div>
 
-      <div class="w-full md:w-1/2">
+      <div class="w-full lg:w-1/2 px-8 ">
         <div class="p-2 flex h-full">
           <div class="">
             <h2
@@ -117,7 +117,7 @@
             ></si-product-price>
 
             <p
-              class="font-poppins text-base font-base text-white-gray my-2 sm:my-3 md:my-8"
+              class=" hidden md:flex font-poppins text-base font-base text-white-gray my-2 sm:my-3 md:my-8"
             >
               {{ item.description }}
             </p>
@@ -212,41 +212,21 @@
               </button>
             </div>
 
-            <div class="flex w-full space-x-2 mt-3">
+            <div class="flex w-full  mt-3">
+             
+            <si-app-loader v-show="!outofstock" placement="REPLACE_BUYNOW" />
+            <si-app-loader placement="AFTER_ADD_TO_CART" />
               <button
-                class="p-3 font-poppins text-white-gray text-base border border-gray-300 bg-gray-200 hover:bg-titles-color hover:text-white"
-                @click="
-                  showmoredescription = true;
-                  showaAdditionalInfo = false;
-                "
-              >
-                Description
-              </button>
-
-              <button
-                class="p-3 font-poppins text-white-gray text-base border-gray-300 bg-gray-200 hover:bg-titles-color hover:text-white"
-                @click="
-                  showmoredescription = false;
-                  showaAdditionalInfo = false;
-                "
+                class="py-3 font-poppins text-white-gray text-base "
               >
                 Reviews({{ item.review.reviews.length }})
               </button>
             </div>
             <div
-              class="font-poppins text-base font-base text-white-gray py-5 md:py-8"
+              class="font-poppins text-base font-base text-white-gray "
             >
-              <p v-if="showmoredescription" class=" ">{{ item.description }}</p>
-              <div v-if="showaAdditionalInfo">
-                <p v-if="item.collections && item.collections[0]">
-                  collection: {{ item.collections[0].name }}
-                </p>
-                <p v-if="item.productType">
-                  productType: {{ item.productType }}
-                </p>
-                <p v-if="item.tags && item.tags[0]">tags: {{ item.tags[0] }}</p>
-              </div>
-              <div v-if="!showaAdditionalInfo && !showmoredescription">
+             
+              <div >
                 <div
                   v-if="item && $settings.sections.product.reviews.active"
                   class="reviews border border-gray-200"
@@ -263,8 +243,7 @@
               </div>
             </div>
 
-            <si-app-loader v-show="!outofstock" placement="REPLACE_BUYNOW" />
-            <si-app-loader placement="AFTER_ADD_TO_CART" />
+            
           </div>
 
          
@@ -348,8 +327,7 @@
           </div>
           <div
             class="fw-w w-f jc-sb"
-            style="height: 2px; background-color: black"
-          />
+            style="height: 2px; background-color: black"></div>
         </div>
         <div v-if="showVariantDiv">
           <si-product-variants
@@ -427,8 +405,6 @@ export default {
       loading: true,
       item: null,
       image: null,
-      showaAdditionalInfo: false,
-      showmoredescription: true,
       tab: "description",
       outofstock: false,
       quantity: {},
@@ -461,18 +437,7 @@ export default {
     };
   },
   async fetch() {
-    console.log(
-      "review active ",
-      this.$settings.sections.product.reviews.active
-    );
-    console.log(
-      "upsell active ",
-      this.$settings.sections.product.upsell.active
-    );
-    console.log(
-      "related active ",
-      this.$settings.sections.product.related.active
-    );
+   
     const { slug } = this.$route.params;
     try {
       const { data } = await this.$storeino.products.get({ slug });

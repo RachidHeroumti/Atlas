@@ -37,7 +37,7 @@
 
   <si-full-image v-if="$route.path.startsWith('/products/')"></si-full-image>
 
-  <div
+  <!-- <div
     dir="ltr"
     class="currency-switcher"
     v-if="$store.state.showCurrencyModal"
@@ -96,7 +96,7 @@
         <button type="submit">Switch</button>
       </div>
     </form>
-  </div>
+  </div> -->
 
   <div
     v-if="$settings.other_scripts"

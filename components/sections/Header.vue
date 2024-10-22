@@ -296,11 +296,11 @@
                   v-if="
                     $settings.sections.header.icons.language &&
                     $settings.store_languages.length > 1"
-                  class="relative mx-1 "
+                  class="relative mx-1 bg-text-white z-50 "
                 >
                   <div
                     v-if="iconMenu == 'language'"
-                    class="absolute z-50 flex flex-col text-base font-poppins font-medium text-titles-color top-5"
+                    class="absolute z-50 flex flex-col text-base font-poppins font-medium text-titles-color top-8"
                   >
                     <a
                       class="p-2 m-1 whitespace-nowrap"
@@ -316,9 +316,9 @@
                   @click="iconMenu = iconMenu == 'language' ? null : 'language'"
                   v-if="$settings.sections.header.icons.language &&$settings.store_languages.length > 1"
                   title="Language"
-                  class="item hidden md:block p-1.5  rounded-md hover:bg-gray-200"
+                  class="item hidden md:block p-1.5  text-titles-color "
                 >
-                  <span class="text-base  font-poppins font-medium text-titles-color">{{ $store.state.language.code }}</span>
+                  <span class="text-base  font-poppins font-medium ">{{ $store.state.language.code }}</span>
                 </button>
 
                 <!--button search-->
@@ -536,6 +536,7 @@
             </div>
 
           </div>
+          
         </div>
       </div>
     </div>
@@ -559,6 +560,32 @@ export default {
       isHidden: false,
       isFixed: true,
       listApps: this.$store.state.apps,
+      otherMenu: [
+        {
+          _id: "lang",
+          text: this.$store.state.language.code,
+          active: this.$settings.sections.header.icons.language,
+          childrens: this.$settings.store_languages.map((l) => {
+            return {
+              _id: l.code,
+              text: l.name,
+              url: `?lang=${l.code}`,
+            };
+          }),
+        },
+        {
+          _id: "currency",
+          text: this.$store.state.currency.code,
+          active: this.$settings.sections.header.icons.currency,
+          childrens: this.$settings.store_currencies.map((c) => {
+            return {
+              _id: c.code,
+              text: c.name,
+              url: `?cur=${c.code}`,
+            };
+          }),
+        },
+      ].filter((item) => item.active),
     };
   },
   watch: {

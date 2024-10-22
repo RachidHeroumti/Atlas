@@ -103,34 +103,9 @@ export default {
       activeId: null,
       menu: this.$settings.sections.header.menu,
       section: this.$settings.sections.header,
-      /*
-      otherMenu: [
-        {
-          _id: "lang",
-          text: this.$store.state.language.code,
-          active: this.$settings.sections.header.icons.language,
-          childrens: this.$settings.store_languages.map((l) => {
-            return {
-              _id: l.code,
-              text: l.name,
-              url: `?lang=${l.code}`,
-            };
-          }),
-        },
-        {
-          _id: "currency",
-          text: this.$store.state.currency.code,
-          active: this.$settings.sections.header.icons.currency,
-          childrens: this.$settings.store_currencies.map((c) => {
-            return {
-              _id: c.code,
-              text: c.name,
-              url: `?cur=${c.code}`,
-            };
-          }),
-        },
-      ].filter((item) => item.active),
-      */
+      
+ 
+      
     };
   },
   watch: {

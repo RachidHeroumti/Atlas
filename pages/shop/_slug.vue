@@ -899,7 +899,7 @@ export default {
       for (const collection of this.collections) {
         counts[collection.slug] = await this.getProductsLength(collection.slug);
       }
-      this.productCounts = counts; // Update the reactive property
+      this.productCounts = counts; 
     },
 
     async getProductsLength(slug) {
@@ -909,9 +909,8 @@ export default {
         });
         return data && data.results ? data.results.length : 0;
       } catch (err) {
-        //this.$sentry.captureException(err);
-        console.log("error in pages shop",err);
-        return 0; // Return 0 on error
+        //this.$sentry.captureException(err); 
+        return 0; 
       }
     },
     async getCollections() {
@@ -920,7 +919,7 @@ export default {
       try {
         const { data } = await this.$storeino.collections.search({});
         if (data.results) this.collections = data.results;
-        await this.fetchProductCounts(); // Fetch product counts after collections are set
+        await this.fetchProductCounts(); 
       } catch (e) {
         console.log({ e });
       }
