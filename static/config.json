@@ -381,7 +381,7 @@
                                             "path": "sections.footer.copyright.store_name",
                                             "type": "tc_input",
                                             "translatable": true,
-                                            "value": "ewrtetewt we rtwe r lsn"
+                                            "value": "Online store"
                                         },
                                         {
                                             "name": "copyright_text",
@@ -1111,8 +1111,6 @@
                                 {
                                     "name": "cart_texts",
                                     "values": [
-                                        
-
                                         {
                                             "name": "price",
                                             "path": "sections.cart.price",

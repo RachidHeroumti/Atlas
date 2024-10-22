@@ -79,17 +79,17 @@ export default {
   },
   mounted() {
     if (process.client) {
-      window.addEventListener('resize', this.updateVisibleItems); // Update on resize
+      window.addEventListener('resize', this.updateVisibleItems);
     }
   },
   beforeDestroy() {
     if (process.client) {
-      window.removeEventListener('resize', this.updateVisibleItems); // Clean up
+      window.removeEventListener('resize', this.updateVisibleItems); 
     }
   },
   methods: {
     updateVisibleItems() {
-      this.$forceUpdate(); // Force re-evaluation of computed property
+      this.$forceUpdate(); 
     },
   },
 };
