@@ -19,20 +19,20 @@
 
           <div class="flex flex-col cart-items bg-white py-10">
             <div
-              class="grid grid-cols-5 w-full md:gap-10 text-gray-900  "
+              class="grid  grid-cols-5 w-full md:gap-10 text-gray-900  "
 
             >
-              <h1></h1>
-              <h1 class="font-poppins font-bold text-base ">
+              <h1 class=""></h1>
+              <h1 class="font-poppins font-bold text-13p md:text-base -mx-5 md:mx-2 ">
                 {{ $settings.sections.cart.product }}Product
               </h1>
-              <h1 class="font-poppins font-bold text-base ">
+              <h1 class="font-poppins font-bold  text-13p md:text-base -mx-5 md:mx-2 ">
                {{$settings.sections.cart.price}}
               </h1>
-              <h1 class="font-poppins font-bold text-base ">
+              <h1 class="font-poppins font-bold  text-13p md:text-base -mx-5 md:mx-2">
                 {{$settings.sections.cart.quantity}}
               </h1>
-              <h1 class="font-poppins font-bold text-base ">
+              <h1 class="font-poppins font-bold text-13p md:text-base -mx-5 md:mx-2">
                 {{ $settings.sections.cart.subTotal }}
               </h1>
             </div>

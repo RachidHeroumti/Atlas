@@ -168,7 +168,6 @@ export default {
         this.$loading.fail(error)
         globalHandleError(error)
         this.error(error)
-        this.$sentry.captureException(error);
       }
       this.$loading.finish()
     },

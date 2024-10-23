@@ -74,7 +74,6 @@ async function $_fetch() {
     if (process.dev) {
       console.error('Error in fetch():', err)
     }
-    this.$sentry.captureException(err);
     error = normalizeError(err)
   }
 

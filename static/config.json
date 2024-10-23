@@ -1139,6 +1139,13 @@
                                             "value": "subTotal"
                                         },
                                         {
+                                            "name": "product",
+                                            "path": "sections.cart.product",
+                                            "type": "tc_input",
+                                            "translatable": true,
+                                            "value": "subTotal"
+                                        },
+                                        {
                                             "name": "title",
                                             "path": "sections.cart.title",
                                             "type": "tc_input",
@@ -1574,6 +1581,10 @@
                         {
                             "name": "sections.shop.sorts.price_desc",
                             "value": "الأعلى ثمنا"
+                        },
+                        {
+                            "name": "sections.cart.product",
+                            "value": "المنتج"
                         },
                         {
                             "name": "sections.shop.sorts.rating_asc",

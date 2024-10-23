@@ -12,6 +12,7 @@ const _2bcc7592 = () => interopDefault(import('..\\pages\\index.vue' /* webpackC
 const _0c648488 = () => interopDefault(import('..\\pages\\about\\_slug.vue' /* webpackChunkName: "pages/about/_slug" */))
 const _8ac098c8 = () => interopDefault(import('..\\pages\\account\\_route.vue' /* webpackChunkName: "pages/account/_route" */))
 const _e6a5dc66 = () => interopDefault(import('..\\pages\\blog\\_slug.vue' /* webpackChunkName: "pages/blog/_slug" */))
+const _42b8bd56 = () => interopDefault(import('..\\pages\\contact\\_slug.vue' /* webpackChunkName: "pages/contact/_slug" */))
 const _2976801e = () => interopDefault(import('..\\pages\\pages\\_slug.vue' /* webpackChunkName: "pages/pages/_slug" */))
 const _65576482 = () => interopDefault(import('..\\pages\\posts\\_slug.vue' /* webpackChunkName: "pages/posts/_slug" */))
 const _4694d44b = () => interopDefault(import('..\\pages\\products\\_slug.vue' /* webpackChunkName: "pages/products/_slug" */))
@@ -60,6 +61,10 @@ export const routerOptions = {
     path: "/blog/:slug?",
     component: _e6a5dc66,
     name: "blog-slug"
+  }, {
+    path: "/contact/:slug?",
+    component: _42b8bd56,
+    name: "contact-slug"
   }, {
     path: "/pages/:slug?",
     component: _2976801e,

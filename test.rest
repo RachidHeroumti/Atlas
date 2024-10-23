@@ -1,11 +1,11 @@
 @token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdG9yZSI6eyJfaWQiOiI2NmY1MzVlYTc5ODk5MzlkYzMzNTc2YmQifSwic291cmNlIjoiVEhFTUVTIiwiaWF0IjoxNzI3Nzc2NTQzLCJleHAiOjE3NTkzMTI1NDN9.xPfklqLoQNHGKXnIDUzp1mFvkM515t-4RyUy4jEsdUk
 
 ###
-GET https://admin.storeino.world/stores/api/themes/search?name=palest
+GET https://admin.storeino.world/stores/api/themes/search?name=atlas
 X-Auth-Token: {{token}}
 
 ###
-POST https://admin.storeino.world/stores/api/themes/update?name=palest
+POST https://admin.storeino.world/stores/api/themes/update?name=atlas
 Content-Type: application/json
 X-Auth-Token: {{token}}
 

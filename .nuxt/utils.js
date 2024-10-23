@@ -145,7 +145,6 @@ export function resolveRouteComponents (route, fn) {
         try {
           Component = await Component()
         } catch (error) {
-          this.$sentry.captureException(error);
           // Handle webpack chunk loading errors
           // This may be due to a new deployment or a network problem
           if (

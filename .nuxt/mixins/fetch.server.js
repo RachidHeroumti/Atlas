@@ -10,7 +10,6 @@ async function serverPrefetch() {
   try {
     await this.$options.fetch.call(this)
   } catch (err) {
-    this.$sentry.captureException(err);
     if (process.dev) {
       console.error('Error in fetch():', err)
     }
