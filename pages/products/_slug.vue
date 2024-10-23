@@ -1,5 +1,5 @@
 <template>
-  <div class=" pt-16 md:pt-20 bg-white w-full container">
+  <div class=" pt-14 md:pt-20 bg-white w-full container">
     <sections-header-top></sections-header-top>
 
     <div v-if="loading" class="flex w-full items-center justify-center">
@@ -694,16 +694,16 @@ export default {
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
-  background: #f1f1f1; /* Track background */
+  background: #ffffff; /* Track background */
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: #c2bfbf; /* Scrollbar thumb color */
+  background: #ffffff; /* Scrollbar thumb color */
   border-radius: 10px; /* Rounded scrollbar */
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #7e7d7d; 
+  background: #ffffff; 
 }
 
 .video-wrapper {
