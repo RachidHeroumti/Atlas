@@ -298,7 +298,6 @@
 
 
                 <!--languages-->
-                <!--issue there is only one language?-->
                 <div
                   v-if="
                     $settings.sections.header.icons.language &&

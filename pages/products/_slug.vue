@@ -146,6 +146,7 @@
                   :quantity="quantity"
                 ></si-product-quantity>
               </div>
+
               <button
                 v-if="$settings.sections.product.add_to_cart.active"
                 @click="addToCart"
@@ -219,17 +220,20 @@
              
             <si-app-loader v-show="!outofstock" placement="REPLACE_BUYNOW" />
             <si-app-loader placement="AFTER_ADD_TO_CART" />
-              <button
-                class="py-3 font-poppins text-white-gray text-base "
-              >
-              {{ $settings.sections.product.reviews.title }}({{ item.review.reviews.length }})
-              </button>
+
+             
             </div>
             <div
               class="font-poppins text-base font-base text-white-gray "
             >
              
               <div >
+                <button
+                class="py-3 font-poppins text-white-gray text-base "
+                
+              >
+              {{ $settings.sections.product.reviews.title }}({{ item.review.reviews.length }})
+              </button>
                 <div
                   v-if="item && $settings.sections.product.reviews.active"
                   class="reviews border border-gray-200"
@@ -685,21 +689,21 @@ export default {
 
 <style>
 .custom-scrollbar {
-  direction: rtl; /* Flip the scrollbar to the left side */
+  direction: rtl;
 }
 
 .custom-scrollbar::-webkit-scrollbar {
-  width: 5px; /* Narrow scrollbar width */
-  height: 5px; /* Narrow horizontal scrollbar width */
+  width: 5px; 
+  height: 5px; 
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
-  background: #ffffff; /* Track background */
+  background: #ffffff;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: #ffffff; /* Scrollbar thumb color */
-  border-radius: 10px; /* Rounded scrollbar */
+  background: #ffffff; 
+  border-radius: 10px; 
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
