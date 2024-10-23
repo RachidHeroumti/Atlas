@@ -2029,6 +2029,7 @@
                     "title": "Featured Products",
                     "collections": [],
                     "tags": [],
+                    "products_list":[],
                     "show_more_text": "Discover more",
                     "show_more_url": "/shop"
                 },
