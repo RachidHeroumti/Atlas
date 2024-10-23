@@ -1,0 +1,44 @@
+$settings.sections.products.add_to_cart.active
+
+$settings.sections.products_1.active
+
+$settings.sections.blog.sidebar.active
+$settings.sections.blog.sidebar.categories.active
+$settings.sections.blog.sidebar.categories.active
+
+$settings.sections.product.reviews.active
+$settings.sections.product.add_to_cart.active
+$settings.sections.product.upsell.active
+$settings.sections.product.related.active
+
+$settings.sections.shop.sidebar.collections.active
+$settings.sections.shop.sidebar.colors.active
+ $settings.sections.shop.sidebar.sizes.active
+ $settings.sections.shop.sidebar.prices.active
+ $settings.sections.shop.sidebar.tags.active
+ $settings.sections.shop.sidebar.brands.active
+
+ $settings.sections.blog.sidebar.active
+ $settings.sections.blog.sidebar.active
+ $settings.sections.blog.sidebar.categories.active
+
+ $settings.sections.posts.show_more_text
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

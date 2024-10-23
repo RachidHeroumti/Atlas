@@ -689,8 +689,8 @@ export default {
 }
 
 .custom-scrollbar::-webkit-scrollbar {
-  width: 6px; /* Narrow scrollbar width */
-  height: 6px; /* Narrow horizontal scrollbar width */
+  width: 5px; /* Narrow scrollbar width */
+  height: 5px; /* Narrow horizontal scrollbar width */
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
@@ -698,12 +698,12 @@ export default {
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: #888; /* Scrollbar thumb color */
+  background: #c2bfbf; /* Scrollbar thumb color */
   border-radius: 10px; /* Rounded scrollbar */
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #555; 
+  background: #7e7d7d; 
 }
 
 .video-wrapper {

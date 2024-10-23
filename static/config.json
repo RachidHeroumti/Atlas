@@ -445,6 +445,12 @@
                                             "value": []
                                         },
                                         {
+                                            "name": "products_list",
+                                            "path": "sections.products_1.items",
+                                            "type": "tc_product",
+                                            "value": []
+                                        },
+                                        {
                                             "name": "section_1_show_more_text",
                                             "path": "sections.products_1.show_more_text",
                                             "type": "tc_input",
