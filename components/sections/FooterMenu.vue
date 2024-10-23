@@ -4,7 +4,8 @@
     <si-app-loader placement="BEFORE_FOOTER" />
     <div class="sm:flex justify-start sm:space-x-5 mb-3">
       <div class="w-full space-y-3">
-        <p class=" ">{{$settings.sections.footer.about_us}}</p>
+        <p v-if="$settings.sections.footer.about"
+        >{{$settings.sections.footer.about_us}}</p>
         <p class="text-gray-500" v-html="$settings.sections.footer.about"></p>
       </div>
 

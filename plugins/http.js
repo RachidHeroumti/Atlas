@@ -74,7 +74,7 @@ export default async function ({ $axios, store, $tools, app, req, res, route }, 
         store.state.token = response.data.accessToken;
       } catch (err) {
         console.log(err);
-      //this.$sentry.captureException(err)
+      this.$sentry.captureException(err)
       }
     }
 

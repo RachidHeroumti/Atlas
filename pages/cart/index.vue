@@ -146,6 +146,7 @@
           </div>
         </div>
       </div>
+      
     </div>
   </div>
 </template>
@@ -210,6 +211,7 @@ export default {
           });
           this.upsells = response.data.results;
         } catch (e) {
+          this.$sentry.captureException(e);
           console.log({ e });
         }
       }
@@ -256,6 +258,7 @@ export default {
           }
           this.calcTotal();
         } catch (e) {
+          this.$sentry.captureException(e);
           console.log({ e });
         }
       }

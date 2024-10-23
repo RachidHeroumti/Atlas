@@ -517,6 +517,7 @@ async function render (to, from, next, renderState) {
       next()
     }
   } catch (err) {
+    this.$sentry.captureException(err);
     if (renderState.aborted) {
       next(false)
       return

@@ -1,5 +1,5 @@
 <template>
-  <div class=" pt-16 bg-white w-full container">
+  <div class=" pt-16 md:pt-20 bg-white w-full container">
     <sections-header-top></sections-header-top>
 
     <div v-if="loading" class="flex w-full items-center justify-center">
@@ -14,10 +14,11 @@
 
           <div class="w-full lg:w-1/4 hidden md:block  ">
             <div
-              class="flex lg:flex-col w-full lg:w-auto justify-center items-center"
+              class="flex lg:flex-col w-full md:h-588p lg:w-auto justify-center items-center
+               md:overflow-y-scroll md:overflow-x-hidden overflow-x-scroll custom-scrollbar md:mt-3 "
             >
               <si-image
-                class="w-20 h-24 sm:w-24 sm:h-28 m-1 cursor-pointer"
+                class="w-16 h-20 sm:w-20 sm:h-24 m-1 cursor-pointer"
                 v-for="(image, index) in item.images"
                 @click="setImage(index)"
                 :key="index"
@@ -26,7 +27,7 @@
               />
             </div>
           </div>
-          <div class="md:w-3/4 h-96 md:h-500p flex justify-center">
+          <div class="md:w-3/4 h-96 md:h-500p flex justify-center ">
             <si-image
               width="500"
               height="588"
@@ -515,6 +516,7 @@ export default {
         this.$tools.call("PAGE_VIEW", this.item);
       }
     } catch (e) {
+      this.$sentry.captureException(e);
       console.log(e);
       this.$nuxt.error({ statusCode: 404, message: "product_not_found" });
     }
@@ -682,6 +684,28 @@ export default {
 </script>
 
 <style>
+.custom-scrollbar {
+  direction: rtl; /* Flip the scrollbar to the left side */
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px; /* Narrow scrollbar width */
+  height: 6px; /* Narrow horizontal scrollbar width */
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Track background */
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #888; /* Scrollbar thumb color */
+  border-radius: 10px; /* Rounded scrollbar */
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
 .video-wrapper {
   position: relative;
   overflow: hidden;

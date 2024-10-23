@@ -31,6 +31,8 @@
 </template>
 
 <script>
+import throttle from 'lodash/throttle';
+
 export default {
   props: {
     item: Object
@@ -39,29 +41,24 @@ export default {
     return {
       loading: true,
       items: [],
+      screenWidth: process.client ? window.innerWidth : 1024, // Default to 1024 on SSR
     };
   },
   computed: {
     visibleItems() {
-      // Only access window in the client-side context
-      if (process.client) {
-        const screenWidth = window.innerWidth; // Get the current screen width
-        let count;
+      let count;
 
-        
-        if (screenWidth < 768) { 
-          count = 2; 
-        } else if (screenWidth >= 768 && screenWidth < 1024) { 
-          count = 3; 
-        } else {
-          count = 5; 
-        }
+    if (this.screenWidth < 768) {
+  count = 2;  
+} else if (this.screenWidth >= 768 && this.screenWidth < 1024) {
+  count = 3; 
+} else if (this.screenWidth >= 1024 && this.screenWidth < 1280) {
+  count = 4; 
+} else {
+  count = 5; 
+}
 
-        return this.items.slice(0, count); // Return the first 'count' items
-      }
-
-      // Fallback for server-side rendering
-      return this.items.slice(0, 4); // Show max 4 items on SSR
+      return this.items.slice(0, count);
     }
   },
   async fetch() {
@@ -74,23 +71,28 @@ export default {
       this.items = data.results;
     } catch (e) {
       console.log({ e });
+      this.$sentry.captureException(e);
     }
     this.loading = false;
   },
   mounted() {
     if (process.client) {
-      window.addEventListener('resize', this.updateVisibleItems);
+      this.updateVisibleItems();
+      window.addEventListener('resize', this.throttledResize);
     }
   },
   beforeDestroy() {
     if (process.client) {
-      window.removeEventListener('resize', this.updateVisibleItems); 
+      window.removeEventListener('resize', this.throttledResize);
     }
   },
   methods: {
     updateVisibleItems() {
-      this.$forceUpdate(); 
+      this.screenWidth = window.innerWidth;
     },
+    throttledResize: throttle(function() {
+      this.updateVisibleItems();
+    }, 200) 
   },
 };
 </script>

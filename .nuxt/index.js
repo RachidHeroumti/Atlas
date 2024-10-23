@@ -14,6 +14,8 @@ import { createStore } from './store.js'
 /* Plugins */
 
 import nuxt_plugin_plugin_4434a0ae from 'nuxt_plugin_plugin_4434a0ae' // Source: .\\components\\plugin.js (mode: 'all')
+import nuxt_plugin_sentryserver_89716956 from 'nuxt_plugin_sentryserver_89716956' // Source: .\\sentry.server.js (mode: 'server')
+import nuxt_plugin_sentryclient_558dd9cd from 'nuxt_plugin_sentryclient_558dd9cd' // Source: .\\sentry.client.js (mode: 'client')
 import nuxt_plugin_axios_8975ac5e from 'nuxt_plugin_axios_8975ac5e' // Source: .\\axios.js (mode: 'all')
 import nuxt_plugin_image_b367b268 from 'nuxt_plugin_image_b367b268' // Source: .\\image.js (mode: 'all')
 import nuxt_plugin_tools_8ef7b89c from 'nuxt_plugin_tools_8ef7b89c' // Source: ..\\plugins\\tools.js (mode: 'all')
@@ -222,6 +224,14 @@ async function createApp(ssrContext, config = {}) {
 
   if (typeof nuxt_plugin_plugin_4434a0ae === 'function') {
     await nuxt_plugin_plugin_4434a0ae(app.context, inject)
+  }
+
+  if (process.server && typeof nuxt_plugin_sentryserver_89716956 === 'function') {
+    await nuxt_plugin_sentryserver_89716956(app.context, inject)
+  }
+
+  if (process.client && typeof nuxt_plugin_sentryclient_558dd9cd === 'function') {
+    await nuxt_plugin_sentryclient_558dd9cd(app.context, inject)
   }
 
   if (typeof nuxt_plugin_axios_8975ac5e === 'function') {

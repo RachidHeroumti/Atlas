@@ -24,6 +24,7 @@ export default async function ({ $axios, $http, route, $tools, $storeino, store,
       }
       store.state.settings = response.data;
     } catch (error) {
+      this.$sentry.captureException(error);
       if (error.response) throw "ERROR :: " + error.response.data;
       throw "ERROR :: INVALID TOKEN" + error;
     }
@@ -69,7 +70,7 @@ export default async function ({ $axios, $http, route, $tools, $storeino, store,
         store.state.apps.push(app);
       }
     } catch (err) {
-      //this.$sentry.captureException(err)
+      this.$sentry.captureException(err)
       console.log(err);
     }
   } else {
@@ -120,6 +121,7 @@ export default async function ({ $axios, $http, route, $tools, $storeino, store,
                 result = await $http[method](`/${path}`, body, params);
             }
         } catch (error) {
+          this.$sentry.captureException(error);
             console.log(error,"error")
             result = error.response ? error.response : { status: 500, data: error.message };
         }
@@ -392,7 +394,8 @@ export default async function ({ $axios, $http, route, $tools, $storeino, store,
             store.state.showCurrencyModal = true;
           }
         } catch (err) {
-          //this.$sentry.captureException(err)
+          this.$sentry.captureException(err);
+          this.$sentry.captureException(err)
           console.log(err);
         }
       })();

@@ -27,16 +27,18 @@
           </nuxt-link>
         </div>
 
-        <div class="mb-17p mt-29p space-y-2 ">
+        <div class="mb-17p mt-29p flex flex-col  justify-center  space-y-2 ">
+
         <div class=" w-full text-center">
           <nuxt-link :to="`/products/${item.slug}`">
-            <h3 class=" font-poppins font-normal text-base ">
+            <h3 class=" font-poppins font-medium text-base text-titles-color">
               {{ item.name }}
             </h3>
           </nuxt-link>
         </div>
+
         <div
-          class="flex items-center justify-center"
+          class="flex items-center justify-center w-full "
           v-if="$settings.sections.products.show_reviews"
         >
           <div class="flex ">
@@ -69,6 +71,7 @@
           </div>
           <!-- <span class="text-sm text-gray-600" key="count">({{ item.review.reviews.length }})</span> -->
         </div>
+
         <si-product-price
           :type="item.type"
           :price="item.price"
@@ -83,10 +86,11 @@
         </div>
 
         <!-- Add to cart product-->
+         
         <button
     v-else-if="$settings.sections.products.add_to_cart.active"
     @click="addToCart"
-    class="px-3 p-2 font-poppins text-12p flex font-normal text-white ai-c bg-black"
+    class="  px-4 p-2 w-40 font-poppins text-12p  font-normal text-white bg-titles-color"
     :class="{
       'block': isSmallScreen, 
       'invisible': !isSmallScreen && !isHovering 
@@ -95,7 +99,7 @@
     @mouseleave="isHovering = false"
   >
     <span>{{ $settings.sections.products.add_to_cart.text }} +</span>
-  </button>
+        </button>
         
          </div>
 

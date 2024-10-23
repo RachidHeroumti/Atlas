@@ -92,6 +92,7 @@ export default {
         this.image = this.item.images[this.currentIndex] || null;
       }
     } catch (e) {
+      this.$sentry.captureException(e);
       console.error(e);
       this.$nuxt.error({ statusCode: 404, message: "product_not_found" });
     }

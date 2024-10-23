@@ -3,7 +3,7 @@
   class=""
       :class="[
         { hidden: isHidden, fixed: isFixed },
-        'text-titles-color bg-white h-20  w-full  top-0  left-0 right-0  z-50 border-b border-gray-200 ',
+        'text-titles-color bg-white h-16 md:h-20  w-full  top-0  left-0 right-0  z-50 border-b border-gray-200 ',
       ]"
       >
     <div

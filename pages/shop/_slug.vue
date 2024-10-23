@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white md:pt-20 pt-5 container">
+  <div class="bg-white md:pt-20 pt-16  container">
     <div class="relative h-full flex mb-2 space-x-2">
       <div class="w-full md:w-3/4 px-4">
         <div class="">
@@ -850,6 +850,7 @@ export default {
         const { data } = await this.$storeino.products.filters({});
         if (data) this.filters = data;
       } catch (e) {
+        this.$sentry.captureException(e);
         console.log({ e });
       }
       this.loading.filters = false;
@@ -861,6 +862,7 @@ export default {
         const { data } = await this.$storeino.collections.search({});
         if (data.results) this.collections = data.results;
       } catch (e) {
+        this.$sentry.captureException(e);
         console.log({ e });
       }
       this.loading.collections = false;
@@ -872,6 +874,7 @@ export default {
         const { data } = await this.$storeino.brands.search({});
         if (data.results) this.brands = data.results;
       } catch (e) {
+        this.$sentry.captureException(e);
         console.log({ e });
       }
       this.loading.brands = false;
@@ -894,6 +897,7 @@ export default {
         }
         this.loading.products = false;
       } catch (e) {
+        this.$sentry.captureException(e);
         console.log({ e });
       }
       this.loading.products = false;
@@ -916,7 +920,7 @@ export default {
         });
         return data && data.results ? data.results.length : 0;
       } catch (err) {
-        //this.$sentry.captureException(err);
+        this.$sentry.captureException(err);
         return 0;
       }
     },
@@ -928,6 +932,7 @@ export default {
         if (data.results) this.collections = data.results;
         await this.fetchProductCounts();
       } catch (e) {
+        this.$sentry.captureException(e);
         console.log({ e });
       }
       this.loading.collections = false;

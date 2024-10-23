@@ -1,5 +1,5 @@
 <template>
-  <div class="container bg-white md:pt-20 pt-5 h-full">
+  <div class="container bg-white md:pt-20 pt-16 h-full">
     <div class="flex mb-2 relative space-x-2 bg-white h-full">
       <div class="w-full md:w-3/4 px-6">
         <div class="bg-white">
@@ -368,6 +368,7 @@ export default {
         const { data } = await this.$storeino.categories.search({});
         if (data && data.results) this.categories = data.results;
       } catch (e) {
+        this.$sentry.captureException(e);
         console.log({ e });
       }
       this.loading.categories = false;
@@ -380,6 +381,7 @@ export default {
         const { data } = await this.$storeino.pages.search(this.params);
         if (data && data.results) this.items = data.results;
       } catch (e) {
+        this.$sentry.captureException(e);
         console.log({ e });
       }
       this.loading.pages = false;

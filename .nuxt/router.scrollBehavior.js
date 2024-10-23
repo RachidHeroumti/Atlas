@@ -74,6 +74,7 @@ export default function (to, from, savedPosition) {
           }
         } catch (e) {
           console.warn('Failed to save scroll position. Please add CSS.escape() polyfill (https://github.com/mathiasbynens/CSS.escape).')
+          this.$sentry.captureException(e);
         }
       }
       resolve(position)

@@ -31,9 +31,19 @@ export default {
     '@nuxtjs/tailwindcss',
   ],
   modules: [
+    '@nuxtjs/sentry',
     '@nuxt/image',
     '@nuxtjs/axios'
   ],
+  sentry: {
+    dsn: 'https://1401e2d8ce03e4c240d1d1b972bed270@logs.storeino.com/6',
+    config: {
+      debug: true
+    },
+    clientConfig: {
+      dsn: 'https://1401e2d8ce03e4c240d1d1b972bed270@logs.storeino.com/6'
+      }
+  },
   axios: {},
   serverMiddleware: ['~/server/index'],
   server: {
