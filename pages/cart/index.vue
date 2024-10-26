@@ -24,7 +24,7 @@
             >
               <h1 class=""></h1>
               <h1 class="font-poppins font-bold text-13p md:text-base -mx-5 md:mx-2 ">
-                {{ $settings.sections.cart.product }}Product
+                {{ $settings.sections.cart.product }}
               </h1>
               <h1 class="font-poppins font-bold  text-13p md:text-base -mx-5 md:mx-2 ">
                {{$settings.sections.cart.price}}

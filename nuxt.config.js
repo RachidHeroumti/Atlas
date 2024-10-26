@@ -36,12 +36,12 @@ export default {
     '@nuxtjs/axios'
   ],
   sentry: {
-    dsn: 'https://1401e2d8ce03e4c240d1d1b972bed270@logs.storeino.com/6',
+    dsn: "https://eeadd4a49212a8a9366043f9ed580788@logs.storeino.com/37",
     config: {
       debug: true
     },
     clientConfig: {
-      dsn: 'https://1401e2d8ce03e4c240d1d1b972bed270@logs.storeino.com/6'
+      dsn: "https://eeadd4a49212a8a9366043f9ed580788@logs.storeino.com/37"
       }
   },
   axios: {},

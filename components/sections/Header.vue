@@ -326,7 +326,7 @@
                 >
                   <span class="text-base  font-poppins font-medium ">{{ $store.state.language.code }}</span>
                 </button>
-
+                <!--currency-->
                 <!--button search-->
                 <button
                   v-if="$settings.sections.header.icons.search"
