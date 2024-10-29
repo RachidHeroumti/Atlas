@@ -293,8 +293,7 @@
         <div class="text-div w-f ai-c">
           <div
             class="fw-w w-f jc-sb"
-            style="height: 2px; background-color: black"
-          />
+            style="height: 2px; background-color: black"></div>
           <div
             class="mb-1 border-solid d-f ai-c w-f"
             @click="showVariantDiv = !showVariantDiv"
@@ -346,7 +345,9 @@
             :variants="item.variants"
             @selected="variantSelected"
           ></si-product-variants>
+          
         </div>
+        <si-app-loader placement="BEFORE_BUYNOW" />
         <div class="w-f">
           <div class="lg-col-12">
             <button
@@ -375,6 +376,7 @@
             </button>
           </div>
         </div>
+        <si-app-loader placement="AFTER_BUYNOW" />
       </div>
     </div>
 
@@ -385,6 +387,7 @@
       >
         <sections-upsell :item="item.upsell" />
       </div>
+      <si-app-loader placement="BEFORE_DESCRIPTION" />
       <div
         v-if="item"
         class="p-2 mx-2 my-3 bg-white rounded-md description"

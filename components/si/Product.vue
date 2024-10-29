@@ -1,6 +1,6 @@
 <template>
   <!-- home-->
-  <div v-if="place == 'home'" class="relative flex flex-col">
+  <div v-if="place == 'home'" class="relative flex flex-col h-full">
 
     
     <div v-if="discount" class="absolute top-0 left-0 z-10 flex items-center justify-center h-10 p-2 text-white bg-red-700 rounded-br-lg">
@@ -27,13 +27,14 @@
           </nuxt-link>
         </div>
 
-        <div class="mb-17p mt-29p flex flex-col  justify-center  space-y-2 ">
+        <div class="mb-17p relative mt-29p flex flex-col w-full h-full  justify-center items-center p-1  space-y-2  ">
 
         <div class=" w-full text-center">
           <nuxt-link :to="`/products/${item.slug}`">
-            <h3 class=" font-poppins font-medium text-base text-titles-color">
-              {{ item.name }}
-            </h3>
+            <h3 class="font-poppins font-medium text-base text-titles-color truncate mx-5">
+  {{ item.name }}
+</h3>
+
           </nuxt-link>
         </div>
 
@@ -87,10 +88,11 @@
 
         <!-- Add to cart product-->
          
+     <div class=" flex justify-center items-center w-full absolute bottom-1 left-0 right-0 "
+          v-else-if="$settings.sections.products.add_to_cart.active">
         <button
-    v-else-if="$settings.sections.products.add_to_cart.active"
     @click="addToCart"
-    class="  px-4 p-2 w-40 font-poppins text-12p  font-normal text-white bg-titles-color"
+    class=" px-4 p-2 z-50  w-40  font-poppins text-12p  font-normal text-white bg-titles-color"
     :class="{
       'block': isSmallScreen, 
       'invisible': !isSmallScreen && !isHovering 
@@ -100,7 +102,7 @@
   >
     <span>{{ $settings.sections.products.add_to_cart.text }} +</span>
         </button>
-        
+      </div>
          </div>
 
 

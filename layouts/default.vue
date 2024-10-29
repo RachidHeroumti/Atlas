@@ -16,8 +16,8 @@
     </template>
 
     <template v-if="$route.name === 'index'">
+      <sections-header-top></sections-header-top>
       <div class="flex flex-col sm:hidden">
-        <sections-header-top></sections-header-top>
         <sections-header></sections-header>
       </div>
     </template>
@@ -25,8 +25,9 @@
     
     <Nuxt />
 
-
+    
     <template v-if="$route.name !== 'index'">
+      
   <!-- <sections-footer></sections-footer> -->
   <div class="">
     <hr class="my-2 w-full" />

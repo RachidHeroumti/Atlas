@@ -33,12 +33,13 @@
 
     <div class="container w-full">
       <si-app-loader placement="BEFORE_HOME_FOOTER" />
+      <si-app-loader placement="BEFORE_FOOTER"/>
+      <si-app-loader placement="AFTER_FOOTER"/>
     </div>
 
   </div>
 </template>
 <script>
-
 
 export default {
   props: {

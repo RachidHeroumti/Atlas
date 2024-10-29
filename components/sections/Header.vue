@@ -1,18 +1,15 @@
 <template>
-  <div 
-  class=""
-      :class="[
-        { hidden: isHidden, fixed: isFixed },
-        'text-titles-color bg-white h-16 md:h-20  w-full  top-0  left-0 right-0  z-50 border-b border-gray-200 ',
-      ]"
-      >
-    <div
-     
-    >
+  <div
+    class=""
+    :class="[
+      { hidden: isHidden, fixed: isFixed },
+      'text-titles-color bg-white h-16 md:h-20  w-full  top-0  left-0 right-0  z-50 border-b border-gray-200 ',
+    ]"
+  >
+    <div>
       <si-app-loader placement="BEFORE_HEADER" />
       <div class="relative h-full">
         <div class="flex items-center justify-between p-2 h-full">
-
           <!--icon to controll menus -->
           <div class="min-w-20 w-20">
             <button
@@ -168,7 +165,7 @@
               </ul>
             </div>
           </div>
-   
+
           <div class="flex items-center px-4 logo w-full">
             <router-link to="/">
               <nuxt-img
@@ -186,7 +183,6 @@
 
           <div class="flex w-full text-dark-gray">
             <div class="flex justify-end items-center w-full icons">
-
               <!--Nav Bar-Menu start ------------------------------------------------>
               <div
                 v-if="menu && menu.items"
@@ -207,11 +203,11 @@
                     <!-- Parent Item Text -->
                     <div class="p-4 w-full flex" @focus="hoveredItem = i">
                       <router-link
-                class=""
-                :class="i == 0 ? 'underline-first-item' : ''"
-                :to="item.url"
-                >{{ item.text }}
-              </router-link>
+                        class=""
+                        :class="i == 0 ? 'underline-first-item' : ''"
+                        :to="item.url"
+                        >{{ item.text }}
+                      </router-link>
                     </div>
 
                     <!-- First Level Submenu -->
@@ -295,14 +291,13 @@
 
               <!----------------- navbar end-------------->
               <div class="flex justify-end h-full items-center">
-
-
                 <!--languages-->
                 <div
                   v-if="
                     $settings.sections.header.icons.language &&
-                    $settings.store_languages.length > 1"
-                  class="relative mx-1 bg-text-white z-50 "
+                    $settings.store_languages.length > 1
+                  "
+                  class="relative mx-1 bg-text-white z-50"
                 >
                   <div
                     v-if="iconMenu == 'language'"
@@ -320,13 +315,56 @@
 
                 <button
                   @click="iconMenu = iconMenu == 'language' ? null : 'language'"
-                  v-if="$settings.sections.header.icons.language &&$settings.store_languages.length > 1"
+                  v-if="
+                    $settings.sections.header.icons.language &&
+                    $settings.store_languages.length > 1
+                  "
                   title="Language"
-                  class="item hidden md:block p-1.5  text-titles-color "
+                  class="item hidden md:block p-1.5 text-titles-color"
                 >
-                  <span class="text-base  font-poppins font-medium ">{{ $store.state.language.code }}</span>
+                  <span class="text-base font-poppins font-medium">{{
+                    $store.state.language.code
+                  }}</span>
                 </button>
                 <!--currency-->
+                <div class="flex items-center justify-center h-full">
+                  <div
+                    v-if="
+                      $settings.sections.header.icons.currency &&
+                      $settings.store_currencies.length > 1
+                    "
+                    class="relative mx-1 bg-text-white z-50"
+                  >
+                    <div
+                      v-if="iconMenu == 'currency'"
+                      class="absolute z-50 flex flex-col text-base font-poppins font-medium text-titles-color top-8"
+                    >
+                      <a
+                        class="p-2 m-1 whitespace-nowrap"
+                        v-for="cur of $settings.store_currencies"
+                        :key="cur.code"
+                        :href="`?cur=${cur.code}`"
+                        >{{ cur.name }} ( {{ cur.code }} )</a
+                      >
+                    </div>
+                  </div>
+                  <button
+                    @click="
+                      iconMenu = iconMenu == 'currency' ? null : 'currency'
+                    "
+                    v-if="
+                      $settings.sections.header.icons.currency &&
+                      $settings.store_currencies.length > 1
+                    "
+                    title="Currency"
+                    class="item hidden md:block p-1.5 text-titles-color"
+                  >
+                    <span class="text-base font-poppins font-medium">{{
+                      $store.state.currency.code
+                    }}</span>
+                  </button>
+                </div>
+
                 <!--button search-->
                 <button
                   v-if="$settings.sections.header.icons.search"
@@ -500,49 +538,13 @@
                           fill="currentColor"
                           d="M508.5 468.9L387.1 347.5c-2.3-2.3-5.3-3.5-8.5-3.5h-13.2c31.5-36.5 50.6-84 50.6-136C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c52 0 99.5-19.1 136-50.6v13.2c0 3.2 1.3 6.2 3.5 8.5l121.4 121.4c4.7 4.7 12.3 4.7 17 0l22.6-22.6c4.7-4.7 4.7-12.3 0-17zM208 368c-88.4 0-160-71.6-160-160S119.6 48 208 48s160 71.6 160 160-71.6 160-160 160z"
                           class=""
-                        ></path></svg></si-svg>
+                        ></path></svg
+                    ></si-svg>
                   </button>
                 </form>
               </div>
             </div>
-
-            <div class="flex items-center justify-start h-full">
-              <div
-                v-if="
-                  $settings.sections.header.icons.currency &&
-                  $settings.store_currencies.length > 1
-                "
-                class="relative mx-1"
-              >
-                <div
-                  v-if="iconMenu == 'currency'"
-                  class="absolute z-50 flex flex-col bg-gray-100 rounded-md top-5"
-                >
-                  <a
-                    class="p-2 m-1 whitespace-nowrap"
-                    v-for="cur of $settings.store_currencies"
-                    :key="cur.code"
-                    :href="`?cur=${cur.code}`"
-                    >{{ cur.name }} ( {{ cur.code }} )</a
-                  >
-                </div>
-              </div>
-              <button
-                @click="iconMenu = iconMenu == 'currency' ? null : 'currency'"
-                v-if="
-                  $settings.sections.header.icons.currency &&
-                  $settings.store_currencies.length > 1
-                "
-                title="Currency"
-                class="item hidden md:block p-1.5 bg-gray-100 rounded-md hover:bg-gray-200"
-              >
-                <span class="text-sm">{{ $store.state.currency.code }}</span>
-              </button>
-              
-            </div>
-
           </div>
-          
         </div>
       </div>
     </div>

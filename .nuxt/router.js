@@ -4,19 +4,19 @@ import { normalizeURL, decode } from 'ufo'
 import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
-const _6345ecd7 = () => interopDefault(import('..\\pages\\cart\\index.vue' /* webpackChunkName: "pages/cart/index" */))
-const _2ddfe36d = () => interopDefault(import('..\\pages\\error.vue' /* webpackChunkName: "pages/error" */))
-const _ba15a364 = () => interopDefault(import('..\\pages\\thanks\\index.vue' /* webpackChunkName: "pages/thanks/index" */))
-const _036cba92 = () => interopDefault(import('..\\pages\\wishlist\\index.vue' /* webpackChunkName: "pages/wishlist/index" */))
-const _2bcc7592 = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages/index" */))
-const _0c648488 = () => interopDefault(import('..\\pages\\about\\_slug.vue' /* webpackChunkName: "pages/about/_slug" */))
-const _8ac098c8 = () => interopDefault(import('..\\pages\\account\\_route.vue' /* webpackChunkName: "pages/account/_route" */))
-const _e6a5dc66 = () => interopDefault(import('..\\pages\\blog\\_slug.vue' /* webpackChunkName: "pages/blog/_slug" */))
-const _42b8bd56 = () => interopDefault(import('..\\pages\\contact\\_slug.vue' /* webpackChunkName: "pages/contact/_slug" */))
-const _2976801e = () => interopDefault(import('..\\pages\\pages\\_slug.vue' /* webpackChunkName: "pages/pages/_slug" */))
-const _65576482 = () => interopDefault(import('..\\pages\\posts\\_slug.vue' /* webpackChunkName: "pages/posts/_slug" */))
-const _4694d44b = () => interopDefault(import('..\\pages\\products\\_slug.vue' /* webpackChunkName: "pages/products/_slug" */))
-const _4206c9f9 = () => interopDefault(import('..\\pages\\shop\\_slug.vue' /* webpackChunkName: "pages/shop/_slug" */))
+const _152988d7 = () => interopDefault(import('..\\pages\\cart\\index.vue' /* webpackChunkName: "pages/cart/index" */))
+const _ecaf0126 = () => interopDefault(import('..\\pages\\error.vue' /* webpackChunkName: "pages/error" */))
+const _6a61ca4e = () => interopDefault(import('..\\pages\\thanks\\index.vue' /* webpackChunkName: "pages/thanks/index" */))
+const _bbbb52dc = () => interopDefault(import('..\\pages\\wishlist\\index.vue' /* webpackChunkName: "pages/wishlist/index" */))
+const _45e26137 = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages/index" */))
+const _d2172ef0 = () => interopDefault(import('..\\pages\\about\\_slug.vue' /* webpackChunkName: "pages/about/_slug" */))
+const _59554f9c = () => interopDefault(import('..\\pages\\account\\_route.vue' /* webpackChunkName: "pages/account/_route" */))
+const _3e90adcd = () => interopDefault(import('..\\pages\\blog\\_slug.vue' /* webpackChunkName: "pages/blog/_slug" */))
+const _04ca8555 = () => interopDefault(import('..\\pages\\contact\\_slug.vue' /* webpackChunkName: "pages/contact/_slug" */))
+const _75d4a3f1 = () => interopDefault(import('..\\pages\\pages\\_slug.vue' /* webpackChunkName: "pages/pages/_slug" */))
+const _20316efc = () => interopDefault(import('..\\pages\\posts\\_slug.vue' /* webpackChunkName: "pages/posts/_slug" */))
+const _356b1f6a = () => interopDefault(import('..\\pages\\products\\_slug.vue' /* webpackChunkName: "pages/products/_slug" */))
+const _182b340e = () => interopDefault(import('..\\pages\\shop\\_slug.vue' /* webpackChunkName: "pages/shop/_slug" */))
 
 const emptyFn = () => {}
 
@@ -31,55 +31,55 @@ export const routerOptions = {
 
   routes: [{
     path: "/cart",
-    component: _6345ecd7,
+    component: _152988d7,
     name: "cart"
   }, {
     path: "/error",
-    component: _2ddfe36d,
+    component: _ecaf0126,
     name: "error"
   }, {
     path: "/thanks",
-    component: _ba15a364,
+    component: _6a61ca4e,
     name: "thanks"
   }, {
     path: "/wishlist",
-    component: _036cba92,
+    component: _bbbb52dc,
     name: "wishlist"
   }, {
     path: "/",
-    component: _2bcc7592,
+    component: _45e26137,
     name: "index"
   }, {
     path: "/about/:slug?",
-    component: _0c648488,
+    component: _d2172ef0,
     name: "about-slug"
   }, {
     path: "/account/:route?",
-    component: _8ac098c8,
+    component: _59554f9c,
     name: "account-route"
   }, {
     path: "/blog/:slug?",
-    component: _e6a5dc66,
+    component: _3e90adcd,
     name: "blog-slug"
   }, {
     path: "/contact/:slug?",
-    component: _42b8bd56,
+    component: _04ca8555,
     name: "contact-slug"
   }, {
     path: "/pages/:slug?",
-    component: _2976801e,
+    component: _75d4a3f1,
     name: "pages-slug"
   }, {
     path: "/posts/:slug?",
-    component: _65576482,
+    component: _20316efc,
     name: "posts-slug"
   }, {
     path: "/products/:slug?",
-    component: _4694d44b,
+    component: _356b1f6a,
     name: "products-slug"
   }, {
     path: "/shop/:slug?",
-    component: _4206c9f9,
+    component: _182b340e,
     name: "shop-slug"
   }],
 
