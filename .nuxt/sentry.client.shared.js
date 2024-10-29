@@ -10,7 +10,7 @@ export const SentrySdk = { ...CoreSdk, ...BrowserSdk }
 export function getConfig (ctx) {
   /* eslint-disable object-curly-spacing, quote-props, quotes, key-spacing, comma-spacing */
   const config = {
-    dsn:"https:\u002F\u002F1401e2d8ce03e4c240d1d1b972bed270@logs.storeino.com\u002F6",
+    dsn:"https:\u002F\u002Feeadd4a49212a8a9366043f9ed580788@logs.storeino.com\u002F37",
     environment:"development",
     debug:true,
   }
