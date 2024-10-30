@@ -1,5 +1,5 @@
 <template>
-  <div class=" pt-14 md:pt-20 bg-white w-full container">
+  <div class="pt-14 md:pt-20 bg-white w-full container">
     <sections-header-top></sections-header-top>
 
     <div v-if="loading" class="flex w-full items-center justify-center">
@@ -8,14 +8,12 @@
 
     <div class="flex flex-wrap justify-between" v-if="item">
       <meta itemprop="productID" :content="item._id" />
-      
+
       <div class="w-full lg:w-1/2 px-8">
         <div class="lg:flex w-full justify-center h-4/5">
-
-          <div class="w-full lg:w-1/4 hidden md:block  ">
+          <div class="w-full lg:w-1/4 hidden md:block">
             <div
-              class="flex lg:flex-col w-full md:h-588p lg:w-auto justify-center items-center
-               md:overflow-y-scroll md:overflow-x-hidden overflow-x-scroll custom-scrollbar md:mt-3 "
+              class="flex lg:flex-col w-full md:h-588p lg:w-auto justify-center items-center md:overflow-y-scroll md:overflow-x-hidden overflow-x-scroll custom-scrollbar md:mt-3"
             >
               <si-image
                 class="w-16 h-20 sm:w-20 sm:h-24 m-1 cursor-pointer"
@@ -27,7 +25,7 @@
               />
             </div>
           </div>
-          <div class="md:w-3/4 h-96 md:h-500p flex justify-center ">
+          <div class="md:w-3/4 h-96 md:h-500p flex justify-center">
             <si-image
               width="500"
               height="588"
@@ -53,11 +51,10 @@
               />
             </div>
           </div>
-
         </div>
       </div>
 
-      <div class="w-full lg:w-1/2 px-8 ">
+      <div class="w-full lg:w-1/2 px-8">
         <div class="p-2 flex h-full">
           <div class="">
             <h2
@@ -100,7 +97,8 @@
                 </span>
               </div>
               <span class="text-sm text-white-gray" key="count"
-                >({{ item.review.reviews.length }} {{ $settings.sections.product.reviews.title }})</span
+                >({{ item.review.reviews.length }}
+                {{ $settings.sections.product.reviews.title }})</span
               >
             </div>
 
@@ -113,6 +111,7 @@
               @selected="variantSelected"
             ></si-product-variants>
             <si-product-price
+              place="product-page"
               class="flex text-2xl"
               :type="'simple'"
               :price="price"
@@ -120,7 +119,7 @@
             ></si-product-price>
 
             <p
-              class=" hidden md:flex font-poppins text-base font-base text-white-gray my-2 sm:my-3 md:my-8"
+              class="hidden md:flex font-poppins text-base font-base text-white-gray my-2 sm:my-3 md:my-8"
             >
               {{ item.description }}
             </p>
@@ -157,7 +156,7 @@
                 }}</span>
               </button>
             </div>
-            <div class="flex text-sm ">
+            <div class="flex text-sm">
               <button
                 v-if="$store.state.wishlist.find((i) => i._id == item._id)"
                 @click="removeFromWishlist"
@@ -209,32 +208,27 @@
                 >
                   {{
                     $store.state.wishlist.find((i) => i._id == item._id)
-                    ? $settings.sections.alerts.removed_from_wishlist
-                    : $settings.sections.alerts.added_to_wishlist
+                      ? $settings.sections.alerts.removed_from_wishlist
+                      : $settings.sections.alerts.added_to_wishlist
                   }}
                 </span>
               </button>
             </div>
 
-            <div class="flex w-full  mt-3">
-             
-            <si-app-loader v-show="!outofstock" placement="REPLACE_BUYNOW" />
-            <si-app-loader placement="AFTER_ADD_TO_CART" />
-
-             
+            <div class="flex w-full mt-3">
+              <si-app-loader v-show="!outofstock" placement="REPLACE_BUYNOW" />
+              <si-app-loader placement="AFTER_ADD_TO_CART" />
             </div>
-            <div
-              class="font-poppins text-base font-base text-white-gray "
-            >
-             
-              <div >
+            <div class="font-poppins text-base font-base text-white-gray">
+              <div>
                 <button
-                v-if="item.review.reviews.length>0"
-                class="py-3 font-poppins text-white-gray text-base "
-                
-              >
-              {{ $settings.sections.product.reviews.title }}({{ item.review.reviews.length }})
-              </button>
+                  v-if="item.review.reviews.length > 0"
+                  class="py-3 font-poppins text-white-gray text-base"
+                >
+                  {{ $settings.sections.product.reviews.title }}({{
+                    item.review.reviews.length
+                  }})
+                </button>
                 <div
                   v-if="item && $settings.sections.product.reviews.active"
                   class="reviews border border-gray-200"
@@ -250,14 +244,9 @@
                 </div>
               </div>
             </div>
-
-            
           </div>
-
-         
         </div>
       </div>
-
     </div>
 
     <div v-if="showVarianteModal" class="d-f modal_variante">
@@ -265,7 +254,8 @@
         <div class="mb-2 row fs-1-2 ai-c fw-b">
           <p>{{ t("check_choice") }}</p>
           <span class="px-2 c-p b-b br-8" @click="showVarianteModal = false"
-            >X</span>
+            >X</span
+          >
         </div>
 
         <div class="mb-1 w-f row">
@@ -293,7 +283,8 @@
         <div class="text-div w-f ai-c">
           <div
             class="fw-w w-f jc-sb"
-            style="height: 2px; background-color: black"></div>
+            style="height: 2px; background-color: black"
+          ></div>
           <div
             class="mb-1 border-solid d-f ai-c w-f"
             @click="showVariantDiv = !showVariantDiv"
@@ -334,7 +325,8 @@
           </div>
           <div
             class="fw-w w-f jc-sb"
-            style="height: 2px; background-color: black"></div>
+            style="height: 2px; background-color: black"
+          ></div>
         </div>
         <div v-if="showVariantDiv">
           <si-product-variants
@@ -345,7 +337,6 @@
             :variants="item.variants"
             @selected="variantSelected"
           ></si-product-variants>
-          
         </div>
         <si-app-loader placement="BEFORE_BUYNOW" />
         <div class="w-f">
@@ -448,7 +439,6 @@ export default {
     };
   },
   async fetch() {
-   
     const { slug } = this.$route.params;
     try {
       const { data } = await this.$storeino.products.get({ slug });
@@ -696,8 +686,8 @@ export default {
 }
 
 .custom-scrollbar::-webkit-scrollbar {
-  width: 5px; 
-  height: 5px; 
+  width: 5px;
+  height: 5px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
@@ -705,12 +695,12 @@ export default {
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: #ffffff; 
-  border-radius: 10px; 
+  background: #ffffff;
+  border-radius: 10px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #ffffff; 
+  background: #ffffff;
 }
 
 .video-wrapper {

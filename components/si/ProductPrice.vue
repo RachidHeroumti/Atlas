@@ -1,11 +1,16 @@
 <template>
   <div>
     <meta itemprop="priceCurrency" :content="$store.state.currency.code" />
+
+    <!-- Simple Product Price -->
     <div
-      class="price flex  text-titles-color font-normal font-poppins text-12p"
+      :class="[
+        'price flex text-titles-color font-normal font-poppins',
+        place === 'home' ? 'text-13p' : 'text-19p',
+      ]"
       v-if="type == 'simple'"
     >
-      <span class="  "
+      <span
         >{{ price.salePrice ? price.salePrice : 0
         }}{{ $store.state.currency.symbol }}</span
       >
@@ -21,8 +26,12 @@
       <meta itemprop="price" :content="price.salePrice" />
     </div>
 
+    <!-- Variable Product Price (Range) -->
     <div
-      class="price flex justify-center my-2 font-poppins text-12p font-normal"
+      :class="[
+        'price flex justify-center my-2 font-poppins font-normal',
+        place === 'home' ? 'text-13p' : 'text-19p',
+      ]"
       v-else-if="minPrice != maxPrice"
     >
       <meta itemprop="price" :content="minPrice" />
@@ -35,8 +44,12 @@
       >
     </div>
 
+    <!-- Variant Prices -->
     <div
-      class="price flex justify-center my-2 font-poppins text-12p font-normal"
+      :class="[
+        'price flex justify-center my-2 font-poppins font-normal',
+        place === 'home' ? 'text-13p' : 'text-19p',
+      ]"
       v-else-if="variants.length > 0"
     >
       <meta itemprop="price" :content="variants[0].price.salePrice" />
@@ -57,6 +70,7 @@
     </div>
   </div>
 </template>
+
 <script>
 export default {
   props: {
@@ -64,6 +78,10 @@ export default {
     price: Object,
     originalPrice: { type: Object, default: null },
     variants: { type: Array, default: [] },
+    place: {
+      type: String,
+      default: "home",
+    },
   },
   data() {
     return {
@@ -79,6 +97,7 @@ export default {
   },
 };
 </script>
+
 <style>
 .compare-price {
   height: 0.2em;
