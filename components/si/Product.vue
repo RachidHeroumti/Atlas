@@ -1,11 +1,19 @@
 <template>
   <!-- home-->
   <div v-if="place == 'home'" class="relative flex flex-col h-full">
-
-    
-    <div v-if="discount" class="absolute top-0 left-0 z-10 flex items-center justify-center h-10 p-2 text-white bg-red-700 rounded-br-lg">
-        <b>-{{discount.value}} {{ discount.type == 'percentage' ? '%' : this.$store.state.currency.symbol }}</b>
-    </div> 
+    <div
+      v-if="discount"
+      class="absolute top-0 left-0 z-10 flex items-center justify-center h-10 p-2 text-white bg-red-700 rounded-br-lg"
+    >
+      <b
+        >-{{ discount.value }}
+        {{
+          discount.type == "percentage"
+            ? "%"
+            : this.$store.state.currency.symbol
+        }}</b
+      >
+    </div>
     <div class="relative flex h-full min-w-40 md:w-auto">
       <div
         @mouseover="isHovering = true"
@@ -27,85 +35,87 @@
           </nuxt-link>
         </div>
 
-        <div class="mb-17p relative mt-29p flex flex-col w-full h-full  justify-center items-center p-1  space-y-2  ">
-
-        <div class=" w-full text-center">
-          <nuxt-link :to="`/products/${item.slug}`">
-            <h3 class="font-poppins font-medium text-base text-titles-color truncate mx-5">
-  {{ item.name }}
-</h3>
-
-          </nuxt-link>
-        </div>
-
         <div
-          class="flex items-center justify-center w-full "
-          v-if="$settings.sections.products.show_reviews"
+          class="mb-17p relative mt-29p flex flex-col w-full h-full justify-center items-center p-1 space-y-2"
         >
-          <div class="flex ">
-            <span
-              v-for="(star, i) in 5"
-              :class="
-                star <= item.review.rating
-                  ? ' text-titles-color '
-                  : ' text-white-gray'
-              "
-              :key="i"
-            >
-              <svg
-                aria-hidden="true"
-                focusable="false"
-                data-prefix="fas"
-                data-icon="star"
-                role="img"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 576 512"
-                class="w-3 h-3 translate"
+          <div class="w-full text-center">
+            <nuxt-link :to="`/products/${item.slug}`">
+              <h3
+                class="font-poppins font-medium text-base text-titles-color truncate mx-5"
               >
-                <path
-                  fill="currentColor"
-                  d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"
-                  class=""
-                ></path>
-              </svg>
-            </span>
+                {{ item.name }}
+              </h3>
+            </nuxt-link>
           </div>
-          <!-- <span class="text-sm text-gray-600" key="count">({{ item.review.reviews.length }})</span> -->
+
+          <div
+            class="flex items-center justify-center w-full"
+            v-if="$settings.sections.products.show_reviews"
+          >
+            <div class="flex">
+              <span
+                v-for="(star, i) in 5"
+                :class="
+                  star <= item.review.rating
+                    ? ' text-titles-color '
+                    : ' text-white-gray'
+                "
+                :key="i"
+              >
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  data-prefix="fas"
+                  data-icon="star"
+                  role="img"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 576 512"
+                  class="w-3 h-3 translate"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"
+                    class=""
+                  ></path>
+                </svg>
+              </span>
+            </div>
+            <!-- <span class="text-sm text-gray-600" key="count">({{ item.review.reviews.length }})</span> -->
+          </div>
+
+          <si-product-price
+            :type="item.type"
+            :price="item.price"
+            :variants="item.variants"
+          ></si-product-price>
+
+          <div
+            v-if="outofstock && item.type == 'simple'"
+            class="flex justify-center p-2 text-white bg-red-700 ai-c"
+          >
+            <b>{{ "Out of stock" }}</b>
+          </div>
+
+          <!-- Add to cart product-->
+
+          <div
+            class="flex justify-center items-center w-full absolute bottom-1 left-0 right-0"
+            v-else-if="$settings.sections.products.add_to_cart.active"
+          >
+            <button
+              @click="addToCart"
+              class="px-4 p-2 z-50 w-40 font-poppins text-12p font-normal text-white bg-titles-color"
+              :class="{
+                block: isSmallScreen,
+                invisible: !isSmallScreen && !isHovering,
+              }"
+              @mouseenter="isHovering = true"
+              @mouseleave="isHovering = false"
+            >
+              <span>{{ $settings.sections.products.add_to_cart.text }} +</span>
+            </button>
+          </div>
         </div>
-
-        <si-product-price
-          :type="item.type"
-          :price="item.price"
-          :variants="item.variants"
-        ></si-product-price>
-
-        <div
-          v-if="outofstock && item.type == 'simple'"
-          class="flex justify-center p-2 text-white bg-red-700 ai-c"
-        >
-          <b>{{ "Out of stock" }}</b>
-        </div>
-
-        <!-- Add to cart product-->
-         
-     <div class=" flex justify-center items-center w-full absolute bottom-1 left-0 right-0 "
-          v-else-if="$settings.sections.products.add_to_cart.active">
-        <button
-    @click="addToCart"
-    class=" px-4 p-2 z-50  w-40  font-poppins text-12p  font-normal text-white bg-titles-color"
-    :class="{
-      'block': isSmallScreen, 
-      'invisible': !isSmallScreen && !isHovering 
-    }"
-    @mouseenter="isHovering = true"
-    @mouseleave="isHovering = false"
-  >
-    <span>{{ $settings.sections.products.add_to_cart.text }} +</span>
-        </button>
-      </div>
-         </div>
-
-
       </div>
 
       <transition name="flip">
@@ -225,7 +235,6 @@
               $settings.sections.products.confirm_text
             }}</span>
           </button>
-
         </div>
       </transition>
     </div>
@@ -233,9 +242,18 @@
 
   <!-- other place-->
   <div v-else class="relative flex flex-col bg-white p-1">
-  
-    <div v-if="discount" class="absolute top-0 left-0 z-10 flex items-center justify-center h-10 p-2 text-white bg-red-700 rounded-br-lg">
-        <b>-{{discount.value}} {{ discount.type == 'percentage' ? '%' : this.$store.state.currency.symbol }}</b>
+    <div
+      v-if="discount"
+      class="absolute top-0 left-0 z-10 flex items-center justify-center h-10 p-2 text-white bg-red-700 rounded-br-lg"
+    >
+      <b
+        >-{{ discount.value }}
+        {{
+          discount.type == "percentage"
+            ? "%"
+            : this.$store.state.currency.symbol
+        }}</b
+      >
     </div>
     <div class="relative flex h-full min-w-40 md:w-auto">
       <div
@@ -260,7 +278,7 @@
         <div class="mb-17p mt-29p space-y-2">
           <div class="w-full text-center">
             <nuxt-link :to="`/products/${item.slug}`">
-              <h4 class="font-poppins font-normal text-base ">
+              <h4 class="font-poppins font-normal text-base">
                 {{ item.name }}
               </h4>
             </nuxt-link>
@@ -320,7 +338,7 @@
             @click="addToCart"
             @mouseenter="isHoveringOnAddToCart = true"
             @mouseleave="isHoveringOnAddToCart = false"
-            class="absolute flex justify-center items-center left-0  top-36 py-2 h-10 font-poppins text-13p font-normal ps-4 pe-6 text-white ai-c space-x-2 bg-titles-color rounded-sm transition-all duration-500 overflow-hidden"
+            class="absolute flex justify-center items-center left-0 top-36 py-2 h-10 font-poppins text-13p font-normal ps-4 pe-6 text-white ai-c space-x-2 bg-titles-color rounded-sm transition-all duration-500 overflow-hidden"
             :class="[
               isHoveringOnAddToCart ? 'w-1/2' : 'w-10',
               { invisible: !isHovering, visible: isHovering },
@@ -345,9 +363,7 @@
             </transition>
             <span class="inline-block">+</span>
           </button>
-          
         </div>
-
       </div>
 
       <transition name="flip">
@@ -481,7 +497,6 @@ export default {
     place: { type: String, default: "home" },
   },
   async fetch() {
-  
     if (this.item.type == "simple") {
       if (this.discount) {
         this.item.originalPrice = this.$tools.copy(this.item.price);
@@ -548,14 +563,14 @@ export default {
   },
   mounted() {
     this.checkScreenSize();
-    window.addEventListener('resize', this.checkScreenSize);
+    window.addEventListener("resize", this.checkScreenSize);
   },
   beforeDestroy() {
-    window.removeEventListener('resize', this.checkScreenSize);
+    window.removeEventListener("resize", this.checkScreenSize);
   },
   methods: {
     checkScreenSize() {
-      this.isSmallScreen = window.innerWidth < 768; 
+      this.isSmallScreen = window.innerWidth < 768;
     },
     addToCart() {
       let item = {
@@ -624,7 +639,6 @@ export default {
 };
 </script>
 <style scoped>
-
 .close-button {
   position: absolute;
   right: 1px;

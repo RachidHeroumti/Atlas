@@ -17,7 +17,7 @@
       <si-loader></si-loader>
     </div>
     <div class="flex w-full">
-      <div class="flex ">
+      <div class="flex w-full">
         <div 
           v-for="(item, i) in visibleItems" 
           :key="i" 

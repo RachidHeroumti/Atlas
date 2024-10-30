@@ -166,6 +166,12 @@
                                             "path": "sections.header.icons.currency",
                                             "type": "tc_checkbox",
                                             "value": false
+                                        },
+                                        {
+                                            "name": "show_social_icons",
+                                            "path": "sections.header.icons.social",
+                                            "type": "tc_checkbox",
+                                            "value": false
                                         }
                                     ]
                                 },
@@ -2040,7 +2046,7 @@
                     "title": "Featured Products",
                     "collections": [],
                     "tags": [],
-                    "products_list":[],
+                    "products_list": [],
                     "show_more_text": "Discover more",
                     "show_more_url": "/shop"
                 },
@@ -2207,7 +2213,6 @@
     },
     "images": [
         "https://storeino-files.b-cdn.net/themes/atlas.png"
-        
     ],
     "isActive": false,
     "autoRenew": false,
