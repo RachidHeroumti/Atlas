@@ -1,47 +1,48 @@
 <template>
   <div>
-    <div class="maintenance_page" v-if="$settings.store_maintenance || !show_store_maintenance">
-            <sections-maintenance @openStore="openStore" />
-            </div>
+    <div
+      class="maintenance_page"
+      v-if="$settings.store_maintenance || !show_store_maintenance"
+    >
+      <sections-maintenance @openStore="openStore" />
+    </div>
     <div v-else class="bg-white">
-    
-    <component :is="'style'">
-      :root{ --primary-rgb: {{ rgb.r }}, {{ rgb.g }}, {{ rgb.b }};
-      --primary-color: rgb(var(--primary-rgb)); } .bg-primary{ background-color:
-      var(--primary-color); } .bg-primary:hover{ background-color:
-      rgb(var(--primary-rgb),0.8); } .text-primary{ color: var(--primary-color);
-      }
-    </component>
+      <component :is="'style'">
+        :root{ --primary-rgb: {{ rgb.r }}, {{ rgb.g }}, {{ rgb.b }};
+        --primary-color: rgb(var(--primary-rgb)); } .bg-primary{
+        background-color: var(--primary-color); } .bg-primary:hover{
+        background-color: rgb(var(--primary-rgb),0.8); } .text-primary{ color:
+        var(--primary-color); }
+      </component>
 
-    <template v-if="$route.name !== 'index'">
-      <sections-header-top></sections-header-top>
-      <sections-header></sections-header>
-      <si-app-loader placement="AFTER_HEADER" />
-    </template>
-
-    <template v-if="$route.name === 'index'">
-      <div class="flex flex-col sm:hidden">
+      <template v-if="$route.name !== 'index'">
+        <sections-header-top></sections-header-top>
         <sections-header></sections-header>
-      </div>
-    </template>
+        <si-app-loader placement="AFTER_HEADER" />
+      </template>
 
-    
-    <Nuxt />
+      <template v-if="$route.name === 'index'">
+        <div class="flex flex-col sm:hidden">
+          <sections-header></sections-header>
+        </div>
+      </template>
 
-    
-    <template v-if="$route.name !== 'index'">
-      
-  <!-- <sections-footer></sections-footer> -->
-  <div class="">
-    <hr class="my-2 w-full" />
-  </div>
+      <Nuxt />
 
-  <sections-footer-menu></sections-footer-menu>
-  <sections-copyright></sections-copyright>
+      <template v-if="$route.name !== 'index'">
+        <!-- <sections-footer></sections-footer> -->
+        <div class="">
+          <hr class="my-2 w-full" />
+        </div>
 
-  <si-full-image v-if="$route.path.startsWith('/products/')"></si-full-image>
+        <sections-footer-menu></sections-footer-menu>
+        <sections-copyright></sections-copyright>
 
-  <!-- <div
+        <si-full-image
+          v-if="$route.path.startsWith('/products/')"
+        ></si-full-image>
+
+        <!-- <div
     dir="ltr"
     class="currency-switcher"
     v-if="$store.state.showCurrencyModal"
@@ -102,27 +103,31 @@
     </form>
   </div> -->
 
-  <div
-    v-if="$settings.other_scripts"
-    class="other-scripts"
-    v-html="$settings.other_scripts"
-  ></div>
-   </template>
+        <div
+          v-if="$settings.other_scripts"
+          class="other-scripts"
+          v-html="$settings.other_scripts"
+        ></div>
+      </template>
 
-
-    <!--button up-->
-    <div
-      v-if="showScrollTopButton"
-      @click="scrollToTop"
-      class="fixed hidden  md:right-5  md:bottom-5 bg-white-gray hover:bg-titles-color w-12 h-10  text-white text-center text-base md:flex items-center justify-center"
-    >
-    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#fff"><path d="m256-424-56-56 280-280 280 280-56 56-224-223-224 223Z"/></svg>
+      <!--button up-->
+      <div
+        v-if="showScrollTopButton"
+        @click="scrollToTop"
+        class="fixed hidden md:right-5 md:bottom-5 bg-white-gray hover:bg-titles-color w-12 h-10 text-white text-center text-base md:flex items-center justify-center"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="24px"
+          viewBox="0 -960 960 960"
+          width="24px"
+          fill="#fff"
+        >
+          <path d="m256-424-56-56 280-280 280 280-56 56-224-223-224 223Z" />
+        </svg>
+      </div>
     </div>
-
   </div>
-
-  </div>
- 
 </template>
 <script>
 export default {
@@ -280,6 +285,7 @@ export default {
     }
   },
   mounted() {
+    console.log("da hmaad hkljhiroeugver");
     window.addEventListener("scroll", this.handleScroll);
   },
   beforeDestroy() {
@@ -301,12 +307,12 @@ export default {
       });
     },
     openStore(active) {
-      this.show_store_maintenance = active
+      this.show_store_maintenance = active;
     },
     closeStore() {
       document.cookie = `store_maintenance_code=${this.code}`;
-      this.show_store_maintenance = false
-    }
+      this.show_store_maintenance = false;
+    },
   },
 };
 </script>
@@ -378,4 +384,3 @@ export default {
   display: inline-block;
 }
 </style>
-
