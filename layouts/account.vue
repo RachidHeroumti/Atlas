@@ -1,14 +1,19 @@
 <template>
-    <div class=" bg-white transition-all delay-300">
-        <component :is="'style'">
+   
+        <div  class="default_page"> 
+            <div class="maintenance_page" v-if="$settings.store_maintenance || !show_store_maintenance">
+            <sections-maintenance @openStore="openStore" />
+            </div>
+            <div v-else  class=" bg-white transition-all delay-300">
+                <component :is="'style'">
             :root{ --primary-rgb: {{ rgb.r }}, {{rgb.g}}, {{ rgb.b }}; --primary-color: rgb(var(--primary-rgb)); }
             .bg-primary{ background-color: var(--primary-color); }
             .bg-primary:hover{ background-color: rgb(var(--primary-rgb),0.8); }
             .text-primary{ color: var(--primary-color); }
         </component>
+
         <sections-header-top></sections-header-top>
         <sections-header></sections-header>
-
          <Nuxt />
         
         <div class="bg-white flex">
@@ -17,8 +22,10 @@
         
         <sections-footer-menu></sections-footer-menu>
         <sections-copyright></sections-copyright>
+             </div>
+        </div>
        
-    </div>
+    
 </template>
 <script>
 export default {
@@ -60,7 +67,9 @@ export default {
         return {
             rgb: { r: 0, g: 130, b: 70 },
             otherLinks: [
-                ]
+                ],
+                show_store_maintenance: true,
+                show_store_maintenance_unlocked: false
         }
     },
     async fetch(){
@@ -79,6 +88,13 @@ export default {
         }
     },
     methods: {
+        openStore(active) {
+            this.show_store_maintenance = active
+        },
+        closeStore() {
+            document.cookie = `store_maintenance_code=${this.code}`;
+            this.show_store_maintenance = false
+        }
     }
 }
 </script>
