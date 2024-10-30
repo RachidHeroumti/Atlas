@@ -6,6 +6,7 @@
       <si-loader></si-loader>
     </div>
 
+    <sections-header-top></sections-header-top>
     <div class="flex flex-wrap  ">
       <div v-for="(item, i) in items" :key="i" class=""
        :class="mobile_size ? mobile_size : 'w-full sm:w-1/2 md:w-1/2 lg:w-1/3 home-products '">
@@ -24,12 +25,12 @@
         <a href="https://atlas.storeino.com" target="_blank" class="text-blue-600 border p-2 rounded-md inline-block mt-1">{{'View theme demo'}}</a>
       </div>
     </div>
-<!-- 
+ 
     <div class="flex justify-end w-full " v-if="section.show_more_text&&items.length>6">
       <nuxt-link class="  m-4 font-poppins text-white-gray text-base font-normal " :to="section.show_more_url">
         <span class="w-full">{{ section.show_more_text }}</span>
       </nuxt-link>
-    </div>  -->
+    </div>  
 
     <div class="container w-full">
       <si-app-loader placement="BEFORE_HOME_FOOTER" />

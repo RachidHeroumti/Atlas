@@ -2,7 +2,7 @@
   <div>
     <meta itemprop="priceCurrency" :content="$store.state.currency.code" />
     <div
-      class="price flex justify-center text-titles-color font-normal font-poppins text-12p"
+      class="price flex  text-titles-color font-normal font-poppins text-12p"
       v-if="type == 'simple'"
     >
       <span class="  "

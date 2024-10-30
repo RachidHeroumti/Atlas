@@ -16,7 +16,6 @@
     </template>
 
     <template v-if="$route.name === 'index'">
-      <sections-header-top></sections-header-top>
       <div class="flex flex-col sm:hidden">
         <sections-header></sections-header>
       </div>
