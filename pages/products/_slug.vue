@@ -119,6 +119,7 @@
             ></si-product-price>
 
             <p
+              v-if="item.description"
               class="hidden md:flex font-poppins text-base font-base text-white-gray my-2 sm:my-3 md:my-8"
             >
               {{ item.description }}
