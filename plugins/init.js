@@ -24,7 +24,7 @@ export default async function ({ $axios, $http, route, $tools, $storeino, store,
       }
       store.state.settings = response.data;
     } catch (error) {
-      this.$sentry.captureException(error);
+     store.$sentry.captureException(error);
       if (error.response) throw "ERROR :: " + error.response.data;
       throw "ERROR :: INVALID TOKEN" + error;
     }

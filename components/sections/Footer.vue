@@ -1,6 +1,6 @@
 <template>
   <div class="bg-white">
-    <div class="">
+    <div class=" ">
       <div class="flex flex-wrap">
         <div
           class="w-full flex flex-col justify-center font-poppins font-base text-12p space-y-2 text-gray-600"

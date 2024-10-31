@@ -1,26 +1,29 @@
 <template>
-  <div class="bg-gray-900 text-white w-full py-16 p-10 ">
+  <div class="bg-gray-900 text-white w-full md:py-16 md:p-10 md:px-8 p-5">
     <div class="container">
-    <si-app-loader placement="BEFORE_FOOTER" />
-    <div class="sm:flex justify-start sm:space-x-5 mb-3">
-      <div class="w-full space-y-3">
-        <p v-if="$settings.sections.footer.about"
-        >{{$settings.sections.footer.about_us}}</p>
-        <p class="text-gray-500" v-html="$settings.sections.footer.about"></p>
-      </div>
+      <si-app-loader placement="BEFORE_FOOTER" />
+      <div
+        class="space-y-1 md:space-y-0 sm:flex justify-start sm:space-x-5 mb-3"
+      >
+        <div class="w-full space-y-3">
+          <p v-if="$settings.sections.footer.about">
+            {{ $settings.sections.footer.about_us }}
+          </p>
+          <p class="text-gray-500" v-html="$settings.sections.footer.about"></p>
+        </div>
 
-      <div v-if=" menu&&menu.items" class="w-full space-y-3">
-        <p>{{ $settings.sections.footer.download}}</p>
-        <div 
-          v-for="(item, i) in menu.items"
-          :key="i"
-          class="w-full text-gray-400"
-        >
-          <div class="">
-            <h4 class="font-poppins font-base text-12p">
-              <router-link :to="item.url">{{ item.text }}</router-link>
-            </h4>
-            <!--
+        <div v-if="menu && menu.items" class="w-full space-y-3">
+          <p>{{ $settings.sections.footer.download }}</p>
+          <div
+            v-for="(item, i) in menu.items"
+            :key="i"
+            class="w-full text-gray-400"
+          >
+            <div class="">
+              <h4 class="font-poppins font-base text-12p">
+                <router-link :to="item.url">{{ item.text }}</router-link>
+              </h4>
+              <!--
                 <ul class="p-2" v-if="item.childrens && item.childrens.length > 0">
                     <li v-for="(child,ii) in item.childrens" :key="ii">
                         <nuxt-link :to="child.url" class="submenu-title">
@@ -36,73 +39,74 @@
                     </li>
                 </ul>
 -->
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="w-full space-y-3">
-        
-        <p class=" text-lg">{{ $settings.sections.footer.social_media.title }}</p> 
-        <div class="text-12p font-poppins font-base text-gray-400">
-          <div
-            v-for="item in socialMedia.filter(
-              (s) => $settings.sections.footer.social_media[s.name]
-            )"
-            :key="item.name"
-            class="flex items-center justify-between"
-          >
-            <a
-              class="h-full flex items-center space-y-2"
-              :href="$settings.sections.footer.social_media[item.name]"
-              target="_blank"
-              rel="noopener noreferrer"
+        <div class="w-full space-y-3">
+          <p class="text-lg">
+            {{ $settings.sections.footer.social_media.title }}
+          </p>
+          <div class="text-12p font-poppins font-base text-gray-400">
+            <div
+              v-for="item in socialMedia.filter(
+                (s) => $settings.sections.footer.social_media[s.name]
+              )"
+              :key="item.name"
+              class="flex items-center justify-between"
             >
-              <span class="hover:underline">{{ item.name }}</span>
-            </a>
+              <a
+                class="h-full flex items-center space-y-2"
+                :href="$settings.sections.footer.social_media[item.name]"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span class="hover:underline">{{ item.name }}</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="w-full space-y-3">
+          <p>{{ $settings.sections.footer.call_center }}</p>
+          <div>
+            <p
+              class="text-12p font-poppins font-normal text-gray-400"
+              v-html="$settings.sections.footer.worktime"
+            ></p>
+            <p
+              class="text-12p font-poppins font-normal text-gray-400"
+              v-html="$settings.sections.footer.closetime"
+            ></p>
+            <p class="p-1"></p>
+            <p
+              class="text-12p font-poppins font-normal text-gray-400"
+              v-html="$settings.sections.footer.email"
+            ></p>
+            <p
+              class="text-12p font-poppins font-normal text-gray-400"
+              v-html="$settings.sections.footer.phon"
+            ></p>
           </div>
         </div>
       </div>
-
-      <div class="w-full space-y-3">
-        <p>{{ $settings.sections.footer.call_center }}</p>
-        <div>
-          <p
-            class="text-12p font-poppins font-normal text-gray-400"
-            v-html="$settings.sections.footer.worktime"
-          ></p>
-          <p
-            class="text-12p font-poppins font-normal text-gray-400"
-            v-html="$settings.sections.footer.closetime"
-          ></p>
-          <p class="p-1"></p>
-          <p
-            class="text-12p font-poppins font-normal text-gray-400"
-            v-html="$settings.sections.footer.email"
-          ></p>
-          <p
-            class="text-12p font-poppins font-normal text-gray-400"
-            v-html="$settings.sections.footer.phon"
-          ></p>
+      <hr />
+      <div
+        v-if="menu_bottom && menu_bottom.items"
+        class="w-full flex justify-center space-x-2 sm:space-x-5 font-normal md:py-5 p-2 text-white"
+      >
+        <div
+          v-for="(item, i) in menu_bottom.items"
+          :key="i"
+          class="font-poppins text-13p p-1"
+        >
+          <span class="font-poppins text-15p font-medium">
+            <router-link :to="item.url">{{ item.text }}</router-link>
+          </span>
         </div>
       </div>
+      <si-app-loader placement="AFTER_FOOTER" />
     </div>
-    <hr />
-    <div
-     v-if=" menu_bottom&&menu_bottom.items"
-      class="w-full flex justify-center  space-x-2 sm:space-x-5 font-normal py-5 text-white"
-    >
-      <div
-        v-for="(item, i) in menu_bottom.items"
-        :key="i"
-        class="font-poppins text-13p p-1"
-      >
-        <span class="font-poppins text-15p font-medium">
-          <router-link :to="item.url">{{ item.text }}</router-link>
-        </span>
-      </div>
-    </div>
-    <si-app-loader placement="AFTER_FOOTER" />
-  </div>
   </div>
 </template>
 <script>

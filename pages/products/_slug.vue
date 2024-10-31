@@ -9,11 +9,11 @@
     <div class="flex flex-wrap justify-between" v-if="item">
       <meta itemprop="productID" :content="item._id" />
 
-      <div class="w-full lg:w-1/2 px-8">
+      <div class="w-full lg:w-1/2 md:px-8 px-5">
         <div class="lg:flex w-full justify-center h-4/5">
-          <div class="w-full lg:w-1/4 hidden md:block">
+          <div class="w-full lg:w-1/4 hidden lg:block">
             <div
-              class="flex lg:flex-col w-full md:h-588p lg:w-auto justify-center items-center md:overflow-y-scroll md:overflow-x-hidden overflow-x-scroll custom-scrollbar md:mt-3"
+              class="flex lg:flex-col w-full lg:h-588p lg:w-auto justify-center items-center md:overflow-y-scroll md:overflow-x-hidden overflow-x-scroll custom-scrollbar md:mt-3"
             >
               <si-image
                 class="w-16 h-20 sm:w-20 sm:h-24 m-1 cursor-pointer"
@@ -25,6 +25,7 @@
               />
             </div>
           </div>
+
           <div class="md:w-3/4 h-96 md:h-500p flex justify-center">
             <si-image
               width="500"
@@ -35,7 +36,7 @@
               :alt="item.name"
             />
           </div>
-          <div class="w-full lg:w-1/4 p-2 md:hidden">
+          <div class="w-full lg:w-1/4 p-2 lg:hidden">
             <div
               class="flex lg:flex-col w-full lg:w-auto justify-center items-center"
             >
@@ -54,7 +55,7 @@
         </div>
       </div>
 
-      <div class="w-full lg:w-1/2 px-8">
+      <div class="w-full lg:w-1/2 md:px-8 px-5">
         <div class="p-2 flex h-full">
           <div class="">
             <h2
@@ -111,15 +112,13 @@
               @selected="variantSelected"
             ></si-product-variants>
             <si-product-price
-              place="product-page"
-              class="flex text-2xl"
+              class="flex text-3xl"
               :type="'simple'"
               :price="price"
               :variants="[]"
             ></si-product-price>
 
             <p
-              v-if="item.description"
               class="hidden md:flex font-poppins text-base font-base text-white-gray my-2 sm:my-3 md:my-8"
             >
               {{ item.description }}
@@ -250,7 +249,7 @@
       </div>
     </div>
 
-    <div v-if="showVarianteModal" class="d-f modal_variante">
+    <div v-if="showVarianteModal" class="d-f modal_variante md:px-8 px-5">
       <div class="p-2 modal_variante_content">
         <div class="mb-2 row fs-1-2 ai-c fw-b">
           <p>{{ t("check_choice") }}</p>
@@ -372,7 +371,7 @@
       </div>
     </div>
 
-    <div v-if="item" class="flex flex-col h-full">
+    <div v-if="item" class="flex flex-col h-full md:px-8 px-5">
       <div
         v-if="item && $settings.sections.product.upsell.active"
         class="upsells"
