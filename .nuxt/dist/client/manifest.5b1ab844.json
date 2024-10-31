@@ -1,0 +1,9 @@
+{
+  "name": "customize-theme",
+  "short_name": "customize-theme",
+  "icons": [],
+  "start_url": "/?standalone=true",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "lang": "en"
+}

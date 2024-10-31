@@ -112,6 +112,7 @@
               @selected="variantSelected"
             ></si-product-variants>
             <si-product-price
+              place="product-page"
               class="flex text-3xl"
               :type="'simple'"
               :price="price"

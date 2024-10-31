@@ -556,7 +556,7 @@ function normalizeComponents (to, ___) {
 }
 
 const routeMap = new WeakMap()
-function getLayoutForNextPage (to, from, next) {
+async function getLayoutForNextPage (to, from, next) {
   // Set layout
   let hasError = Boolean(this.$options.nuxt.err)
   if (this._hadError && this._dateLastError === this.$options.nuxt.dateErr) {
@@ -571,6 +571,8 @@ function getLayoutForNextPage (to, from, next) {
   }
 
   routeMap.set(to, layout);
+
+  await this.loadLayout(layout)
 
   if (next) next();
 }
@@ -852,8 +854,8 @@ async function mountApp (__app) {
     return mount()
   }
 
-  const clientFirstLayoutSet =  () => {
-     getLayoutForNextPage.call(_app, router.currentRoute)
+  const clientFirstLayoutSet = async () => {
+    await getLayoutForNextPage.call(_app, router.currentRoute)
     setLayoutForNextPage.call(_app, router.currentRoute)
   }
 
