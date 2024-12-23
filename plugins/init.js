@@ -112,22 +112,20 @@ export default async function ({ $axios, $http, route, $tools, $storeino, store,
         let response = await $http.post(`/${module}/me`, data, { params, headers });
         return response.data;
       },
-      invoke: async function (method,path,params = {},body = {}){
+      invoke: async function (method,path,params = {},body = {},url='/'){
         let result;
         try {
             if (method === 'get' || method === 'delete') {
-                result = await $http[method](`/${path}`, params);
+                result = await $http[method](`${url}${path}`, params);
             } else {
-                result = await $http[method](`/${path}`, body, params);
+                result = await $http[method](`${url}${path}`, body, params);
             }
         } catch (error) {
-          this.$sentry.captureException(error);
-            console.log(error,"error")
             result = error.response ? error.response : { status: 500, data: error.message };
         }
 
         return result.data;
-      }
+      },
     };
 
     // vue leflet

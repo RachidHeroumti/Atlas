@@ -5,14 +5,15 @@
     <!-- Simple Product Price -->
     <div
       :class="[
-        'price flex text-titles-color font-normal font-poppins',
+        ' flex text-titles-color font-normal font-poppins',
         place === 'home' ? 'text-13p' : 'text-19p',
       ]"
       v-if="type == 'simple'"
     >
       <span
-        >{{ price.salePrice ? price.salePrice : 0
-        }}{{ $store.state.currency.symbol }}</span
+        >   <span class="price">{{ price.comparePrice }}</span>
+        <span class="currency">{{ $store.state.currency.symbol }}</span>
+        </span
       >
       <span class="flex w-2"></span>
 
@@ -20,7 +21,8 @@
         <b
           class="text-titles-color"
           style="text-decoration: line-through; text-decoration-color: red"
-          >{{ price.comparePrice }}{{ $store.state.currency.symbol }}</b
+          > <span class="price">{{ price.comparePrice }}</span>
+          <span class="currency">{{ $store.state.currency.symbol }}</span></b
         >
       </span>
       <meta itemprop="price" :content="price.salePrice" />
@@ -36,32 +38,35 @@
     >
       <meta itemprop="price" :content="minPrice" />
       <span class="text-titles-color"
-        >{{ minPrice }}{{ $store.state.currency.symbol }}</span
+        > <span class="price">{{ minPrice }}</span>
+        <span class="currency">{{ $store.state.currency.symbol }}</span></span
       >
       <span class="flex">~</span>
-      <span class="text-titles-color"
-        >{{ maxPrice }}{{ $store.state.currency.symbol }}</span
-      >
+      <span class="text-titles-color">
+         <span class="price">{{ maxPrice }}</span>
+        <span class="currency">{{ $store.state.currency.symbol }}</span>
+        </span>
     </div>
 
     <!-- Variant Prices -->
     <div
       :class="[
-        'price flex justify-center my-2 font-poppins font-normal',
+        ' flex justify-center my-2 font-poppins font-normal',
         place === 'home' ? 'text-13p' : 'text-19p',
       ]"
       v-else-if="variants.length > 0"
     >
       <meta itemprop="price" :content="variants[0].price.salePrice" />
       <span class="text-titles-color"
-        >{{ variants[0].price.salePrice
-        }}{{ $store.state.currency.symbol }}</span
+        >
+        <span class="price">{{ variants[0].price.salePrice }}</span>
+        <span class="currency">{{ $store.state.currency.symbol }}</span></span
       >
       <span class="flex w-2"></span>
       <span class="relative" v-if="variants[0].price.comparePrice > 0">
         <span class="text-titles-color"
-          >{{ variants[0].price.comparePrice
-          }}{{ $store.state.currency.symbol }}</span
+          > <span class="price">{{ variants[0].price.comparePrice }}</span>
+          <span class="currency">{{ $store.state.currency.symbol }}</span></span
         >
         <span
           class="compare-price absolute top-2 block w-full bg-red-600"
